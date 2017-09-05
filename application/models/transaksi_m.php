@@ -77,6 +77,7 @@ class Transaksi_m extends MY_Model {
 		if($edit==''){
 			$data=$this->getKodeTransaksi();
 			$arr=array(
+				'id_transaksi'=>$data['id_transaksi'],
 				'transaksi'=>$transaksi,
 				'id_resep'=>$id_resep,
 			);
@@ -97,7 +98,7 @@ class Transaksi_m extends MY_Model {
 			$result['error']=true;
 			$result['msg']="Data gagal disimpan";
 		}
-		return $id_resep;
+		return $result;
 	}
 	
 	
