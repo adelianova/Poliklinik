@@ -40,9 +40,9 @@ class Transaksi extends MY_Controller {
 		echo json_encode($data);
     }
 
-    public function formAnu(){
+    public function formObat(){
     	$data['data']=$this->transaksi_m->getIDStock();
-		$this->load->view('transaksi/formAnu', $data);
+		$this->load->view('transaksi/formObat', $data);
 	}
 	public function getIDSuplier(){
     	$data=$this->transaksi_m->getIDSuplier();

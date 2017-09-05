@@ -8,6 +8,7 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
+					<th field="id_stock" width="100" sortable="true">ID STOCK</th>
 					<th field="id_suplier" width="100" sortable="true">ID SUPLIER</th>
 					<th field="id_transaksi" width="100" sortable="true">ID TRANSAKSI</th>
 					<th field="tgl" width="100" sortable="true">TANGGAL</th>
@@ -52,11 +53,11 @@
 		    closed: false, 
 			cache: false, 
 			modal: true, 
-			href:base_url+'index.php/transaksi/formAnu',
+			href:base_url+'index.php/transaksi/formObat',
 			title:'Tambah Transaksi Obat',
 			onLoad:function(){
-				$('#form_anu').form('clear');
-				$('#form_anu #edit').val('');
+				$('#form_obat').form('clear');
+				$('#form_obat #edit').val('');
 			}
 			});
 	}
@@ -68,12 +69,12 @@
 		    closed: false, 
 			cache: false, 
 			modal: true, 
-			href:base_url+'index.php/transaksi/formAnu',
+			href:base_url+'index.php/transaksi/formObat',
 			title:'Edit Transaksi Obat',
 			onLoad:function(){
-				$('#form_anu').form('clear');
-				$('#form_anu #edit').val('1');
-				$('#form_anu').form('load',row);	
+				$('#form_obat').form('clear');
+				$('#form_obat #edit').val('1');
+				$('#form_obat').form('load',row);	
 			}
 			});
 		}else{
@@ -88,7 +89,7 @@
 				text:''
          });
 			
-		$('#form_anu').form('submit',{
+		$('#form_obat').form('submit',{
 			url: '<?php echo site_url('transaksi/simpanTransaksi'); ?>',
 			onSubmit: function(){ 
 				var isValid = $(this).form('validate');

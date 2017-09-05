@@ -1,4 +1,4 @@
-	<form id="form_anu" method="post" novalidate>
+	<form id="form_obat" method="post" novalidate>
 				<input type='hidden' name='edit' id='edit' value=''/>
 				<table width='350px' class='dialog-form' >
 					<tr>

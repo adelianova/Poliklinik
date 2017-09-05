@@ -18,7 +18,7 @@ class Transaksi_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select(" id_suplier,id_transaksi,convert(varchar(10),tgl,105) as tgl,no_faktur,keterangan ");
+    	$this->db->select(" id_suplier,id_stock,id_transaksi,convert(varchar(10),tgl,105) as tgl,no_faktur,keterangan ");
 		$this->db->from("TBL_STOCK");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
@@ -44,6 +44,7 @@ class Transaksi_m extends MY_Model {
 	}
 	function simpanTransaksi(){
 		$edit=$this->input->post('edit');
+		$id_stock=$this->input->post('id_stock');
 		$id_suplier=$this->input->post('id_suplier');
 		$id_transaksi=$this->input->post('id_transaksi');
 		$tgl=$this->input->post('tgl');
@@ -55,7 +56,7 @@ class Transaksi_m extends MY_Model {
 			$arr=array(
 				'id_suplier'=>$id_suplier,
 				'id_transaksi'=>$id_transaksi,
-				'tgl'=>$tgl,
+				'tgl'=>date('Y-m-d',strtotime($tgl)),
 				'no_faktur'=>$no_faktur,
 				'keterangan'=>$keterangan,
 			);
@@ -68,7 +69,7 @@ class Transaksi_m extends MY_Model {
 				'no_faktur'=>$no_faktur,
 				'keterangan'=>$keterangan,
 			);
-			$this->db->where("id_transaksi='".$id_transaksi."'");
+			$this->db->where("id_stock='".$id_stock."'");
 			$r=$this->db->update('TBL_STOCK',$arr);
 		}
 		$result=array();
