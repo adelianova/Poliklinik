@@ -2,15 +2,17 @@
 <table id="datagrid-m_transaksi" title="" class="easyui-datagrid scrollbarx" 
 		style="width:auto; height: auto;" 
 		data-options="
-		url:'<?php echo base_url().'index.php/transaksi/getListTransaksi';?>',
+		url:'<?php echo base_url().'index.php/transaksi/getListStock';?>',
 		toolbar:'#toolbar',rownumbers:true,pagination:true,border:false,
 		striped:true,fit:true,fitColumns:true,
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
+					<th field="id_suplier" width="100" sortable="true">ID SUPLIER</th>
 					<th field="id_transaksi" width="100" sortable="true">ID TRANSAKSI</th>
-					<th field="transaksi" width="100" sortable="true">KETERANGAN TRANSAKSI</th>
-					<th field="id_resep" width="100" sortable="true">ID RESEP</th>
+					<th field="tgl" width="100" sortable="true">TANGGAL</th>
+					<th field="no_faktur" width="100" sortable="true">NO FAKTUR</th>
+					<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
 				</tr>
 			</thead>
 		</table>
@@ -50,11 +52,11 @@
 		    closed: false, 
 			cache: false, 
 			modal: true, 
-			href:base_url+'index.php/transaksi/formTransaksi',
-			title:'Tambah Transaksi',
+			href:base_url+'index.php/transaksi/formAnu',
+			title:'Tambah Transaksi Obat',
 			onLoad:function(){
-				$('#form_transaksi').form('clear');
-				$('#form_transaksi #edit').val('');
+				$('#form_anu').form('clear');
+				$('#form_anu #edit').val('');
 			}
 			});
 	}
@@ -66,12 +68,12 @@
 		    closed: false, 
 			cache: false, 
 			modal: true, 
-			href:base_url+'index.php/transaksi/formTransaksi',
-			title:'Edit Transaksi',
+			href:base_url+'index.php/transaksi/formAnu',
+			title:'Edit Transaksi Obat',
 			onLoad:function(){
-				$('#form_transaksi').form('clear');
-				$('#form_transaksi #edit').val('1');
-				$('#form_transaksi').form('load',row);	
+				$('#form_anu').form('clear');
+				$('#form_anu #edit').val('1');
+				$('#form_anu').form('load',row);	
 			}
 			});
 		}else{
@@ -82,11 +84,11 @@
 	function simpanTransaksi(){
 		$.messager.progress({
                 title:'',
-                msg:'Simpan Master Transaksi...',
+                msg:'Simpan Transaksi Obat...',
 				text:''
          });
 			
-		$('#form_transaksi').form('submit',{
+		$('#form_anu').form('submit',{
 			url: '<?php echo site_url('transaksi/simpanTransaksi'); ?>',
 			onSubmit: function(){ 
 				var isValid = $(this).form('validate');
@@ -115,7 +117,7 @@
 		if (row){
 			$.messager.confirm('Konfirmasi', 'Anda yakin menghapus data ini',function(r){
 				if (r){
-					$.post('<?php echo site_url('transaksi/hapusTransaksi'); ?>',{id_transaksi:row.id_transaksi},function(result){
+					$.post('<?php echo site_url('transaksi/removeTransaksi'); ?>',{id_stock:row.id_stock},function(result){
 						if (!result.error){
 							$('#datagrid-m_transaksi').datagrid('reload');
 							$.messager.alert('INFO',result.msg,'info');

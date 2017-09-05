@@ -19,14 +19,9 @@ class Transaksi extends MY_Controller {
 		$this->load->view('transaksi/formTransaksi',$data);
 	}
 	
-	public function getListTransaksi(){
-		$data['rows']=$this->transaksi_m->getListTransaksi('rows');
-		$data['total']=$this->transaksi_m->getListTransaksi('total');
-		echo json_encode($data);
-	}
-	public function getListResepTransaksi(){
-		$data['rows']=$this->transaksi_m->getListResepTransaksi('rows');
-		$data['total']=$this->transaksi_m->getListResepTransaksi('total');
+	public function getListStock(){
+		$data['rows']=$this->transaksi_m->getListStock('rows');
+		$data['total']=$this->transaksi_m->getListStock('total');
 		echo json_encode($data);
 	}
 	
@@ -35,9 +30,22 @@ class Transaksi extends MY_Controller {
 		echo json_encode($data);
 	}
 	
-	public function hapusTransaksi(){
-		$data=$this->transaksi_m->hapusTransaksi();
+	public function removeTransaksi(){
+		$data=$this->transaksi_m->removeTransaksi();
 		echo json_encode($data);
 	}
     
+    public function getListIDTransaksi(){
+    	$data=$this->transaksi_m->getListIDTransaksi();
+		echo json_encode($data);
+    }
+
+    public function formAnu(){
+    	$data['data']=$this->transaksi_m->getIDStock();
+		$this->load->view('transaksi/formAnu', $data);
+	}
+	public function getIDSuplier(){
+    	$data=$this->transaksi_m->getIDSuplier();
+		echo json_encode($data);
+    }
 }
