@@ -25,13 +25,30 @@ class Transaksi extends MY_Controller {
 		echo json_encode($data);
 	}
 	
+	public function getListDetail(){
+		$data['rows']=$this->transaksi_m->getListDetail('rows');
+		$data['total']=$this->transaksi_m->getListDetail('total');
+		echo json_encode($data);
+	}
+	
+
 	public function simpanTransaksi(){
 		$data=$this->transaksi_m->simpanTransaksi();
+		echo json_encode($data);
+	}
+
+	public function simpanObat(){
+		$data=$this->transaksi_m->simpanObat();
 		echo json_encode($data);
 	}
 	
 	public function removeTransaksi(){
 		$data=$this->transaksi_m->removeTransaksi();
+		echo json_encode($data);
+	}
+
+	public function removeTambah(){
+		$data=$this->transaksi_m->removeTambah();
 		echo json_encode($data);
 	}
     
@@ -43,6 +60,10 @@ class Transaksi extends MY_Controller {
     public function formObat(){
     	$data['data']=$this->transaksi_m->getIDStock();
 		$this->load->view('transaksi/formObat', $data);
+	}
+	public function formTambahObat(){
+    	$data['data']=$this->transaksi_m->getIDStock();
+		$this->load->view('transaksi/formTambahObat', $data);
 	}
 	public function getIDSuplier(){
     	$data=$this->transaksi_m->getIDSuplier();
