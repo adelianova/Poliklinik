@@ -179,7 +179,7 @@ class Transaksi_m extends MY_Model {
 	function removeTambah(){
 		$id_dtl_stock=$this->input->post('id_dtl_stock');
 		$this->db->where("id_dtl_stock='".$id_dtl_stock."'");	
-		$r=$this->db->delete('tbl_detail_stock');
+		$r=$this->db->delete('TBL_DETAIL_STOCK');
 		$result=array();
 		if($this->db->affected_rows()>0){
 			$result['error']=false;

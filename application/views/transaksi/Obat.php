@@ -212,7 +212,7 @@
 				if (r){
 					$.post('<?php echo site_url('transaksi/removeTambah'); ?>',{id_dtl_stock:row.id_dtl_stock},function(result){
 						if (!result.error){
-							$('#dialog-m_detail').dialog('reload');
+							$('#datagrid-m_detail').datagrid('reload');
 							$.messager.alert('INFO',result.msg,'info');
 							} else {
 							$.messager.alert('INFO',result.msg,'info');
