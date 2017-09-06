@@ -33,11 +33,11 @@
 				</div>  
 			</div>
 		</div>
-		<div id="dialog-m_transaksi" class="easyui-dialog" style="width:420px; height:300px; padding: 10px 20px" 
+		<div id="dialog-m_transaksi" class="easyui-dialog" style="width:800px; height:500px; padding: 10px 20px" 
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 		</div>
 
-		<div id="dialog-m_detail" class="easyui-dialog" style="width:800px; height:500px; padding: 10px 20px" 
+		<div id="dialog-m_detail" class="easyui-dialog" style="width:420px; height:270px; padding: 10px 20px" 
 		closed="true" buttons="#obat-buttons" iconCls="icon-user">
 		</div>
 
@@ -45,12 +45,11 @@
 		<!-- Dialog Button -->
 	<div id="dialog-buttons">
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick='simpanTransaksi();'>Simpan</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick='iniTambah();'>Tambah Obat</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:jQuery('#dialog-m_transaksi').dialog('close');">Batal</a>
 	</div>
 	<div id="obat-buttons">
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick='simpanObat();'>Simpan</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:jQuery('#dialog-m_transaksi').dialog('close');">Batal</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:jQuery('#dialog-m_detail').dialog('close');">Batal</a>
 	</div>
 		
 <script type="text/javascript"> 
@@ -178,7 +177,7 @@
 					if(result.error){
 						$.messager.alert('INFO',result.msg,'info');
 					}else{
-						$('#dialog-m_detail').dialog('reload');
+						$('#dialog-m_detail').dialog('close');
 						$('#datagrid-m_detail').datagrid('reload');
 						$.messager.alert('INFO',result.msg,'info');
 					}
@@ -213,7 +212,7 @@
 				if (r){
 					$.post('<?php echo site_url('transaksi/removeTambah'); ?>',{id_dtl_stock:row.id_dtl_stock},function(result){
 						if (!result.error){
-							$('#datagrid-m_transaksi').datagrid('reload');
+							$('#dialog-m_detail').dialog('reload');
 							$.messager.alert('INFO',result.msg,'info');
 							} else {
 							$.messager.alert('INFO',result.msg,'info');

@@ -129,9 +129,8 @@ class Transaksi_m extends MY_Model {
 		
 		if($edit==''){
 			$data=$this->getIDDtlStock();
-			$data=$this->getIDStock();
+			$dataa=$this->getHanyaIDStock();
 			$arr=array(
-				'id_stock'=>$data['id_stock'],
 				'id_obat'=>$id_obat,
 				'qty'=>$qty,
 				'harga_satuan'=>$harga_satuan,
@@ -199,4 +198,7 @@ class Transaksi_m extends MY_Model {
          return $this->db->query(" select * FROM TBL_M_SUPPLIER")->result_array();
     }
 
-}
+    function getHanyaIDStock(){
+         return $this->db->query(" select id_stock FROM TBL_STOCK")->result_array();
+    }
+}	
