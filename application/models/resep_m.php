@@ -170,7 +170,7 @@ class Resep_m extends MY_Model {
 			$result['error']=true;
 			$result['msg']='Data gagal dihapus';
 		}
-		return $id_detail_resep;
+		return $result;
 	}
 
 	function getIDPeriksa(){
