@@ -17,9 +17,13 @@ class Periksa_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		
-    	$this->db->select("id_periksa,kode_registrasi,kode_dokter,kode_pasien,id_penyakit,kode_penyakit,convert(varchar(10),tgl_periksa,105) as tgl_periksa,keluhan,diagnosa ");
-		$this->db->from("tbl_periksa");
+		$this->db->select("a.id_periksa,a.kode_registrasi,a.kode_dokter,a.kode_pasien,a.id_penyakit,a.kode_penyakit,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan,a.diagnosa, b.nama_dokter,c.nama,d.penyakit");
+		$this->db->from("tbl_periksa a");
+		$this->db->join("TBL_M_DOKTER b","a.kode_dokter = b.kode_dokter");
+		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
+		$this->db->join("TBL_M_PENYAKIT d","a.kode_penyakit = d.kode_penyakit");
+    	/*$this->db->select("id_periksa,kode_registrasi,kode_dokter,kode_pasien,id_penyakit,kode_penyakit,convert(varchar(10),tgl_periksa,105) as tgl_periksa,keluhan,diagnosa ");
+		$this->db->from("tbl_periksa");*/
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}

@@ -10,6 +10,7 @@
 				<tr>
 					<th field="kode_registrasi" width="100" sortable="true">KODE REGISTRASI</th>
 					<th field="kode_pasien" width="100" sortable="true">KODE PASIEN</th>	
+					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
 					<th field="status" width="150" sortable="true">STATUS</th>
 					

@@ -17,12 +17,10 @@ class Registrasi_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		$this->db->select("a.kode_registrasi,a.kode_pasien,a.keluhan, b.status");
+		$this->db->select("a.kode_registrasi,a.kode_pasien,a.keluhan, b.status,c.nama");
 		$this->db->from("tbl_periksa a");
 		$this->db->join("TBL_M_STATUS_REGISTRASI b","a.id_status_registrasi = b.id_status_registrasi");
-		
-    	/*$this->db->select(" kode_registrasi,kode_pasien,keluhan,id_status_registrasi ");
-		$this->db->from("tbl_periksa");*/
+		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}

@@ -9,7 +9,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Kode Dokter</td>
+						<td class='label_form'>Dokter</td>
 						<td>
 							<input name='kode_dokter' id='kode_dokter' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
                                         url:'<?php echo base_url();?>index.php/periksa/getKodeDokter',
@@ -19,7 +19,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Kode Pasien</td>
+						<td class='label_form'>Pasien</td>
 						<td >
 							<input name='kode_pasien' id='kode_pasien' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
                                         url:'<?php echo base_url();?>index.php/periksa/getKodePasien',

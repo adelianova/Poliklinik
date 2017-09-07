@@ -8,10 +8,10 @@
 			<thead>
 				<tr>
 					<th field="id_periksa" width="100" sortable="true">ID</th>
-					<th field="kode_dokter" width="100" sortable="true">KODE DOKTER</th>
-					<th field="kode_pasien" width="100" sortable="true">KODE PASIEN</th>
+					<th field="nama_dokter" width="100" sortable="true">NAMA DOKTER</th>
+					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
 					<th field="id_penyakit" width="100" sortable="true">ID PENYAKIT</th>
-					<th field="kode_penyakit" width="100" sortable="true">KODE PENYAKIT</th>
+					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
 					<th field="diagnosa" width="150" sortable="true">DIAGNOSA</th>
@@ -32,8 +32,8 @@
 				searcher="cariperiksa" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
 					<div name='id_periksa'>ID</div>
-					<div name='kode_dokter'>KODE DOKTER</div>
-					<div name='kode_pasien'>KODE PASIEN</div>
+					<div name='nama_dokter'>DOKTER</div>
+					<div name='nama'>NAMA PASIEN</div>
 					<div name='tgl_periksa'>TANGGAL</div>
 				</div>  
 			</div>
