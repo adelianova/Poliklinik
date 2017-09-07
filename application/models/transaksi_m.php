@@ -17,9 +17,12 @@ class Transaksi_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		
-    	$this->db->select(" id_suplier,id_stock,id_transaksi,convert(varchar(10),tgl,105) as tgl,no_faktur,keterangan ");
-		$this->db->from("TBL_STOCK");
+		$this->db->select("a.id_suplier,a.id_stock,a.id_transaksi,convert(varchar(10),a.tgl,105) as tgl,a.no_faktur,a.keterangan, b.nama,c.transaksi");
+		$this->db->from("tbl_stock a");
+		$this->db->join("TBL_M_SUPPLIER b","a.id_suplier = b.id_suplier");
+		$this->db->join("TBL_M_TRANSAKSI c","a.id_transaksi = c.id_transaksi");
+    	/*$this->db->select(" id_suplier,id_stock,id_transaksi,convert(varchar(10),tgl,105) as tgl,no_faktur,keterangan ");
+		$this->db->from("TBL_STOCK");*/
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}

@@ -9,8 +9,8 @@
 			<thead>
 				<tr>
 					<th field="id_stock" width="100" sortable="true">ID STOCK</th>
-					<th field="id_suplier" width="100" sortable="true">ID SUPLIER</th>
-					<th field="id_transaksi" width="100" sortable="true">ID TRANSAKSI</th>
+					<th field="nama" width="100" sortable="true">SUPLIER</th>
+					<th field="transaksi" width="100" sortable="true">TRANSAKSI</th>
 					<th field="tgl" width="100" sortable="true">TANGGAL</th>
 					<th field="no_faktur" width="100" sortable="true">NO FAKTUR</th>
 					<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
@@ -30,6 +30,10 @@
 				searcher="cariTransaksi" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
 					<div name='id_transaksi'>ID</div>
+					<div name='tgl'>Tanggal</div>
+					<div name='no_faktur'>No Faktur</div>
+					<div name='nama'>Suplier</div>
+					<div name='transaksi'>Transaksi</div>
 				</div>  
 			</div>
 		</div>

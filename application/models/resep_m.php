@@ -152,7 +152,7 @@ class Resep_m extends MY_Model {
 			$result['msg']='Data berhasil dihapus';
 		}else{
 			$result['error']=true;
-			$result['msg']='Data gagal berhasil dihapus';
+			$result['msg']='Data gagal dihapus';
 		
 		}
 		
