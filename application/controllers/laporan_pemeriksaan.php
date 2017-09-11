@@ -6,8 +6,7 @@ class Laporan_pemeriksaan extends MY_Controller {
         $this->data->metadata = $this->template->get_metadata();
 		$this->data->judul=$this->template->get_judul();
 		$this->load->model(array('laporan_pemeriksaan_m'));
-    }
-    
+    }    
     public function index() {
 
 		if (!$this->autentifikasi->sudah_login()) redirect (site_url('login'));
@@ -17,7 +16,5 @@ class Laporan_pemeriksaan extends MY_Controller {
 		$data['rows']=$this->laporan_pemeriksaan_m->getListLaporanPemeriksaan('rows');
 		$data['total']=$this->laporan_pemeriksaan_m->getListLaporanPemeriksaan('total');
 		echo json_encode($data);
-		
-	}
-	
+	}	
 }

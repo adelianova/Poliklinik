@@ -33,29 +33,6 @@
 							<input name='email' id='email' class='easyui-validatebox textbox' required="true"  style="padding:3px;width:90%"/>
 						</td>
 					</tr>
-                    <!--<div class="easyui-panel" style="width:100%;max-width:400px;padding:30px 60px;">
-                        <div style="margin-bottom:20px">
-                            <select class="easyui-combogrid" style="width:100%" data-options="
-                                panelWidth: 500,
-                                idField: 'itemid',
-                                textField: 'productname',
-                                url: 'datagrid_data1.json',
-                                method: 'get',
-                                columns: [[
-                                    {field:'',title:'Item ID',width:80},
-                                    {field:'productname',title:'Product',width:120},
-                                    {field:'listprice',title:'List Price',width:80,align:'right'},
-                                    {field:'unitcost',title:'Unit Cost',width:80,align:'right'},
-                                    {field:'attr1',title:'Attribute',width:200},
-                                    {field:'status',title:'Status',width:60,align:'center'}
-                                ]],
-                                fitColumns: true,
-                                label: 'Penanggung Jawab :',
-                                labelPosition: 'top'
-                            ">
-                            </select>
-                        </div>
-                    </div>-->
                     <tr>
 						<td class='label_form'>Status Pasien</td>
                         <td>
@@ -67,20 +44,7 @@
                                         "/>
 						</td>
 					</tr>
-                        <!--<tr class="easyui-panel" >
-                            <td class='label_form'>Status Pasien</td>
-                            <td style="padding:3px;width:90%">
-                                <input class="easyui-combobox" name="language" style="width:100%;" data-options="
-                                        url:'combobox_data1.json',
-                                        method:'get',
-                                        valueField:'id_group',
-                                        textField:'group',
-                                        panelHeight:'auto',
-                                        label: 'Language:',
-                                        labelPosition: 'top'
-                                        " required="true">
-                            </td>
-                        </tr>-->
+                        
 			</table>
 		</form>
 	
