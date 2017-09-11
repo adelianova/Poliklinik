@@ -16,7 +16,8 @@ class Transaksi extends MY_Controller {
 	
 	public function formTransaksi(){
 		$data['data']=$this->transaksi_m->getKodeTransaksi();
-		$this->load->view('transaksi/formTransaksi',$data);
+		$data['tbl']=$this->transaksi_m->getKodeTransaksi();
+		$this->load->view('transaksi/formObat',$data);
 	}
 	
 	public function getListStock(){
