@@ -101,7 +101,8 @@
 			onLoad:function(){
 				$('#form_obat').form('clear');
 				$('#form_obat #edit').val('1');
-				$('#form_obat').form('load',row);	
+				$('#form_obat').form('load',row);
+				$('#datagrid-m_transaksi').datagrid('load',{id_stock:row.id_stock});	
 			}
 			});
 		}else{
@@ -137,7 +138,7 @@
          });
 			
 		$('#form_obat').form('submit',{
-			url: '<?php echo site_url('transaksi/simpanTransaksi'); ?>',
+			url: '<?php echo site_url('transaksi/simpanTransaksi');?>',
 			onSubmit: function(){ 
 				var isValid = $(this).form('validate');
 				if (!isValid){

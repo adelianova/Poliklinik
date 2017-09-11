@@ -86,7 +86,7 @@ class Transaksi_m extends MY_Model {
 		$no_faktur=$this->input->post('no_faktur');
 		$keterangan=$this->input->post('keterangan');
 		
-		if($edit==''){
+		if($edit==""){
 			$data=$this->getIDStock();
 			$arr=array(
 				'id_suplier'=>$id_suplier,

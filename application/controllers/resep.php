@@ -18,7 +18,6 @@ class Resep extends MY_Controller {
 	public function formResep(){
 		$data['data']=$this->resep_m->getKodeResep();
 		$data['tbl']=$this->resep_m->getKodeResep();
-
 		$this->load->view('transaksi/formResep',$data);
 	}
 
