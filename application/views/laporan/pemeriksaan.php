@@ -44,9 +44,6 @@
 				</div>  
 			</div>
 		</div>
-		<div id="dialog-m_periksa" class="easyui-dialog" style="width:410px; height:350px; padding: 10px 20px" 
-		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
-		</div>
 <script>
 	
 	

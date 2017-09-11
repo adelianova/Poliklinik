@@ -29,7 +29,7 @@
 			                    url:'<?php echo base_url();?>index.php/transaksi/getListIDTransaksi',
 			                    method: 'get',
 			                    valueField:'ID_TRANSAKSI',
-                                textField:'ID_TRANSAKSI',
+                                textField:'TRANSAKSI',
 			                    columns: [[
 				                        {field:'ID_TRANSAKSI',title:'ID Transaksi',width:50},
 				                        {field:'TRANSAKSI',title:'Transaksi',width:100},
