@@ -37,31 +37,8 @@ class Transaksi_m extends MY_Model {
 	}
 
 	function getListDetail($jenis){
-		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
-		$offset = ($page-1)*$rows;
-		$this->limit = $rows;
-		$this->offset = $offset;
-		$sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_stock';
-        $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
-		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
-		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		
-    	$this->db->select(" id_dtl_stock,id_stock,id_obat,qty,harga_satuan,total,convert(varchar(10),tgl_expired,105) as tgl_expired");
-		$this->db->from("TBL_DETAIL_STOCK");
-		if($searchKey<>''){
-		$this->db->where($searchKey." like '%".$searchValue."%'");	
-		}
-		
-		$this->db->order_by($sort,$order);
-		
-		if($jenis=='total'){
-		$hasil=$this->db->get ('')->num_rows();
-		}else{
-		$hasil=$this->db->get ('',$this->limit, $this->offset)->result_array();
-		}
-		
-	    return $hasil;	
+    	$id_stock=$this->input->post('id_stock');
+		 return $this->db->query("select id_dtl_stock,id_stock,id_obat,qty,harga_satuan,total,convert(varchar(10),tgl_expired,105) as tgl_expired FROM TBL_DETAIL_STOCK where id_stock = '".$id_stock."'")->result_array();
 	}
 
 
@@ -118,10 +95,9 @@ class Transaksi_m extends MY_Model {
 		return $result;
 	}
 
-	function simpanObat(){
+	function simpanObat($id_stock=""){
 		$edit=$this->input->post('edit');
 		$id_dtl_stock=$this->input->post('id_dtl_stock');
-		$id_stock=$this->input->post('id_stock');
 		$id_obat=$this->input->post('id_obat');
 		$qty=$this->input->post('qty');
 		$harga_satuan=$this->input->post('harga_satuan');
@@ -130,9 +106,9 @@ class Transaksi_m extends MY_Model {
 		
 		if($edit==''){
 			$data=$this->getIDDtlStock();
-			$dataa=$this->getHanyaIDStock();
 			$arr=array(
 				'id_obat'=>$id_obat,
+				'id_stock'=>$id_stock,
 				'qty'=>$qty,
 				'harga_satuan'=>$harga_satuan,
 				'total'=>$total,
@@ -142,6 +118,7 @@ class Transaksi_m extends MY_Model {
 		}else{
 			$arr=array(
 				'id_obat'=>$id_obat,
+				'id_stock'=>$id_stock,
 				'qty'=>$qty,
 				'harga_satuan'=>$harga_satuan,
 				'total'=>$total,

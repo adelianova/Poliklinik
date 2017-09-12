@@ -97,7 +97,7 @@ class User_m extends MY_Model {
 					"children":[{
 						"id":131,
 						"text":"Stock Obat",
-						"url":"stock_obat",
+						"url":"laporan_obat",
 						"akses":true
 					},{
 						"id":132,

@@ -189,6 +189,5 @@ class Resep_m extends MY_Model {
     function kodeResep(){
     	$id_resep=$this->input->post('id_resep');
 		 return $this->db->query("select a.ID_OBAT,a.QTY,a.DOSIS,a.ID_DETAIL_RESEP,b.NAMA FROM TBL_DETAIL_RESEP a JOIN TBL_M_OBAT b ON a.ID_OBAT=b.KODE_OBAT where a.id_resep = '".$id_resep."'")->result_array();
-    	//return $this->db->query("select * FROM TBL_DETAIL_RESEP where id_resep='".$id_resep."'")->result_array();
     }
 }

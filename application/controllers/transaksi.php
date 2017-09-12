@@ -38,8 +38,8 @@ class Transaksi extends MY_Controller {
 		echo json_encode($data);
 	}
 
-	public function simpanObat(){
-		$data=$this->transaksi_m->simpanObat();
+	public function simpanObat($id_stock=""){
+		$data=$this->transaksi_m->simpanObat($id_stock);
 		echo json_encode($data);
 	}
 	

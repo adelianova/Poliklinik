@@ -8,6 +8,7 @@
 			<thead>
 				<tr>
 					<th field="id_periksa" width="100" sortable="true">ID</th>
+					<th field="kode_registrasi" width="100" sortable="true">KODE REGISTRASI</th>
 					<th field="nama_dokter" width="100" sortable="true">NAMA DOKTER</th>
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
 					<th field="id_penyakit" width="100" sortable="true">ID PENYAKIT</th>

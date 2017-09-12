@@ -54,5 +54,34 @@
 		var c=document.getElementById("harga_satuan").value;
 		var hasil=parseInt(b)*parseInt(c);
 		document.getElementById("total").value=hasil;
+	}	
+	function simpanObat(){
+		$.messager.progress({
+                title:'',
+                msg:'Simpan Transaksi Obat...',
+				text:''
+         });
+			
+		$('#form_tambah_obat').form('submit',{
+			url: '<?php echo site_url('transaksi/simpanObat/'.$id_stock); ?>',
+			onSubmit: function(){ 
+				var isValid = $(this).form('validate');
+				if (!isValid){
+					$.messager.progress('close');
+					return $(this).form('validate');
+				}
+			},
+			success: function(result){
+				$.messager.progress('close');
+				var result = eval('('+result+')');
+					if(result.error){
+						$.messager.alert('INFO',result.msg,'info');
+					}else{
+						$('#dialog-m_detail').dialog('close');
+						$('#datagrid-m_detail').datagrid('reload');
+						$.messager.alert('INFO',result.msg,'info');
+					}
+			}
+		});
 	}
 </script> 
