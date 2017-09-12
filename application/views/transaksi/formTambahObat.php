@@ -47,6 +47,9 @@
 
 					
 			</table>
+			<div id="dialog-buttons">
+						<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" type="submit" name="button" value="OK" id="button" onclick="simpanObat()">Simpan</a>
+					</div>
 		</form>
 <script language="javascript">
 	function hitung(){

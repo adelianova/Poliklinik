@@ -20,12 +20,6 @@ class Resep extends MY_Controller {
 		$data['tbl']=$this->resep_m->getKodeResep();
 		$this->load->view('transaksi/formResep',$data);
 	}
-
-	public function list_obat(){
-		$data['tbl'] = $this->resep_m->tblResep();
-		echo json_encode($data);
-	}
-	
 	public function getListResep(){
 		$data['rows']=$this->resep_m->getListResep('rows');
 		$data['total']=$this->resep_m->getListResep('total');

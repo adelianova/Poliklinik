@@ -36,13 +36,7 @@ class Resep_m extends MY_Model {
 		}
 		
 	    return $hasil;	
-	}
-
-	function getListTambah(){
-		return $this->db->query(" select ID_OBAT,QTY,DOSIS,ID_DETAIL_RESEP FROM TBL_DETAIL_RESEP")->result_array();
-
-	}
-	
+	}	
 	function getKodeResep(){
 		return $this->db->query("select dbo.getIDResep() as id_resep")->row_array();
 	}
@@ -126,21 +120,6 @@ class Resep_m extends MY_Model {
 	
 		}
 		return $result;
-	}
-
-	function tblResep(){
-		//$resep = $this->getKodeResep();
-		$data =  $this->db->query("select * FROM TBL_DETAIL_RESEP where ID_RESEP ")->result_array();
-		$return = "";
-		foreach ($data as $resp) {
-			$return .= "<tr>";
-				$return .= "<td>{$resp['ID_OBAT']}</td>";
-				$return .= "<td>{$resp['QTY']}</td>";
-				$return .= "<td>{$resp['DOSIS']}</td>";
-			$return .= "</tr>";
-		}
-		return $return;
-
 	}
 	function hapusResep(){
 		$id_resep=$this->input->post('id_resep');

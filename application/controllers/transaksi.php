@@ -27,8 +27,7 @@ class Transaksi extends MY_Controller {
 	}
 	
 	public function getListDetail(){
-		$data['rows']=$this->transaksi_m->getListDetail('rows');
-		$data['total']=$this->transaksi_m->getListDetail('total');
+		$data=$this->transaksi_m->getListDetail();
 		echo json_encode($data);
 	}
 	
@@ -42,7 +41,6 @@ class Transaksi extends MY_Controller {
 		$data=$this->transaksi_m->simpanObat($id_stock);
 		echo json_encode($data);
 	}
-	
 	public function removeTransaksi(){
 		$data=$this->transaksi_m->removeTransaksi();
 		echo json_encode($data);

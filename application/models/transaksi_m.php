@@ -36,7 +36,7 @@ class Transaksi_m extends MY_Model {
 	    return $hasil;	
 	}
 
-	function getListDetail($jenis){
+	function getListDetail(){
     	$id_stock=$this->input->post('id_stock');
 		 return $this->db->query("select id_dtl_stock,id_stock,id_obat,qty,harga_satuan,total,convert(varchar(10),tgl_expired,105) as tgl_expired FROM TBL_DETAIL_STOCK where id_stock = '".$id_stock."'")->result_array();
 	}
@@ -118,7 +118,6 @@ class Transaksi_m extends MY_Model {
 		}else{
 			$arr=array(
 				'id_obat'=>$id_obat,
-				'id_stock'=>$id_stock,
 				'qty'=>$qty,
 				'harga_satuan'=>$harga_satuan,
 				'total'=>$total,

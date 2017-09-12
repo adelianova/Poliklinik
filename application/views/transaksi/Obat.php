@@ -41,24 +41,23 @@
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 		</div>
 
-		<div id="dialog-m_detail" class="easyui-dialog" style="width:420px; height:270px; padding: 10px 20px" 
+		<!-- <div id="dialog-m_detail" class="easyui-dialog" style="width:420px; height:270px; padding: 10px 20px" 
 		closed="true" buttons="#obat-buttons" iconCls="icon-user">
-		</div>
+		</div> -->
 
 		
 		<!-- Dialog Button -->
 	<div id="dialog-buttons">
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick='simpanTransaksi();'>Simpan</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="simpanTransaksi();">Simpan</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:jQuery('#dialog-m_transaksi').dialog('close');">Batal</a>
 	</div>
-	<div id="obat-buttons">
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick='simpanObat();'>Simpan</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:jQuery('#dialog-m_detail').dialog('close');">Batal</a>
-	</div>
 		
-<script type="text/javascript"> 
-	function cariTransaksi(value,id_transaksi){
-		$('#datagrid-m_transaksi').datagrid('load', { "searchKey": id_transaksi, "searchValue": value });
+<<script>
+	
+	
+	function cariTransaksi(value,name){
+		
+		$('#datagrid-m_transaksi').datagrid('load', { "searchKey": name, "searchValue": value });
 	}
 	
 	function addTransaksi(){
@@ -67,78 +66,52 @@
 			cache: false, 
 			modal: true, 
 			href:base_url+'index.php/transaksi/formObat',
-			title:'Tambah Transaksi Obat',
+			title:'Tambah Transaksi',
 			onLoad:function(){
+				
 				$('#form_obat').form('clear');
 				$('#form_obat #edit').val('');
 			}
 			});
 	}
 	
-	function iniTambah(){
-		$('#dialog-m_detail').dialog({ 
-		    closed: false, 
-			cache: false, 
-			modal: true, 
-			href:base_url+'index.php/transaksi/formTambahObat/'+id_stock.id_stock,
-			title:'Tambah Obat',
-			onLoad:function(){
-				$('#form_tambah_obat').form('clear');
-				$('#form_tambah_obat #edit').val('');
-			}
-			});
-	}
-
 	function editTransaksi(){
+		
         var row = $('#datagrid-m_transaksi').datagrid('getSelected');
+        console.log(row);
 		if(row){
+		
 		$('#dialog-m_transaksi').dialog({ 
 		    closed: false, 
 			cache: false, 
 			modal: true, 
 			href:base_url+'index.php/transaksi/formObat',
-			title:'Edit Transaksi Obat',
+			title:'Edit Transaksi',
 			onLoad:function(){
+				
+				
 				$('#form_obat').form('clear');
 				$('#form_obat #edit').val('1');
-				$('#form_obat').form('load',row);
-				$('#datagrid-m_transaksi').datagrid('load',{id_stock:row.id_stock});	
+				$('#form_obat').form('load',row);	
+				$('#datagrid-m_detail').datagrid('load',{id_stock:row.id_stock});
+				
 			}
 			});
 		}else{
 			$.messager.alert('INFO','Pilih satu record dulu','info');
 		}
-	}
-
-	function editTambah(){
-		var row = $('#datagrid-m_detail').datagrid('getSelected');
-		if(row){
-		$('#dialog-m_detail').dialog({ 
-		    closed: false, 
-			cache: false, 
-			modal: true, 
-			href:base_url+'index.php/transaksi/formTambahObat',
-			title:'Edit Transaksi Obat',
-			onLoad:function(){
-				$('#form_tambah_obat').form('clear');
-				$('#form_tambah_obat #edit').val('1');
-				$('#form_tambah_obat').form('load',row);	
-			}
-			});
-		}else{
-			$.messager.alert('INFO','Pilih satu record dulu','info');
-		}
+		
 	}
 	
 	function simpanTransaksi(){
 		$.messager.progress({
                 title:'',
-                msg:'Simpan Transaksi Obat...',
+                msg:'Simpan Transaksi...',
 				text:''
          });
 			
 		$('#form_obat').form('submit',{
-			url: '<?php echo site_url('transaksi/simpanTransaksi');?>',
+			url: '<?php echo site_url('transaksi/simpanTransaksi'); ?>',
 			onSubmit: function(){ 
 				var isValid = $(this).form('validate');
 				if (!isValid){
@@ -151,16 +124,18 @@
 				var result = eval('('+result+')');
 					if(result.error){
 						$.messager.alert('INFO',result.msg,'info');
+					
 					}else{
 						$('#dialog-m_transaksi').dialog('close');
 						$('#datagrid-m_transaksi').datagrid('reload');
 						$.messager.alert('INFO',result.msg,'info');
+				
+					
 					}
+					
 			}
 		});
 	}
-	
-	
 	
     function removeTransaksi(){
 		var row = $('#datagrid-m_transaksi').datagrid('getSelected');
@@ -170,26 +145,6 @@
 					$.post('<?php echo site_url('transaksi/removeTransaksi'); ?>',{id_stock:row.id_stock},function(result){
 						if (!result.error){
 							$('#datagrid-m_transaksi').datagrid('reload');
-							$.messager.alert('INFO',result.msg,'info');
-							} else {
-							$.messager.alert('INFO',result.msg,'info');
-						}
-					},'json');
-				}
-			});
-			}else{
-			$.messager.alert('INFO','Pilih satu record dulu','info');
-		}
-	}
-
-	function removeTambah(){
-		var row = $('#datagrid-m_detail').datagrid('getSelected');
-		if (row){
-			$.messager.confirm('Konfirmasi', 'Anda yakin menghapus data ini',function(r){
-				if (r){
-					$.post('<?php echo site_url('transaksi/removeTambah'); ?>',{id_dtl_stock:row.id_dtl_stock},function(result){
-						if (!result.error){
-							$('#datagrid-m_detail').datagrid('reload');
 							$.messager.alert('INFO',result.msg,'info');
 							} else {
 							$.messager.alert('INFO',result.msg,'info');

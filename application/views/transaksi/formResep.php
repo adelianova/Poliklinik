@@ -98,18 +98,6 @@ function addTambah(){
 			}
 			});
 	}
-
-function ref_list_obat(){
-
-	$.ajax({
-		url: '<?php echo site_url('resep/list_obat'); ?>',
-		dataType:'json',
-		success: function(resp){
-			console.log(resp['tbl'])
-			//$("#list-obat").html(resp['tbl']);
-		}
-	})
-}	
 function editTambah(){
         var row = $('#datagrid-m_ini').datagrid('getSelected');
         console.log(row);
