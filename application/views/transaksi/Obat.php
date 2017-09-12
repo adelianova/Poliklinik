@@ -80,7 +80,7 @@
 		    closed: false, 
 			cache: false, 
 			modal: true, 
-			href:base_url+'index.php/transaksi/formTambahObat',
+			href:base_url+'index.php/transaksi/formTambahObat/'+id_stock.id_stock,
 			title:'Tambah Obat',
 			onLoad:function(){
 				$('#form_tambah_obat').form('clear');

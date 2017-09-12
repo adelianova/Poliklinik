@@ -17,9 +17,19 @@ class Obat_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		
-    	$this->db->select(" kode_obat,nama,satuan ");
-		$this->db->from("TBL_M_OBAT");
+		  return $this->db->query("
+		    select z.id_obat,z.kode_obat,z.nama,z.satuan,(z.stok-z.resep) as sisa from(
+		    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
+		    (select sum(qty) from TBL_DETAIL_STOCK where
+		    id_obat=a.id_obat),0) as stok,
+		    isnull(
+		    (select sum(x.qty) from TBL_DETAIL_RESEP x inner join TBL_M_OBAT y
+		    on x.ID_OBAT=y.KODE_OBAT where
+		    y.id_obat=a.id_obat),0) as resep
+		    from TBL_M_OBAT a
+		    )z")->result_array();
+    	/*$this->db->select(" kode_obat,nama,satuan ");
+		$this->db->from("TBL_M_OBAT");*/
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}

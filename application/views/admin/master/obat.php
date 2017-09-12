@@ -11,6 +11,7 @@
 					<th field="kode_obat" width="100" sortable="true">KODE OBAT</th>
 					<th field="nama" width="100" sortable="true">NAMA</th>
                     <th field="satuan" width="100" sortable="true">SATUAN</th>
+                    <th field="sisa" width="100" sortable="true">STOK</th>
 				</tr>
 			</thead>
 		</table>
