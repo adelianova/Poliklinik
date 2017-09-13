@@ -85,8 +85,18 @@ class User_m extends MY_Model {
 					},{
 						"id":124,
 						"text":"Obat",
-						"url":"transaksi_obat",
-						"akses":true
+						"state":"open",
+						"children":[{
+							"id":1241,
+							"text":"Retur Obat",
+							"url":"transaksi_retur",
+							"akses":true
+						},{
+							"id":1242,
+							"text":"Stok Obat",
+							"url":"transaksi_obat",
+							"akses":true
+					}]
 					}]
 					
 					},
