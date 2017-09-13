@@ -62,7 +62,7 @@
 					            <th field="NAMA" width="100">Nama Obat</th>
 					            <th field="QTY" width="100" align="right">Quantity</th>
 					            <th field="DOSIS" width="100" align="right">Dosis</th>
-					            <th field="ID_DETAIL_RESEP" width="100" align="right" >ID</th>
+					            <th field="ID_DETAIL_RESEP" width="100" align="right" hidden="true">ID</th>
 					        </tr>
 					    </thead>
 					    <tbody>

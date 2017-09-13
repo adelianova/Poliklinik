@@ -91,7 +91,6 @@ class Resep_m extends MY_Model {
 		if($edit==''){
 			$data=$this->getDetailResep();
 			$arr=array(
-				
 				'ID_RESEP'=>$id_resep,
 				'ID_OBAT'=>$id_obat,
 				'QTY'=>$qty,

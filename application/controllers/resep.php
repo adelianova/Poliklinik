@@ -76,8 +76,10 @@ class Resep extends MY_Controller {
         $data=$this->resep_m->getIDDokter();
 		echo json_encode($data);
     }
-    public function formTambah($id_resep=""){
+    public function formTambah($id_resep="",$id_detail_resep=""){
     	$data['id_resep'] = $id_resep;
+    	$data['id_detail_resep'] = $id_detail_resep;
+    	$data['data']=$this->resep_m->getDetailResep();
         $data['data']=$this->resep_m->getIDRegistrasi();
 		$this->load->view('transaksi/formTambah', $data);
 	}

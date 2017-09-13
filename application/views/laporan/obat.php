@@ -1,5 +1,5 @@
 
-<table id="datagrid-m_laporan" title="" class="easyui-datagrid scrollbarx" 
+<table id="datagrid-m_periksa" title="" class="easyui-datagrid scrollbarx" 
 		style="width:auto; height: auto;" 
 		data-options="
 		url:'<?php echo base_url().'index.php/laporan_obat/getListLaporanObat';?>',
@@ -33,27 +33,28 @@
 				</tr>
 			</div>
 			<div style="display:inline;float:right;padding-top:-10px;">
-				<input id="slaporan" class="easyui-searchbox" style="width:250px" 
-				searcher="carilaporan" prompt="Ketik disini" menu="#muser"></input>  
+				<input id="speriksa" class="easyui-searchbox" style="width:250px" 
+				searcher="cariperiksa" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='id_laporan'>ID</div>
-					<div name='nama'>NAMA OBAT</div>
+					<div name='id_periksa'>ID</div>
+					<div name='nama'>NAMA PASIEN</div>
+					<div name='nama_dokter'>NAMA DOKTER</div>
 				</div>  
 			</div>
 		</div>
 <script>
 	
 	
-	function carilaporan(value,name){
+	function cariperiksa(value,name){
 		
-		$('#datagrid-m_laporan').datagrid('load', { "searchKey": name, "searchValue": value });
+		$('#datagrid-m_periksa').datagrid('load', { "searchKey": name, "searchValue": value });
 	}
 
 	function tampilkan() {
 		var tgl_awal = $('#tgl_awal').datebox('getValue');
 		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
 
-		$('#datagrid-m_laporan').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
+		$('#datagrid-m_periksa').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
 	}
 
 	$('#tgl_awal').datebox({

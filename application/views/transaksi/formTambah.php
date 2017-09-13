@@ -2,6 +2,13 @@
 				<input type='hidden' name='edit' id='edit' value=''/>
 				<table width='350px' class='dialog-form' >
 					<tr>
+						<td class='label_form'>ID DETAIL</td>
+						<td>
+							<input name='ID_DETAIL_RESEP' id='ID_DETAIL_RESEP' readonly='true' 
+							class='easyui-validatebox textbox' style="padding:3px;width:90%" >	
+						</td>
+					</tr>
+					<tr>
 						<td class='label_form'>Nama Obat</td>
                         <td>
 							<input name='ID_OBAT' id='KODE_OBAT' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
