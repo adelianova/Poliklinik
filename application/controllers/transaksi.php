@@ -60,9 +60,11 @@ class Transaksi extends MY_Controller {
     	$data['data']=$this->transaksi_m->getIDStock();
 		$this->load->view('transaksi/formObat', $data);
 	}
-	public function formTambahObat($id_stock=""){
+	public function formTambahObat($id_stock="",$id_dtl_stock=""){
 		$data['id_stock'] = $id_stock;
+		$data['id_dtl_stock'] = $id_dtl_stock;
     	$data['data']=$this->transaksi_m->getIDStock();
+    	$data['data']=$this->transaksi_m->getIDDtlStock();
 		$this->load->view('transaksi/formTambahObat', $data);
 	}
 	public function getIDSuplier(){
