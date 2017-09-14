@@ -105,10 +105,21 @@ class User_m extends MY_Model {
 					"text":"Laporan",
 					"state":"open",
 					"children":[{
-						"id":131,
-						"text":"Stock Obat",
-						"url":"laporan_obat",
-						"akses":true
+						"id":13,
+						"text":"Stock",
+						"state":"open",
+						"children":[{
+							"id":131,
+							"text":"Masuk",
+							"url":"laporan_masuk",
+							"akses":true
+						},{
+							"id":132,
+							"text":"Keluar",
+							"url":"laporan_keluar",
+							"akses":true
+							
+						}]
 					},{
 						"id":132,
 						"text":"Pemeriksaan",

@@ -6,7 +6,7 @@
 						<td class='label_form'>ID STOCK</td>
 						<td>
 							<input name='id_stock' id='id_stock' readonly='true' 
-							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $data['id_stock'];?>"/>	
+							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $id_stock;?>"/>	
 						</td>
 					</tr>
 					<tr>

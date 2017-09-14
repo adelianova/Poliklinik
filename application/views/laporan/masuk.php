@@ -1,24 +1,26 @@
-
-<table id="datagrid-m_periksa" title="" class="easyui-datagrid scrollbarx" 
+	<table id="datagrid-m_masuk" title="" class="easyui-datagrid scrollbarx" 
 		style="width:auto; height: auto;" 
 		data-options="
-		url:'<?php echo base_url().'index.php/laporan_obat/getListLaporanObat';?>',
-		toolbar:'#toolbar',rownumbers:true,pagination:true,border:false,
+		url:'<?php echo base_url().'index.php/masuk/getListMasuk';?>',
+		toolbar:'#toolbar1',rownumbers:true,pagination:true,border:false,
 		striped:true,fit:true,fitColumns:true,
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="kode_obat" width="100" sortable="true">KODE OBAT</th>
-					<th field="nama" width="100" sortable="true">NAMA OBAT</th>
-					<th field="qty_masuk" width="100" sortable="true">MASUK</th>		
-					<th field="qty_keluar" width="100" sortable="true">KELUAR</th>
-					<th field="tgl" width="100" sortable="true">TANGGAL</th>
+					<th field="ID_STOCK" width="100" hidden="true" sortable="true">ID STOCK</th>
+					<th field="TGL" width="100" sortable="true">TANGGAL MASUK</th>
+					<th field="KODE_OBAT" width="100" sortable="true">KODE OBAT</th>
+					<th field="NAMA" width="100" sortable="true">NAMA OBAT</th>		
+					<th field="SATUAN" width="100" sortable="true">SATUAN</th>
+					<th field="HARGA_SATUAN" width="100" sortable="true">HARGA SATUAN</th>
+					<th field="QTY" width="100" sortable="true">QUANTITY</th>
+					<th field="TOTAL" width="100" sortable="true">TOTAL</th>
 					
 				</tr>
 			</thead>
-		</table>
-		
-		<div id="toolbar" style='padding:5px;height:25px'>
+	</table>
+
+<div id="toolbar1" style='padding:5px;height:25px'>
 			<div style="display:inline;float:left;padding-top:-10px;">
 				<tr>
 					<td class='label_form'>Pilih Tanggal</td>
@@ -33,28 +35,26 @@
 				</tr>
 			</div>
 			<div style="display:inline;float:right;padding-top:-10px;">
-				<input id="speriksa" class="easyui-searchbox" style="width:250px" 
-				searcher="cariperiksa" prompt="Ketik disini" menu="#muser"></input>  
+				<input id="smasuk" class="easyui-searchbox" style="width:250px" 
+				searcher="carimasuk" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='id_periksa'>ID</div>
-					<div name='nama'>NAMA PASIEN</div>
-					<div name='nama_dokter'>NAMA DOKTER</div>
+					<div name='nama'>NAMA OBAT</div>
 				</div>  
 			</div>
 		</div>
 <script>
 	
 	
-	function cariperiksa(value,name){
+	function carimasuk(value,name){
 		
-		$('#datagrid-m_periksa').datagrid('load', { "searchKey": name, "searchValue": value });
+		$('#datagrid-m_masuk').datagrid('load', { "searchKey": name, "searchValue": value });
 	}
 
 	function tampilkan() {
 		var tgl_awal = $('#tgl_awal').datebox('getValue');
 		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
 
-		$('#datagrid-m_periksa').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
+		$('#datagrid-m_masuk').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
 	}
 
 	$('#tgl_awal').datebox({
