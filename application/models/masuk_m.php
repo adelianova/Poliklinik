@@ -19,7 +19,7 @@ class Masuk_m extends MY_Model {
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
 		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
-		$this->db->select("a.ID_STOCK,a.TGL,c.KODE_OBAT,c.NAMA,c.SATUAN,b.HARGA_SATUAN,b.QTY,b.TOTAL");
+		$this->db->select("a.ID_STOCK,convert(varchar(10),a.TGL,105) as TGL,c.KODE_OBAT,c.NAMA,c.SATUAN,b.HARGA_SATUAN,b.QTY,b.TOTAL");
 		$this->db->from("TBL_STOCK a");
 		$this->db->join("TBL_DETAIL_STOCK b","a.ID_STOCK = b.ID_STOCK ");
 		$this->db->join("TBL_M_OBAT c","b.ID_OBAT = c.ID_OBAT");
@@ -42,5 +42,5 @@ class Masuk_m extends MY_Model {
 		
 	    return $hasil;	
 	}
-	
+
 }

@@ -19,7 +19,7 @@ class Keluar_m extends MY_Model {
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
 		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
-		$this->db->select("a.kode_obat,a.nama,a.satuan,b.qty,c.id_resep,d.tgl_periksa");
+		$this->db->select("a.kode_obat,a.nama,a.satuan,b.qty,c.id_resep,convert(varchar(10),d.tgl_periksa,105) as tgl_periksa");
 		$this->db->from("TBL_M_OBAT a");
 		$this->db->join("TBL_DETAIL_RESEP b","a.kode_obat = b.kode_obat ");
 		$this->db->join("TBL_RESEP c","b.id_resep = c.id_resep");
