@@ -99,34 +99,6 @@ function editTambah(){
 			$.messager.alert('INFO','Pilih satu record dulu','info');
 		}
 	}
-	function editRetur(){
-		
-        var row = $('#datagrid-m_retur').datagrid('getSelected');
-        console.log(row);
-		if(row){
-		
-		$('#dialog-m_retur').dialog({ 
-		    closed: false, 
-			cache: false, 
-			modal: true, 
-			href:base_url+'index.php/retur/formRetur',
-			title:'Edit Obat',
-			onLoad:function(){
-				
-				
-				$('#form_retur').form('clear');
-				$('#form_retur #edit').val('1');
-				$('#form_retur').form('load',row);	
-				$('#datagrid-m_detail').datagrid('load',{id_retur:row.id_retur});
-				
-			}
-			});
-		}else{
-			$.messager.alert('INFO','Pilih satu record dulu','info');
-		}
-		
-	}
-
 
 function removeTambahRetur(){
 		var row = $('#datagrid-m_detail').datagrid('getSelected');

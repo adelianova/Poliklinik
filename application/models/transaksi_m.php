@@ -13,7 +13,7 @@ class Transaksi_m extends MY_Model {
 		$offset = ($page-1)*$rows;
 		$this->limit = $rows;
 		$this->offset = $offset;
-		 $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_transaksi';
+		 $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_stock';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
@@ -37,8 +37,11 @@ class Transaksi_m extends MY_Model {
 	}
 
 	function getListDetail(){
+		$sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_dtl_stock';
+        $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
     	$id_stock=$this->input->post('id_stock');
 		 return $this->db->query("select id_dtl_stock,id_stock,id_obat,qty,harga_satuan,total,convert(varchar(10),tgl_expired,105) as tgl_expired FROM TBL_DETAIL_STOCK where id_stock = '".$id_stock."'")->result_array();
+		 $this->db->order_by($sort,$order);
 	}
 
 

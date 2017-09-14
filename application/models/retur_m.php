@@ -99,7 +99,6 @@ class Retur_m extends MY_Model {
 			$r=$this->db->insert('TBL_DETAIL_RETUR',$arr);
 		}else{
 			$arr=array(
-				'id_retur'=>$id_retur,
 				'id_dtl_stock'=>$id_dtl_stock,
 				'qty'=>$qty,
 				'keterangan'=>$keterangan,

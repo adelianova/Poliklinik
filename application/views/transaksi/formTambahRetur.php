@@ -2,12 +2,18 @@
 				<input type='hidden' name='edit' id='edit' value=''/>
 				<table width='350px' class='dialog-form' >
 
-					
+					<tr>
+						<td class='label_form'>ID DETAIL</td>
+						<td>
+							<input name='id_dtl_retur' id='id_dtl_retur' readonly='true' 
+							class='easyui-validatebox textbox' style="padding:3px;width:90%" >	
+						</td>
+					</tr>
 					<tr>
 						<td class='label_form'>ID RETUR</td>
 						<td>
 							<input name='id_retur' id='id_retur' readonly='true' 
-							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $data['id_retur'];?>"/>	
+							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $id_retur;?>"/>	
 						</td>
 					</tr>
 					<tr>
@@ -72,7 +78,7 @@
 					if(result.error){
 						$.messager.alert('INFO',result.msg,'info');
 					}else{
-						$('#dialog-m_detail').dialog('close');
+						$('#dialog-m_tambah').dialog('close');
 						$('#datagrid-m_detail').datagrid('reload');
 						$.messager.alert('INFO',result.msg,'info');
 					}

@@ -3,6 +3,13 @@
 				<table width='350px' class='dialog-form' >
 
 					<tr>
+						<td class='label_form'>ID DETAIL</td>
+						<td>
+							<input name='id_dtl_stock' id='id_dtl_stock' readonly='true' 
+							class='easyui-validatebox textbox' style="padding:3px;width:90%" >	
+						</td>
+					</tr>
+					<tr>
 						<td class='label_form'>ID STOCK</td>
 						<td>
 							<input name='id_stock' id='id_stock' readonly='true' 

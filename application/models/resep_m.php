@@ -46,8 +46,6 @@ class Resep_m extends MY_Model {
 	function simpanResep($id_periksa="", $kode_dokter=""){
 		$edit=$this->input->post('edit');
 		$id_resep=$this->input->post('id_resep');
-		//$id_periksa=$this->input->post('id_periksa');
-		//$kode_dokter=$this->input->post('kode_dokter');
 
 		if($edit==''){
 			$data=$this->getKodeResep();

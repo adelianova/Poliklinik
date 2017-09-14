@@ -52,9 +52,11 @@ class Retur extends MY_Controller {
     	$data['data']=$this->retur_m->getIDRetur();
 		$this->load->view('transaksi/formRetur', $data);
 	}
-	public function formTambahRetur($id_retur=""){
+	public function formTambahRetur($id_retur="",$id_dtl_retur=""){
 		$data['id_retur'] = $id_retur;
+		$data['id_dtl_retur'] = $id_dtl_retur;
     	$data['data']=$this->retur_m->getIDRetur();
+    	$data['data']=$this->retur_m->getIDDtlRetur();
 		$this->load->view('transaksi/formTambahRetur', $data);
 	}
 	public function getDtlStock(){
