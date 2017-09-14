@@ -82,7 +82,7 @@ class Resep_m extends MY_Model {
 	function simpanTambah($id_resep=""){
 		$edit=$this->input->post('edit');
 		$id_detail_resep=$this->input->post('ID_DETAIL_RESEP');
-		$id_obat=$this->input->post('ID_OBAT');
+		$kode_obat=$this->input->post('KODE_OBAT');
 		$qty=$this->input->post('QTY');
 		$dosis=$this->input->post('DOSIS');
 
@@ -90,7 +90,7 @@ class Resep_m extends MY_Model {
 			$data=$this->getDetailResep();
 			$arr=array(
 				'ID_RESEP'=>$id_resep,
-				'ID_OBAT'=>$id_obat,
+				'KODE_OBAT'=>$kode_obat,
 				'QTY'=>$qty,
 				'DOSIS'=>$dosis,
 			);
@@ -98,7 +98,7 @@ class Resep_m extends MY_Model {
 			$z=$this->db->insert('TBL_DETAIL_RESEP',$arr);		
 		}else{
 			$arr=array(
-				'ID_OBAT'=>$id_obat,
+				'KODE_OBAT'=>$kode_obat,
 				'QTY'=>$qty,
 				'DOSIS'=>$dosis,
 			);
@@ -164,6 +164,6 @@ class Resep_m extends MY_Model {
     }
     function kodeResep(){
     	$id_resep=$this->input->post('id_resep');
-		 return $this->db->query("select a.ID_OBAT,a.QTY,a.DOSIS,a.ID_DETAIL_RESEP,b.NAMA FROM TBL_DETAIL_RESEP a JOIN TBL_M_OBAT b ON a.ID_OBAT=b.KODE_OBAT where a.id_resep = '".$id_resep."'")->result_array();
+		 return $this->db->query("select a.KODE_OBAT,a.QTY,a.DOSIS,a.ID_DETAIL_RESEP,b.NAMA FROM TBL_DETAIL_RESEP a JOIN TBL_M_OBAT b ON a.KODE_OBAT=b.KODE_OBAT where a.id_resep = '".$id_resep."'")->result_array();
     }
 }

@@ -58,7 +58,7 @@
 
 					    <!--<?php echo ltrim($data['id_resep']);?>-->
 					        <tr>
-					            <th field="ID_OBAT" width="100">Kode Obat</th>
+					            <th field="KODE_OBAT" width="100">Kode Obat</th>
 					            <th field="NAMA" width="100">Nama Obat</th>
 					            <th field="QTY" width="100" align="right">Quantity</th>
 					            <th field="DOSIS" width="100" align="right">Dosis</th>

@@ -11,7 +11,7 @@
 					<tr>
 						<td class='label_form'>Nama Obat</td>
                         <td>
-							<input name='ID_OBAT' id='KODE_OBAT' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
+							<input name='KODE_OBAT' id='KODE_OBAT' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
                                         url:'<?php echo base_url();?>index.php/resep/getKodeObat',
                                         valueField:'kode_obat',
                                         textField:'nama'

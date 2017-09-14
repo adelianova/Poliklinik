@@ -23,8 +23,8 @@ class Obat_m extends MY_Model {
 		    (select sum(qty) from TBL_DETAIL_STOCK where
 		    id_obat=a.id_obat),0) as stok,
 		    isnull(
-		    (select sum(x.qty) from TBL_DETAIL_RESEP x inner join TBL_M_OBAT y
-		    on x.ID_OBAT=y.KODE_OBAT where
+		    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
+		    on x.KODE_OBAT=y.KODE_OBAT where
 		    y.id_obat=a.id_obat),0) as resep
 		    from TBL_M_OBAT a
 		    )z")->result_array();
