@@ -13,7 +13,7 @@ class Keluar_m extends MY_Model {
 		$offset = ($page-1)*$rows;
 		$this->limit = $rows;
 		$this->offset = $offset;
-		 $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'NAMA';
+		 $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'kode_obat';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';

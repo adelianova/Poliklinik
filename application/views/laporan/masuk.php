@@ -38,7 +38,8 @@
 				<input id="smasuk" class="easyui-searchbox" style="width:250px" 
 				searcher="carimasuk" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='nama'>NAMA OBAT</div>
+					<div name='nama'>Nama Obat</div>
+					<div name='TGL'>Tanggal Masuk</div>
 				</div>  
 			</div>
 		</div>
