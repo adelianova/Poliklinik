@@ -17,5 +17,56 @@ class Masuk extends MY_Controller {
 		$data['total']=$this->masuk_m->getListMasuk('total');
 		echo json_encode($data);
 	}
+	public function cetakLaporan($tgl_awal="",$tgl_akhir="")
+	{
+		$data = $this->masuk_m->getListMasuk();
+		$tgl_awal = @str_replace("~", "/", $tgl_awal);
+		$tgl_akhir = @str_replace("~", "/", $tgl_akhir);
+		$this->load->library('mpdf/mPdf');
+		$mpdf = new mPDF('c','Legal-L');
+		$html = '
+		<htmlpagefooter name="MyFooter1">
+			<table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; color: #000000; font-weight: bold; font-style: italic;">
+				<tr>
+					<td width="33%" align="center" style="font-weight: bold; font-style: italic;">PDAM Malang - Laporan Obat Masuk, PAGE {PAGENO} dari {nbpg}</td>
+				</tr>
+			</table>
+		</htmlpagefooter>
+		<sethtmlpagefooter name="MyFooter1" value="on" />
+		<div style="font-size:20px; font-weight:bold">PDAM KOTA MALANG</div>
+		<div style="font-weight:bold;">Jl. Terusan Danau Sentani No.100 - Malang</div>
+		<div style="font-size:20px; font-weight:bold; text-align:center">Laporan Obat Masuk</div>';
+		$html .='
+		<table width="100%" border="1" cellspacing="0" cellpadding="2">
+		  <tr>
+			<td width="10%" align="center"><strong>Tgl Obat Masuk</strong></td>
+			<td width="10%" align="center"><strong>Kode Obat</strong></td>
+			<td width="10%" align="center"><strong>Nama Obat</strong></td>
+			<td width="10%" align="center"><strong>Satuan</strong></td>
+			<td width="8%" align="center"><strong>Jumlah</strong></td>
+			<td width="10%" align="center"><strong>Harga</strong></td>
+			<td width="10%" align="center"><strong>Total</strong></td>
+		  </tr>';
+		$no=1;
+		$data = $this->masuk_m->getJson($tgl_awal,$tgl_akhir);
+		foreach($data as $row){
+		//for($x=1; $x<=10; $x++){ "a.ID_STOCK,a.TGL,c.KODE_OBAT,c.NAMA,c.SATUAN,b.HARGA_SATUAN,b.QTY,b.TOTAL
+		$html .='  
+		  <tr>
+			<td>'.$row->TGL.'</td>
+			<td>'.$row->KODE_OBAT.'</td>
+			<td>'.$row->NAMA.'</td>
+			<td>'.$row->SATUAN.'</td>
+			<td>'.$row->HARGA_SATUAN.'</td>
+			<td>'.$row->QTY.'</td>
+			<td>'.$row->TOTAL.'</td>
+		</tr>';
+		}
+		$html .= '</table>';
+		
+		$mpdf->WriteHTML($html);
+		$mpdf->Output();
+	}
+
 		
 }

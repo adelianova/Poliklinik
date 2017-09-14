@@ -42,4 +42,5 @@ class Masuk_m extends MY_Model {
 		
 	    return $hasil;	
 	}
+	
 }

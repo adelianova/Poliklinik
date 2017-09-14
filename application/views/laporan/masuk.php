@@ -31,7 +31,7 @@
 					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
-
+					<a class="easyui-linkbutton" data-options="iconCls:'icon-print'" onClick="cetakLaporan()"  style="color: #fff">CETAK PDF</a>
 				</tr>
 			</div>
 			<div style="display:inline;float:right;padding-top:-10px;">
@@ -84,5 +84,11 @@
 			
 		}
 	});
+
+	function cetakLaporan(){
+        var tgl_awal = $('#tgl_awal').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
+        var tgl_akhir = $('#tgl_akhir').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
+        PopupCenter("http://localhost/poliklinik/index.php/masuk/cetakLaporan/"+tgl_awal+"/"+tgl_akhir+"/");
+    }
 	
 </script>
