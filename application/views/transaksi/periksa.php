@@ -9,20 +9,22 @@
 				<tr>
 					<th field="id_periksa" width="100" sortable="true">ID</th>
 					<th field="kode_registrasi" width="100" sortable="true">KODE REGISTRASI</th>
-					<th field="nama_dokter" width="100" sortable="true">NAMA DOKTER</th>
-					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
+					<th field="kode_dokter" width="100" sortable="true">DOKTER</th>
+					<th field="kode_pasien" width="100" sortable="true">PASIEN</th>
 					<th field="id_penyakit" width="100" sortable="true">ID PENYAKIT</th>
-					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
+					<th field="kode_penyakit" width="100" sortable="true">PENYAKIT</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
 					<th field="diagnosa" width="150" sortable="true">DIAGNOSA</th>
+
 					
 				</tr>
 			</thead>
 		</table>
 		
 		<div id="toolbar" style='padding:5px;height:25px'>
-			<div style="display:inline;">
+			<div style="display:inline;"><!-- 
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onClick="addPeriksa()">Add</a>&nbsp; -->
 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onClick="editPeriksa()">Edit</a>&nbsp;
         	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onClick="removePeriksa()">Remove</a>&nbsp;
 				 
@@ -54,7 +56,31 @@
 	function cariperiksa(value,name){
 		
 		$('#datagrid-m_periksa').datagrid('load', { "searchKey": name, "searchValue": value });
-	}	
+	}
+	
+	/*function addPeriksa(){
+		
+			
+		$('#dialog-m_periksa').dialog({ 
+		    closed: false, 
+			cache: false, 
+			modal: true, 
+			href:base_url+'index.php/periksa/formPeriksa',
+			title:'Tambah Pemeriksaan',
+			onLoad:function(){
+				$('#form_periksa').form('clear');
+				
+				
+				$('#form_periksa #edit').val('');
+
+						
+
+			}
+			});
+		
+
+	}*/
+	
 	function editPeriksa(){
 		
         var row = $('#datagrid-m_periksa').datagrid('getSelected');
