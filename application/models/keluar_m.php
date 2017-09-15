@@ -43,4 +43,17 @@ class Keluar_m extends MY_Model {
 		
 	    return $hasil;	
 	}
+	public function getLaporan($TGL_MULAI,$TGL_SELESAI){
+		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
+		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
+		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?"":" and CONVERT(varchar(10), a.tgl_periksa, 105) between '$tglMulai' and '$tglSelesai' ";
+
+		$data = $this->db->query("SELECT a.kode_obat,a.nama,a.satuan,b.qty,c.id_resep,convert(varchar(10),d.tgl_periksa,105) as tgl_periksa FROM TBL_M_OBAT a
+		JOIN TBL_DETAIL_RESEP b ON a.kode_obat = b.kode_obat
+		JOIN TBL_RESEP C ON b.id_resep = c.id_resep
+		JOIN TBL_PERIKSA d ON c.id_periksa = d.id_periksa
+		WHERE 1 = 1 $tgl
+		ORDER BY tgl_periksa DESC");
+		return $data->result();
+	}
 }

@@ -19,7 +19,6 @@ class Masuk extends MY_Controller {
 	}
 	public function cetakLaporan($tgl_awal="",$tgl_akhir="")
 	{
-		$data = $this->masuk_m->getListMasuk();
 		$tgl_awal = @str_replace("~", "/", $tgl_awal);
 		$tgl_akhir = @str_replace("~", "/", $tgl_akhir);
 		$this->load->library('mpdf/mPdf');
@@ -47,26 +46,26 @@ class Masuk extends MY_Controller {
 			<td width="10%" align="center"><strong>Harga</strong></td>
 			<td width="10%" align="center"><strong>Total</strong></td>
 		  </tr>';
+
 		$no=1;
-		$data = $this->masuk_m->getJson($tgl_awal,$tgl_akhir);
+		$data = $this->masuk_m->getLaporan($TGL_MULAI,$TGL_SELESAI);
 		foreach($data as $row){
-		//for($x=1; $x<=10; $x++){ "a.ID_STOCK,a.TGL,c.KODE_OBAT,c.NAMA,c.SATUAN,b.HARGA_SATUAN,b.QTY,b.TOTAL
 		$html .='  
 		  <tr>
 			<td>'.$row->TGL.'</td>
 			<td>'.$row->KODE_OBAT.'</td>
 			<td>'.$row->NAMA.'</td>
 			<td>'.$row->SATUAN.'</td>
-			<td>'.$row->HARGA_SATUAN.'</td>
 			<td>'.$row->QTY.'</td>
+			<td>'.$row->HARGA_SATUAN.'</td>
 			<td>'.$row->TOTAL.'</td>
 		</tr>';
+		$no++;
 		}
 		$html .= '</table>';
 		
 		$mpdf->WriteHTML($html);
 		$mpdf->Output();
-	}
-
-		
+		//echo $html;
+	}		
 }

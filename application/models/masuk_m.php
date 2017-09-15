@@ -10,6 +10,8 @@ class Masuk_m extends MY_Model {
 	function getListMasuk($jenis){
 		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
 		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
+		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
 		$offset = ($page-1)*$rows;
 		$this->limit = $rows;
 		$this->offset = $offset;
@@ -17,8 +19,6 @@ class Masuk_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
-		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
 		$this->db->select("a.ID_STOCK,convert(varchar(10),a.TGL,105) as TGL,c.KODE_OBAT,c.NAMA,c.SATUAN,b.HARGA_SATUAN,b.QTY,b.TOTAL");
 		$this->db->from("TBL_STOCK a");
 		$this->db->join("TBL_DETAIL_STOCK b","a.ID_STOCK = b.ID_STOCK ");
@@ -42,5 +42,16 @@ class Masuk_m extends MY_Model {
 		
 	    return $hasil;	
 	}
+	public function getLaporan($TGL_MULAI,$TGL_SELESAI){
+		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
+		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
+		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?"":" and CONVERT(varchar(10), A.TGL, 105) between '$tglMulai' and '$tglSelesai' ";
 
+		$data = $this->db->query("SELECT a.ID_STOCK,convert(varchar(10),a.TGL,105) as TGL,c.KODE_OBAT,c.NAMA,c.SATUAN,b.HARGA_SATUAN,b.QTY,b.TOTAL FROM TBL_STOCK a
+		JOIN TBL_DETAIL_STOCK b ON a.ID_STOCK = b.ID_STOCK
+		JOIN TBL_M_OBAT C ON b.ID_OBAT = c.ID_OBAT
+		WHERE 1 = 1 $tgl
+		ORDER BY TGL DESC");
+		return $data->result();
+	}
 }

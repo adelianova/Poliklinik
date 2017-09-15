@@ -55,15 +55,7 @@
 						<td >
 							<input name='tgl_periksa' id='tgl_periksa' class='easyui-datetimebox' style="padding:3px;width:90%"/>	
 						</td>
-					</tr><!-- 
-					<tr>
-						<td class='label_form'>Keluhan</td>
-						<td >
-							<textarea cols='40' rows='3' name='keluhan' id='keluhan' 
-							style='padding:3px' class='easyui-validatebox textarea'  
-							data-options="required:true"></textarea>
-						</td>
-					</tr> -->
+					</tr>
 					<tr>
 						<td class='label_form'>Diagnosa</td>
 						<td >

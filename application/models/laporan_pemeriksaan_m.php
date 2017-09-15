@@ -50,4 +50,16 @@ class Laporan_pemeriksaan_m extends MY_Model {
     function getKodeDokter(){
         return $this->db->query(" select kode_dokter,nama_dokter FROM TBL_M_DOKTER")->result_array();
     }
+    public function getLaporan($TGL_MULAI,$TGL_SELESAI){
+		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
+		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
+		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?"":" and CONVERT(varchar(10), a.tgl_periksa, 105) between '$tglMulai' and '$tglSelesai' ";
+
+		$data = $this->db->query("SELECT a.id_periksa,a.kode_dokter,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan, b.nama_dokter, c.nama FROM tbl_periksa a
+		JOIN TBL_M_DOKTER b ON a.kode_dokter = b.kode_dokter
+		JOIN TBL_M_PASIEN C ON a.kode_pasien = c.kode_pasien
+		WHERE id_status_registrasi = 3
+		ORDER BY tgl_periksa DESC");
+		return $data->result();
+	}
 }

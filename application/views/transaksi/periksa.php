@@ -22,8 +22,7 @@
 		</table>
 		
 		<div id="toolbar" style='padding:5px;height:25px'>
-			<div style="display:inline;"><!-- 
-			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onClick="addPeriksa()">Add</a>&nbsp; -->
+			<div style="display:inline;">
 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onClick="editPeriksa()">Edit</a>&nbsp;
         	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onClick="removePeriksa()">Remove</a>&nbsp;
 				 
@@ -55,31 +54,7 @@
 	function cariperiksa(value,name){
 		
 		$('#datagrid-m_periksa').datagrid('load', { "searchKey": name, "searchValue": value });
-	}
-	
-	function addPeriksa(){
-		
-			
-		$('#dialog-m_periksa').dialog({ 
-		    closed: false, 
-			cache: false, 
-			modal: true, 
-			href:base_url+'index.php/periksa/formPeriksa',
-			title:'Tambah Pemeriksaan',
-			onLoad:function(){
-				$('#form_periksa').form('clear');
-				
-				
-				$('#form_periksa #edit').val('');
-
-						
-
-			}
-			});
-		
-
-	}
-	
+	}	
 	function editPeriksa(){
 		
         var row = $('#datagrid-m_periksa').datagrid('getSelected');
