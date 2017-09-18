@@ -23,7 +23,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$this->db->from("tbl_periksa a");
 		$this->db->join("tbl_m_dokter b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
-		$this->db->where("id_status_registrasi = 3");
+		$this->db->where("id_status_registrasi = 'selesai'");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
@@ -58,7 +58,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$data = $this->db->query("SELECT a.id_periksa,a.kode_dokter,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan, b.nama_dokter, c.nama FROM tbl_periksa a
 		JOIN TBL_M_DOKTER b ON a.kode_dokter = b.kode_dokter
 		JOIN TBL_M_PASIEN C ON a.kode_pasien = c.kode_pasien
-		WHERE id_status_registrasi = 3
+		WHERE id_status_registrasi = 'selesai'
 		ORDER BY tgl_periksa DESC");
 		return $data->result();
 	}

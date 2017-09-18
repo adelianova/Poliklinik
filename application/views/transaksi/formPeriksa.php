@@ -76,7 +76,19 @@
 							data-options="required:true"></textarea>
 						</td>
 					</tr>
-					
+					 <tr>
+						<td class='label_form'>Status Registrasi</td>
+                        <td>
+							<input name='id_status_registrasi' id='id_status_registrasi' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
+                                        url:'<?php echo base_url();?>index.php/periksa/getStatus',
+                                        valueField:'id_status_registrasi',
+                                        textField:'id_status_registrasi',
+                                        onLoadSuccess : function(){
+                                        $(this).combobox('select','Periksa');
+                                        }
+                                        "/>
+						</td>
+					</tr>
 			</table>
 		</form>
 	

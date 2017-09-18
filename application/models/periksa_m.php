@@ -48,6 +48,7 @@ class Periksa_m extends MY_Model {
 		$tgl_periksa=$this->input->post('tgl_periksa');
 		$keluhan=$this->input->post('keluhan');
 		$diagnosa=$this->input->post('diagnosa');
+		$id_status_registrasi=$this->input->post('id_status_registrasi');
 		
 		if($edit==''){
 			$arr=array(
@@ -56,7 +57,8 @@ class Periksa_m extends MY_Model {
 				'id_penyakit'=>$id_penyakit,
 				'kode_penyakit'=>$kode_penyakit,
 				'tgl_periksa'=>date('Y-m-d',strtotime($tgl_periksa)),
-				'diagnosa'=>$diagnosa
+				'diagnosa'=>$diagnosa,
+				'id_status_registrasi'=>$id_status_registrasi
 			);
 			$this->db->where("id_periksa='".$id_periksa."'");
 			$r=$this->db->update('TBL_PERIKSA',$arr);
@@ -68,7 +70,8 @@ class Periksa_m extends MY_Model {
 				'id_penyakit'=>$id_penyakit,
 				'kode_penyakit'=>$kode_penyakit,
 				'tgl_periksa'=>date('Y-m-d',strtotime($tgl_periksa)),
-				'diagnosa'=>$diagnosa
+				'diagnosa'=>$diagnosa,
+				'id_status_registrasi'=>$id_status_registrasi
 			);
 			$this->db->where("id_periksa='".$id_periksa."'");
 			$r=$this->db->update('TBL_PERIKSA',$arr);
@@ -123,4 +126,7 @@ class Periksa_m extends MY_Model {
 		 return $this->db->query("select a.kode_pasien,a.nama,b.id_periksa FROM TBL_M_PASIEN a JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien where kode_dokter is null (select id_periksa from TBL_PERIKSA)")
 		 ->result_array();
 	}
+	function getStatus(){
+        return $this->db->query(" select id_status_registrasi, status FROM TBL_M_STATUS_REGISTRASI")->result_array();
+    }
 }

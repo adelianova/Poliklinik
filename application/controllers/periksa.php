@@ -56,4 +56,8 @@ class Periksa extends MY_Controller {
         $data=$this->periksa_m->getIDPenyakit();
 		echo json_encode($data);
     }
+    public function getStatus(){
+		$data=$this->periksa_m->getStatus();
+		echo json_encode($data);
+	}
 }

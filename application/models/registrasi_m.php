@@ -17,10 +17,9 @@ class Registrasi_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		$this->db->select("a.kode_registrasi,a.kode_pasien,a.keluhan, b.status,c.nama");
+		$this->db->select("a.kode_registrasi,a.kode_pasien,a.keluhan,a.id_status_registrasi,b.nama");
 		$this->db->from("tbl_periksa a");
-		$this->db->join("TBL_M_STATUS_REGISTRASI b","a.id_status_registrasi = b.id_status_registrasi");
-		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
+		$this->db->join("TBL_M_PASIEN b","a.kode_pasien = b.kode_pasien");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
