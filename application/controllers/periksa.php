@@ -15,7 +15,7 @@ class Periksa extends MY_Controller {
     }
 	
 	public function formPeriksa(){
-		$data['data']=$this->periksa_m->getKodePeriksa();
+		$data['data']=$this->periksa_m->getIDPeriksa();
 		$this->load->view('transaksi/formPeriksa',$data);
 	}
 	
@@ -38,6 +38,10 @@ class Periksa extends MY_Controller {
 	
 	 public function getKodePasien(){
         $data=$this->periksa_m->getKodePasien();
+		echo json_encode($data);
+    }
+     public function getIDPeriksa(){
+        $data=$this->periksa_m->getIDPeriksa();
 		echo json_encode($data);
     }
     public function getKodeDokter(){

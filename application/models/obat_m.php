@@ -28,8 +28,6 @@ class Obat_m extends MY_Model {
 		    y.id_obat=a.id_obat),0) as resep
 		    from TBL_M_OBAT a
 		    )z")->result_array();
-    	/*$this->db->select(" kode_obat,nama,satuan ");
-		$this->db->from("TBL_M_OBAT");*/
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}

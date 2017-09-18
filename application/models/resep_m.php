@@ -154,7 +154,7 @@ class Resep_m extends MY_Model {
 		 ->result_array();
 	}
     function getIDObat(){
-         return $this->db->query(" select id_obat,kode_obat,nama,satuan FROM TBL_M_OBAT")->result_array();
+         return $this->db->query(" select id_obat,kode_obat,nama,satuan FROM TBL_M_OBAT ")->result_array();
     }
 	function getIDDokter(){
          return $this->db->query(" select kode_dokter,nama_dokter FROM TBL_M_DOKTER")->result_array();

@@ -4,8 +4,20 @@
 					<tr>
 						<td class='label_form'>ID Periksa</td>
 						<td>
-							<input name='id_periksa' id='id_periksa' readonly='true' 
-							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $data['id_periksa'];?>"/>	
+						<select name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="width:100%" data-options="
+			                    panelWidth: 500,
+			                    idField: 'id_periksa',
+			                    url:'<?php echo base_url();?>index.php/periksa/getIDPeriksa',
+			                    method: 'get',
+			                    valueField:'id_periksa',
+                                textField:'nama',
+			                    columns: [[
+				                        {field:'id_periksa',title:'ID',width:50},
+				                        {field:'kode_pasien',title:'Kode Pasien',width:100},
+				                        {field:'nama',title:'Nama',width:120,align:'right'},
+                    			]]
+			                ">
+			            </select>
 						</td>
 					</tr>
 					<tr>
