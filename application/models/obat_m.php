@@ -18,14 +18,18 @@ class Obat_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		  return $this->db->query("
-		    select z.id_obat,z.kode_obat,z.nama,z.satuan,(z.stok-z.resep) as sisa from(
+		    select z.id_obat,z.kode_obat,z.nama,z.satuan,(z.stok-z.resep-z.retur) as sisa from(
 		    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
 		    (select sum(qty) from TBL_DETAIL_STOCK where
 		    id_obat=a.id_obat),0) as stok,
 		    isnull(
 		    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
 		    on x.KODE_OBAT=y.KODE_OBAT where
-		    y.id_obat=a.id_obat),0) as resep
+		    y.id_obat=a.id_obat),0) as resep,
+			 isnull(
+		    (select sum(d.qty) from TBL_DETAIL_RETUR d join TBL_DETAIL_STOCK i
+		    on d.ID_DTL_STOCK=i.ID_DTL_STOCK where
+		    i.id_obat=a.id_obat),0) as retur
 		    from TBL_M_OBAT a
 		    )z")->result_array();
 		if($searchKey<>''){

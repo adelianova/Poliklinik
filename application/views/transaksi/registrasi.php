@@ -65,7 +65,7 @@
 			onLoad:function(){
 				$('#form_registrasi').form('clear');
 				$('#form_registrasi #edit').val('');
-
+				
 						
 
 			}

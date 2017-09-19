@@ -154,7 +154,20 @@ class Resep_m extends MY_Model {
 		 ->result_array();
 	}
     function getIDObat(){
-         return $this->db->query(" select id_obat,kode_obat,nama,satuan FROM TBL_M_OBAT ")->result_array();
+         return $this->db->query(" select z.id_obat,z.kode_obat,z.nama,z.satuan,(z.stok-z.resep-z.retur) as sisa from(
+		    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
+		    (select sum(qty) from TBL_DETAIL_STOCK where
+		    id_obat=a.id_obat),0) as stok,
+		    isnull(
+		    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
+		    on x.KODE_OBAT=y.KODE_OBAT where
+		    y.id_obat=a.id_obat),0) as resep,
+			 isnull(
+		    (select sum(d.qty) from TBL_DETAIL_RETUR d join TBL_DETAIL_STOCK i
+		    on d.ID_DTL_STOCK=i.ID_DTL_STOCK where
+		    i.id_obat=a.id_obat),0) as retur
+		    from TBL_M_OBAT a
+		    )z")->result_array();
     }
 	function getIDDokter(){
          return $this->db->query(" select kode_dokter,nama_dokter FROM TBL_M_DOKTER")->result_array();
