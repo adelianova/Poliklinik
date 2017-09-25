@@ -23,7 +23,9 @@ class Registrasi_m extends MY_Model {
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
-		
+		else{
+			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
+		}
 		$this->db->order_by($sort,$order);
 		
 		if($jenis=='total'){
@@ -52,6 +54,7 @@ class Registrasi_m extends MY_Model {
 				'kode_registrasi'=>$data['kode_registrasi'],
 				'kode_pasien'=>$kode_pasien,
 				'keluhan'=>$keluhan,
+				'tgl_periksa'=>date('Y-m-d H:i:s'), 
 				'id_status_registrasi'=>$id_status_registrasi
 			);
 			

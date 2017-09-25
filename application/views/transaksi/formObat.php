@@ -58,7 +58,7 @@
 						</td>
 					</tr>
 			</table>
-			<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
+			<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:275px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">
 					</div>
 			<table id="datagrid-m_detail" title="" class="easyui-datagrid scrollbarx" 
