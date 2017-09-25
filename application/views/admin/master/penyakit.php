@@ -8,7 +8,7 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="id_penyakit" width="100" sortable="true">ID PENYAKIT</th>
+					<th field="id_penyakit" width="100" sortable="true" hidden="true">ID PENYAKIT</th>
 					<th field="kode_penyakit" width="100" sortable="true">KODE</th>
 					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
 					

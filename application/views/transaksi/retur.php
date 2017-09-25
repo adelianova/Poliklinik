@@ -8,7 +8,7 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="id_retur" width="100" sortable="true">ID RETUR</th>
+					<th field="id_retur" width="100" sortable="true" hidden="true">ID RETUR</th>
 					<th field="no_retur" width="100" sortable="true">NO RETUR</th>
 					<th field="tgl" width="100" sortable="true">TANGGAL</th>
 					<th field="petugas" width="100" sortable="true">PETUGAS</th>

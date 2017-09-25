@@ -7,7 +7,7 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="id_retur" width="100" sortable="true">ID RETUR</th>
+					<th field="id_retur" width="100" sortable="true" hidden="true">ID RETUR</th>
 					<th field="no_retur" width="100" sortable="true">NO RETUR</th>
 					<th field="id_dtl_stock" width="100" sortable="true">ID DETAIL STOCK</th>
 					<th field="petugas" width="100" sortable="true">PETUGAS</th>

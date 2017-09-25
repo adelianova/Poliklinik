@@ -8,7 +8,7 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="id_suplier" width="50" sortable="true">ID SUPLIER</th>
+					<th field="id_suplier" width="50" sortable="true" hidden="true">ID SUPLIER</th>
 					<th field="nama" width="100" sortable="true">NAMA</th>
 					<th field="alamat" width="100" sortable="true">ALAMAT</th>
 					<th field="telp" width="100" sortable="true">TELP</th>

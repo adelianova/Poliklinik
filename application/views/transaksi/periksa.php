@@ -7,7 +7,7 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="id_periksa" width="100" sortable="true">ID</th>
+					<th field="id_periksa" width="100" sortable="true" hidden="true">ID</th>
 					<th field="kode_registrasi" width="100" sortable="true" hidden="true">KODE REGISTRASI</th>
 					<th field="kode_dokter" width="100" sortable="true" hidden="true">DOKTER</th>
 					<th field="nama_dokter" width="100" sortable="true">DOKTER</th>
