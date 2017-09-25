@@ -17,16 +17,22 @@ class Registrasi_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		$this->db->select("a.kode_registrasi,a.kode_pasien,a.keluhan,a.id_status_registrasi,b.nama");
+		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
+		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
+		$this->db->select("a.kode_registrasi,a.kode_pasien,a.tgl_periksa,a.keluhan,a.id_status_registrasi,b.nama");
 		$this->db->from("tbl_periksa a");
 		$this->db->join("TBL_M_PASIEN b","a.kode_pasien = b.kode_pasien");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}else if($tgl_awal<>''&&$tgl_akhir<>''){
+			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
 		}
-		else{
+		else {
 			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
 		}
+
 		$this->db->order_by($sort,$order);
+
 		
 		if($jenis=='total'){
 		$hasil=$this->db->get ('')->num_rows();
@@ -40,9 +46,12 @@ class Registrasi_m extends MY_Model {
 	function getKodeRegistrasi(){
 		return $this->db->query("select dbo.getIDRegistrasi() as kode_registrasi")->row_array();
 	}
-	
+	function getKodePeriksa(){
+		return $this->db->query("select dbo.getIDPeriksa() as id_periksa")->row_array();
+	}
 	function simpanRegistrasi(){
 		$edit=$this->input->post('edit');
+		$id_periksa=$this->input->post('id_periksa');
 		$kode_registrasi=$this->input->post('kode_registrasi');
 		$kode_pasien=$this->input->post('kode_pasien');
 		$keluhan=$this->input->post('keluhan');
@@ -50,8 +59,10 @@ class Registrasi_m extends MY_Model {
 
 		if($edit==''){
 			$data=$this->getKodeRegistrasi();
+			$dataa=$this->getKodePeriksa();
 			$arr=array(
 				'kode_registrasi'=>$data['kode_registrasi'],
+				'id_periksa'=>$dataa['id_periksa'],
 				'kode_pasien'=>$kode_pasien,
 				'keluhan'=>$keluhan,
 				'tgl_periksa'=>date('Y-m-d H:i:s'), 

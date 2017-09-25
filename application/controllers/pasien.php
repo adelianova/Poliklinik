@@ -40,7 +40,10 @@ class Pasien extends MY_Controller {
         $data=$this->pasien_m->getStatus();
 		echo json_encode($data);
     }
-	
+	 public function getPenanggung(){
+        $data=$this->pasien_m->getPenanggung();
+		echo json_encode($data);
+    }
 
 	
 	

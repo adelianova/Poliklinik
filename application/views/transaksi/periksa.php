@@ -32,6 +32,18 @@
         	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onClick="removePeriksa()">Remove</a>&nbsp;
 				 
 			</div>
+			<div style="display:inline;padding-top:-10px;">
+				<tr>
+					<td >
+					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
+					</td>
+					<td >
+					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
+					</td>
+					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
+				</tr>
+				</tr>
+			</div>
 			<div style="display:inline;float:right;padding-top:-10px;">
 				<input id="speriksa" class="easyui-searchbox" style="width:250px" 
 				searcher="cariperiksa" prompt="Ketik disini" menu="#muser"></input>  
@@ -158,4 +170,38 @@
 			$.messager.alert('INFO','Pilih satu record dulu','info');
 		}
 	}
+	 function tampilkan() {
+		var tgl_awal = $('#tgl_awal').datebox('getValue');
+		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
+
+		$('#datagrid-m_periksa').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
+	}
+
+	$('#tgl_awal').datebox({
+		dateFormat:'yy-MM-dd',
+		formatter:function(date){
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+
+			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
+		},
+		parser:function(s){
+
+		}
+	});
+
+	$('#tgl_akhir').datebox({
+		dateFormat:'yy-MM-dd',
+		formatter:function(date){
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate	();
+
+			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
+		},
+		parser:function(s){
+			
+		}
+	});
 </script>

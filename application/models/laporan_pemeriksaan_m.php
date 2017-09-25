@@ -26,11 +26,12 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$this->db->where("id_status_registrasi = 'selesai'");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}else if($tgl_awal<>''&&$tgl_akhir<>''){
+			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
+		}else {
+			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
 		}
 
-		if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
-		}
 
 
 		$this->db->order_by($sort,$order);
@@ -58,7 +59,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$data = $this->db->query("SELECT a.id_periksa,a.kode_dokter,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan, b.nama_dokter, c.nama FROM tbl_periksa a
 		JOIN TBL_M_DOKTER b ON a.kode_dokter = b.kode_dokter
 		JOIN TBL_M_PASIEN C ON a.kode_pasien = c.kode_pasien
-		WHERE id_status_registrasi = 'selesai'
+		where convert(varchar(10),a.tgl_periksa,112) = '".date('Ymd')."' and id_status_registrasi = 'selesai'
 		ORDER BY tgl_periksa DESC");
 		return $data->result();
 	}

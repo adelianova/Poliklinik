@@ -10,6 +10,7 @@
 				<tr>
 					<th field="id_kontrak" width="50" hidden="true">ID KONTRAK</th>
 					<th field="kode_dokter" width="100" sortable="true">KODE DOKTER</th>
+					<th field="nama_dokter" width="100" sortable="true">NAMA DOKTER</th>
 					<th field="nomor" width="100" sortable="true">NOMOR</th>
 					<th field="mulai_kontrak" width="100" sortable="true">MULAI KONTRAK</th>
 					<th field="selesai_kontrak" width="100" sortable="true">SELESAI KONTRAK</th>

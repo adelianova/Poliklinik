@@ -33,6 +33,17 @@
 							<input name='email' id='email' class='easyui-validatebox textbox' required="true"  style="padding:3px;width:90%"/>
 						</td>
 					</tr>
+					<tr>
+						<td class='label_form'>Penanggung Jawab</td>
+						<td>
+						<select name='penanggung_jawab' id='penanggung_jawab' required="true" class="easyui-combobox" style="width:100%" data-options="
+			                    url:'<?php echo base_url();?>index.php/pasien/getPenanggung',
+			                    valueField:'nip',
+                                textField:'full_name',
+			                ">
+			            </select>
+						</td>
+					</tr>
                     <tr>
 						<td class='label_form'>Status Pasien</td>
                         <td>

@@ -27,11 +27,12 @@ class Laporan_retur_m extends MY_Model {
 		$this->db->join("TBL_RETUR d","c.id_retur = d.id_retur");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}else if($tgl_awal<>''&&$tgl_akhir<>''){
+			$this->db->where("tgl between '".$tgl_awal."' AND '".$tgl_akhir."'");
+		}else {
+			$this->db->where("convert(varchar(10),d.tgl,112)= '".date('Ymd')."'");
 		}
 
-		if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("tgl between '".$tgl_awal."' AND '".$tgl_akhir."'");
-		}
 
 
 		$this->db->order_by($sort,$order);
@@ -53,7 +54,7 @@ class Laporan_retur_m extends MY_Model {
 		JOIN TBL_DETAIL_STOCK b ON a.id_obat = b.id_obat
 		JOIN TBL_DETAIL_RETUR C ON b.id_dtl_stock = c.id_dtl_stock
 		JOIN TBL_RETUR d ON c.id_retur = d.id_retur
-		WHERE 1 = 1 $tgl
+		where convert(varchar(10),d.tgl,112) = '".date('Ymd')."' and 1 = 1 $tgl
 		ORDER BY tgl DESC");
 		return $data->result();
 	}
