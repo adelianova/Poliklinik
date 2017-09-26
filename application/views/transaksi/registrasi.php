@@ -32,6 +32,10 @@
 					<div name='kode_registrasi'>KODE REGISTRASI</div>
 					<div name='kode_pasien'>KODE PASIEN</div>
 					<div name='status'>STATUS</div>
+<<<<<<< HEAD
+=======
+					<div name='tgl_periksa'>TANGGAL</div>
+>>>>>>> parent of de5ff20... revisiii
 				</div>  
 			</div>
 		</div>

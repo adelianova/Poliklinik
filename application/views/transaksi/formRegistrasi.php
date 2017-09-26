@@ -39,6 +39,7 @@
 						</td>
 					</tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 					<tr>
 						<td class='label_form'>NOMER ANTRI</td>
@@ -48,6 +49,8 @@
 					</tr>
 
 
+=======
+>>>>>>> parent of de5ff20... revisiii
 =======
 >>>>>>> parent of de5ff20... revisiii
 			</table>

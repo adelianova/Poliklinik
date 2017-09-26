@@ -32,6 +32,10 @@ class Masuk_m extends MY_Model {
 		}
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of de5ff20... revisiii
 		$this->db->order_by($sort,$order);
 		
 		if($jenis=='total'){
