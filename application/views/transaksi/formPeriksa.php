@@ -62,11 +62,6 @@
                                         
                                         "/>
 						</td>
-					</tr><tr>
-						<td class='label_form'>Tanggal Periksa</td>
-						<td >
-							<input name='tgl_periksa' id='tgl_periksa' class='easyui-datetimebox' style="padding:3px;width:90%"/>	
-						</td>
 					</tr>
 					<tr>
 						<td class='label_form'>Diagnosa</td>

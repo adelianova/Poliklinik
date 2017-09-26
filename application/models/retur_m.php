@@ -21,6 +21,8 @@ class Retur_m extends MY_Model {
 		$this->db->from("tbl_retur a");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}else {
+			$this->db->where("convert(varchar(10),a.tgl,112)= '".date('Ymd')."'");
 		}
 		
 		$this->db->order_by($sort,$order);

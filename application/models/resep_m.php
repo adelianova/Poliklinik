@@ -15,16 +15,23 @@ class Resep_m extends MY_Model {
 		$this->offset = $offset;
 		$sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_resep';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
+        $tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
+		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select("a.id_resep,a.id_periksa,a.kode_dokter, b.nama_dokter, d.NAMA");
+    	$this->db->select("a.id_resep,a.id_periksa,a.kode_dokter, b.nama_dokter,d.NAMA");
 		$this->db->from("tbl_resep a");
 		$this->db->join("tbl_m_dokter b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_PERIKSA c","a.id_periksa = c.id_periksa");
 		$this->db->join("TBL_M_PASIEN d","c.kode_pasien = d.kode_pasien");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}else if($tgl_awal<>''&&$tgl_akhir<>''){
+			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
+		}
+		else {
+			$this->db->where("convert(varchar(10),c.tgl_periksa,112)= '".date('Ymd')."'");
 		}
 		
 		$this->db->order_by($sort,$order);
