@@ -42,6 +42,7 @@ class Keluar extends MY_Controller {
 			<td width="10%" align="center"><strong>Nama Obat</strong></td>
 			<td width="10%" align="center"><strong>Satuan</strong></td>
 			<td width="8%" align="center"><strong>Jumlah</strong></td>
+			<td width="10%" align="center"><strong>ID Periksa</strong></td>
 			<td width="10%" align="center"><strong>Tanggal Keluar</strong></td>
 		  </tr>';
 
@@ -54,6 +55,7 @@ class Keluar extends MY_Controller {
 			<td>'.$row->nama.'</td>
 			<td>'.$row->satuan.'</td>
 			<td>'.$row->qty.'</td>
+			<td>'.$row->id_periksa.'</td>
 			<td>'.$row->tgl_periksa.'</td>
 		</tr>';
 		$no++;

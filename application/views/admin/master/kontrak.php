@@ -32,7 +32,7 @@
 				searcher="carikontrak" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
 					<div name='id_kontrak'>ID_KONTRAK</div>
-					<div name='kode_dokter'>KODE DOKTER</div>
+					<div name='nama_dokter'>NAMA DOKTER</div>
 					<div name='mulai_kontrak'>MULAI KONTRAK</div>
 				</div>  
 			</div>

@@ -23,7 +23,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$this->db->from("tbl_periksa a");
 		$this->db->join("tbl_m_dokter b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
-		$this->db->where("id_status_registrasi = 3");
+		$this->db->where("id_status_registrasi = 'Selesai'");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
