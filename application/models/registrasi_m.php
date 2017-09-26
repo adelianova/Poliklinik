@@ -25,15 +25,15 @@ class Registrasi_m extends MY_Model {
 		$this->db->join("TBL_M_STATUS_REGISTRASI b","a.id_status_registrasi = b.id_status_registrasi");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
 		if($searchKey<>''){
-		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		$this->db->where($searchKey." LIKE '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
 			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
 		}
 		else {
 			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
 		}
-
 		$this->db->order_by($sort,$order);
+		
 		if($jenis=='total'){
 		$hasil=$this->db->get ('')->num_rows();
 		}else{
