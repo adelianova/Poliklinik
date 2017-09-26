@@ -30,16 +30,25 @@
                         <td>
 							<input name='id_status_registrasi' id='id_status_registrasi' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
                                         url:'<?php echo base_url();?>index.php/registrasi/getStatus',
-                                        valueField:'id_status_registrasi',
-                                        textField:'id_status_registrasi',
+                                        valueField:id_status_registrasi,
+                                        textField:'status',
                                         onLoadSuccess : function(){
-                                        $(this).combobox('select','Antri');
-                                        }
+						                                        $(this).combobox('select','Antri');
+						                                        }
                                         "/>
 						</td>
 					</tr>
+
+					<tr>
+						<td class='label_form'>NOMER ANTRI</td>
+						<td>
+							<input type="number" readonly="true" id="antri" value="<?php echo $antrian ?>" name="antri" >
+						</td>
+					</tr>
+
 			</table>
 
+			
 		</form>
 	
 	

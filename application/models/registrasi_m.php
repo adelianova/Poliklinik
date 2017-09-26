@@ -17,15 +17,14 @@ class Registrasi_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		$this->db->select("a.kode_registrasi,a.kode_pasien,a.keluhan,a.id_status_registrasi,b.nama");
+		$this->db->select("a.kode_registrasi,a.kode_pasien,a.keluhan, b.status,c.nama");
 		$this->db->from("tbl_periksa a");
-		$this->db->join("TBL_M_PASIEN b","a.kode_pasien = b.kode_pasien");
+		$this->db->join("TBL_M_STATUS_REGISTRASI b","a.id_status_registrasi = b.id_status_registrasi");
+		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
-		else{
-			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
-		}
+		
 		$this->db->order_by($sort,$order);
 		
 		if($jenis=='total'){
@@ -35,6 +34,17 @@ class Registrasi_m extends MY_Model {
 		}
 		
 	    return $hasil;	
+	}
+
+	function getAntrian(){
+		$today = date("Y-m-d");
+		//return $this->db->query("select * from TBL_PERIKSA where TGL_PERIKSA LIKE '%2017-09-25%'");
+		$this->db->select('*');
+        $this->db->from('tbl_periksa');
+		$this->db->where("TGL_PERIKSA",$today); 
+        $query =$this->db->get();
+        $result = intval($query->num_rows())+1;
+        return $result;
 	}
 	
 	function getKodeRegistrasi(){
@@ -54,7 +64,6 @@ class Registrasi_m extends MY_Model {
 				'kode_registrasi'=>$data['kode_registrasi'],
 				'kode_pasien'=>$kode_pasien,
 				'keluhan'=>$keluhan,
-				'tgl_periksa'=>date('Y-m-d H:i:s'), 
 				'id_status_registrasi'=>$id_status_registrasi
 			);
 			

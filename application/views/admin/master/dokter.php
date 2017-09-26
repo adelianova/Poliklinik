@@ -48,9 +48,9 @@
 <script>
 	
 	
-	function caridokter(value,name){
+	function caridokter(value,nama){
 		
-		$('#datagrid-m_dokter').datagrid('load', { "searchKey": name, "searchValue": value });
+		$('#datagrid-m_dokter').datagrid('load', { "searchKey": nama, "searchValue": value });
 	}
 	
 	function addDokter(){

@@ -12,7 +12,7 @@
 					<th field="kode_pasien" width="100" sortable="true">KODE PASIEN</th>	
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
-					<th field="id_status_registrasi" width="150" sortable="true">STATUS</th>
+					<th field="status" width="150" sortable="true">STATUS</th>
 					
 				</tr>
 			</thead>
@@ -65,7 +65,7 @@
 			onLoad:function(){
 				$('#form_registrasi').form('clear');
 				$('#form_registrasi #edit').val('');
-				
+
 						
 
 			}
