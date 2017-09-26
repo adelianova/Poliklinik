@@ -11,15 +11,9 @@
 					<tr>
 						<td class='label_form'>Kode Dokter</td>
 						<td>
-						<select name='kode_dokter' id='kode_dokter' required="true" class="easyui-combobox" style="width:100%" data-options="
-			                    url:'<?php echo base_url();?>index.php/kontrak/getKodeDokter',
-			                    valueField:'kode_dokter',
-                                textField:'nama_dokter',
-			                ">
-			            </select>
+							<input name='kode_dokter' id='kode_dokter' class='easyui-validatebox textbox' required="true"  style="padding:3px;width:90%"/>
 						</td>
 					</tr>
-
 					<tr>
 						<td class='label_form'>Nomor</td>
 						<td >

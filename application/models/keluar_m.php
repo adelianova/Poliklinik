@@ -19,19 +19,18 @@ class Keluar_m extends MY_Model {
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
 		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
-		$this->db->select("a.kode_obat,a.nama,a.satuan,b.qty,c.id_resep,convert(varchar(10),d.tgl_periksa,105) as tgl_periksa,d.id_periksa");
+		$this->db->select("a.kode_obat,a.nama,a.satuan,b.qty,c.id_resep,convert(varchar(10),d.tgl_periksa,105) as tgl_periksa");
 		$this->db->from("TBL_M_OBAT a");
 		$this->db->join("TBL_DETAIL_RESEP b","a.kode_obat = b.kode_obat ");
 		$this->db->join("TBL_RESEP c","b.id_resep = c.id_resep");
 		$this->db->join("TBL_PERIKSA d","c.id_periksa = d.id_periksa");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
-		}else if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
-		}else {
-			$this->db->where("convert(varchar(10),d.tgl_periksa,112)= '".date('Ymd')."'");
 		}
 
+		if($tgl_awal<>''&&$tgl_akhir<>''){
+			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
+		}
 
 
 		$this->db->order_by($sort,$order);
@@ -49,11 +48,11 @@ class Keluar_m extends MY_Model {
 		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
 		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?"":" and CONVERT(varchar(10), a.tgl_periksa, 105) between '$tglMulai' and '$tglSelesai' ";
 
-		$data = $this->db->query("SELECT a.kode_obat,a.nama,a.satuan,b.qty,c.id_resep,convert(varchar(10),d.tgl_periksa,105) as tgl_periksa,d.id_periksa FROM TBL_M_OBAT a
+		$data = $this->db->query("SELECT a.kode_obat,a.nama,a.satuan,b.qty,c.id_resep,convert(varchar(10),d.tgl_periksa,105) as tgl_periksa FROM TBL_M_OBAT a
 		JOIN TBL_DETAIL_RESEP b ON a.kode_obat = b.kode_obat
 		JOIN TBL_RESEP C ON b.id_resep = c.id_resep
 		JOIN TBL_PERIKSA d ON c.id_periksa = d.id_periksa
-		where convert(varchar(10),d.tgl_periksa,112) = '".date('Ymd')."' and 1 = 1 $tgl
+		WHERE 1 = 1 $tgl
 		ORDER BY tgl_periksa DESC");
 		return $data->result();
 	}

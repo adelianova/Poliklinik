@@ -11,7 +11,6 @@
 					<th field="kode_registrasi" width="100" sortable="true">KODE REGISTRASI</th>
 					<th field="kode_pasien" width="100" sortable="true">KODE PASIEN</th>	
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
-					<th field="tgl_periksa" width="100" sortable="true">TANGGAL</th>
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
 					<th field="status" width="150" sortable="true">STATUS</th>
 					
@@ -20,24 +19,11 @@
 		</table>
 		
 		<div id="toolbar" style='padding:5px;height:25px'>
-			
 			<div style="display:inline;">
 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onClick="addRegistrasi()">Add</a>&nbsp;
 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onClick="editRegistrasi()">Edit</a>&nbsp;
         	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onClick="removeRegistrasi()">Remove</a>&nbsp;
 				 
-			</div>
-			<div style="display:inline;padding-top:-10px;">
-				<tr>
-					<td >
-					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
-					</td>
-					<td >
-					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
-					</td>
-					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
-				</tr>
-				</tr>
 			</div>
 			<div style="display:inline;float:right;padding-top:-10px;">
 				<input id="sregistrasi" class="easyui-searchbox" style="width:250px" 
@@ -46,7 +32,6 @@
 					<div name='kode_registrasi'>KODE REGISTRASI</div>
 					<div name='kode_pasien'>KODE PASIEN</div>
 					<div name='status'>STATUS</div>
-					<div name='tgl_periksa'>TANGGAL</div>
 				</div>  
 			</div>
 		</div>
@@ -170,38 +155,5 @@
 			$.messager.alert('INFO','Pilih satu record dulu','info');
 		}
 	}
-    function tampilkan() {
-		var tgl_awal = $('#tgl_awal').datebox('getValue');
-		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
-
-		$('#datagrid-m_registrasi').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
-	}
-
-	$('#tgl_awal').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-
-		}
-	});
-
-	$('#tgl_akhir').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate	();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-			
-		}
-	});
+    
 </script>

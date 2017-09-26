@@ -43,7 +43,7 @@ class Laporan_pemeriksaan extends MY_Controller {
 			<td width="10%" align="center"><strong>Tanggal Periksa</strong></td>
 			<td width="8%" align="center"><strong>Keluhan</strong></td>
 			<td width="10%" align="center"><strong>Kode Dokter</strong></td>
-			<td width="10%" align="center"><strong>Nama Dokter</strong></td>
+			<td width="10%" align="center"><strong>Nama DOkter</strong></td>
 		  </tr>';
 
 		$no=1;

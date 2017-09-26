@@ -11,8 +11,7 @@
 					<th field="nama" width="100" sortable="true">NAMA OBAT</th>		
 					<th field="satuan" width="100" sortable="true">SATUAN</th>
 					<th field="qty" width="100" sortable="true">QUANTITY</th>
-					<th field="id_periksa" width="100" sortable="true">ID Periksa</th>
-					<th field="tgl_periksa" width="100" sortable="true">TANGGAL </th>
+					<th field="tgl_periksa" width="100" sortable="true">TANGGAL KELUAR</th>
 					
 				</tr>
 			</thead>

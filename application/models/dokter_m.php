@@ -60,7 +60,9 @@ class Dokter_m extends MY_Model {
 				'spesialisasi'=>$spesialisasi,
 				'keterangan'=>$keterangan
 			);
+			
 			$r=$this->db->insert('tbl_m_dokter',$arr);
+			
 		}else{
 			$arr=array(
 				'nama_dokter'=>$nama,

@@ -14,7 +14,7 @@
 					<th field="telp" width="100" sortable="true">TELP</th>
 					<th field="email" width="100" hidden="true">EMAIL</th>		
 					<th field="penanggung_jawab" width="100" sortable="true">PENANGGUNG JAWAB</th>
-					<th field="status_pasien" width="150" sortable="true">STATUS PASIEN</th>
+					<th field="id_status_pasien" width="150" sortable="true">STATUS PASIEN</th>
 					
 				</tr>
 			</thead>

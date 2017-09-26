@@ -18,9 +18,8 @@ class Kontrak_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select(" a.id_kontrak,a.kode_dokter,a.nomor,convert(varchar(10),a.mulai_kontrak,105) as mulai_kontrak,convert(varchar(10),a.selesai_kontrak,105) as selesai_kontrak,a.keterangan,b.nama_dokter ");
-		$this->db->from("tbl_kontrak_dokter a");
-		$this->db->join("TBL_M_DOKTER b","a.kode_dokter = b.kode_dokter");
+    	$this->db->select(" id_kontrak,kode_dokter,nomor,mulai_kontrak,selesai_kontrak,keterangan ");
+		$this->db->from("tbl_kontrak_dokter");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
@@ -107,9 +106,7 @@ class Kontrak_m extends MY_Model {
 		return $result;
 	}
 	
-		function getKodeDokter(){
-		 return $this->db->query("select kode_dokter,nama_dokter from tbl_m_dokter")
-		 ->result_array();
-	}
+	
+	
 	
 }
