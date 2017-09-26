@@ -41,8 +41,6 @@ class Registrasi_m extends MY_Model {
 		}
 	    return $hasil;	
 	}
-
-<<<<<<< HEAD
 	function getAntrian(){
 		$today = date("Y-m-d");
 
@@ -53,10 +51,7 @@ class Registrasi_m extends MY_Model {
 		$query = $this->db->get();
 		$result = intval($query->num_rows())+1;
 		return $result;
-=======
-	function getAtrian(){
-		return $this->db->query("select count(TGL_PERIKSA,112)= '".date('Ymd')."' as Antri from TBL_PERIKSA")->row_array();
->>>>>>> parent of de5ff20... revisiii
+
 	}
 	
 	function getKodeRegistrasi(){
