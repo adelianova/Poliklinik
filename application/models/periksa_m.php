@@ -51,17 +51,16 @@ class Periksa_m extends MY_Model {
 		$kode_pasien=$this->input->post('kode_pasien');
 		$id_penyakit=$this->input->post('id_penyakit');
 		$kode_penyakit=$this->input->post('kode_penyakit');
-		$tgl_periksa=$this->input->post('tgl_periksa');
 		$keluhan=$this->input->post('keluhan');
 		$diagnosa=$this->input->post('diagnosa');
-		
+		$id_status_registrasi=$this->input->post('id_status_registrasi');
 		if($edit==''){
 			$arr=array(
 				'kode_dokter'=>$kode_dokter,
 				'kode_pasien'=>$kode_pasien,
 				'id_penyakit'=>$id_penyakit,
 				'kode_penyakit'=>$kode_penyakit,
-				'tgl_periksa'=>date('Y-m-d',strtotime($tgl_periksa)),
+				'tgl_periksa'=>date('Y-m-d H:i:s'), 
 				'diagnosa'=>$diagnosa,
 				'id_status_registrasi'=>$id_status_registrasi
 			);
@@ -74,7 +73,6 @@ class Periksa_m extends MY_Model {
 				'kode_pasien'=>$kode_pasien,
 				'id_penyakit'=>$id_penyakit,
 				'kode_penyakit'=>$kode_penyakit,
-				'tgl_periksa'=>date('Y-m-d',strtotime($tgl_periksa)),
 				'diagnosa'=>$diagnosa,
 				'id_status_registrasi'=>$id_status_registrasi
 			);
