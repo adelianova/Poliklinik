@@ -62,7 +62,6 @@ class Periksa_m extends MY_Model {
 				'kode_pasien'=>$kode_pasien,
 				'id_penyakit'=>$id_penyakit,
 				'kode_penyakit'=>$kode_penyakit,
-				'tgl_periksa'=>date('Y-m-d',strtotime($tgl_periksa)),
 				'diagnosa'=>$diagnosa,
 				'id_status_registrasi'=>$id_status_registrasi
 			);
@@ -75,7 +74,6 @@ class Periksa_m extends MY_Model {
 				'kode_pasien'=>$kode_pasien,
 				'id_penyakit'=>$id_penyakit,
 				'kode_penyakit'=>$kode_penyakit,
-				'tgl_periksa'=>date('Y-m-d',strtotime($tgl_periksa)),
 				'diagnosa'=>$diagnosa,
 				'id_status_registrasi'=>$id_status_registrasi
 			);

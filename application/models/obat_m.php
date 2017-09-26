@@ -13,7 +13,7 @@ class Obat_m extends MY_Model {
 		$offset = ($page-1)*$rows;
 		$this->limit = $rows;
 		$this->offset = $offset;
-        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'kode_obat';
+        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_obat';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
@@ -35,7 +35,6 @@ class Obat_m extends MY_Model {
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
-		
 		$this->db->order_by($sort,$order);
 		
 		if($jenis=='total'){

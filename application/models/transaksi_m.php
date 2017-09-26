@@ -23,6 +23,8 @@ class Transaksi_m extends MY_Model {
 		$this->db->join("TBL_M_TRANSAKSI c","a.id_transaksi = c.id_transaksi");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}else {
+			$this->db->where("convert(varchar(10),a.tgl,112)= '".date('Ymd')."'");
 		}
 		
 		$this->db->order_by($sort,$order);
