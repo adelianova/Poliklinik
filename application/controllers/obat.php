@@ -22,6 +22,7 @@ class Obat extends MY_Controller {
 	public function getListObat(){
 		$data['rows']=$this->obat_m->getListObat('rows');
 		$data['total']=$this->obat_m->getListObat('total');
+		//print_r($data);exit;
 		echo json_encode($data);
 		
 	}

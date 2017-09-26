@@ -17,26 +17,39 @@ class Obat_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		return $this->db->query("
-		    select z.id_obat,z.kode_obat,z.nama,z.satuan,(z.stok-z.resep) as sisa from(
-		    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
-		    (select sum(qty) from TBL_DETAIL_STOCK where
-		    id_obat=a.id_obat),0) as stok,
-		    isnull(
-		    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
-		    on x.KODE_OBAT=y.KODE_OBAT where
-		    y.id_obat=a.id_obat),0) as resep
-		    from TBL_M_OBAT a
-		    )z")->result_array();
+		$subQuery="select 
+			z.id_obat,
+			z.kode_obat,
+			z.nama,
+			z.satuan,
+			(z.stok-z.resep) as sisa 
+			from(
+			    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
+			    (select sum(qty) from TBL_DETAIL_STOCK where
+			    id_obat=a.id_obat),0) as stok,
+			    isnull(
+			    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
+			    on x.KODE_OBAT=y.KODE_OBAT where
+			    y.id_obat=a.id_obat),0) as resep
+			    from TBL_M_OBAT a
+		    )z";
+		$this->db->select("
+			a.id_obat,
+			a.kode_obat,
+			a.nama,
+			a.satuan,
+			a.sisa ");
+		$this->db->from("($subQuery) a");
+
 		if($searchKey<>''){
-		$this->db->where($searchKey." like '%".$searchValue."%'");	
+			$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
-		$this->db->order_by($sort,$order);
+			$this->db->order_by($sort,$order);
 		
 		if($jenis=='total'){
-		$hasil=$this->db->get ('')->num_rows();
+			$hasil=$this->db->get ('')->num_rows();
 		}else{
-		$hasil=$this->db->get ('',$this->limit, $this->offset)->result_array();
+			$hasil=$this->db->get ('',$this->limit, $this->offset)->result_array();
 		}
 		
 	    return $hasil;	
