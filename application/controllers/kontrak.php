@@ -35,6 +35,9 @@ class Kontrak extends MY_Controller {
 		$data=$this->kontrak_m->hapusKontrak();
 		echo json_encode($data);
 	}
-	
+	 public function getKodeDokter(){
+        $data=$this->kontrak_m->getKodeDokter();
+		echo json_encode($data);
+    }
     
 }

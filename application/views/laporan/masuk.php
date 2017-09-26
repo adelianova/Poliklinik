@@ -7,7 +7,7 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="ID_STOCK" width="100" hidden="true" sortable="true">ID STOCK</th>
+					<th field="ID_STOCK" width="100" hidden="true" sortable="true" hidden="true">ID STOCK</th>
 					<th field="TGL" width="100" sortable="true">TANGGAL MASUK</th>
 					<th field="KODE_OBAT" width="100" sortable="true">KODE OBAT</th>
 					<th field="NAMA" width="100" sortable="true">NAMA OBAT</th>		

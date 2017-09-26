@@ -50,7 +50,11 @@
 					closed="true" iconCls="icon-user">
 					</div>
 					<table id="datagrid-m_ini" title="Resep Obat" toolbar="#tb" iconCls="icon-save" class="easyui-datagrid scrollbarx" 
+<<<<<<< HEAD
 					style="width:100%;height:220px;" 
+=======
+					style="width:100%;height:200px;" 
+>>>>>>> de5ff204c2924a947884ec8d32a117d42c1fd952
 					data-options="
 					url:'<?php echo base_url().'index.php/resep/kodeResep/';?>'
 					">

@@ -25,12 +25,11 @@ class Masuk_m extends MY_Model {
 		$this->db->join("TBL_M_OBAT c","b.ID_OBAT = c.ID_OBAT");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
-		}
-
-		if($tgl_awal<>''&&$tgl_akhir<>''){
+		}else if($tgl_awal<>''&&$tgl_akhir<>''){
 			$this->db->where("TGL between '".$tgl_awal."' AND '".$tgl_akhir."'");
+		}else {
+			$this->db->where("convert(varchar(10),a.TGL,112)= '".date('Ymd')."'");
 		}
-
 
 		$this->db->order_by($sort,$order);
 		
@@ -50,7 +49,7 @@ class Masuk_m extends MY_Model {
 		$data = $this->db->query("SELECT a.ID_STOCK,convert(varchar(10),a.TGL,105) as TGL,c.KODE_OBAT,c.NAMA,c.SATUAN,b.HARGA_SATUAN,b.QTY,b.TOTAL FROM TBL_STOCK a
 		JOIN TBL_DETAIL_STOCK b ON a.ID_STOCK = b.ID_STOCK
 		JOIN TBL_M_OBAT C ON b.ID_OBAT = c.ID_OBAT
-		WHERE 1 = 1 $tgl
+		where convert(varchar(10),a.TGL,112) = '".date('Ymd')."' and 1 = 1 $tgl
 		ORDER BY TGL DESC");
 		return $data->result();
 	}

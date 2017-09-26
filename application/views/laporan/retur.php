@@ -1,19 +1,21 @@
-	<table id="datagrid-m_keluar" title="" class="easyui-datagrid scrollbarx" 
+	<table id="datagrid-m_retur" title="" class="easyui-datagrid scrollbarx" 
 		style="width:auto; height: auto;" 
 		data-options="
-		url:'<?php echo base_url().'index.php/keluar/getListKeluar';?>',
+		url:'<?php echo base_url().'index.php/laporan_retur/getListLaporanRetur';?>',
 		toolbar:'#toolbar1',rownumbers:true,pagination:true,border:false,
 		striped:true,fit:true,fitColumns:true,
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
+					<th field="id_retur" width="100" sortable="true" hidden="true">ID RETUR</th>
+					<th field="no_retur" width="100" sortable="true">NO RETUR</th>
+					<th field="id_dtl_stock" width="100" sortable="true">ID DETAIL STOCK</th>
+					<th field="petugas" width="100" sortable="true">PETUGAS</th>
 					<th field="kode_obat" width="100" sortable="true">KODE OBAT</th>
-					<th field="nama" width="100" sortable="true">NAMA OBAT</th>		
-					<th field="satuan" width="100" sortable="true">SATUAN</th>
+					<th field="nama" width="100" sortable="true">NAMA OBAT</th>	
 					<th field="qty" width="100" sortable="true">QUANTITY</th>
-					<th field="id_periksa" width="100" sortable="true">ID Periksa</th>
-					<th field="tgl_periksa" width="100" sortable="true">TANGGAL </th>
-					
+					<th field="tgl" width="100" sortable="true">TANGGAL RETUR</th>
+					<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
 				</tr>
 			</thead>
 	</table>
@@ -33,27 +35,27 @@
 				</tr>
 			</div>
 			<div style="display:inline;float:right;padding-top:-10px;">
-				<input id="skeluar" class="easyui-searchbox" style="width:250px" 
-				searcher="carikeluar" prompt="Ketik disini" menu="#muser"></input>  
+				<input id="sretur" class="easyui-searchbox" style="width:250px" 
+				searcher="cariretur" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
 					<div name='nama'>NAMA OBAT</div>
-					<div name='tgl_periksa'>TANGGAL KELUAR</div>
+					<div name='tgl'>TANGGAL RETUR</div>
 				</div>  
 			</div>
 		</div>
 <script>
 	
 	
-	function carikeluar(value,name){
+	function cariretur(value,name){
 		
-		$('#datagrid-m_keluar').datagrid('load', { "searchKey": name, "searchValue": value });
+		$('#datagrid-m_retur').datagrid('load', { "searchKey": name, "searchValue": value });
 	}
 
 	function tampilkan() {
 		var tgl_awal = $('#tgl_awal').datebox('getValue');
 		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
 
-		$('#datagrid-m_keluar').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
+		$('#datagrid-m_retur').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
 	}
 
 	$('#tgl_awal').datebox({
@@ -86,7 +88,7 @@
 	function cetakLaporan(){
         var tgl_awal = $('#tgl_awal').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
         var tgl_akhir = $('#tgl_akhir').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
-        PopupCenter("http://localhost/poliklinik/index.php/keluar/cetakLaporan/"+tgl_awal+"/"+tgl_akhir,"LAPORAN OBAT KELUAR","800","400");
+        PopupCenter("http://localhost/poliklinik/index.php/laporan_retur/cetakLaporan/"+tgl_awal+"/"+tgl_akhir,"LAPORAN RETUR","800","400");
     }
 	function PopupCenter(url, title, w, h) {
         // Fixes dual-screen position                         Most browsers      Firefox

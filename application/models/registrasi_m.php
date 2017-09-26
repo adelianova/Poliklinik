@@ -18,41 +18,51 @@ class Registrasi_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$this->db->select("a.kode_registrasi,a.kode_pasien,a.keluhan, b.status,c.nama");
+		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
+		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
+		$this->db->select("a.kode_registrasi,a.kode_pasien,a.tgl_periksa,a.keluhan,a.id_status_registrasi,b.nama");
 		$this->db->from("tbl_periksa a");
 		$this->db->join("TBL_M_STATUS_REGISTRASI b","a.id_status_registrasi = b.id_status_registrasi");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}else if($tgl_awal<>''&&$tgl_akhir<>''){
+			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
 		}
-		
+		else {
+			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
+		}
+
 		$this->db->order_by($sort,$order);
-		
 		if($jenis=='total'){
 		$hasil=$this->db->get ('')->num_rows();
 		}else{
 		$hasil=$this->db->get ('',$this->limit, $this->offset)->result_array();
 		}
-		
 	    return $hasil;	
 	}
 
 	function getAntrian(){
 		$today = date("Y-m-d");
+
 		//return $this->db->query("select * from TBL_PERIKSA where TGL_PERIKSA LIKE '%2017-09-25%'");
 		$this->db->select('*');
-        $this->db->from('tbl_periksa');
-		$this->db->where("TGL_PERIKSA",$today); 
-        $query =$this->db->get();
-        $result = intval($query->num_rows())+1;
-        return $result;
+		$this->db->from('TBL_PERIKSA');
+		$this->db->where("TGL_PERIKSA",$today);
+		$query = $this->db->get();
+		$result = intval($query->num_rows())+1;
+		return $result;
 	}
 	
 	function getKodeRegistrasi(){
 		return $this->db->query("select dbo.getIDRegistrasi() as kode_registrasi")->row_array();
 	}
-	
+	function getKodePeriksa(){
+		return $this->db->query("select dbo.getIDPeriksa() as id_periksa")->row_array();
+	}
 	function simpanRegistrasi(){
 		$edit=$this->input->post('edit');
+		$id_periksa=$this->input->post('id_periksa');
 		$kode_registrasi=$this->input->post('kode_registrasi');
 		$kode_pasien=$this->input->post('kode_pasien');
 		$keluhan=$this->input->post('keluhan');
@@ -60,8 +70,10 @@ class Registrasi_m extends MY_Model {
 
 		if($edit==''){
 			$data=$this->getKodeRegistrasi();
+			$dataa=$this->getKodePeriksa();
 			$arr=array(
 				'kode_registrasi'=>$data['kode_registrasi'],
+				'id_periksa'=>$dataa['id_periksa'],
 				'kode_pasien'=>$kode_pasien,
 				'keluhan'=>$keluhan,
 				'id_status_registrasi'=>$id_status_registrasi

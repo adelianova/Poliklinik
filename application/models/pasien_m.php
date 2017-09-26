@@ -18,8 +18,9 @@ class Pasien_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select(" kode_pasien,nama,alamat,telp,email,penanggung_jawab,id_status_pasien ");
-		$this->db->from("TBL_M_PASIEN");
+    	$this->db->select(" a.kode_pasien,a.nama,a.alamat,a.telp,a.email,a.penanggung_jawab,a.id_status_pasien, b.status_pasien");
+		$this->db->from("TBL_M_PASIEN a");
+		$this->db->join("TBL_M_STATUS_PASIEN b","a.id_status_pasien = b.id_status_pasien");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
@@ -116,6 +117,9 @@ class Pasien_m extends MY_Model {
 	function getStatus(){
         return $this->db->query(" select id_status_pasien, status_pasien FROM TBL_M_STATUS_PASIEN")->result_array();
     }
-	
+	function getPenanggung(){
+		 return $this->db->query("select full_name,nip from v_employee_all")
+		 ->result_array();
+	}
 	
 }
