@@ -5,14 +5,18 @@
 					<tr>
 						<td class="label_form">NOMER ANTRI</td>
 						<td>
-							<input readonly="true" type="number" name="antri" id="antri" value="<?php echo $antrian; ?>">
+							<input readonly="true" type="number" name="antrian" id="antrian" class="easyui-validatebox textbox" style="padding:3px;width:90%" value="<?php echo $antrian; ?>">
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Kode Registrasi</td>
 						<td>
 							<input name='kode_registrasi' id='kode_registrasi' readonly='true' 
-							class='easyui-validatebox textbox' style='padding:3px;width:90%' type="text" value='<?php echo $data['kode_registrasi'];?>'/>	
+							class='easyui-validatebox textbox' style='padding:3px;width:90%' type="hidden" value='<?php echo $data['kode_registrasi'];?>'/>	
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input name='tgl_registrasi' id='tgl_registrasi' readonly='true' class='easyui-validatebox textbox' type="hidden" style='padding:3px;width:90%'/>	
 						</td>
 					</tr>
 					<tr>
@@ -45,15 +49,6 @@
                                         "/>
 						</td>
 					</tr>
-
-					<tr>
-						<td class='label_form'>NOMER ANTRI</td>
-						<td>
-							<input type="number" readonly="true" id="antri" value="<?php echo $antrian ?>" name="antri" >
-						</td>
-					</tr>
-
-
 			</table>
 
 			

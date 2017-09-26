@@ -2,9 +2,8 @@
 				<input type='hidden' name='edit' id='edit' value=''/>
 				<table width='350px' class='dialog-form' >
 					<tr>
-						<td class='label_form'>Kode Pasien</td>
 						<td>
-							<input name='kode_pasien' id='kode_pasien' readonly='true' 
+							<input name='kode_pasien' id='kode_pasien' type="hidden" readonly='true' 
 							class='easyui-validatebox textbox' style="padding:3px;width:90%" value=""/>	
 						</td>
 					</tr>

@@ -2,9 +2,8 @@
 				<input type='hidden' name='edit' id='edit' value=''/>
 				<table width='350px' class='dialog-form' >
 					<tr>
-						<td class='label_form'>Kode Dokter</td>
 						<td>
-							<input name='kode_dokter' id='kode_dokter' readonly='true' 
+							<input name='kode_dokter' id='kode_dokter' type="hidden" readonly='true' 
 							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $data['kode_dokter'];?>"/>	
 						</td>
 					</tr>

@@ -19,7 +19,7 @@ class Registrasi_m extends MY_Model {
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
 		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
-		$this->db->select("a.kode_registrasi,a.kode_pasien,a.tgl_periksa,a.keluhan,a.id_status_registrasi,b.status,c.nama");
+		$this->db->select("a.kode_registrasi,a.kode_pasien,convert(varchar(10),a.tgl_registrasi,105) as tgl_registrasi,a.keluhan,a.id_status_registrasi,b.status,c.nama");
 		$this->db->from("tbl_periksa a");
 		$this->db->join("TBL_M_STATUS_REGISTRASI b","a.id_status_registrasi = b.id_status_registrasi");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
@@ -29,7 +29,7 @@ class Registrasi_m extends MY_Model {
 			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
 		}
 		else {
-			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
+			$this->db->where("convert(varchar(10),a.tgl_registrasi,112)= '".date('Ymd')."'");
 		}
 		$this->db->order_by($sort,$order);
 		
@@ -43,14 +43,12 @@ class Registrasi_m extends MY_Model {
 
 	function getAntrian(){
 		$today = date("Y-m-d");
-
+		$result=$this->db->query("
+			select case when max(antrian) is null then '1' else max(antrian)+1 end as nomor from tbl_periksa
+			where convert(varchar(8),tgl_registrasi,112)='".date('Ymd')."'
+			")->row_array();
 		//return $this->db->query("select * from TBL_PERIKSA where TGL_PERIKSA LIKE '%2017-09-25%'");
-		$this->db->select('*');
-		$this->db->from('TBL_PERIKSA');
-		$this->db->where("TGL_PERIKSA",$today);
-		$query = $this->db->get();
-		$result = intval($query->num_rows())+1;
-		return $result;
+		return $result['nomor'];
 	}
 	
 	function getKodeRegistrasi(){
@@ -66,16 +64,19 @@ class Registrasi_m extends MY_Model {
 		$kode_pasien=$this->input->post('kode_pasien');
 		$keluhan=$this->input->post('keluhan');
 		$id_status_registrasi=$this->input->post('id_status_registrasi');
+		$antrian=$this->input->post('antrian');
 
 		if($edit==''){
 			$data=$this->getKodeRegistrasi();
 			$dataa=$this->getKodePeriksa();
 			$arr=array(
+				'antrian'=>$antrian,
 				'kode_registrasi'=>$data['kode_registrasi'],
 				'id_periksa'=>$dataa['id_periksa'],
 				'kode_pasien'=>$kode_pasien,
 				'keluhan'=>$keluhan,
-				'id_status_registrasi'=>$id_status_registrasi
+				'tgl_registrasi'=>date('Y-m-d H:i:s'), 
+				'id_status_registrasi'=>$id_status_registrasi,
 			);
 			
 			$r=$this->db->insert('tbl_periksa',$arr);

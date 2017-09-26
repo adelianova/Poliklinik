@@ -17,7 +17,7 @@ class Obat_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		  return $this->db->query("
+		return $this->db->query("
 		    select z.id_obat,z.kode_obat,z.nama,z.satuan,(z.stok-z.resep) as sisa from(
 		    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
 		    (select sum(qty) from TBL_DETAIL_STOCK where

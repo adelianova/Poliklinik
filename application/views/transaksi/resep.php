@@ -46,7 +46,7 @@
 			</div>
 		</div>
 
-	<div id="dialog-m_resep" class="easyui-dialog" style="width:500px; height:400px; padding: 10px 20px" 
+	<div id="dialog-m_resep" class="easyui-dialog" style="width:500px; height:350px; padding: 10px 20px" 
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 	</div>
 		

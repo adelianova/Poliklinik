@@ -2,9 +2,8 @@
 				<input type='hidden'  name='edit' id='edit' value=''/>
 				<table width='350px' class='dialog-form' >
 					<tr>
-						<td class='label_form'>ID Resep</td>
 						<td>
-							<input name='id_resep' id='id_resep' readonly='true' 
+							<input name='id_resep' id='id_resep' type="hidden" readonly='true' 
 							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $data['id_resep'];?>"/>	
 						</td>
 					</tr>
@@ -49,14 +48,7 @@
 					<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">
 					</div>
-					<table id="datagrid-m_ini" title="Resep Obat" toolbar="#tb" iconCls="icon-save" class="easyui-datagrid scrollbarx" 
-<<<<<<< HEAD
-					style="width:100%;height:220px;" 
-=======
-					style="width:100%;height:200px;" 
->>>>>>> de5ff204c2924a947884ec8d32a117d42c1fd952
-					data-options="
-					url:'<?php echo base_url().'index.php/resep/kodeResep/';?>'
+					<table id="datagrid-m_ini" title="Resep Obat" toolbar="#tb" iconCls="icon-save" class="easyui-datagrid scrollbarx" style="width:100%;height:200px;" data-options="url:'<?php echo base_url().'index.php/resep/kodeResep/';?>'
 					">
 					    <thead>
 

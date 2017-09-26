@@ -3,16 +3,14 @@
 				<table width='350px' class='dialog-form' >
 
 					<tr>
-						<td class='label_form'>ID DETAIL</td>
 						<td>
-							<input name='id_dtl_retur' id='id_dtl_retur' readonly='true' 
+							<input name='id_dtl_retur' id='id_dtl_retur' type="hidden" readonly='true' 
 							class='easyui-validatebox textbox' style="padding:3px;width:90%" >	
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>ID RETUR</td>
 						<td>
-							<input name='id_retur' id='id_retur' readonly='true' 
+							<input name='id_retur' id='id_retur' type="hidden" readonly='true' 
 							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $id_retur;?>"/>	
 						</td>
 					</tr>
