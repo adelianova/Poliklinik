@@ -5,7 +5,7 @@
 		url:'<?php echo base_url().'index.php/obat/getListObat';?>',
 		toolbar:'#toolbar',rownumbers:true,pagination:true,border:false,
 		striped:true,fit:true,fitColumns:true,
-		singleSelect:true,collapsible:false">
+		singleSelect:true,collapsible:false" >
 			<thead>
 				<tr>
 					<th field="kode_obat" width="100" sortable="true">KODE OBAT</th>
