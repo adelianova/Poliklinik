@@ -31,6 +31,8 @@ class Masuk_m extends MY_Model {
 			$this->db->where("convert(varchar(10),a.TGL,112)= '".date('Ymd')."'");
 		}
 
+
+
 		$this->db->order_by($sort,$order);
 		
 		if($jenis=='total'){

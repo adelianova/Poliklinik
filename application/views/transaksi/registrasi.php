@@ -44,7 +44,8 @@
 				searcher="cariregistrasi" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
 					<div name='kode_registrasi'>KODE REGISTRASI</div>
-					<div name='id_status_registrasi'>STATUS</div>
+					<div name='kode_pasien'>KODE PASIEN</div>
+					<div name='status'>STATUS</div>
 					<div name='tgl_periksa'>TANGGAL</div>
 				</div>  
 			</div>

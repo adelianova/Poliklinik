@@ -29,7 +29,6 @@
 				<div id="muser" style="width:150px"> 
 					<div name='kode_obat'>KODE OBAT</div>
 					<div name='nama'>NAMA</div>
-					<div name='sisa'>STOK</div>
 				</div>  
 			</div>
 		</div>

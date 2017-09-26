@@ -19,6 +19,8 @@
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
 					<th field="diagnosa" width="150" sortable="true">DIAGNOSA</th>
+
+					
 				</tr>
 			</thead>
 		</table>

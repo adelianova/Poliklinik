@@ -16,7 +16,6 @@ class Registrasi extends MY_Controller {
 	
 	public function formRegistrasi(){
 		$data['data']=$this->registrasi_m->getKodeRegistrasi();
-		$data['antrian']=$this->registrasi_m->getAntrian();
 		$this->load->view('transaksi/formRegistrasi',$data);
 	}
 	
