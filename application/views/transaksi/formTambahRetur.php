@@ -17,7 +17,7 @@
 					<tr>
 						<td class='label_form'>ID DETAIL STOCK</td>
 						<td>
-						<select name='id_dtl_stock' id='id_dtl_stock' required="true" class="easyui-combogrid" style="width:100%" data-options="
+						<select name='id_dtl_stock' id='id_dtl_stock' required="true" class="easyui-combogrid" style="width:111%" data-options="
 			                    panelWidth: 500,
 			                    idField: 'id_dtl_stock',
 			                    url:'<?php echo base_url();?>index.php/retur/getDtlStock',

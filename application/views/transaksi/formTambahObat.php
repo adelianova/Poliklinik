@@ -17,7 +17,7 @@
 					<tr>
 						<td class='label_form'>Nama Obat</td>
                         <td>
-							<input name='id_obat' id='id_obat' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
+							<input name='id_obat' id='id_obat' class='easyui-combobox' required="true"  style="padding:3px;width:111%" data-options="
                                         url:'<?php echo base_url();?>index.php/resep/getKodeObat',
                                         valueField:'id_obat',
                                         textField:'nama'
@@ -46,13 +46,13 @@
 					<tr>
 						<td class='label_form'>Tanggal Expired</td>
 						<td >
-							<input name='tgl_expired' id='tgl_expired' class='easyui-datetimebox' style="padding:3px;width:90%"/>	
+							<input name='tgl_expired' id='tgl_expired' class='easyui-datetimebox' style="padding:3px;width:93%"/>	
 						</td>
 					</tr>
 
 					
 			</table>
-			<div id="dialog-buttons">
+			<div id="standalone" style="float: right;margin-top: 10px;">
 						<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" type="submit" name="button" value="OK" id="button" onclick="simpanObat()">Simpan</a>
 					</div>
 		</form>

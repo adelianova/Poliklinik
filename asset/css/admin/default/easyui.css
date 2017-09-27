@@ -1236,6 +1236,7 @@
 .datagrid-header-inner {
   float: left;
   width: 10000px;
+  font-weight: bold;
 }
 .datagrid-header-row,
 .datagrid-row {
@@ -1260,7 +1261,7 @@
   overflow: hidden;
   height: 18px;
   line-height: 18px;
-  font-size: 11px;
+  font-size: 12px;
 }
 .datagrid-header .datagrid-cell {
   height: auto;
@@ -2507,7 +2508,8 @@
   background: url('images/tree_icons.png') no-repeat -240px -18px;
 }
 .tree-title {
-  font-size: 11px;
+  font-size: 14px;
+  font-family: sans-serif;
   display: inline-block;
   text-decoration: none;
   vertical-align: top;

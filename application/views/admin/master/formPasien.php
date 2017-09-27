@@ -17,7 +17,7 @@
 						<td class='label_form'>Alamat</td>
 						<td >
 							<textarea cols='40' rows='3' name='alamat' id='alamat' 
-							style='padding:3px' class='easyui-validatebox textarea'  
+							style='padding:3px;width:90%' class='easyui-validatebox textarea'  
 							data-options="required:true"></textarea>
 						</td>
 					</tr>
@@ -35,7 +35,7 @@
 					<tr>
 						<td class='label_form'>Penanggung Jawab</td>
 						<td>
-						<select name='penanggung_jawab' id='penanggung_jawab' required="true" class="easyui-combobox" style="width:100%" data-options="
+						<select name='penanggung_jawab' id='penanggung_jawab' required="true" class="easyui-combobox" style="width:94%" data-options="
 			                    url:'<?php echo base_url();?>index.php/pasien/getPenanggung',
 			                    valueField:'nip',
                                 textField:'full_name',
@@ -46,7 +46,7 @@
                     <tr>
 						<td class='label_form'>Status Pasien</td>
                         <td>
-							<input name='id_status_pasien' id='id_status_pasien' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
+							<input name='id_status_pasien' id='id_status_pasien' class='easyui-combobox' required="true"  style="padding:3px;width:93%" data-options="
                                         url:'<?php echo base_url();?>index.php/pasien/getStatus',
                                         valueField:'id_status_pasien',
                                         textField:'status_pasien'
