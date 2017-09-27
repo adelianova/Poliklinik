@@ -1,11 +1,8 @@
+	<div>
 	<form id="form_registrasi" method="post" novalidate>
 				<input type='hidden' name='edit' id='edit' value=''/>
+				<div style="float: left; width: 250px;height: 80%;">
 				<table width='350px' class='dialog-form' >
-				
-					<div>
-						<input readonly="true" type="number" name="antrian" id="antrian" class="standalone2" style="padding:10px;width:25px; margin-left:75%;font-size: 13px;border-radius: 3px 3px 3px 3px;-moz-border-radius: 3px 3px 3px 3px;-webkit-border-radius: 3px 3px 3px 3px;border-color: #c0392b; padding-left: 25px" value="<?php echo $antrian; ?>">
-					</div>
-					
 					<tr>
 						<td>
 							<input name='kode_registrasi' id='kode_registrasi' readonly='true' 
@@ -47,9 +44,27 @@
                                         "/>
 						</td>
 					</tr>
+				</div>
 			</table>
-
-			
+		
 		</form>
-	
+	</div>
+	<div style="float: right;">
+			<input readonly="true" type="number" name="antrian" id="antrian" class="standalone2" style="
+					padding: 10px;
+				    font-family: inherit;
+				    margin-top: 11px;
+				    margin-left: 100px;
+				    width: 25px;
+				    color: white;
+				    height: 27px;
+				    background-color: skyblue;
+				    font-size: 20px;
+				    border-radius: 10px 10px 10px 10px;
+				    -moz-border-radius: 10px 10px 10px 10px;
+				    -webkit-border-radius: 10px 10px 10px 10px;
+				    border-color: #2c6dd6;
+				    padding-left: 23px;" 
+				    value="<?php echo $antrian; ?>">
+				</div>
 	

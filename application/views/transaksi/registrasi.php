@@ -49,7 +49,7 @@
 				</div>  
 			</div>
 		</div>
-		<div id="dialog-m_registrasi" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
+		<div id="dialog-m_registrasi" class="easyui-dialog" style="width:470px; height:200px; padding: 10px 20px" 
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 		</div>
 		
