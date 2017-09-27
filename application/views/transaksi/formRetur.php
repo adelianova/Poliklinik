@@ -16,7 +16,7 @@
 					<tr>
 						<td class='label_form'>Tanggal</td>
 						<td >
-							<input name='tgl' id='tgl' class='easyui-datetimebox' style="padding:3px;width:90%"/>	
+							<input name='tgl' id='tgl' class='easyui-datetimebox' style="padding:3px;width:270px"/>	
 						</td>
 					</tr>
 					<tr>
@@ -39,7 +39,7 @@
 						<thead>
 							<tr>
 								<th field="id_dtl_retur" width="100" sortable="true">ID DETAIL RETUR</th>
-								<th field="id_retur" width="100" sortable="true">ID RETUR</th>
+								<th field="id_retur" width="70" sortable="true">ID RETUR</th>
 								<th field="id_dtl_stock" width="100" sortable="true">ID DETAIL STOCK</th>
 								<th field="qty" width="100" sortable="true">QUANTITY</th>
 								<th field="keterangan" width="100" sortable="true">KETERANGAN</th>

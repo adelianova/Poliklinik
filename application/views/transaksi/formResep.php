@@ -10,7 +10,7 @@
 					<tr>
 						<td class='label_form'>ID Periksa</td>
 						<td>
-						<select name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="width:100%" data-options="
+						<select name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="padding:3px;width:99.8%" data-options="
 			                    panelWidth: 500,
 			                    idField: 'id_periksa',
 			                    url:'<?php echo base_url();?>index.php/resep/getIDPeriksa',
@@ -29,7 +29,7 @@
 					<tr>
 						<td class='label_form'>Dokter</td>
 						<td >
-							<select name='kode_dokter' id='kode_dokter' required="true" class="easyui-combogrid" style="width:100%" data-options="
+							<select name='kode_dokter' id='kode_dokter' required="true" class="easyui-combogrid" style="padding:3px;width:87%" data-options="
 			                    panelWidth: 500,
 			                    idField: 'kode_dokter',
 			                    url:'<?php echo base_url();?>index.php/resep/getIDDokter',

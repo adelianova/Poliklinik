@@ -10,7 +10,7 @@
 					<tr>
 						<td class='label_form'>Nama Obat</td>
                         <td>
-							<input name='KODE_OBAT' id='KODE_OBAT' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
+							<input name='KODE_OBAT' id='KODE_OBAT' class='easyui-combobox' required="true"  style="padding:3px;width:93%" data-options="
                                         url:'<?php echo base_url();?>index.php/resep/getKodeObat',
                                         valueField:'kode_obat',
                                         textField:'nama'
@@ -28,7 +28,7 @@
 						<td class='label_form'>Dosis</td>
 						<td >
 						<textarea cols='40' rows='3' name='DOSIS' id='DOSIS' 
-							style='padding:3px' class='easyui-validatebox textarea'  
+							style='padding:3px;width:90%' class='easyui-validatebox textarea'  
 							data-options="required:true"></textarea>
 						</td>
 					</tr>

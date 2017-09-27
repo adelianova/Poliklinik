@@ -4,7 +4,7 @@
 					<tr>
 						<td class='label_form'>ID Periksa</td>
 						<td>
-						<select name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="width:100%" data-options="
+						<select name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="padding:3px;width:90%" data-options="
 			                    panelWidth: 500,
 			                    idField: 'id_periksa',
 			                    url:'<?php echo base_url();?>index.php/periksa/getIDPeriksa',
@@ -67,7 +67,7 @@
 						<td class='label_form'>Diagnosa</td>
 						<td >
 						<textarea cols='40' rows='3' name='diagnosa' id='diagnosa' 
-							style='padding:3px' class='easyui-validatebox textarea'  
+							style='padding:3px;width:87%' class='easyui-validatebox textarea'  
 							data-options="required:true"></textarea>
 						</td>
 					</tr>

@@ -10,7 +10,7 @@
 					<tr>
 						<td class='label_form'>ID Supplier</td>
 						<td>
-						<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="width:100%" data-options="
+						<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:105%" data-options="
 			                    url:'<?php echo base_url();?>index.php/transaksi/getIDSuplier',
 			                    valueField:'ID_SUPLIER',
                                 textField:'NAMA',
@@ -22,7 +22,7 @@
 					<tr>
 						<td class='label_form'>ID Transaksi</td>
 						<td>
-						<select name='id_transaksi' id='id_transaksi' required="true" class="easyui-combogrid" style="width:100%" data-options="
+						<select name='id_transaksi' id='id_transaksi' required="true" class="easyui-combogrid" style="padding:3px;width:90%" data-options="
 			                    panelWidth: 500,
 			                    idField: 'ID_TRANSAKSI',
 			                    url:'<?php echo base_url();?>index.php/transaksi/getListIDTransaksi',
@@ -46,14 +46,14 @@
 					<tr>
 						<td class='label_form'>NO Faktur</td>
 						<td >
-							<input name='no_faktur' id='no_faktur' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:90%"/>
+							<input name='no_faktur' id='no_faktur' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:86.7%"/>
 						</td>
 					</tr>
 
 					<tr>
 						<td class='label_form'>Keterangan</td>
 						<td >
-							<input name='keterangan' id='keterangan' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:90%"/>
+							<input name='keterangan' id='keterangan' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:86.7%"/>
 						</td>
 					</tr>
 			</table>
@@ -69,13 +69,13 @@
 					singleSelect:true,collapsible:false">
 						<thead>
 							<tr>
-								<th field="id_dtl_stock" width="100" sortable="true">ID DETAIL STOCK</th>
-								<th field="id_stock" width="100" sortable="true">ID STOCK</th>
-								<th field="id_obat" width="100" sortable="true">ID OBAT</th>
-								<th field="qty" width="100" sortable="true">QUANTITY</th>
+								<th field="id_dtl_stock" width="120" sortable="true">ID DETAIL STOCK</th>
+								<th field="id_stock" width="70" sortable="true">ID STOCK</th>
+								<th field="id_obat" width="70" sortable="true">ID OBAT</th>
+								<th field="qty" width="70" sortable="true">QUANTITY</th>
 								<th field="harga_satuan" width="100" sortable="true">HARGA SATUAN</th>
-								<th field="total" width="100" sortable="true">TOTAL</th>
-								<th field="tgl_expired" width="100" sortable="true">TANGGAL EXPIRED</th>
+								<th field="total" width="70" sortable="true">TOTAL</th>
+								<th field="tgl_expired" width="120" sortable="true">TANGGAL EXPIRED</th>
 							</tr>
 						</thead>
 					</table>

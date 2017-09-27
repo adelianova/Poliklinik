@@ -17,7 +17,7 @@
 						<td class='label_form'>Alamat</td>
 						<td >
 							<textarea cols='40' rows='3' name='alamat_dokter' id='alamat_dokter' 
-							style='padding:3px' class='easyui-validatebox textarea'  
+							style='padding:3px;width:90%' class='easyui-validatebox textarea'  
 							data-options="required:true"></textarea>
 						</td>
 					</tr>
@@ -42,7 +42,7 @@
 						<td class='label_form'>Keterangan</td>
 						<td >
 							<textarea cols='40' rows='3' name='keterangan' id='keterangan' 
-							style='padding:3px' class='easyui-validatebox textarea'  
+							style='padding:3px;width:90%' class='easyui-validatebox textarea'  
 							data-options="required:true"></textarea>
 						</td>
 					</tr>
