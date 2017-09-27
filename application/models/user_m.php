@@ -119,6 +119,12 @@ class User_m extends MY_Model {
 							"url":"laporan_keluar",
 							"akses":true
 							
+						},{
+							"id":132,
+							"text":"Retur",
+							"url":"laporan_retur",
+							"akses":true
+							
 						}]
 					},{
 						"id":132,

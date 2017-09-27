@@ -23,7 +23,7 @@
 		
 		<form method='post' id='formLogin'>
 			<div class="inputArea">
-				<input type="text" id="pengguna" name="pengguna" class="inputText" placeholder="Username" autocomplete="off"/>
+				<input type="text" id="pengguna" name="pengguna" class="inputText" placeholder="NIP" autocomplete="off"/>
 				<input type="password" id="sandi" name="sandi" class="inputText" placeholder="Password" autocomplete="off"/>
 			</div>
 		<p style='font-weight:bold' class='msgText' align='center'></p>

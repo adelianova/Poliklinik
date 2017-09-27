@@ -63,4 +63,9 @@ class Retur extends MY_Controller {
     	$data=$this->retur_m->getDtlStock();
 		echo json_encode($data);
     }
+    public function getPetugas()
+    {
+    	$data=$this->retur_m->getPetugas();
+    	echo json_encode($data);
+    }
 }

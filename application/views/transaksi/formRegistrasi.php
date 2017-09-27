@@ -2,12 +2,10 @@
 				<input type='hidden' name='edit' id='edit' value=''/>
 				<table width='350px' class='dialog-form' >
 				
-					<tr>
-						<td class="label_form">NOMER ANTRI</td>
-						<td>
-							<input readonly="true" type="number" name="antrian" id="antrian" class="easyui-validatebox textbox" style="padding:3px;width:90%" value="<?php echo $antrian; ?>">
-						</td>
-					</tr>
+					<div>
+						<input readonly="true" type="number" name="antrian" id="antrian" class="standalone2" style="padding:10px;width:25px; margin-left:75%;font-size: 13px;border-radius: 3px 3px 3px 3px;-moz-border-radius: 3px 3px 3px 3px;-webkit-border-radius: 3px 3px 3px 3px;border-color: #c0392b; padding-left: 25px" value="<?php echo $antrian; ?>">
+					</div>
+					
 					<tr>
 						<td>
 							<input name='kode_registrasi' id='kode_registrasi' readonly='true' 
@@ -22,7 +20,7 @@
 					<tr>
 						<td class='label_form'>Pasien</td>
                         <td>
-							<input name='kode_pasien' id='kode_pasien' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
+							<input name='kode_pasien' id='kode_pasien' class='easyui-combobox' required="true"  style="padding:3px;width:235px" data-options="
                                         url:'<?php echo base_url();?>index.php/registrasi/getIDPasien',
                                         valueField:'kode_pasien',
                                         textField:'nama'
@@ -39,7 +37,7 @@
                     <tr>
 						<td class='label_form'>Status Registrasi</td>
                         <td>
-							<input name='id_status_registrasi' id='id_status_registrasi' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
+							<input name='id_status_registrasi' id='id_status_registrasi' class='easyui-combobox' required="true"  style="padding:3px;width:235px" data-options="
                                         url:'<?php echo base_url();?>index.php/registrasi/getStatus',
                                         valueField:id_status_registrasi,
                                         textField:'id_status_registrasi',

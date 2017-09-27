@@ -17,11 +17,18 @@ class Retur_m extends MY_Model {
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
-		$this->db->select("a.id_retur,a.no_retur,convert(varchar(10),a.tgl,105) as tgl,a.petugas");
+		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
+		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
+		$this->db->select("a.id_retur,a.no_retur,convert(varchar(10),a.tgl,105) as tgl,a.petugas, b.nip,b.full_name as nama");
 		$this->db->from("tbl_retur a");
+		$this->db->join("v_employee_all b","a.petugas=b.nip");
+
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
-		}else {
+		}else if($tgl_awal<>''&&$tgl_akhir<>''){
+			$this->db->where("tgl between '".$tgl_awal."' AND '".$tgl_akhir."'");
+		}
+		else {
 			$this->db->where("convert(varchar(10),a.tgl,112)= '".date('Ymd')."'");
 		}
 		
@@ -153,4 +160,7 @@ class Retur_m extends MY_Model {
 	function getDtlStock(){
          return $this->db->query("select b.id_dtl_stock,convert(varchar(10),b.tgl_expired,105) as tgl_expired, a.nama FROM TBL_M_OBAT a inner join TBL_DETAIL_STOCK b on b.ID_OBAT=a.ID_OBAT")->result_array();
     }
-}	
+    function getPetugas(){
+    	return $this->db->query("select b.nip, b.full_name from v_employee_all b ")->result_array();
+    }
+}

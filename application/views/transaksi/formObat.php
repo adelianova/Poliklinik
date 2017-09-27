@@ -10,7 +10,7 @@
 					<tr>
 						<td class='label_form'>ID Supplier</td>
 						<td>
-						<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:105%" data-options="
+						<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:100%" data-options="
 			                    url:'<?php echo base_url();?>index.php/transaksi/getIDSuplier',
 			                    valueField:'ID_SUPLIER',
                                 textField:'NAMA',

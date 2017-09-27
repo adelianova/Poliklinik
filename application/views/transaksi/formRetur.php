@@ -21,10 +21,21 @@
 					</tr>
 					<tr>
 						<td class='label_form'>Petugas</td>
-						<td >
-							<input name='petugas' id='petugas' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:90%"/>
+							<td>
+							<input name='petugas' id='petugas' class='easyui-combobox' required="true" style="padding:3px;width:270px" data-options="
+		                                        url:'<?php echo base_url();?>index.php/retur/getPetugas',
+		                                        valueField:'nip',
+		                                        textField:'full_name'
+		                                        "/>
+							</td>
 						</td>
 					</tr>
+					<!-- <tr>
+						<td class='label_form'>Petugas</td>
+						<td >
+							<input name='petugas' id='petugas' class='easyui-validatebox textbox' readonly="true" type="text" setValue="<?php echo $this->session->userdata('name');?>" style="padding:3px;width:90%"/>
+						</td>
+					</tr> -->
 			</table>
 			<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">

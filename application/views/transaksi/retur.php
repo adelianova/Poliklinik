@@ -11,7 +11,7 @@
 					<th field="id_retur" width="100" sortable="true" hidden="true">ID RETUR</th>
 					<th field="no_retur" width="100" sortable="true">NO RETUR</th>
 					<th field="tgl" width="100" sortable="true">TANGGAL</th>
-					<th field="petugas" width="100" sortable="true">PETUGAS</th>
+					<th field="nama" width="100" sortable="true">PETUGAS</th>
 				</tr>
 			</thead>
 		</table>
@@ -22,6 +22,18 @@
 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onClick="editRetur()">Edit</a>&nbsp;
         	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onClick="removeRetur()">Remove</a>&nbsp;
 				 
+			</div>
+			<div style="display:inline;padding-top:-10px;">
+				<tr>
+					<td >
+					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
+					</td>
+					<td >
+					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
+					</td>
+					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
+				</tr>
+				</tr>
 			</div>
 			<div style="display:inline;float:right;padding-top:-10px;">
 				<input id="sretur" class="easyui-searchbox" style="width:250px" 
@@ -62,6 +74,8 @@
 				
 				$('#form_retur').form('clear');
 				$('#form_retur #edit').val('');
+				$('#form_retur #petugas').combobox('setValue','<?php echo $this->session->userdata('userid');?>');
+
 			}
 			});
 	}
@@ -147,4 +161,38 @@
 			$.messager.alert('INFO','Pilih satu record dulu','info');
 		}
 	}
+	 function tampilkan() {
+		var tgl_awal = $('#tgl_awal').datebox('getValue');
+		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
+
+		$('#datagrid-m_retur').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
+	}
+
+	$('#tgl_awal').datebox({
+		dateFormat:'yy-MM-dd',
+		formatter:function(date){
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+
+			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
+		},
+		parser:function(s){
+
+		}
+	});
+
+	$('#tgl_akhir').datebox({
+		dateFormat:'yy-MM-dd',
+		formatter:function(date){
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate	();
+
+			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
+		},
+		parser:function(s){
+			
+		}
+	});
 </script>
