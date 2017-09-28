@@ -19,7 +19,7 @@ class Registrasi_m extends MY_Model {
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
 		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
-		$this->db->select("a.kode_registrasi,a.kode_pasien,convert(varchar(10),a.tgl_registrasi,105) as tgl_registrasi,a.keluhan,a.id_status_registrasi,b.status,c.nama");
+		$this->db->select("a.antrian,a.kode_registrasi,a.kode_pasien,convert(varchar(10),a.tgl_registrasi,105) as tgl_registrasi,a.keluhan,a.id_status_registrasi,b.status,c.nama");
 		$this->db->from("tbl_periksa a");
 		$this->db->join("TBL_M_STATUS_REGISTRASI b","a.id_status_registrasi = b.id_status_registrasi");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");

@@ -14,6 +14,7 @@
 					<th field="tgl_registrasi" width="100" sortable="true">TANGGAL</th>
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
 					<th field="id_status_registrasi" width="150" sortable="true">STATUS</th>
+					<th field="antrian" width="100" sortable="true">ANTRIAN</th>
 					
 				</tr>
 			</thead>
@@ -98,7 +99,7 @@
 		    closed: false, 
 			cache: false, 
 			modal: true, 
-			href:base_url+'index.php/registrasi/formRegistrasi',
+			href:base_url+'index.php/registrasi/formRegistrasi/edit',
 			title:'Edit Registrasi',
 			onLoad:function(){
 				

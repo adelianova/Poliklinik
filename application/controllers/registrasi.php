@@ -14,9 +14,10 @@ class Registrasi extends MY_Controller {
 		redirect(site_url('main'));
     }
 	
-	public function formRegistrasi(){
+	public function formRegistrasi($status=""){
 		$data['data']=$this->registrasi_m->getKodeRegistrasi();
 		$data['antrian']=$this->registrasi_m->getAntrian();
+		$data['status']=($status=="")?"new":"edit";
 		$this->load->view('transaksi/formRegistrasi',$data);
 	}
 	
