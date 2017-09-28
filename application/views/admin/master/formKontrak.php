@@ -22,7 +22,7 @@
 					<tr>
 						<td class='label_form'>Nomor</td>
 						<td >
-							<input name='nomor' id='nomor' class='easyui-validatebox textbox' required="true"  style="padding:3px;width:86.7%"/>
+							<input name='nomor' id='nomor' type="number" class='easyui-validatebox textbox' required="true"  style="padding:3px;width:86.7%"/>
 						</td>
 					</tr>
 					<tr>

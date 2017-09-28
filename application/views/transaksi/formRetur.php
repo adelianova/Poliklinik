@@ -10,7 +10,7 @@
 					<tr>
 						<td class='label_form'>NO Retur</td>
 						<td >
-							<input name='no_retur' id='no_retur' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:90%"/>
+							<input name='no_retur' id='no_retur' type="number" class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:90%"/>
 						</td>
 					</tr>
 					<tr>
