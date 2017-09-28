@@ -5,7 +5,7 @@
 						<td class='label_form'>ID Periksa</td>
 						<td>
 						<select name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="padding:3px;width:90%" data-options="
-			                    panelWidth: 250,
+			                    panelWidth: 220,
 			                    idField: 'id_periksa',
 			                    url:'<?php echo base_url();?>index.php/periksa/getIDPeriksa',
 			                    method: 'get',
@@ -14,7 +14,7 @@
 			                    columns: [[
 				                        {field:'id_periksa',title:'ID',width:70, hidden: 'true'},
 				                        {field:'kode_pasien',title:'Kode Pasien',width:100},
-				                        {field:'nama',title:'Nama',width:120,align:'left'},
+				                        {field:'nama',title:'Nama',width:117,align:'left'},
                     			]]
 			                ">
 			            </select>
@@ -42,6 +42,14 @@
 						</td>
 					</tr>
 					<tr>
+						<td class='label_form'>Diagnosa</td>
+						<td >
+						<textarea cols='40' rows='3' name='diagnosa' id='diagnosa' 
+							style='padding:3px;width:87%' class='easyui-validatebox textarea'  
+							data-options="required:true"></textarea>
+						</td>
+					</tr>
+					<tr>
 						<td class='label_form'>ID Penyakit</td>
 						<td >
 							<input name='id_penyakit' id='id_penyakit' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
@@ -61,14 +69,6 @@
                                         textField:'penyakit'
                                         
                                         "/>
-						</td>
-					</tr>
-					<tr>
-						<td class='label_form'>Diagnosa</td>
-						<td >
-						<textarea cols='40' rows='3' name='diagnosa' id='diagnosa' 
-							style='padding:3px;width:87%' class='easyui-validatebox textarea'  
-							data-options="required:true"></textarea>
 						</td>
 					</tr>
 					 <tr>
