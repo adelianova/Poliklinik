@@ -52,7 +52,6 @@ class Kontrak_m extends MY_Model {
 		if($edit==''){
 			$data=$this->getKodeKontrak();
 			$arr=array(
-				'id_kontrak'=>$id_kontrak,
 				'kode_dokter'=>$kode_dokter,
 				'nomor'=>$nomor,
 				'mulai_kontrak'=>date('Y-m-d',strtotime($mulai_kontrak)),

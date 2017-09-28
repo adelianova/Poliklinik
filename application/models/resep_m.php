@@ -20,7 +20,7 @@ class Resep_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select("a.id_resep,a.id_periksa,a.kode_dokter, b.nama_dokter,d.NAMA");
+    	$this->db->select("a.id_resep,a.id_periksa,a.kode_dokter, b.nama_dokter,d.nama");
 		$this->db->from("tbl_resep a");
 		$this->db->join("tbl_m_dokter b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_PERIKSA c","a.id_periksa = c.id_periksa");

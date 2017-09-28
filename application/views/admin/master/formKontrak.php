@@ -8,7 +8,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Kode Dokter</td>
+						<td class='label_form'>Nama Dokter</td>
 						<td>
 						<select name='kode_dokter' id='kode_dokter' required="true" class="easyui-combobox" style="padding:3px;width:90%" data-options="
 			                    url:'<?php echo base_url();?>index.php/kontrak/getKodeDokter',
