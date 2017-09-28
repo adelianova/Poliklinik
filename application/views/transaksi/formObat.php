@@ -71,7 +71,7 @@
 							<tr>
 								<th field="id_dtl_stock" width="120" sortable="true" hidden="true">ID DETAIL STOCK</th>
 								<th field="id_stock" width="70" sortable="true" hidden="true">ID STOCK</th>
-								<th field="id_obat" width="70" sortable="true">ID OBAT</th>
+								<th field="nama" width="70" sortable="true">OBAT</th>
 								<th field="qty" width="70" sortable="true">QUANTITY</th>
 								<th field="harga_satuan" width="100" sortable="true">HARGA SATUAN</th>
 								<th field="total" width="70" sortable="true">TOTAL</th>
