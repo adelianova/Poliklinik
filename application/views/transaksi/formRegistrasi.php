@@ -43,20 +43,10 @@
                                         "/>
 						</td>
 					</tr>
-<<<<<<< HEAD
 			</table>
 		</div>
-			<div>
-			<div style="float: right;">
-=======
-				</div>
-				
-			</table>
-
-			</div>
 		<div>
 			<div id="ini" style="float: right;">
->>>>>>> 1cd361e83c6ab0218a0e6dffb95f8c4143473ad0
 			<input readonly="true" type="number" name="antrian" id="antrian" class="standalone2" style="
 					padding: 10px;
 				    font-family: inherit;
@@ -81,13 +71,5 @@
 				      ?>">
 
 				</div>
-<<<<<<< HEAD
 			</div>
 		</form>	
-=======
-		</div>
-		</form>
-
-	
->>>>>>> 1cd361e83c6ab0218a0e6dffb95f8c4143473ad0
-	

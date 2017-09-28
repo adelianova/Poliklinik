@@ -14,12 +14,8 @@
 					<th field="tgl_registrasi" width="100" sortable="true">TANGGAL</th>
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
 					<th field="id_status_registrasi" width="150" sortable="true">STATUS</th>
-<<<<<<< HEAD
 					<th field="antrian" width="150" sortable="true">ANTRIAN</th>
-=======
 					<th field="antrian" width="100" sortable="true">ANTRIAN</th>
->>>>>>> 1cd361e83c6ab0218a0e6dffb95f8c4143473ad0
-					
 				</tr>
 			</thead>
 		</table>

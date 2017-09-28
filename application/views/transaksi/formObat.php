@@ -8,9 +8,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>ID Supplier</td>
+						<td class='label_form'>Supplier</td>
 						<td>
-						<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:100%" data-options="
+						<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:105%" data-options="
 			                    url:'<?php echo base_url();?>index.php/transaksi/getIDSuplier',
 			                    valueField:'ID_SUPLIER',
                                 textField:'NAMA',
@@ -20,18 +20,18 @@
 					</tr>
 
 					<tr>
-						<td class='label_form'>ID Transaksi</td>
+						<td class='label_form'>Transaksi</td>
 						<td>
 						<select name='id_transaksi' id='id_transaksi' required="true" class="easyui-combogrid" style="padding:3px;width:90%" data-options="
-			                    panelWidth: 500,
+			                    panelWidth: 200,
 			                    idField: 'ID_TRANSAKSI',
 			                    url:'<?php echo base_url();?>index.php/transaksi/getListIDTransaksi',
 			                    method: 'get',
 			                    valueField:'ID_TRANSAKSI',
                                 textField:'TRANSAKSI',
 			                    columns: [[
-				                        {field:'ID_TRANSAKSI',title:'ID Transaksi',width:50},
-				                        {field:'TRANSAKSI',title:'Transaksi',width:100},
+				                        {field:'ID_TRANSAKSI',hidden:'true',title:'ID Transaksi',width:50},
+				                        {field:'TRANSAKSI',title:'Transaksi',width:200},
                     			]]
 			                ">
 			            </select>
@@ -107,7 +107,7 @@ function iniTambah(){
 			},
 			onClose: function(){
 				
-			 $('#dialog-m_detail').datagrid('reload');
+			 $('#dialog-m_detail').datagrid('close');
 			}
 			});
 	}

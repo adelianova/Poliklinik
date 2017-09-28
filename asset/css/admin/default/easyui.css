@@ -120,7 +120,7 @@
   font-size: 11px;
 }
 .panel-title {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: bold;
   color: #575765;
   height: 16px;
@@ -324,7 +324,7 @@
   vertical-align: top;
   width: auto;
   line-height: 24px;
-  font-size: 11px;
+  font-size: 12px;
   padding: 0;
   margin: 0 4px;
 }
@@ -930,7 +930,7 @@
   margin-top: -8px;
 }
 .tabs-title {
-  font-size: 11px;
+  font-size: 12px;
 }
 .tabs-closable {
   padding-right: 8px;

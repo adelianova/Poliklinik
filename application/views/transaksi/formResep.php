@@ -20,7 +20,7 @@
 			                    columns: [[
 				                        {field:'id_periksa',title:'ID',width:50,hidden:'true'},
 				                        {field:'kode_pasien',title:'Kode Pasien',width:100},
-				                        {field:'nama',title:'Nama',width:120,align:'left'},
+				                        {field:'nama',title:'Nama',width:140,align:'left'},
                     			]]
 			                ">
 			            </select>
@@ -38,7 +38,7 @@
                                 textField:'nama_dokter',
 			                    columns: [[
 				                        {field:'kode_dokter',title:'ID',width:50},
-				                        {field:'nama_dokter',title:'Kode Pasien',width:100}
+				                        {field:'nama_dokter',title:'Kode Pasien',width:140}
                     			]]
 			                ">
 			            </select>
