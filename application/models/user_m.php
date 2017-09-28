@@ -115,7 +115,7 @@ class User_m extends MY_Model {
 							"akses":true
 						},{
 							"id":132,
-							"text":"Keluar",
+							"text":"Resep",
 							"url":"laporan_keluar",
 							"akses":true
 							

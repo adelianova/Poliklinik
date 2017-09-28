@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'HP-14\SQLEXPRESS';
+$db['default']['hostname'] = 'ADEL\SQLEXPRESS';
 $db['default']['username'] = 'sa';
 $db['default']['password'] = '1234';
 $db['default']['database'] = 'POLIKLINIK';

@@ -27,7 +27,6 @@
 				<input id="sobat" class="easyui-searchbox" style="width:250px" 
 				searcher="cariobat" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='kode_obat'>KODE OBAT</div>
 					<div name='nama'>NAMA</div>
 					<div name='sisa'>STOK</div>
 				</div>  

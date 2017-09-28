@@ -29,7 +29,7 @@
 					</tr><tr>
 						<td class='label_form'>Email</td>
 						<td >
-							<input name='email' id='email' class='easyui-validatebox textbox' required="true"  style="padding:3px;width:90%"/>
+							<input name='email' id='email' class='easyui-validatebox textbox'   style="padding:3px;width:90%"/>
 						</td>
 					</tr>
 					<tr>

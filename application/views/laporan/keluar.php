@@ -23,10 +23,10 @@
 				<tr>
 					<td class='label_form'>Pilih Tanggal</td>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:30%"/>	
+					<input name='tgl_awal' id='tgl_awal' class='easyui-datetimebox' prompt="Dari tanggal" style="padding:3px;width:30%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:30%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datetimebox' prompt="Sampai tanggal" style="padding:3px;width:30%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 					<a class="easyui-linkbutton" data-options="iconCls:'icon-print'" onClick="cetakLaporan()"  style="color: #fff">CETAK PDF</a>
@@ -37,7 +37,6 @@
 				searcher="carikeluar" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
 					<div name='nama'>NAMA OBAT</div>
-					<div name='tgl_periksa'>TANGGAL KELUAR</div>
 				</div>  
 			</div>
 		</div>

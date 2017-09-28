@@ -26,10 +26,10 @@
 			<div style="display:inline;padding-top:-10px;">
 				<tr>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_awal' id='tgl_awal' class='easyui-datetimebox' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datetimebox' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 				</tr>
@@ -39,7 +39,6 @@
 				<input id="sresep" class="easyui-searchbox" style="width:250px" 
 				searcher="cariresep" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='id_resep'>ID</div>
 					<div name='NAMA'>NAMA PASIEN</div>
 					<div name='nama_dokter'>NAMA DOKTER</div>
 				</div>  

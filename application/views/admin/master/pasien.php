@@ -13,7 +13,7 @@
 					<th field="alamat" width="100" sortable="true">ALAMAT</th>
 					<th field="telp" width="100" sortable="true">TELP</th>
 					<th field="email" width="100" hidden="true">EMAIL</th>		
-					<th field="penanggung_jawab" width="100" sortable="true">PENANGGUNG JAWAB</th>
+					<th field="full_name" width="100" sortable="true">PENANGGUNG JAWAB</th>
 					<th field="status_pasien" width="150" sortable="true">STATUS PASIEN</th>
 					
 				</tr>
@@ -31,7 +31,6 @@
 				<input id="spasien" class="easyui-searchbox" style="width:250px" 
 				searcher="caripasien" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='kode_pasien'>KODE PASIEN</div>
 					<div name='nama'>NAMA</div>
 					<div name='penanggung_jawab'>PENANGGUNG JAWAB</div>
 				</div>  

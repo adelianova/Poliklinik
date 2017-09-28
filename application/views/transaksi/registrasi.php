@@ -14,12 +14,7 @@
 					<th field="tgl_registrasi" width="100" sortable="true">TANGGAL</th>
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
 					<th field="id_status_registrasi" width="150" sortable="true">STATUS</th>
-<<<<<<< HEAD
-					<th field="antrian" width="150" sortable="true">ANTRIAN</th>
-=======
-					<th field="antrian" width="100" sortable="true">ANTRIAN</th>
->>>>>>> 1cd361e83c6ab0218a0e6dffb95f8c4143473ad0
-					
+					<th field="antrian" width="100" sortable="true">ANTRIAN</th>				
 				</tr>
 			</thead>
 		</table>
@@ -35,10 +30,10 @@
 			<div style="display:inline;padding-top:-10px;">
 				<tr>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_awal' id='tgl_awal' class='easyui-datetimebox' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datetimebox' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 				</tr>
@@ -48,9 +43,9 @@
 				<input id="sregistrasi" class="easyui-searchbox" style="width:250px" 
 				searcher="cariregistrasi" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='kode_registrasi'>KODE REGISTRASI</div>
 					<div name='id_status_registrasi'>STATUS</div>
-					<div name='tgl_periksa'>TANGGAL</div>
+					<div name='nama'>NAMA PASIEN</div>
+					<div name='keluhan'>KELUHAN</div>
 				</div>  
 			</div>
 		</div>

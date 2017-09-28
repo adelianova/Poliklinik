@@ -28,10 +28,10 @@
 			<div style="display:inline;padding-top:-10px;">
 				<tr>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_awal' id='tgl_awal' class='easyui-datetimebox' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datetimebox' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 				</tr>
@@ -41,7 +41,6 @@
 				<input id="stransaksi" class="easyui-searchbox" style="width:250px" 
 				searcher="cariTransaksi" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='id_transaksi'>ID</div>
 					<div name='tgl'>Tanggal</div>
 					<div name='no_faktur'>No Faktur</div>
 					<div name='nama'>Suplier</div>

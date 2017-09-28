@@ -18,9 +18,10 @@ class Pasien_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select(" a.kode_pasien,a.nama,a.alamat,a.telp,a.email,a.penanggung_jawab,a.id_status_pasien, b.status_pasien");
+    	$this->db->select(" a.kode_pasien,a.nama,a.alamat,a.telp,a.email,a.penanggung_jawab,a.id_status_pasien, b.status_pasien,c.full_name");
 		$this->db->from("TBL_M_PASIEN a");
 		$this->db->join("TBL_M_STATUS_PASIEN b","a.id_status_pasien = b.id_status_pasien");
+		$this->db->join("v_employee_all c","a.penanggung_jawab = c.nip");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
