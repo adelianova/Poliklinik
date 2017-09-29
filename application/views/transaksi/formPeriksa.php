@@ -49,7 +49,11 @@
                                         "/>
 						</td>
 					</tr>
+<<<<<<< HEAD
+					 <tr>
+=======
 					<tr>
+>>>>>>> 2ced6d60ae9bc9cdf0d8d1980dd210b00b202d94
 						<td class='label_form'>Status Registrasi</td>
                         <td>
 							<input name='id_status_registrasi' id='id_status_registrasi' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="

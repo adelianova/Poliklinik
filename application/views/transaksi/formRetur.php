@@ -40,20 +40,27 @@
 			<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">
 					</div>
-			<table id="datagrid-m_detail" title="" class="easyui-datagrid scrollbarx" 
-					style="width:auto; height: auto;" 
+			<table id="datagrid-m_detail" title="Retur Obat" iconCls="icon-save" class="easyui-datagrid scrollbarx" 
+					style="width:450px; height: 300px;" 
 					data-options="
 					url:'<?php echo base_url().'index.php/retur/getListDetail';?>',
-					toolbar:'#toolbar2',rownumbers:true,pagination:true,border:false,
-					striped:true,fit:true,fitColumns:true,
-					singleSelect:true,collapsible:false">
+					toolbar:'#toolbar2',rownumbers:true,border:'true',
+					singleSelect:true">
 						<thead>
 							<tr>
+<<<<<<< HEAD
+								<th field="id_dtl_retur" width="150" sortable="true">ID DETAIL RETUR</th>
+								<th field="id_retur" width="70" sortable="true" hidden="true">ID RETUR</th>
+								<th field="id_dtl_stock" width="50" sortable="true" hidden="true">ID DETAIL STOCK</th>
+								<th field="qty" width="120" sortable="true">QUANTITY</th>
+								<th field="keterangan" width="120" sortable="true">KETERANGAN</th>
+=======
 								<th field="id_dtl_retur" width="100" hidden="true" sortable="true">ID DETAIL RETUR</th>
 								<th field="id_retur" width="70" hidden="true" sortable="true">ID RETUR</th>
 								<th field="id_dtl_stock" width="100" hidden="true" sortable="true">ID DETAIL STOCK</th>
 								<th field="qty" width="100" sortable="true">QUANTITY</th>
 								<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
+>>>>>>> 2ced6d60ae9bc9cdf0d8d1980dd210b00b202d94
 							</tr>
 						</thead>
 					</table>

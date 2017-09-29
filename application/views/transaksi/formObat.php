@@ -61,13 +61,13 @@
 			<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">
 					</div>
-			<table id="datagrid-m_detail" title="" class="easyui-datagrid scrollbarx" 
-					style="width:auto; height: auto;" 
+			<table id="datagrid-m_detail" title="Stok Obat" iconCls="icon-save" class="easyui-datagrid scrollbarx" 
+					style="width:400px; height: 300px;" 
 					data-options="
 					url:'<?php echo base_url().'index.php/transaksi/getListDetail';?>',
-					toolbar:'#toolbar2',rownumbers:true,pagination:true,border:false,
+					toolbar:'#toolbar2',rownumbers:true,border:true,
 					striped:true,fit:true,fitColumns:true,
-					singleSelect:true,collapsible:false">
+					singleSelect:true">
 						<thead>
 							<tr>
 								<th field="id_dtl_stock" width="120" sortable="true" hidden="true">ID DETAIL STOCK</th>

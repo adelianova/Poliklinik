@@ -45,7 +45,7 @@
 				</div>  
 			</div>
 		</div>
-		<div id="dialog-m_retur" class="easyui-dialog" style="width:800px; height:500px; padding: 10px 20px" 
+		<div id="dialog-m_retur" class="easyui-dialog" style="width:490px; height:500px; padding: 10px 20px" 
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 		</div>
 		<!-- Dialog Button -->
