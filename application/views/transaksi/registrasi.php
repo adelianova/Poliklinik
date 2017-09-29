@@ -177,7 +177,7 @@
 	}
 
 	$('#tgl_awal').datebox({
-		dateFormat:'dd-MM-yy',
+		dateFormat:'dd-MM-yyyy',
 		formatter:function(date){
 			var d = date.getDate();
 			var m = date.getMonth()+1;

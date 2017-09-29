@@ -49,9 +49,9 @@
 					singleSelect:true,collapsible:false">
 						<thead>
 							<tr>
-								<th field="id_dtl_retur" width="100" sortable="true">ID DETAIL RETUR</th>
-								<th field="id_retur" width="70" sortable="true">ID RETUR</th>
-								<th field="id_dtl_stock" width="100" sortable="true">ID DETAIL STOCK</th>
+								<th field="id_dtl_retur" width="100" hidden="true" sortable="true">ID DETAIL RETUR</th>
+								<th field="id_retur" width="70" hidden="true" sortable="true">ID RETUR</th>
+								<th field="id_dtl_stock" width="100" hidden="true" sortable="true">ID DETAIL STOCK</th>
 								<th field="qty" width="100" sortable="true">QUANTITY</th>
 								<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
 							</tr>

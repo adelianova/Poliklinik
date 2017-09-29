@@ -14,7 +14,6 @@
 					<th field="kode_pasien" width="100" sortable="true" hidden="true">PASIEN</th>
 					<th field="nama" width="100" sortable="true">PASIEN</th>
 					<th field="id_penyakit" width="100" sortable="true" hidden="true">ID PENYAKIT</th>
-					<th field="kode_penyakit" width="100" sortable="true">PENYAKIT</th>
 					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>

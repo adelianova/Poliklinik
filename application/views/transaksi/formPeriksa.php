@@ -31,17 +31,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Pasien</td>
-						<td >
-							<input name='kode_pasien' id='kode_pasien' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
-                                        url:'<?php echo base_url();?>index.php/periksa/getKodePasien',
-                                        valueField:'kode_pasien',
-                                        textField:'nama'
-                                        
-                                        "/>
-						</td>
-					</tr>
-					<tr>
 						<td class='label_form'>Diagnosa</td>
 						<td >
 						<textarea cols='40' rows='3' name='diagnosa' id='diagnosa' 
@@ -61,17 +50,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Kode Penyakit</td>
-						<td >
-							<input name='kode_penyakit' id='kode_penyakit' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
-                                        url:'<?php echo base_url();?>index.php/periksa/getKodePenyakit',
-                                        valueField:'kode_penyakit',
-                                        textField:'penyakit'
-                                        
-                                        "/>
-						</td>
-					</tr>
-					 <tr>
 						<td class='label_form'>Status Registrasi</td>
                         <td>
 							<input name='id_status_registrasi' id='id_status_registrasi' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="

@@ -19,11 +19,11 @@ class Periksa_m extends MY_Model {
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
 		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
-		$this->db->select("a.id_periksa,a.kode_registrasi,a.kode_dokter,a.kode_pasien,a.id_penyakit,a.kode_penyakit,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan,a.diagnosa, b.nama_dokter,c.nama,d.penyakit");
+		$this->db->select("a.id_periksa,a.kode_registrasi,a.kode_dokter,a.kode_pasien,a.id_penyakit,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan,a.diagnosa, b.nama_dokter,c.nama,d.penyakit");
 		$this->db->from("TBL_PERIKSA a");
 		$this->db->join("TBL_M_DOKTER b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
-		$this->db->join("TBL_M_PENYAKIT d","a.kode_penyakit = d.kode_penyakit");
+		$this->db->join("TBL_M_PENYAKIT d","a.id_penyakit = d.id_penyakit");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
@@ -48,7 +48,6 @@ class Periksa_m extends MY_Model {
 		$edit=$this->input->post('edit');
 		$id_periksa=$this->input->post('id_periksa');
 		$kode_dokter=$this->input->post('kode_dokter');
-		$kode_pasien=$this->input->post('kode_pasien');
 		$id_penyakit=$this->input->post('id_penyakit');
 		$kode_penyakit=$this->input->post('kode_penyakit');
 		$keluhan=$this->input->post('keluhan');
@@ -57,9 +56,7 @@ class Periksa_m extends MY_Model {
 		if($edit==''){
 			$arr=array(
 				'kode_dokter'=>$kode_dokter,
-				'kode_pasien'=>$kode_pasien,
 				'id_penyakit'=>$id_penyakit,
-				'kode_penyakit'=>$kode_penyakit,
 				'tgl_periksa'=>date('Y-m-d H:i:s'), 
 				'diagnosa'=>$diagnosa,
 				'id_status_registrasi'=>$id_status_registrasi
@@ -70,9 +67,7 @@ class Periksa_m extends MY_Model {
 		}else{
 			$arr=array(
 				'kode_dokter'=>$kode_dokter,
-				'kode_pasien'=>$kode_pasien,
 				'id_penyakit'=>$id_penyakit,
-				'kode_penyakit'=>$kode_penyakit,
 				'diagnosa'=>$diagnosa,
 				'id_status_registrasi'=>$id_status_registrasi
 			);

@@ -8,18 +8,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Supplier</td>
-						<td>
-						<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:105%" data-options="
-			                    url:'<?php echo base_url();?>index.php/transaksi/getIDSuplier',
-			                    valueField:'ID_SUPLIER',
-                                textField:'NAMA',
-			                ">
-			            </select>
-						</td>
-					</tr>
-
-					<tr>
 						<td class='label_form'>Transaksi</td>
 						<td>
 						<select name='id_transaksi' id='id_transaksi' required="true" class="easyui-combogrid" style="padding:3px;width:90%" data-options="
@@ -37,6 +25,19 @@
 			            </select>
 						</td>
 					</tr>
+					<tr>
+						<td class='label_form'>Supplier</td>
+						<td>
+						<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:105%" data-options="
+			                    url:'<?php echo base_url();?>index.php/transaksi/getIDSuplier',
+			                    valueField:'ID_SUPLIER',
+                                textField:'NAMA',
+			                ">
+			            </select>
+						</td>
+					</tr>
+
+					
 					<tr>
 						<td class='label_form'>Tanggal</td>
 						<td >
