@@ -53,8 +53,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
     }
     public function getLaporan($TGL_MULAI,$TGL_SELESAI){
 		$tglMulai = date("dmY"),strtotime($TGL_MULAI));
-		$tglSelesai = date("dmY", strtotime($TGL_SELESAI));
-		$tglSelesai = date("dmY", strtotime($TGL_SELESAI));
+		$tglSelesai = date("dmY", strtotime($TGL_SELESAI));/*
 		if(trim($TGL_MULAI) == "" or trim($TGL_SELESAI) == ""){
 			date("dmY");	
 		}else
@@ -62,7 +61,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 			$tglMulai = date("dmY"),strtotime($TGL_MULAI));
 			$tglSelesai = date("dmY", strtotime($TGL_SELESAI));
 
-		}
+		}*/
 		//print_r(getdate());
 		//exit;
 		print_r($TGL_MULAI);

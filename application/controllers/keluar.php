@@ -34,7 +34,7 @@ class Keluar extends MY_Controller {
 		<sethtmlpagefooter name="MyFooter1" value="on" />
 		<div style="font-size:20px; font-weight:bold">PDAM KOTA MALANG</div>
 		<div style="font-weight:bold;">Jl. Terusan Danau Sentani No.100 - Malang</div>
-		<div style="font-size:20px; font-weight:bold; text-align:center">Laporan Obat Keluar</div>';
+		<div style="font-size:20px; font-weight:bold; text-align:center">Laporan Rsep Obat Periode('.$tgl_awal.'-'.$tgl_akhir.')</div>';
 		$html .='
 		<table width="100%" border="1" cellspacing="0" cellpadding="2">
 		  <tr>
