@@ -88,4 +88,9 @@ class Resep extends MY_Controller {
 		$data=$this->resep_m->kodeResep();
 		echo json_encode($data);
 	}
+	public function getNamaDokter()
+	{
+		$data=$this->resep_m->getNamaDokter();
+		echo json_encode($data);
+	}
 }

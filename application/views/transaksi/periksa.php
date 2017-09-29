@@ -166,7 +166,7 @@
 			$.messager.alert('INFO','Pilih satu record dulu','info');
 		}
 	}
-	 function tampilkan() {
+	function tampilkan() {
 		var tgl_awal = $('#tgl_awal').datebox('getValue');
 		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
 
@@ -174,13 +174,13 @@
 	}
 
 	$('#tgl_awal').datebox({
-		dateFormat:'dd-MM-yy',
+		dateFormat:'yy-MM-dd',
 		formatter:function(date){
-			var d = date.getDate();
 			var y = date.getFullYear();
 			var m = date.getMonth()+1;
+			var d = date.getDate();
 
-			return String((d<10?('0'+d):d))+'-'+String((m<10?('0'+m):m))+'-'+y;
+			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
 		},
 		parser:function(s){
 
@@ -188,13 +188,13 @@
 	});
 
 	$('#tgl_akhir').datebox({
-		dateFormat:'dd-MM-yy',
+		dateFormat:'yy-MM-dd',
 		formatter:function(date){
-			var d = date.getDate	();
 			var y = date.getFullYear();
 			var m = date.getMonth()+1;
+			var d = date.getDate	();
 
-			return String((d<10?('0'+d):d))+'-'+String((m<10?('0'+m):m))+'-'+y;
+			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
 		},
 		parser:function(s){
 			

@@ -47,7 +47,6 @@ class Registrasi_m extends MY_Model {
 			select case when max(antrian) is null then '1' else max(antrian)+1 end as nomor from tbl_periksa
 			where convert(varchar(8),tgl_registrasi,112)='".date('Ymd')."'
 			")->row_array();
-		//return $this->db->query("select * from TBL_PERIKSA where TGL_PERIKSA LIKE '%2017-09-25%'");
 		return $result['nomor'];
 	}
 	
@@ -108,7 +107,7 @@ class Registrasi_m extends MY_Model {
 	
 	function hapusRegistrasi(){
 		$kode_registrasi=$this->input->post('kode_registrasi');
-		$this->db->where("kode_registrasi='".$kode_registrasi."'");	
+		$this->db->where("kode_registrasi='".$kode_registrasi."' and id_status_registrasi='Antri'");	
 		$r=$this->db->delete('tbl_periksa');
 		$result=array();
 		if($this->db->affected_rows()>0){

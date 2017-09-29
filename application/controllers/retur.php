@@ -50,6 +50,7 @@ class Retur extends MY_Controller {
     }
     public function formRetur(){
     	$data['data']=$this->retur_m->getIDRetur();
+    	$data['no_retur']=$this->retur_m->getNoRetur();
 		$this->load->view('transaksi/formRetur', $data);
 	}
 	public function formTambahRetur($id_retur="",$id_dtl_retur=""){
@@ -63,6 +64,10 @@ class Retur extends MY_Controller {
     	$data=$this->retur_m->getDtlStock();
 		echo json_encode($data);
     }
+    /*public function getNoRetur(){
+    	$data=$this->retur_m->getNoRetur();
+		echo json_encode($data);
+    }*/
     public function getPetugas()
     {
     	$data=$this->retur_m->getPetugas();

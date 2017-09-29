@@ -12,6 +12,7 @@
 					<th field="id_periksa" width="100" sortable="true">KODE PERIKSA</th>
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
 					<th field="nama_dokter" width="100" sortable="true">NAMA DOKTER</th>
+					<th field="tgl_periksa" width="100" sortable="true">TANGGAL</th>
 				</tr>
 			</thead>
 		</table>
@@ -171,13 +172,13 @@
 	}
 
 	$('#tgl_awal').datebox({
-		dateFormat:'dd-MM-yy',
+		dateFormat:'yy-MM-dd',
 		formatter:function(date){
-			var d = date.getDate();
 			var y = date.getFullYear();
 			var m = date.getMonth()+1;
+			var d = date.getDate();
 
-			return String((d<10?('0'+d):d))+'-'+String((m<10?('0'+m):m))+'-'+y;
+			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
 		},
 		parser:function(s){
 
@@ -187,11 +188,11 @@
 	$('#tgl_akhir').datebox({
 		dateFormat:'yy-MM-dd',
 		formatter:function(date){
-			var d = date.getDate	();
 			var y = date.getFullYear();
 			var m = date.getMonth()+1;
+			var d = date.getDate	();
 
-			return String((d<10?('0'+d):d))+'-'+String((m<10?('0'+m):m))+'-'+y;
+			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
 		},
 		parser:function(s){
 			

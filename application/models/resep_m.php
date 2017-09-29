@@ -20,18 +20,18 @@ class Resep_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select("a.id_resep,a.id_periksa,a.kode_dokter, b.nama_dokter,d.nama");
+    	$this->db->select("a.id_resep,a.id_periksa,convert(varchar(10),b.tgl_periksa,105) as tgl_periksa,b.kode_dokter, c.nama_dokter,d.nama");
 		$this->db->from("tbl_resep a");
-		$this->db->join("tbl_m_dokter b","a.kode_dokter = b.kode_dokter");
-		$this->db->join("TBL_PERIKSA c","a.id_periksa = c.id_periksa");
-		$this->db->join("TBL_M_PASIEN d","c.kode_pasien = d.kode_pasien");
+		$this->db->join("TBL_PERIKSA b","a.id_periksa = b.id_periksa");
+		$this->db->join("TBL_M_DOKTER c","b.kode_dokter = c.kode_dokter");
+		$this->db->join("TBL_M_PASIEN d","b.kode_pasien = d.kode_pasien");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
 			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
 		}
 		else {
-			$this->db->where("convert(varchar(10),c.tgl_periksa,112)= '".date('Ymd')."'");
+			$this->db->where("convert(varchar(10),b.tgl_periksa,112)= '".date('Ymd')."'");
 		}
 		
 		$this->db->order_by($sort,$order);
@@ -58,14 +58,12 @@ class Resep_m extends MY_Model {
 			$data=$this->getKodeResep();
 			$arr=array(
 				'id_periksa'=>$id_periksa,
-				'kode_dokter'=>$kode_dokter,
 			);
 
 			$r=$this->db->insert('TBL_RESEP',$arr);		
 		}else{
 			$arr=array(
 				'id_periksa'=>$id_periksa,
-				'kode_dokter'=>$kode_dokter,
 			);
 			$this->db->where("id_resep='".$id_resep."'");
 			$r=$this->db->update('TBL_RESEP',$arr);
@@ -161,7 +159,22 @@ class Resep_m extends MY_Model {
 		 ->result_array();
 	}
     function getIDObat(){
-         return $this->db->query(" select id_obat,kode_obat,nama,satuan FROM TBL_M_OBAT ")->result_array();
+         return $this->db->query("select 
+			z.id_obat,
+			z.kode_obat,
+			z.nama,
+			z.satuan,
+			(z.stok-z.resep) as sisa 
+			from(
+			    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
+			    (select sum(qty) from TBL_DETAIL_STOCK where
+			    id_obat=a.id_obat),0) as stok,
+			    isnull(
+			    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
+			    on x.KODE_OBAT=y.KODE_OBAT where
+			    y.id_obat=a.id_obat),0) as resep
+			    from TBL_M_OBAT a
+		    )z")->result_array();
     }
 	function getIDDokter(){
          return $this->db->query(" select kode_dokter,nama_dokter FROM TBL_M_DOKTER")->result_array();
@@ -172,5 +185,8 @@ class Resep_m extends MY_Model {
     function kodeResep(){
     	$id_resep=$this->input->post('id_resep');
 		 return $this->db->query("select a.KODE_OBAT,a.QTY,a.DOSIS,a.ID_DETAIL_RESEP,b.NAMA FROM TBL_DETAIL_RESEP a JOIN TBL_M_OBAT b ON a.KODE_OBAT=b.KODE_OBAT where a.id_resep = '".$id_resep."'")->result_array();
+    }
+    function getNamaDokter(){
+    	return $this->db->query('select a.*,b.kode_dokter,c.nama_dokter from TBL_RESEP a join TBL_PERIKSA b on b.KODE_DOKTER = b.KODE_DOKTER join TBL_M_DOKTER c on b.KODE_DOKTER = c.KODE_DOKTER')->result_array();
     }
 }

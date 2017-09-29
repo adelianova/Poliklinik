@@ -64,7 +64,9 @@ class Transaksi_m extends MY_Model {
 	function getIDDtlStock(){
 		return $this->db->query("select dbo.getIDDtlStock() as id_dtl_stock")->row_array();
 	}
-
+	function getNoFaktur(){
+		return $this->db->query("select dbo.getNoFaktur() as no_faktur")->row_array();
+	}
 	function simpanTransaksi(){
 		$edit=$this->input->post('edit');
 		$id_stock=$this->input->post('id_stock');
@@ -75,12 +77,12 @@ class Transaksi_m extends MY_Model {
 		$keterangan=$this->input->post('keterangan');
 		
 		if($edit==""){
-			$data=$this->getIDStock();
+			$data=$this->getNoFaktur();
 			$arr=array(
+				'no_faktur'=>$data['no_faktur'],
 				'id_suplier'=>$id_suplier,
 				'id_transaksi'=>$id_transaksi,
 				'tgl'=>date('Y-m-d',strtotime($tgl)),
-				'no_faktur'=>$no_faktur,
 				'keterangan'=>$keterangan,
 			);
 			$r=$this->db->insert('TBL_STOCK',$arr);
@@ -89,7 +91,6 @@ class Transaksi_m extends MY_Model {
 				'id_suplier'=>$id_suplier,
 				'id_transaksi'=>$id_transaksi,
 				'tgl'=>date('Y-m-d',strtotime($tgl)),
-				'no_faktur'=>$no_faktur,
 				'keterangan'=>$keterangan,
 			);
 			$this->db->where("id_stock='".$id_stock."'");
@@ -166,8 +167,8 @@ class Transaksi_m extends MY_Model {
 	
 	function removeTambah(){
 		$id_dtl_stock=$this->input->post('id_dtl_stock');
-		$this->db->where("id_dtl_stock='".$id_dtl_stock."'");	
-		$r=$this->db->delete('TBL_DETAIL_STOCK');
+		$this->db->where("id_dtl_stock='".$id_dtl_stock."'");		
+		$r=$this->db->delete('tbl_detail_stock');
 		$result=array();
 		if($this->db->affected_rows()>0){
 			$result['error']=false;

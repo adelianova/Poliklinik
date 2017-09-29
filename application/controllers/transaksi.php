@@ -12,14 +12,7 @@ class Transaksi extends MY_Controller {
 
 		if (!$this->autentifikasi->sudah_login()) redirect (site_url('login'));
 		redirect(site_url('main'));
-    }
-	
-	public function formTransaksi(){
-		$data['data']=$this->transaksi_m->getKodeTransaksi();
-		$data['tbl']=$this->transaksi_m->getKodeTransaksi();
-		$this->load->view('transaksi/formObat',$data);
-	}
-	
+    }	
 	public function getListStock(){
 		$data['rows']=$this->transaksi_m->getListStock('rows');
 		$data['total']=$this->transaksi_m->getListStock('total');
@@ -58,6 +51,7 @@ class Transaksi extends MY_Controller {
 
     public function formObat(){
     	$data['data']=$this->transaksi_m->getIDStock();
+    	$data['no_faktur']=$this->transaksi_m->getNoFaktur();
 		$this->load->view('transaksi/formObat', $data);
 	}
 	public function formTambahObat($id_stock="",$id_dtl_stock=""){

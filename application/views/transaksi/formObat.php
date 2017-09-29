@@ -45,12 +45,10 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>NO Faktur</td>
 						<td >
-							<input name='no_faktur' id='no_faktur' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:86.7%"/>
+							<input name='no_faktur' id='no_faktur' class='easyui-validatebox textbox' type="hidden" style="padding:3px;width:90%"  value="<?php echo $no_faktur['no_faktur'];?>"/>
 						</td>
 					</tr>
-
 					<tr>
 						<td class='label_form'>Keterangan</td>
 						<td >
@@ -90,7 +88,7 @@
 		</form>
 	
 <script type="text/javascript">
-		$(field="ID_DETAIL_STOCK").each(function(){
+		$(field="ID_DTL_STOCK").each(function(){
 			$(this).hide()
 			console.log(this);
 		})
@@ -160,13 +158,33 @@ function editTambah(){
 		
 	}
 
-
+/*
 function removeTambah(){
 		var row = $('#datagrid-m_detail').datagrid('getSelected');
 		if (row){
 			$.messager.confirm('Konfirmasi', 'Anda yakin menghapus data ini',function(z){
 				if (z){
-					$.post('<?php echo site_url('transaksi/removeTambah'); ?>',{id_detail_stock:row.ID_DETAIL_STOCK},function(result){
+					$.post('<?php echo site_url('transaksi/removeTambah'); ?>',{id_dtl_stock:row.ID_DTL_STOCK},function(result){
+						console.log(result)
+						if (!result.error){
+							$('#datagrid-m_detail').datagrid('reload');
+							$.messager.alert('INFO',result.msg,'info');
+							} else {
+							$.messager.alert('INFO',result.msg,'info');
+						}
+					},'json');
+				}
+			});
+			}else{
+			$.messager.alert('INFO','Pilih satu record dulu','info');
+		}
+	}*/
+function removeTambah(){
+		var row = $('#datagrid-m_detail').datagrid('getSelected');
+		if (row){
+			$.messager.confirm('Konfirmasi', 'Anda yakin menghapus data ini',function(z){
+				if (z){
+					$.post('<?php echo site_url('transaksi/removeTambah'); ?>',{id_dtl_stock:row.id_dtl_stock},function(result){
 						console.log(result)
 						if (!result.error){
 							$('#datagrid-m_detail').datagrid('reload');
@@ -181,7 +199,6 @@ function removeTambah(){
 			$.messager.alert('INFO','Pilih satu record dulu','info');
 		}
 	}
-
 </script>
 
 

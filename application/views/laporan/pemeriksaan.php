@@ -8,8 +8,8 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="id_periksa" width="100" hidden="true" sortable="true" hidden="true">ID</th>
-					<th field="kode_pasien" width="100" sortable="true" >KODE PASIEN</th>
+					<th field="id_periksa" width="100" hidden="true" sortable="true" ">ID</th>
+					<th field="kode_pasien" width="100" hidden="true sortable="true" >KODE PASIEN</th>
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
@@ -25,10 +25,10 @@
 				<tr>
 					<td class='label_form'>Pilih Tanggal</td>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' class='easyui-datetimebox' prompt="Dari tanggal" style="padding:3px;width:30%"/>	
+					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:30%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datetimebox' prompt="Sampai tanggal" style="padding:3px;width:30%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:30%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 					<a class="easyui-linkbutton" data-options="iconCls:'icon-print'" onClick="cetakLaporan()"  style="color: #fff">CETAK PDF</a>

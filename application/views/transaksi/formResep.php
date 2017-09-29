@@ -10,7 +10,7 @@
 					<tr>
 						<td class='label_form'>Pasien</td>
 						<td>
-						<select name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="padding:3px;width:96%" data-options="
+						<select name='id_periksa' id='id_periksa' onclick="" required="true" class="easyui-combogrid" style="padding:3px;width:96%" data-options="
 			                    panelWidth: 250,
 			                    idField: 'id_periksa',
 			                    url:'<?php echo base_url();?>index.php/resep/getIDPeriksa',
@@ -21,30 +21,27 @@
 				                        {field:'id_periksa',title:'ID',width:50,hidden:'true'},
 				                        {field:'kode_pasien',title:'Kode Pasien',width:100},
 				                        {field:'nama',title:'Nama',width:140,align:'left'},
-                    			]]
+
+                    			]],
+                    			
 			                ">
 			            </select>
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Dokter</td>
-						<td >
-							<select name='kode_dokter' id='kode_dokter' required="true" class="easyui-combogrid" style="padding:3px;width:87%" data-options="
+						<td class='label_form'>Nama Dokter</td>
+						<td>
+						<select name='nama_dokter' id='nama_dokter' required="true"  class="easyui-combobox" style="padding:3px;width:96%" data-options="
 			                    panelWidth: 200,
-			                    idField: 'kode_dokter',
-			                    url:'<?php echo base_url();?>index.php/resep/getIDDokter',
+			                    idField: 'nama_dokter',
+			                    url:'<?php echo base_url();?>index.php/resep/getNamaDokter',
 			                    method: 'get',
-			                    valueField:'kode_dokter',
+			                    valueField:'nama_dokter',
                                 textField:'nama_dokter',
-			                    columns: [[
-				                        {field:'kode_dokter',title:'ID',width:50},
-				                        {field:'nama_dokter',title:'Kode Pasien',width:140}
-                    			]]
 			                ">
 			            </select>
 						</td>
 					</tr>
-
 					<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">
 					</div>
@@ -163,6 +160,15 @@ function removeTambah(){
 			$.messager.alert('INFO','Pilih satu record dulu','info');
 		}
 	}
+function getDokter() {
+		onSelect: function(index,row){
+        			console.log(index);
+            		console.log(row.id_periksa);
+					$('#nama_dokter').combogrid('grid').datagrid('load',{
+					id_periksa:row.id_periksa
+					})
+				}
+}
 
 </script>
 

@@ -52,8 +52,22 @@ class Laporan_pemeriksaan_m extends MY_Model {
         return $this->db->query(" select kode_dokter,nama_dokter FROM TBL_M_DOKTER")->result_array();
     }
     public function getLaporan($TGL_MULAI,$TGL_SELESAI){
-		$tglMulai = date("dmY", strtotime($TGL_MULAI));
+		$tglMulai = date("dmY"),strtotime($TGL_MULAI));
 		$tglSelesai = date("dmY", strtotime($TGL_SELESAI));
+		$tglSelesai = date("dmY", strtotime($TGL_SELESAI));
+		if(trim($TGL_MULAI) == "" or trim($TGL_SELESAI) == ""){
+			date("dmY");	
+		}else
+		{
+			$tglMulai = date("dmY"),strtotime($TGL_MULAI));
+			$tglSelesai = date("dmY", strtotime($TGL_SELESAI));
+
+		}
+		//print_r(getdate());
+		//exit;
+		print_r($TGL_MULAI);
+		echo "<br/>";
+		echo $tglMulai;exit;
 		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?"":" and CONVERT(varchar(10), a.tgl_periksa, 105) between '$tglMulai' and '$tglSelesai' ";
 
 		$data = $this->db->query("SELECT a.id_periksa,a.kode_dokter,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan, b.nama_dokter, c.nama FROM tbl_periksa a

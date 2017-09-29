@@ -10,12 +10,18 @@
 					<tr>
 						<td class='label_form'>Nama Obat</td>
                         <td>
-							<input name='KODE_OBAT' id='KODE_OBAT' class='easyui-combobox' required="true"  style="padding:3px;width:93%" data-options="
-                                        url:'<?php echo base_url();?>index.php/resep/getKodeObat',
-                                        valueField:'kode_obat',
-                                        textField:'nama'
-                                        
-                                        "/>
+                        <select name='KODE_OBAT' id='KODE_OBAT' required="true" class="easyui-combogrid" style="padding:3px;width:96%" data-options="
+			                    panelWidth: 250,
+			                    idField: 'kode_obat',
+			                    url:'<?php echo base_url();?>index.php/resep/getKodeObat',
+			                    method: 'get',
+			                    valueField:'kode_obat',
+                                textField:'nama',
+			                    columns: [[
+				                        {field:'nama',title:'Nama Obat',width:150},
+				                        {field:'sisa',title:'Stok',width:100,align:'left'},
+                    			]]
+			                ">
 						</td>
 					</tr>
 					<tr>

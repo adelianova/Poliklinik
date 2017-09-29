@@ -92,7 +92,7 @@ class Periksa_m extends MY_Model {
 	
 	function hapusPeriksa(){
 		$id_periksa=$this->input->post('id_periksa');
-		$this->db->where("id_periksa='".$id_periksa."'");	
+		$this->db->where("id_periksa='".$id_periksa."' and id_status_registrasi='Periksa'");	
 		$r=$this->db->delete('tbl_periksa');
 		$result=array();
 		if($this->db->affected_rows()>0){
@@ -100,7 +100,7 @@ class Periksa_m extends MY_Model {
 			$result['msg']='Data berhasil dihapus';
 		}else{
 			$result['error']=true;
-			$result['msg']='Data gagal berhasil dihapus';
+			$result['msg']='Data gagal dihapus';
 		
 		}
 		

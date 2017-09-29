@@ -54,7 +54,9 @@ class Retur_m extends MY_Model {
 	function getIDDtlRetur(){
 		return $this->db->query("select dbo.getIDDtlRetur() as id_dtl_retur")->row_array();
 	}
-
+	function getNoRetur(){
+		return $this->db->query("select dbo.getNoRetur() as no_retur")->row_array();
+	}
 	function simpanRetur(){
 		$edit=$this->input->post('edit');
 		$id_retur=$this->input->post('id_retur');
@@ -63,16 +65,15 @@ class Retur_m extends MY_Model {
 		$petugas=$this->input->post('petugas');
 		
 		if($edit==""){
-			$data=$this->getIDRetur();
+			$data=$this->getNoRetur();
 			$arr=array(
-				'no_retur'=>$no_retur,
+				'no_retur'=>$data['no_retur'],
 				'tgl'=>date('Y-m-d',strtotime($tgl)),
 				'petugas'=>$petugas,
 			);
 			$r=$this->db->insert('TBL_RETUR',$arr);
 		}else{
 			$arr=array(
-				'no_retur'=>$no_retur,
 				'tgl'=>date('Y-m-d',strtotime($tgl)),
 				'petugas'=>$petugas,
 			);

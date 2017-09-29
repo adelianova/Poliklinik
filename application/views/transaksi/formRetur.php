@@ -8,9 +8,8 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>NO Retur</td>
 						<td >
-							<input name='no_retur' id='no_retur' type="number" class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:90%"/>
+							<input name='no_retur' id='no_retur' type="hidden" 	class='easyui-validatebox textbox' type="text" style="padding:3px;width:90%"  value="<?php echo $no_retur['no_retur'];?>"/>
 						</td>
 					</tr>
 					<tr>
@@ -30,12 +29,6 @@
 							</td>
 						</td>
 					</tr>
-					<!-- <tr>
-						<td class='label_form'>Petugas</td>
-						<td >
-							<input name='petugas' id='petugas' class='easyui-validatebox textbox' readonly="true" type="text" setValue="<?php echo $this->session->userdata('name');?>" style="padding:3px;width:90%"/>
-						</td>
-					</tr> -->
 			</table>
 			<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">
@@ -48,19 +41,11 @@
 					singleSelect:true">
 						<thead>
 							<tr>
-<<<<<<< HEAD
-								<th field="id_dtl_retur" width="150" sortable="true">ID DETAIL RETUR</th>
-								<th field="id_retur" width="70" sortable="true" hidden="true">ID RETUR</th>
-								<th field="id_dtl_stock" width="50" sortable="true" hidden="true">ID DETAIL STOCK</th>
-								<th field="qty" width="120" sortable="true">QUANTITY</th>
-								<th field="keterangan" width="120" sortable="true">KETERANGAN</th>
-=======
 								<th field="id_dtl_retur" width="100" hidden="true" sortable="true">ID DETAIL RETUR</th>
 								<th field="id_retur" width="70" hidden="true" sortable="true">ID RETUR</th>
 								<th field="id_dtl_stock" width="100" hidden="true" sortable="true">ID DETAIL STOCK</th>
 								<th field="qty" width="100" sortable="true">QUANTITY</th>
 								<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
->>>>>>> 2ced6d60ae9bc9cdf0d8d1980dd210b00b202d94
 							</tr>
 						</thead>
 					</table>
