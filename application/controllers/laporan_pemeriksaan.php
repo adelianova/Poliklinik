@@ -19,8 +19,8 @@ class Laporan_pemeriksaan extends MY_Controller {
 	}	
 	public function cetakLaporan($tgl_awal="",$tgl_akhir="")
 	{
-		$tgl_awal = @str_replace("~", "/", $tgl_awal);
-		$tgl_akhir = @str_replace("~", "/", $tgl_akhir);
+		$TGL_MULAI = @str_replace("~", "/", $tgl_awal);
+		$TGL_SELESAI = @str_replace("~", "/", $tgl_akhir);
 		$this->load->library('mpdf/mPdf');
 		$mpdf = new mPDF('c','Legal-L');
 		$html = '
@@ -33,8 +33,17 @@ class Laporan_pemeriksaan extends MY_Controller {
 		</htmlpagefooter>
 		<sethtmlpagefooter name="MyFooter1" value="on" />
 		<div style="font-size:20px; font-weight:bold">PDAM KOTA MALANG</div>
-		<div style="font-weight:bold;">Jl. Terusan Danau Sentani No.100 - Malang</div>
-		<div style="font-size:20px; font-weight:bold; text-align:center">Laporan Pemeriksaan Periode('.$tgl_awal.'-'.$tgl_akhir.')</div>';
+		<div style="font-weight:bold;">Jl. Terusan Danau Sentani No.100 - Malang</div>';
+		if($tgl_mulai==''){
+		$html.="
+		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan <br/> Periode(".date('d-m-Y')." sampai ".date('d-m-Y').")</div>";
+ 			
+		}else{
+		$html.="
+		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan Periode(".$tgl_awal." sampai ".$tgl_akhir.")</div>";
+ 		}
+
+
 		$html .='
 		<table width="100%" border="1" cellspacing="0" cellpadding="2">
 		  <tr>

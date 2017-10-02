@@ -28,7 +28,7 @@ class Resep_m extends MY_Model {
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
+			$this->db->where("convert(varchar(10),b.tgl_periksa,112) between '".date('Ymd',strtotime($tgl_awal))."' AND '".date('Ymd',strtotime($tgl_akhir))."'");
 		}
 		else {
 			$this->db->where("convert(varchar(10),b.tgl_periksa,112)= '".date('Ymd')."'");
@@ -53,7 +53,8 @@ class Resep_m extends MY_Model {
 	function simpanResep($id_periksa="", $kode_dokter=""){
 		$edit=$this->input->post('edit');
 		$id_resep=$this->input->post('id_resep');
-
+		$id_periksa=$this->input->post('id_periksa');
+		
 		if($edit==''){
 			$data=$this->getKodeResep();
 			$arr=array(
@@ -90,7 +91,7 @@ class Resep_m extends MY_Model {
 		$kode_obat=$this->input->post('KODE_OBAT');
 		$qty=$this->input->post('QTY');
 		$dosis=$this->input->post('DOSIS');
-
+		//if($qtyy>=$qty){
 		if($edit==''){
 			$data=$this->getDetailResep();
 			$arr=array(
@@ -109,8 +110,11 @@ class Resep_m extends MY_Model {
 			);
 			$this->db->where("id_detail_resep='".$id_detail_resep."'");
 			$z=$this->db->update('TBL_DETAIL_RESEP',$arr);
-		
 		}
+	//} else{
+	//	$result['error']=true;
+	//	$result['msg']="Maaf Stok Obat Tidak Tersedia";
+	//}
 		
 		$result=array();
 		if($this->db->affected_rows()>0){
@@ -155,7 +159,7 @@ class Resep_m extends MY_Model {
 	}
 
 	function getIDPeriksa(){
-		 return $this->db->query("select a.kode_pasien,a.nama,b.id_periksa FROM TBL_M_PASIEN a JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien where kode_dokter is not null and id_periksa not in (select id_periksa from TBL_RESEP)")
+		 return $this->db->query("select a.kode_pasien,a.nama,b.id_periksa,b.kode_dokter, c.nama_dokter FROM TBL_M_PASIEN a JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien join TBL_M_DOKTER c on c.kode_dokter = b.kode_dokter where b.kode_dokter is not null and id_periksa not in (select id_periksa from TBL_RESEP)")
 		 ->result_array();
 	}
     function getIDObat(){

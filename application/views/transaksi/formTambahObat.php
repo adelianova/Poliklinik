@@ -86,8 +86,8 @@
 					if(result.error){
 						$.messager.alert('INFO',result.msg,'info');
 					}else{
-						$('#dialog-m_tambah').dialog('close');
 						$('#datagrid-m_detail').datagrid('reload');
+						$('#dialog-m_tambah').dialog('close');
 						$.messager.alert('INFO',result.msg,'info');
 					}
 			}

@@ -10,9 +10,9 @@
 					<th field="id_periksa" width="100" sortable="true" hidden="true">ID</th>
 					<th field="kode_registrasi" width="100" sortable="true" hidden="true">KODE REGISTRASI</th>
 					<th field="kode_dokter" width="100" sortable="true" hidden="true">DOKTER</th>
-					<th field="nama_dokter" width="100" sortable="true">DOKTER</th>
 					<th field="kode_pasien" width="100" sortable="true" hidden="true">PASIEN</th>
 					<th field="nama" width="100" sortable="true">PASIEN</th>
+					<th field="nama_dokter" width="100" sortable="true">DOKTER</th>
 					<th field="id_penyakit" width="100" sortable="true" hidden="true">ID PENYAKIT</th>
 					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
@@ -32,10 +32,10 @@
 			<div style="display:inline;padding-top:-10px;">
 				<tr>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_awal' id='tgl_awal' class='easyui-datebox' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datebox' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 				</tr>
@@ -88,9 +88,7 @@
 	function editPeriksa(){
 		
         var row = $('#datagrid-m_periksa').datagrid('getSelected');
-
 		if(row){
-		
 		$('#dialog-m_periksa').dialog({ 
 		    closed: false, 
 			cache: false, 
@@ -173,31 +171,4 @@
 		$('#datagrid-m_periksa').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
 	}
 
-	$('#tgl_awal').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-
-		}
-	});
-
-	$('#tgl_akhir').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate	();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-			
-		}
-	});
 </script>

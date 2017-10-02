@@ -27,7 +27,7 @@ class Periksa_m extends MY_Model {
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
+			$this->db->where("convert(varchar(10),a.tgl_periksa,112) between '".date('Ymd',strtotime($tgl_awal))."' AND '".date('Ymd',strtotime($tgl_akhir))."'");
 		}
 		else {
 			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
@@ -91,9 +91,17 @@ class Periksa_m extends MY_Model {
 	
 	
 	function hapusPeriksa(){
-		$id_periksa=$this->input->post('id_periksa');
-		$this->db->where("id_periksa='".$id_periksa."' and id_status_registrasi='Periksa'");	
-		$r=$this->db->delete('tbl_periksa');
+	$id_periksa=$this->input->post('id_periksa');
+		$arr=array(
+				'kode_dokter'=>null,
+				'id_penyakit'=>null,
+				'tgl_periksa'=>null,
+				'diagnosa'=>null,
+				'id_status_registrasi'=>'Antri',
+			);
+			$this->db->where("id_periksa='".$id_periksa."'");
+			$r=$this->db->update('TBL_PERIKSA',$arr);
+
 		$result=array();
 		if($this->db->affected_rows()>0){
 			$result['error']=false;

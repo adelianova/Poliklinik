@@ -26,7 +26,7 @@ class Masuk_m extends MY_Model {
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("TGL between '".$tgl_awal."' AND '".$tgl_akhir."'");
+			$this->db->where("convert(varchar(10),a.TGL,112) between '".date('Ymd',strtotime($tgl_awal))."' AND '".date('Ymd',strtotime($tgl_akhir))."'");
 		}else {
 			$this->db->where("convert(varchar(10),a.TGL,112)= '".date('Ymd')."'");
 		}
@@ -44,12 +44,11 @@ class Masuk_m extends MY_Model {
 	public function getLaporan($TGL_MULAI,$TGL_SELESAI){
 		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
 		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
-		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?"":" and CONVERT(varchar(10), A.TGL, 105) between '$tglMulai' and '$tglSelesai' ";
-
+		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?" and CONVERT(varchar(8), a.TGL, 112) ='".date('Ymd')."'":" and CONVERT(varchar(8), a.TGL, 112) between '$tglMulai' and '$tglSelesai' ";
 		$data = $this->db->query("SELECT a.ID_STOCK,convert(varchar(10),a.TGL,105) as TGL,c.KODE_OBAT,c.NAMA,c.SATUAN,b.HARGA_SATUAN,b.QTY,b.TOTAL FROM TBL_STOCK a
 		JOIN TBL_DETAIL_STOCK b ON a.ID_STOCK = b.ID_STOCK
 		JOIN TBL_M_OBAT C ON b.ID_OBAT = c.ID_OBAT
-		where convert(varchar(10),a.TGL,112) = '".date('Ymd')."' and 1 = 1 $tgl
+		where 1=1 $tgl
 		ORDER BY TGL DESC");
 		return $data->result();
 	}

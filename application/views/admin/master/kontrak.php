@@ -31,7 +31,6 @@
 				<input id="skontrak" class="easyui-searchbox" style="width:250px" 
 				searcher="carikontrak" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='id_kontrak'>ID_KONTRAK</div>
 					<div name='nama_dokter'>NAMA DOKTER</div>
 					<div name='mulai_kontrak'>MULAI KONTRAK</div>
 				</div>  

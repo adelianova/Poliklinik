@@ -26,7 +26,7 @@ class Transaksi_m extends MY_Model {
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("tgl between '".$tgl_awal."' AND '".$tgl_akhir."'");
+			$this->db->where("convert(varchar(10),a.tgl,112) between '".date('Ymd',strtotime($tgl_awal))."' AND '".date('Ymd',strtotime($tgl_akhir))."'");
 		}
 		else {
 			$this->db->where("convert(varchar(10),a.tgl,112)= '".date('Ymd')."'");

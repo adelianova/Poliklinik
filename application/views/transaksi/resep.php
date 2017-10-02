@@ -27,10 +27,10 @@
 			<div style="display:inline;padding-top:-10px;">
 				<tr>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_awal' id='tgl_awal' class='easyui-datebox' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datebox' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 				</tr>
@@ -46,7 +46,7 @@
 			</div>
 		</div>
 
-	<div id="dialog-m_resep" class="easyui-dialog" style="width:500px; height:350px; padding: 10px 20px" 
+	<div id="dialog-m_resep" class="easyui-dialog" style="width:500px; height:400px; padding: 10px 20px" 
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 	</div>
 		
@@ -77,6 +77,7 @@
 				
 				$('#form_resep').form('clear');
 				$('#form_resep #edit').val('');
+				$('#panelGridResep').hide();
 			}
 			});
 	}
@@ -111,14 +112,13 @@
 	
 	function simpanResep(){
 		id_periksa = $('#id_periksa').combogrid("getValue");
-		kode_dokter = $('#kode_dokter').combogrid("getValue");
 		$.messager.progress({
                 title:'',
                 msg:'Simpan Resep...',
 				text:''
         });
 		$('#form_resep').form('submit',{
-			url: '<?php echo site_url('resep/simpanResep'); ?>/'+id_periksa+"/"+kode_dokter,
+			url: '<?php echo site_url('resep/simpanResep'); ?>/'+id_periksa,
 			onSubmit: function(){ 
 				var isValid = $(this).form('validate');
 				if (!isValid){
@@ -136,8 +136,6 @@
 						$('#dialog-m_resep').dialog('close');
 						$('#datagrid-m_resep').datagrid('reload');
 						$.messager.alert('INFO',result.msg,'info');
-				
-					
 					}
 					
 			}
@@ -170,32 +168,4 @@
 
 		$('#datagrid-m_resep').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
 	}
-
-	$('#tgl_awal').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-
-		}
-	});
-
-	$('#tgl_akhir').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate	();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-			
-		}
-	});
 </script>

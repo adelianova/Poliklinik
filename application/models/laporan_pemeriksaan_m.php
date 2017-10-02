@@ -27,7 +27,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("tgl_periksa between '".$tgl_awal."' AND '".$tgl_akhir."'");
+			$this->db->where("convert(varchar(10),a.tgl_periksa,112) between '".date('Ymd',strtotime($tgl_awal))."' AND '".date('Ymd',strtotime($tgl_akhir))."'");
 		}else {
 			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
 		}
@@ -52,27 +52,15 @@ class Laporan_pemeriksaan_m extends MY_Model {
         return $this->db->query(" select kode_dokter,nama_dokter FROM TBL_M_DOKTER")->result_array();
     }
     public function getLaporan($TGL_MULAI,$TGL_SELESAI){
-		$tglMulai = date("dmY"),strtotime($TGL_MULAI));
-		$tglSelesai = date("dmY", strtotime($TGL_SELESAI));/*
-		if(trim($TGL_MULAI) == "" or trim($TGL_SELESAI) == ""){
-			date("dmY");	
-		}else
-		{
-			$tglMulai = date("dmY"),strtotime($TGL_MULAI));
-			$tglSelesai = date("dmY", strtotime($TGL_SELESAI));
-
-		}*/
-		//print_r(getdate());
-		//exit;
-		print_r($TGL_MULAI);
-		echo "<br/>";
-		echo $tglMulai;exit;
-		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?"":" and CONVERT(varchar(10), a.tgl_periksa, 105) between '$tglMulai' and '$tglSelesai' ";
+		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
+		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
+		
+		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?" and CONVERT(varchar(8), a.tgl_periksa, 112) ='".date('Ymd')."'":" and CONVERT(varchar(8), a.tgl_periksa, 112) between '$tglMulai' and '$tglSelesai' ";
 
 		$data = $this->db->query("SELECT a.id_periksa,a.kode_dokter,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan, b.nama_dokter, c.nama FROM tbl_periksa a
 		JOIN TBL_M_DOKTER b ON a.kode_dokter = b.kode_dokter
 		JOIN TBL_M_PASIEN C ON a.kode_pasien = c.kode_pasien
-		where id_status_registrasi = 'selesai'
+		where id_status_registrasi = 'selesai'".$tgl." 
 		ORDER BY tgl_periksa DESC");
 		return $data->result();
 	}

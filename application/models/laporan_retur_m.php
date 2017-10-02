@@ -28,7 +28,7 @@ class Laporan_retur_m extends MY_Model {
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("tgl between '".$tgl_awal."' AND '".$tgl_akhir."'");
+			$this->db->where("convert(varchar(10),d.tgl,112) between '".date('Ymd',strtotime($tgl_awal))."' AND '".date('Ymd',strtotime($tgl_akhir))."'");
 		}else {
 			$this->db->where("convert(varchar(10),d.tgl,112)= '".date('Ymd')."'");
 		}
@@ -48,13 +48,15 @@ class Laporan_retur_m extends MY_Model {
 	public function getLaporan($TGL_MULAI,$TGL_SELESAI){
 		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
 		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
-		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?"":" and CONVERT(varchar(10), a.tgl, 105) between '$tglMulai' and '$tglSelesai' ";
+		
+		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?" and CONVERT(varchar(8), d.tgl, 112) ='".date('Ymd')."'":" and CONVERT(varchar(8), d.tgl, 112) between '$tglMulai' and '$tglSelesai' ";
+
 
 		$data = $this->db->query("SELECT a.kode_obat,a.nama,b.id_dtl_stock,b.id_obat,c.id_dtl_retur,c.qty,c.keterangan,d.id_retur,d.no_retur,convert(varchar(10),d.tgl,105) as tgl,d.petugas FROM TBL_M_OBAT a
 		JOIN TBL_DETAIL_STOCK b ON a.id_obat = b.id_obat
 		JOIN TBL_DETAIL_RETUR C ON b.id_dtl_stock = c.id_dtl_stock
 		JOIN TBL_RETUR d ON c.id_retur = d.id_retur
-		where convert(varchar(10),d.tgl,112) = '".date('Ymd')."' and 1 = 1 $tgl
+		where 1=1 $tgl
 		ORDER BY tgl DESC");
 		return $data->result();
 	}

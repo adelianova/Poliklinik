@@ -1,4 +1,3 @@
-	
 <table id="datagrid-m_transaksi" title="" class="easyui-datagrid scrollbarx" 
 		style="width:auto; height: auto;" 
 		data-options="
@@ -28,10 +27,10 @@
 			<div style="display:inline;padding-top:-10px;">
 				<tr>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_awal' id='tgl_awal' class='easyui-datebox' prompt="Dari tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datebox' prompt="Sampai tanggal" style="padding:3px;width:40%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 				</tr>
@@ -48,7 +47,7 @@
 				</div>  
 			</div>
 		</div>
-		<div id="dialog-m_transaksi" class="easyui-dialog" style="width:800px; height:500px; padding: 10px 20px" 
+		<div id="dialog-m_transaksi" class="easyui-dialog" style="width:480px; height:500px; padding: 10px 20px" 
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 		</div>
 
@@ -82,6 +81,7 @@
 				
 				$('#form_obat').form('clear');
 				$('#form_obat #edit').val('');
+				$('#panelGridStok').hide();
 			}
 			});
 	}
@@ -173,32 +173,4 @@
 
 		$('#datagrid-m_transaksi').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
 	}
-
-	$('#tgl_awal').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-
-		}
-	});
-
-	$('#tgl_akhir').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate	();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-			
-		}
-	});
 </script>

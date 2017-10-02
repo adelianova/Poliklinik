@@ -26,7 +26,7 @@ class Retur_m extends MY_Model {
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
-			$this->db->where("tgl between '".$tgl_awal."' AND '".$tgl_akhir."'");
+			$this->db->where("convert(varchar(10),a.tgl,112) between '".date('Ymd',strtotime($tgl_awal))."' AND '".date('Ymd',strtotime($tgl_akhir))."'");
 		}
 		else {
 			$this->db->where("convert(varchar(10),a.tgl,112)= '".date('Ymd')."'");
@@ -45,7 +45,9 @@ class Retur_m extends MY_Model {
 
 	function getListDetail(){
     	$id_retur=$this->input->post('id_retur');
-		return $this->db->query("select id_dtl_retur,id_retur,id_dtl_stock,qty,keterangan FROM TBL_DETAIL_RETUR where id_retur = '".$id_retur."'")->result_array();
+		return $this->db->query("select a.id_dtl_retur,a.id_retur,a.id_dtl_stock,a.qty,a.keterangan,c.nama FROM TBL_DETAIL_RETUR a
+		 join TBL_DETAIL_STOCK b on a.id_dtl_stock=b.id_dtl_stock 
+		 join TBL_M_OBAT c on b.id_obat=c.id_obat where id_retur = '".$id_retur."'")->result_array();
 	}
 	function getIDRetur(){
 		return $this->db->query("select dbo.getIDRetur() as id_retur")->row_array();

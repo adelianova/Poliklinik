@@ -27,14 +27,17 @@
 					<tr>
 						<td class='label_form'>Quantity</td>
 						<td >
-							<input name='QTY' id='QTY' class='easyui-validatebox textbox' required="true" type="number" style="padding:3px;width:90%"/>
+							
+							<!--<input name='QTY' id='QTY' class='easyui-validatebox textbox' required="true" type="number" style="padding:3px;width:90%"/>
+							-->
+							<input type="text" id='QTY' class="easyui-numberbox" style="padding:3px;width:96%" required="true" value="100" data-options="min:0,precision:2">
 						</td>
 					</tr>
 					<tr>
 						<td class='label_form'>Dosis</td>
 						<td >
 						<textarea cols='40' rows='3' name='DOSIS' id='DOSIS' 
-							style='padding:3px;width:90%' class='easyui-validatebox textarea'  
+							style='padding:3px;width:93%' class='easyui-validatebox textarea'  
 							data-options="required:true"></textarea>
 						</td>
 					</tr>
@@ -48,7 +51,30 @@
 					</div>
 
 <script type="text/javascript">
+$('#QTY').numberbox({
+    min:1,
+    precision:0,
+    onChange:function(newVal,oldVal){
+    	console.log(newVal);
+    	console.log(oldVal);
+    	if(newVal.trim()!==""){
+    		var dataSelected = $('#KODE_OBAT').combogrid('grid').datagrid('getSelected');
+    		var sisaObat = dataSelected.sisa;
+    		console.log(dataSelected.sisa);
+    		if(newVal>sisaObat){
+				$.messager.alert({
+					title: 'INFO',
+					msg:'Sisa Obat '+ dataSelected.nama +' hanya '+ sisaObat,
+					fn: function(){
+						//...
+					}
+				});
+    			$('#QTY').numberbox('setValue',sisaObat);
 
+    		}
+    	}
+    }
+});
 	function simpanTambah(){
 		$.messager.progress({
                 title:'',

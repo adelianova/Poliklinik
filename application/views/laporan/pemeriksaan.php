@@ -25,10 +25,10 @@
 				<tr>
 					<td class='label_form'>Pilih Tanggal</td>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' prompt="Dari tanggal" style="padding:3px;width:30%"/>	
+					<input name='tgl_awal' id='tgl_awal' class='easyui-datebox' prompt="Dari tanggal" style="padding:3px;width:30%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' prompt="Sampai tanggal" style="padding:3px;width:30%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datebox' prompt="Sampai tanggal" style="padding:3px;width:30%"/>	
 					</td>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 					<a class="easyui-linkbutton" data-options="iconCls:'icon-print'" onClick="cetakLaporan()"  style="color: #fff">CETAK PDF</a>
@@ -59,38 +59,14 @@
 		$('#datagrid-m_periksa').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
 	}
 
-	$('#tgl_awal').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-
-		}
-	});
-
-	$('#tgl_akhir').datebox({
-		dateFormat:'yy-MM-dd',
-		formatter:function(date){
-			var y = date.getFullYear();
-			var m = date.getMonth()+1;
-			var d = date.getDate	();
-
-			return y+'-'+String((m<10?('0'+m):m))+'-'+String((d<10?('0'+d):d));
-		},
-		parser:function(s){
-			
-		}
-	});
+	
 	function cetakLaporan(){
         var tgl_awal = $('#tgl_awal').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
         var tgl_akhir = $('#tgl_akhir').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
         PopupCenter("http://localhost/poliklinik/index.php/laporan_pemeriksaan/cetakLaporan/"+tgl_awal+"/"+tgl_akhir,"LAPORAN PEMERIKSAAN","800","400");
     }
+
+    
 	function PopupCenter(url, title, w, h) {
         // Fixes dual-screen position                         Most browsers      Firefox
         var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;

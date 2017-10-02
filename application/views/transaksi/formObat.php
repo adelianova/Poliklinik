@@ -1,61 +1,66 @@
-	<form id="form_obat" method="post" novalidate>
-				<input type='hidden' name='edit' id='edit' value=''/>
-				<table width='350px' class='dialog-form' >
-					<tr>
-						<td >
-							<input name='id_stock' id='id_stock' type="hidden" readonly='true' 
-							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $data['id_stock'];?>"/>	
-						</td>
-					</tr>
-					<tr>
-						<td class='label_form'>Transaksi</td>
-						<td>
-						<select name='id_transaksi' id='id_transaksi' required="true" class="easyui-combogrid" style="padding:3px;width:90%" data-options="
-			                    panelWidth: 200,
-			                    idField: 'ID_TRANSAKSI',
-			                    url:'<?php echo base_url();?>index.php/transaksi/getListIDTransaksi',
-			                    method: 'get',
-			                    valueField:'ID_TRANSAKSI',
-                                textField:'TRANSAKSI',
-			                    columns: [[
-				                        {field:'ID_TRANSAKSI',hidden:'true',title:'ID Transaksi',width:50},
-				                        {field:'TRANSAKSI',title:'Transaksi',width:200},
-                    			]]
-			                ">
-			            </select>
-						</td>
-					</tr>
-					<tr>
-						<td class='label_form'>Supplier</td>
-						<td>
-						<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:105%" data-options="
-			                    url:'<?php echo base_url();?>index.php/transaksi/getIDSuplier',
-			                    valueField:'ID_SUPLIER',
-                                textField:'NAMA',
-			                ">
-			            </select>
-						</td>
-					</tr>
+<div id="cc" class="easyui-layout" style="width:420px;height:400px;">
+    <div data-options="region:'north',title:'',split:true" style="height:130px;">
+		<form id="form_obat" method="post" novalidate>
+					<input type='hidden' name='edit' id='edit' value=''/>
+					<table width='350px' class='dialog-form' >
+						<tr>
+							<td >
+								<input name='id_stock' id='id_stock' type="hidden" readonly='true' 
+								class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $data['id_stock'];?>"/>	
+							</td>
+						</tr>
+						<tr>
+							<td class='label_form'>Transaksi</td>
+							<td>
+							<select name='id_transaksi' id='id_transaksi' required="true" class="easyui-combogrid" style="padding:3px;width:90%" data-options="
+				                    panelWidth: 200,
+				                    idField: 'ID_TRANSAKSI',
+				                    url:'<?php echo base_url();?>index.php/transaksi/getListIDTransaksi',
+				                    method: 'get',
+				                    valueField:'ID_TRANSAKSI',
+	                                textField:'TRANSAKSI',
+				                    columns: [[
+					                        {field:'ID_TRANSAKSI',hidden:'true',title:'ID Transaksi',width:50},
+					                        {field:'TRANSAKSI',title:'Transaksi',width:200},
+	                    			]]
+				                ">
+				            </select>
+							</td>
+						</tr>
+						<tr>
+							<td class='label_form'>Supplier</td>
+							<td>
+							<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:105%" data-options="
+				                    url:'<?php echo base_url();?>index.php/transaksi/getIDSuplier',
+				                    valueField:'ID_SUPLIER',
+	                                textField:'NAMA',
+				                ">
+				            </select>
+							</td>
+						</tr>
 
-					
-					<tr>
-						<td class='label_form'>Tanggal</td>
-						<td >
-							<input name='tgl' id='tgl' class='easyui-datetimebox' style="padding:3px;width:90%"/>	
-						</td>
-					</tr>
-					<tr>
-						<td >
-							<input name='no_faktur' id='no_faktur' class='easyui-validatebox textbox' type="hidden" style="padding:3px;width:90%"  value="<?php echo $no_faktur['no_faktur'];?>"/>
-						</td>
-					</tr>
-					<tr>
-						<td class='label_form'>Keterangan</td>
-						<td >
-							<input name='keterangan' id='keterangan' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:86.7%"/>
-						</td>
-					</tr>
-			</table>
+						
+						<tr>
+							<td class='label_form'>Tanggal</td>
+							<td >
+								<input name='tgl' id='tgl' class='easyui-datetimebox' style="padding:3px;width:90%"/>	
+							</td>
+						</tr>
+						<tr>
+							<td >
+								<input name='no_faktur' id='no_faktur' class='easyui-validatebox textbox' type="hidden" style="padding:3px;width:90%"  value="<?php echo $no_faktur['no_faktur'];?>"/>
+							</td>
+						</tr>
+						<tr>
+							<td class='label_form'>Keterangan</td>
+							<td >
+								<input name='keterangan' id='keterangan' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:86.7%"/>
+							</td>
+						</tr>
+				</table>
+		</form>
+	</div>
+   	<div id="panelGridStok" data-options="region:'center',title:''" style="padding:0px;">
 			<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">
 					</div>
@@ -85,7 +90,7 @@
 			        	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onClick="removeTambah()">Remove</a>&nbsp;
 							 
 					</div>
-		</form>
+	</div>	
 	
 <script type="text/javascript">
 		$(field="ID_DTL_STOCK").each(function(){

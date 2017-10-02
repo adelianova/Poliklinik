@@ -1,68 +1,70 @@
-	<form id="form_retur" method="post" novalidate>
-				<input type='hidden' name='edit' id='edit' value=''/>
-				<table width='350px' class='dialog-form' >
-					<tr>
-						<td >
-							<input name='id_retur' id='id_retur' type="hidden" readonly='true' 
-							class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $data['id_retur'];?>"/>	
-						</td>
-					</tr>
-					<tr>
-						<td >
-							<input name='no_retur' id='no_retur' type="hidden" 	class='easyui-validatebox textbox' type="text" style="padding:3px;width:90%"  value="<?php echo $no_retur['no_retur'];?>"/>
-						</td>
-					</tr>
-					<tr>
-						<td class='label_form'>Tanggal</td>
-						<td >
-							<input name='tgl' id='tgl' class='easyui-datetimebox' style="padding:3px;width:270px"/>	
-						</td>
-					</tr>
-					<tr>
-						<td class='label_form'>Petugas</td>
-							<td>
-							<input name='petugas' id='petugas' class='easyui-combobox' required="true" style="padding:3px;width:270px" data-options="
-		                                        url:'<?php echo base_url();?>index.php/retur/getPetugas',
-		                                        valueField:'nip',
-		                                        textField:'full_name'
-		                                        "/>
+<div id="cc" class="easyui-layout" style="width:420px;height:400px;">
+    <div data-options="region:'north',title:'',split:true" style="height:80px;">
+		<form id="form_retur" method="post" novalidate>
+					<input type='hidden' name='edit' id='edit' value=''/>
+					<table width='350px' class='dialog-form' >
+						<tr>
+							<td >
+								<input name='id_retur' id='id_retur' type="hidden" readonly='true' 
+								class='easyui-validatebox textbox' style="padding:3px;width:90%" value="<?php echo $data['id_retur'];?>"/>	
 							</td>
-						</td>
-					</tr>
-			</table>
-			<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
-					closed="true" iconCls="icon-user">
-					</div>
-			<table id="datagrid-m_detail" title="Retur Obat" iconCls="icon-save" class="easyui-datagrid scrollbarx" 
-					style="width:450px; height: 300px;" 
-					data-options="
-					url:'<?php echo base_url().'index.php/retur/getListDetail';?>',
-					toolbar:'#toolbar2',rownumbers:true,border:'true',
-					singleSelect:true">
-						<thead>
-							<tr>
-								<th field="id_dtl_retur" width="100" hidden="true" sortable="true">ID DETAIL RETUR</th>
-								<th field="id_retur" width="70" hidden="true" sortable="true">ID RETUR</th>
-								<th field="id_dtl_stock" width="100" hidden="true" sortable="true">ID DETAIL STOCK</th>
-								<th field="qty" width="100" sortable="true">QUANTITY</th>
-								<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
-							</tr>
-						</thead>
-					</table>
-					<div id="toolbar2" style='padding:5px;height:25px'>
-						<div style="display:inline;">
-						<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onClick="iniTambah()">Tambah</a>&nbsp;
-						<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onClick="editTambah()">Edit</a>&nbsp;
-			        	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onClick="removeTambahRetur()">Remove</a>&nbsp;
-							 
-					</div>
-		</form>
+						</tr>
+						<tr>
+							<td >
+								<input name='no_retur' id='no_retur' type="hidden" 	class='easyui-validatebox textbox' type="text" style="padding:3px;width:90%"  value="<?php echo $no_retur['no_retur'];?>"/>
+							</td>
+						</tr>
+						<tr>
+							<td class='label_form'>Tanggal</td>
+							<td >
+								<input name='tgl' id='tgl' class='easyui-datetimebox' style="padding:3px;width:270px"/>	
+							</td>
+						</tr>
+						<tr>
+							<td class='label_form'>Petugas</td>
+								<td>
+								<input name='petugas' id='petugas' class='easyui-combobox' required="true" style="padding:3px;width:270px" data-options="
+			                                        url:'<?php echo base_url();?>index.php/retur/getPetugas',
+			                                        valueField:'nip',
+			                                        textField:'full_name'
+			                                        "/>
+								</td>
+							</td>
+						</tr>
+				</table>
+			</form>
+	</div>
+    <div id="panelGridRetur" data-options="region:'center',title:''" style="padding:0px;height: 300px">
+				<div id="dialog-m_tambah" class="easyui-dialog" style="width:390px; height:250px; padding: 10px 20px" 
+						closed="true" iconCls="icon-user">
+						</div>
+				<table id="datagrid-m_detail" iconCls="icon-save" class="easyui-datagrid scrollbarx" 
+						style="width:418px; height: 300px;" 
+						data-options="
+						url:'<?php echo base_url().'index.php/retur/getListDetail';?>',
+						toolbar:'#toolbar2',rownumbers:true,border:'true',
+						singleSelect:true">
+							<thead>
+								<tr>
+									<th field="id_dtl_retur" width="100" hidden="true" sortable="true">ID DETAIL RETUR</th>
+									<th field="id_retur" width="70" hidden="true" sortable="true">ID RETUR</th>
+									<th field="id_dtl_stock" width="100" hidden="true" sortable="true">ID DETAIL STOCK</th>
+									<th field="nama" width="150" sortable="true">NAMA OBAT</th>
+									<th field="qty" width="100" sortable="true">QUANTITY</th>
+									<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
+								</tr>
+							</thead>
+						</table>
+						<div id="toolbar2" style='padding:5px;height:25px'>
+							<div style="display:inline;">
+							<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onClick="iniTambah()">Tambah</a>&nbsp;
+							<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onClick="editTambah()">Edit</a>&nbsp;
+				        	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onClick="removeTambahRetur()">Remove</a>&nbsp;
+								 
+						</div>
+	</div>
 	
 <script type="text/javascript">
-		$(field="ID_DETAIL_RETUR").each(function(){
-			$(this).hide()
-			console.log(this);
-		})
 function iniTambah(){
 	var id_retur = $('#datagrid-m_retur').datagrid('getSelected');
 		$('#dialog-m_tambah').dialog({ 
