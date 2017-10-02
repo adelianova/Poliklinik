@@ -34,13 +34,13 @@ class Laporan_retur extends MY_Controller {
 		<sethtmlpagefooter name="MyFooter1" value="on" />
 		<div style="font-size:20px; font-weight:bold">PDAM KOTA MALANG</div>
 		<div style="font-weight:bold;">Jl. Terusan Danau Sentani No.100 - Malang</div>';
-		if($tgl_mulai==''){
+		if($TGL_MULAI==''){
 		$html.="
 		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Retur Obat <br/> Periode(".date('d-m-Y')." sampai ".date('d-m-Y').")</div>";
  			
 		}else{
 		$html.="
-		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Retur Obat Periode(".$tgl_awal." sampai ".$tgl_akhir.")</div>";
+		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Retur Obat <br/> Periode(".$tgl_awal." sampai ".$tgl_akhir.")</div>";
  		}
 
 
@@ -52,7 +52,7 @@ class Laporan_retur extends MY_Controller {
 			<td width="10%" align="center"><strong>ID Detail Stock</strong></td>
 			<td width="10%" align="center"><strong>Petugas</strong></td>
 			<td width="10%" align="center"><strong>Kode Obat</strong></td>
-			<td width="10%" align="center"><strong>Nama/strong></td>
+			<td width="10%" align="center"><strong>Nama</strong></td>
 			<td width="8%" align="center"><strong>Jumlah</strong></td>
 			<td width="10%" align="center"><strong>Tanggal Retur</strong></td>
 			<td width="10%" align="center"><strong>Keterangan</strong></td>

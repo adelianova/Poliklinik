@@ -17,8 +17,8 @@
 					<tr>
 						<td class='label_form'>ID DETAIL STOCK</td>
 						<td>
-						<select name='id_dtl_stock' id='id_dtl_stock' required="true" class="easyui-combogrid" style="width:111%" data-options="
-			                    panelWidth: 500,
+						<select name='id_dtl_stock' id='id_dtl_stock' required="true" class="easyui-combogrid" style="width:100%" data-options="
+			                    panelWidth: 300,
 			                    idField: 'id_dtl_stock',
 			                    url:'<?php echo base_url();?>index.php/retur/getDtlStock',
 			                    method: 'get',
@@ -28,6 +28,7 @@
 				                        {field:'id_dtl_stock',title:'ID DETAIL STOCK',width:100},
 				                        {field:'nama',title:'Nama Obat',width:100},
 				                        {field:'tgl_expired',title:'Tanggal Expired',width:100},
+				                       
                     			]]
 			                ">
 			            </select>
@@ -53,7 +54,30 @@
 					</div>
 		</form>
 <script language="javascript">
-		
+	/*$('#qty').numberbox({
+    min:1,
+    precision:0,
+    onChange:function(newVal,oldVal){
+    	console.log(newVal);
+    	console.log(oldVal);
+    	if(newVal.trim()!==""){
+    		var dataSelected = $('#id_dtl_stock').combogrid('grid').datagrid('getSelected');
+    		var sisaObat = dataSelected.sisa;
+    		console.log(dataSelected.sisa);
+    		if(newVal>sisaObat){
+				$.messager.alert({
+					title: 'INFO',
+					msg:'Sisa Obat '+ dataSelected.nama +' hanya '+ sisaObat,
+					fn: function(){
+						//...
+					}
+				});
+    			$('#QTY').numberbox('setValue',sisaObat);
+
+    		}
+    	}
+    }
+});*/
 	function simpanTambahRetur(){
 		$.messager.progress({
                 title:'',

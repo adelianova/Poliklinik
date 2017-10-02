@@ -91,7 +91,7 @@ class Resep_m extends MY_Model {
 		$kode_obat=$this->input->post('KODE_OBAT');
 		$qty=$this->input->post('QTY');
 		$dosis=$this->input->post('DOSIS');
-		//if($qtyy>=$qty){
+
 		if($edit==''){
 			$data=$this->getDetailResep();
 			$arr=array(
@@ -111,11 +111,6 @@ class Resep_m extends MY_Model {
 			$this->db->where("id_detail_resep='".$id_detail_resep."'");
 			$z=$this->db->update('TBL_DETAIL_RESEP',$arr);
 		}
-	//} else{
-	//	$result['error']=true;
-	//	$result['msg']="Maaf Stok Obat Tidak Tersedia";
-	//}
-		
 		$result=array();
 		if($this->db->affected_rows()>0){
 			$result['error']=false;
@@ -168,15 +163,19 @@ class Resep_m extends MY_Model {
 			z.kode_obat,
 			z.nama,
 			z.satuan,
-			(z.stok-z.resep) as sisa 
+			(z.stok-z.resep-z.retur) as sisa 
 			from(
 			    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
-			    (select sum(qty) from TBL_DETAIL_STOCK where
-			    id_obat=a.id_obat),0) as stok,
+			    (select sum(b.qty) from TBL_DETAIL_STOCK b where
+			    a.id_obat=b.id_obat),0) as stok,
 			    isnull(
 			    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
 			    on x.KODE_OBAT=y.KODE_OBAT where
-			    y.id_obat=a.id_obat),0) as resep
+			    y.id_obat=a.id_obat),0) as resep,
+			    isnull(
+			    (select sum(d.qty) from TBL_DETAIL_RETUR d join TBL_DETAIL_STOCK b on 
+			    b.ID_DTL_STOCK=d.ID_DTL_STOCK where 
+				a.id_obat=b.id_obat),0) as retur
 			    from TBL_M_OBAT a
 		    )z")->result_array();
     }

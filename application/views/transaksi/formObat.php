@@ -1,4 +1,4 @@
-<div id="cc" class="easyui-layout" style="width:420px;height:400px;">
+<div id="cc" class="easyui-layout" style="width:500px;height:400px;">
     <div data-options="region:'north',title:'',split:true" style="height:130px;">
 		<form id="form_obat" method="post" novalidate>
 					<input type='hidden' name='edit' id='edit' value=''/>
@@ -30,7 +30,7 @@
 						<tr>
 							<td class='label_form'>Supplier</td>
 							<td>
-							<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:105%" data-options="
+							<select name='id_suplier' id='id_suplier' required="true" class="easyui-combobox" style="padding:3px;width:90%" data-options="
 				                    url:'<?php echo base_url();?>index.php/transaksi/getIDSuplier',
 				                    valueField:'ID_SUPLIER',
 	                                textField:'NAMA',
@@ -61,11 +61,11 @@
 		</form>
 	</div>
    	<div id="panelGridStok" data-options="region:'center',title:''" style="padding:0px;">
-			<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px" 
+			<div id="dialog-m_tambah" class="easyui-dialog" style="width:480px; height:250px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">
 					</div>
 			<table id="datagrid-m_detail" title="Stok Obat" iconCls="icon-save" class="easyui-datagrid scrollbarx" 
-					style="width:400px; height: 300px;" 
+					style="width:480px; height: 300px;" 
 					data-options="
 					url:'<?php echo base_url().'index.php/transaksi/getListDetail';?>',
 					toolbar:'#toolbar2',rownumbers:true,border:true,
@@ -75,11 +75,11 @@
 							<tr>
 								<th field="id_dtl_stock" width="120" sortable="true" hidden="true">ID DETAIL STOCK</th>
 								<th field="id_stock" width="70" sortable="true" hidden="true">ID STOCK</th>
-								<th field="nama" width="70" sortable="true">OBAT</th>
-								<th field="qty" width="70" sortable="true">QUANTITY</th>
+								<th field="nama" width="120" sortable="true">OBAT</th>
+								<th field="qty" width="60" sortable="true">JUMLAH</th>
 								<th field="harga_satuan" width="100" sortable="true">HARGA SATUAN</th>
 								<th field="total" width="70" sortable="true">TOTAL</th>
-								<th field="tgl_expired" width="120" sortable="true">TANGGAL EXPIRED</th>
+								<th field="tgl_expired" width="110" sortable="true">TGL EXPIRED</th>
 							</tr>
 						</thead>
 					</table>

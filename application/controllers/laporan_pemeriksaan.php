@@ -34,16 +34,13 @@ class Laporan_pemeriksaan extends MY_Controller {
 		<sethtmlpagefooter name="MyFooter1" value="on" />
 		<div style="font-size:20px; font-weight:bold">PDAM KOTA MALANG</div>
 		<div style="font-weight:bold;">Jl. Terusan Danau Sentani No.100 - Malang</div>';
-		if($tgl_mulai==''){
+		if($TGL_MULAI=='' ){
 		$html.="
-		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan <br/> Periode(".date('d-m-Y')." sampai ".date('d-m-Y').")</div>";
- 			
+		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan <br/> Periode(".date('d-m-Y')." sampai ".date('d-m-Y').")</div>"; 			
 		}else{
 		$html.="
-		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan Periode(".$tgl_awal." sampai ".$tgl_akhir.")</div>";
+		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan <br/> Periode(".$tgl_awal." sampai ".$tgl_akhir.")</div>";
  		}
-
-
 		$html .='
 		<table width="100%" border="1" cellspacing="0" cellpadding="2">
 		  <tr>

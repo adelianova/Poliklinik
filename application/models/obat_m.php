@@ -22,15 +22,19 @@ class Obat_m extends MY_Model {
 			z.kode_obat,
 			z.nama,
 			z.satuan,
-			(z.stok-z.resep) as sisa 
+			(z.stok-z.resep-z.retur) as sisa 
 			from(
 			    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
-			    (select sum(qty) from TBL_DETAIL_STOCK where
-			    id_obat=a.id_obat),0) as stok,
+			    (select sum(b.qty) from TBL_DETAIL_STOCK b where
+			    a.id_obat=b.id_obat),0) as stok,
 			    isnull(
 			    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
 			    on x.KODE_OBAT=y.KODE_OBAT where
-			    y.id_obat=a.id_obat),0) as resep
+			    y.id_obat=a.id_obat),0) as resep,
+			    isnull(
+			    (select sum(d.qty) from TBL_DETAIL_RETUR d join TBL_DETAIL_STOCK b on 
+			    b.ID_DTL_STOCK=d.ID_DTL_STOCK where 
+				a.id_obat=b.id_obat),0) as retur
 			    from TBL_M_OBAT a
 		    )z";
 		$this->db->select("

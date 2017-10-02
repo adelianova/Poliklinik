@@ -166,4 +166,26 @@ class Retur_m extends MY_Model {
     function getPetugas(){
     	return $this->db->query("select b.nip, b.full_name from v_employee_all b ")->result_array();
     }
+   /* public function getDtlStock()
+    {
+    	$subQuery="select 
+			z.id_obat,
+			z.kode_obat,
+			z.nama,
+			z.satuan,
+			(z.stok-z.resep) as sisa 
+			from(
+			    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
+			    (select sum(qty) from TBL_DETAIL_STOCK where
+			    id_obat=a.id_obat),0) as stok,
+			    isnull(
+			    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
+			    on x.KODE_OBAT=y.KODE_OBAT where
+			    y.id_obat=a.id_obat),0) as resep
+			    from TBL_M_OBAT a
+		    )z";
+		$this->db->select("a.id_obat,a.kode_obat,a.nama,a.satuan,a.sisa,b.id_dtl_stock,convert(varchar(10),b.tgl_expired,105) as tgl_expired");
+		$this->db->from("($subQuery) a");
+		$this->db->join("TBL_DETAIL_STOCK b","b.id_obat=a.id_obat");
+    }*/
 }

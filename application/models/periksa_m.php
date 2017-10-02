@@ -129,7 +129,7 @@ class Periksa_m extends MY_Model {
         return $this->db->query(" select id_penyakit,penyakit FROM TBL_M_PENYAKIT")->result_array();
     }
   	function getIDPeriksa(){
-		 return $this->db->query("select a.kode_pasien,a.nama,b.id_periksa FROM TBL_M_PASIEN a JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien where kode_dokter is null (select id_periksa from TBL_PERIKSA)")
+		 return $this->db->query("select a.kode_pasien,a.nama,b.id_periksa FROM TBL_M_PASIEN a JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien where kode_dokter is null (select id_periksa from TBL_PERIKSA) ")
 		 ->result_array();
 	}
 	function getStatus(){

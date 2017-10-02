@@ -43,9 +43,9 @@
 				<input id="sregistrasi" class="easyui-searchbox" style="width:250px" 
 				searcher="cariregistrasi" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
-					<div name='id_status_registrasi'>STATUS</div>
 					<div name='nama'>NAMA PASIEN</div>
 					<div name='keluhan'>KELUHAN</div>
+					<div name='antrian'>NO ANTRIAN</div>
 				</div>  
 			</div>
 		</div>
