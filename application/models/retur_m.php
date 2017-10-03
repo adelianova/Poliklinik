@@ -161,7 +161,29 @@ class Retur_m extends MY_Model {
 	}
 
 	function getDtlStock(){
-         return $this->db->query("select b.id_dtl_stock,convert(varchar(10),b.tgl_expired,105) as tgl_expired, a.nama FROM TBL_M_OBAT a inner join TBL_DETAIL_STOCK b on b.ID_OBAT=a.ID_OBAT")->result_array();
+         return $this->db->query("select 
+			z.id_obat,
+			z.kode_obat,
+			z.nama,
+			z.satuan,
+			(z.stok-z.resep-z.retur) as sisa ,
+			b.id_dtl_stock,
+			convert(varchar(10),b.tgl_expired,105) as tgl_expired
+			from(
+			    select a.id_obat,a.kode_obat,a.nama,a.satuan,
+				isnull(
+			    (select sum(b.qty) from TBL_DETAIL_STOCK b where
+			    a.id_obat=b.id_obat),0) as stok,
+			    isnull(
+			    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
+			    on x.KODE_OBAT=y.KODE_OBAT where
+			    y.id_obat=a.id_obat),0) as resep,
+			    isnull(
+			    (select sum(d.qty) from TBL_DETAIL_RETUR d join TBL_DETAIL_STOCK b on 
+			    b.ID_DTL_STOCK=d.ID_DTL_STOCK where 
+				a.id_obat=b.id_obat),0) as retur
+			    from TBL_M_OBAT a 
+		    )z inner join TBL_DETAIL_STOCK b on b.ID_OBAT=z.ID_OBAT")->result_array();
     }
     function getPetugas(){
     	return $this->db->query("select b.nip, b.full_name from v_employee_all b ")->result_array();

@@ -1,10 +1,10 @@
 	<form id="form_tambah" method="post" novalidate>
+				
 				<input type='hidden' name='edit' id='edit' value=''/>
 				<table width='350px' class='dialog-form' >
 					<tr>
 						<td>
-							<input name='ID_DETAIL_RESEP' id='ID_DETAIL_RESEP' type="hidden" readonly='true' 
-							class='easyui-validatebox textbox' style="padding:3px;width:90%" >	
+							<input name='ID_DETAIL_RESEP' id='ID_DETAIL_RESEP' type="hidden"  value='<?php echo $dataResep['id_detail_resep'];?>'>	
 						</td>
 					</tr>
 					<tr>
@@ -48,6 +48,11 @@
 					</div>
 
 <script type="text/javascript">
+
+/*$(document).ready(function() {
+    console.log($('#ID_DETAIL_RESEP').val());
+});*/
+
 $('#QTY').numberbox({
     min:1,
     precision:0,
@@ -56,6 +61,7 @@ $('#QTY').numberbox({
     	console.log(oldVal);
     	if(newVal.trim()!==""){
     		var dataSelected = $('#KODE_OBAT').combogrid('grid').datagrid('getSelected');
+    		console.log(dataSelected);
     		var sisaObat = dataSelected.sisa;
     		console.log(dataSelected.sisa);
     		if(newVal>sisaObat){

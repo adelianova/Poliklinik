@@ -28,13 +28,13 @@
 					<tr>
 						<td class='label_form'>Mulai Kontrak</td>
 						<td >
-							<input name='mulai_kontrak' id='mulai_kontrak' class='easyui-datetimebox' style="padding:3px;width:90%"/>	
+							<input name='mulai_kontrak' id='mulai_kontrak' class='easyui-datebox' style="padding:3px;width:90%"/>	
 						</td>
 					</tr>
 					<tr>
 						<td class='label_form'>Selesai Kontrak</td>
 						<td >
-							<input name='selesai_kontrak' id='selesai_kontrak' class='easyui-datetimebox' style="padding:3px;width:90%"/>	
+							<input name='selesai_kontrak' id='selesai_kontrak' class='easyui-datebox' style="padding:3px;width:90%"/>	
 						</td>
 					</tr>
 					<tr>

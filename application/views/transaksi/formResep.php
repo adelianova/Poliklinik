@@ -13,7 +13,7 @@
 						<td class='label_form'>Pasien</td>
 						<td>
 						<input name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="padding:3px;width:96%" data-options="
-			                    panelWidth: 250,
+			                    panelWidth: 360,
 			                    idField: 'id_periksa',
 			                    url:'<?php echo base_url();?>index.php/resep/getIDPeriksa',
 			                    method: 'get',
@@ -21,8 +21,8 @@
                                 textField:'nama',
 			                    columns: [[
 				                        {field:'id_periksa',title:'ID',width:50,hidden:'true'},
-				                        {field:'kode_pasien',title:'Kode Pasien',width:100},
-				                        {field:'nama',title:'Nama',width:140,align:'left'},
+				                        {field:'kode_pasien',title:'Kode Pasien',width:80},
+				                        {field:'nama',title:'Nama',width:130,align:'left'},
 				                        {field:'nama_dokter',title:'Nama Dokter',width:140,align:'left'},
                     			]],
                     			onSelect: function(index, row){
@@ -51,10 +51,10 @@
 			    <!--<?php echo ltrim($data['id_resep']);?>-->
 			        <tr>
 			            <th field="KODE_OBAT" width="100">Kode Obat</th>
-			            <th field="NAMA" width="100">Nama Obat</th>
-			            <th field="QTY" width="100" align="right">Quantity</th>
-			            <th field="DOSIS" width="100" align="right">Dosis</th>
-			            <th field="ID_DETAIL_RESEP" width="100" align="right" hidden="true">ID</th>
+			            <th field="NAMA" width="150">Nama Obat</th>
+			            <th field="QTY" width="80" align="right">Quantity</th>
+			            <th field="DOSIS" width="80" align="right">Dosis</th>
+			            <th field="ID_DETAIL_RESEP" width="80" align="right" hidden="true">ID</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -98,19 +98,19 @@ function addTambah(){
 			});
 	}
 function editTambah(){
-        var row = $('#datagrid-m_ini').datagrid('getSelected');
-        console.log(row);
-		if(row){
+        var id_detail_resep = $('#datagrid-m_ini').datagrid('getSelected');
+        console.log(id_detail_resep);
+		if(id_detail_resep){
 		$('#dialog-m_tambah').dialog({ 
 		    closed: false, 
 			cache: false, 
 			modal: true, 
-			href:base_url+'index.php/resep/formTambah',
+			href:base_url+'index.php/resep/formTambah/'+id_detail_resep.id_detail_resep,
 			title:'Edit Resep Obat',
 			onLoad:function(){
 				$('#form_tambah').form('clear');
 				$('#form_tambah #edit').val('1');
-				$('#form_tambah').form('load',row);	
+				$('#form_tambah').form('load',id_detail_resep);	
 			}
 			});
 		}else{

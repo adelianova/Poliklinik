@@ -38,8 +38,8 @@
 			<div style="display:inline;float:right;padding-top:-10px;">
 				<input id="sretur" class="easyui-searchbox" style="width:250px" 
 				searcher="cariRetur" prompt="Ketik disini" menu="#muser"></input>  
-				<div id="muser" style="width:150px">
-					<div name='petugas'>Petugas</div>
+				<div id="muser" style="width:150px"> 
+					<div name='full_name'>NAMA PETUGAS</div>
 				</div>  
 			</div>
 		</div>

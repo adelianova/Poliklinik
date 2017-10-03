@@ -15,7 +15,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>ID DETAIL STOCK</td>
+						<td class='label_form'>Nama Obat</td>
 						<td>
 						<select name='id_dtl_stock' id='id_dtl_stock' required="true" class="easyui-combogrid" style="width:100%" data-options="
 			                    panelWidth: 300,
@@ -25,10 +25,11 @@
 			                    valueField:'id_dtl_stock',
                                 textField:'nama',
 			                    columns: [[
-				                        {field:'id_dtl_stock',title:'ID DETAIL STOCK',width:100},
-				                        {field:'nama',title:'Nama Obat',width:100},
+				                        {field:'id_dtl_stock',title:'ID DETAIL STOCK',width:100,hidden:'true'},
+				                        {field:'nama',title:'Nama Obat',width:148},
 				                        {field:'tgl_expired',title:'Tanggal Expired',width:100},
-				                       
+				                       	{field:'sisa',title:'Sisa',width:50},
+
                     			]]
 			                ">
 			            </select>
@@ -37,7 +38,7 @@
 					<tr>
 						<td class='label_form'>Quantity</td>
 						<td >
-							<input name='qty' id='qty' class='easyui-validatebox textbox' required="true" type="number" style="padding:3px;width:90%"/>
+							<input type="text" id='qty' name="qty" class="easyui-numberbox" style="padding:3px;width:96%" required="true" value="100" data-options="min:0,precision:2">
 						</td>
 					</tr>
 					<tr>
@@ -78,6 +79,30 @@
     	}
     }
 });*/
+$('#qty').numberbox({
+    min:1,
+    precision:0,
+    onChange:function(newVal,oldVal){
+    	console.log(newVal);
+    	console.log(oldVal);
+    	if(newVal.trim()!==""){
+    		var dataSelected = $('#id_dtl_stock').combogrid('grid').datagrid('getSelected');
+    		var sisaObat = dataSelected.sisa;
+    		console.log(dataSelected.sisa);
+    		if(newVal>sisaObat){
+				$.messager.alert({
+					title: 'INFO',
+					msg:'Sisa Obat '+ dataSelected.nama +' hanya '+ sisaObat,
+					fn: function(){
+						//...
+					}
+				});
+    			$('#qty').numberbox('setValue',sisaObat);
+
+    		}
+    	}
+    }
+});
 	function simpanTambahRetur(){
 		$.messager.progress({
                 title:'',

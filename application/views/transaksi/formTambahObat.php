@@ -46,7 +46,7 @@
 					<tr>
 						<td class='label_form'>Tanggal Expired</td>
 						<td >
-							<input name='tgl_expired' id='tgl_expired' class='easyui-datetimebox' style="padding:3px;width:93%"/>	
+							<input name='tgl_expired' id='tgl_expired' class='easyui-datebox' style="padding:3px;width:93%"/>	
 						</td>
 					</tr>
 

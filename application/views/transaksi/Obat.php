@@ -46,7 +46,7 @@
 				</div>  
 			</div>
 		</div>
-		<div id="dialog-m_transaksi" class="easyui-dialog" style="width:480px; height:500px; padding: 10px 20px" 
+		<div id="dialog-m_transaksi" class="easyui-dialog" style="width:570px; height:500px; padding: 10px 20px" 
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 		</div>
 

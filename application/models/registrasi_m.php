@@ -75,7 +75,7 @@ class Registrasi_m extends MY_Model {
 				'kode_pasien'=>$kode_pasien,
 				'keluhan'=>$keluhan,
 				'tgl_registrasi'=>date('Y-m-d H:i:s'), 
-				'id_status_registrasi'=>$id_status_registrasi,
+				'id_status_registrasi'=>$id_status_registrasi
 			);
 			
 			$r=$this->db->insert('tbl_periksa',$arr);

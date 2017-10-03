@@ -43,7 +43,7 @@
 						<tr>
 							<td class='label_form'>Tanggal</td>
 							<td >
-								<input name='tgl' id='tgl' class='easyui-datetimebox' style="padding:3px;width:90%"/>	
+								<input name='tgl' id='tgl' class='easyui-datebox' style="padding:3px;width:90%"/>	
 							</td>
 						</tr>
 						<tr>
