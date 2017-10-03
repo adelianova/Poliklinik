@@ -96,26 +96,27 @@ function addTambah(){
 			 $('#dialog-m_ini').datagrid('reload');
 			}
 			});
-	}
-function editTambah(){
-        var id_detail_resep = $('#datagrid-m_ini').datagrid('getSelected');
-        console.log(id_detail_resep);
-		if(id_detail_resep){
-		$('#dialog-m_tambah').dialog({ 
-		    closed: false, 
-			cache: false, 
-			modal: true, 
-			href:base_url+'index.php/resep/formTambah/'+id_detail_resep.id_detail_resep,
-			title:'Edit Resep Obat',
-			onLoad:function(){
-				$('#form_tambah').form('clear');
-				$('#form_tambah #edit').val('1');
-				$('#form_tambah').form('load',id_detail_resep);	
-			}
-			});
-		}else{
-			$.messager.alert('INFO','Pilih satu record dulu','info');
 		}
+	function editTambah(){
+	        var id_detail_resep = $('#datagrid-m_ini').datagrid('getSelected');
+	        console.log(id_detail_resep);
+			if(id_detail_resep){
+			$('#dialog-m_tambah').dialog({ 
+			    closed: false, 
+				cache: false, 
+				modal: true, 
+				href:base_url+'index.php/resep/formTambah/'+id_detail_resep.ID_DETAIL_RESEP,
+				title:'Edit Resep Obat',
+				onLoad:function(){
+					$('#form_tambah').form('clear');
+					$('#form_tambah #edit').val('1');
+					$('#form_tambah').form('load',id_detail_resep);	
+					$('#form_tambah #qty_asal').val(row.QTY);
+				}
+				});
+			}else{
+				$.messager.alert('INFO','Pilih satu record dulu','info');
+			}
 	}
 	function editResep(){
 		
@@ -137,6 +138,7 @@ function editTambah(){
 				$('#form_resep').form('load',row);	
 				$('#datagrid-m_ini').datagrid('load',{id_resep:row.id_resep});
 				
+								
 			}
 			});
 		}else{

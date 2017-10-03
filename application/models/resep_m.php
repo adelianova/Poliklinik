@@ -50,7 +50,7 @@ class Resep_m extends MY_Model {
 	function getDetailResep(){
 		return $this->db->query("select dbo.getIDDetailResep() as id_detail_resep")->row_array();
 	}
-	function simpanResep($id_periksa="", $kode_dokter=""){
+	function simpanResep($id_periksa=""){
 		$edit=$this->input->post('edit');
 		$id_resep=$this->input->post('id_resep');
 		$id_periksa=$this->input->post('id_periksa');
@@ -79,10 +79,33 @@ class Resep_m extends MY_Model {
 		}else{
 			$result['error']=true;
 			$result['msg']="Data Resep Gagal disimpan";
-			
 		}
 		
 		return $result;
+	}
+
+	function cekStok($kodeObat=""){
+		$query = $this->db->query("select (z.stok-z.resep-z.retur) as sisa 
+			from(
+			    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
+			    (select sum(b.qty) from TBL_DETAIL_STOCK b where
+			    a.id_obat=b.id_obat),0) as stok,
+			    isnull(
+			    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
+			    on x.KODE_OBAT=y.KODE_OBAT where
+			    y.id_obat=a.id_obat),0) as resep,
+			    isnull(
+			    (select sum(d.qty) from TBL_DETAIL_RETUR d join TBL_DETAIL_STOCK b on 
+			    b.ID_DTL_STOCK=d.ID_DTL_STOCK where 
+				a.id_obat=b.id_obat),0) as retur
+			    from TBL_M_OBAT a
+		    )z where kode_obat = '$kodeObat'");
+		return $query->row()->sisa;
+	}
+
+	function cekEditStok($idDetail=""){
+		$query = $this->db->query("select qty from TBL_DETAIL_RESEP where ID_DETAIL_RESEP = '$idDetail'");
+		return $query->row()->qty;
 	}
 	
 	function simpanTambah($id_resep=""){
@@ -93,23 +116,34 @@ class Resep_m extends MY_Model {
 		$dosis=$this->input->post('DOSIS');
 
 		if($edit==''){
-			$data=$this->getDetailResep();
-			$arr=array(
-				'ID_RESEP'=>$id_resep,
-				'KODE_OBAT'=>$kode_obat,
-				'QTY'=>$qty,
-				'DOSIS'=>$dosis,
-			);
-
-			$z=$this->db->insert('TBL_DETAIL_RESEP',$arr);		
+			$stok = $this->cekStok($kode_obat);
+			if($stok < $qty){
+				// Stock Tidak Cukup
+			}else{
+				$data=$this->getDetailResep();
+				$arr=array(
+					'ID_RESEP'=>$id_resep,
+					'KODE_OBAT'=>$kode_obat,
+					'QTY'=>$qty,
+					'DOSIS'=>$dosis,
+				);
+				$z=$this->db->insert('TBL_DETAIL_RESEP',$arr);	
+			}	
 		}else{
-			$arr=array(
-				'KODE_OBAT'=>$kode_obat,
-				'QTY'=>$qty,
-				'DOSIS'=>$dosis,
-			);
-			$this->db->where("id_detail_resep='".$id_detail_resep."'");
-			$z=$this->db->update('TBL_DETAIL_RESEP',$arr);
+			$stok = $this->cekStok($kode_obat);
+			$stokEdit = $this->cekEditStok($id_detail_resep);
+			if(($stok+$stokEdit) < $qty){
+				// Stock Tidak Cukup
+			}else{
+				$arr=array(
+					'KODE_OBAT'=>$kode_obat,
+					'QTY'=>$qty,
+					'DOSIS'=>$dosis,
+				);
+				$this->db->where("id_detail_resep='".$id_detail_resep."'");
+				$z=$this->db->update('TBL_DETAIL_RESEP',$arr);
+			}
+			
 		}
 		$result=array();
 		if($this->db->affected_rows()>0){
