@@ -117,8 +117,11 @@ class Resep_m extends MY_Model {
 
 		if($edit==''){
 			$stok = $this->cekStok($kode_obat);
+			$result=array();
 			if($stok < $qty){
-				// Stock Tidak Cukup
+				$result['error']=true;
+				$result['msg']="Maaf Stok Obat Tidak Cukup";
+				return $result;
 			}else{
 				$data=$this->getDetailResep();
 				$arr=array(
@@ -133,7 +136,9 @@ class Resep_m extends MY_Model {
 			$stok = $this->cekStok($kode_obat);
 			$stokEdit = $this->cekEditStok($id_detail_resep);
 			if(($stok+$stokEdit) < $qty){
-				// Stock Tidak Cukup
+				$result['error']=true;
+				$result['msg']="Maaf Stok Obat Tidak Cukup";
+				return $result;
 			}else{
 				$arr=array(
 					'KODE_OBAT'=>$kode_obat,
@@ -145,7 +150,7 @@ class Resep_m extends MY_Model {
 			}
 			
 		}
-		$result=array();
+		
 		if($this->db->affected_rows()>0){
 			$result['error']=false;
 			$result['msg']="Data Resep berhasil disimpan";

@@ -38,7 +38,7 @@
 					<tr>
 						<td class='label_form'>Quantity</td>
 						<td >
-							<input type="text" id='qty' name="qty" class="easyui-numberbox" style="padding:3px;width:96%" required="true" value="100" data-options="min:0,precision:2">
+							<input type="text" id='qty' name="qty" type="number" class="easyui-validatebox textbox" style="padding:3px;width:96%" required="true" data-options="min:0,precision:2">
 						</td>
 					</tr>
 					<tr>
@@ -55,54 +55,7 @@
 					</div>
 		</form>
 <script language="javascript">
-	/*$('#qty').numberbox({
-    min:1,
-    precision:0,
-    onChange:function(newVal,oldVal){
-    	console.log(newVal);
-    	console.log(oldVal);
-    	if(newVal.trim()!==""){
-    		var dataSelected = $('#id_dtl_stock').combogrid('grid').datagrid('getSelected');
-    		var sisaObat = dataSelected.sisa;
-    		console.log(dataSelected.sisa);
-    		if(newVal>sisaObat){
-				$.messager.alert({
-					title: 'INFO',
-					msg:'Sisa Obat '+ dataSelected.nama +' hanya '+ sisaObat,
-					fn: function(){
-						//...
-					}
-				});
-    			$('#QTY').numberbox('setValue',sisaObat);
-
-    		}
-    	}
-    }
-});*/
-$('#qty').numberbox({
-    min:1,
-    precision:0,
-    onChange:function(newVal,oldVal){
-    	console.log(newVal);
-    	console.log(oldVal);
-    	if(newVal.trim()!==""){
-    		var dataSelected = $('#id_dtl_stock').combogrid('grid').datagrid('getSelected');
-    		var sisaObat = dataSelected.sisa;
-    		console.log(dataSelected.sisa);
-    		if(newVal>sisaObat){
-				$.messager.alert({
-					title: 'INFO',
-					msg:'Sisa Obat '+ dataSelected.nama +' hanya '+ sisaObat,
-					fn: function(){
-						//...
-					}
-				});
-    			$('#qty').numberbox('setValue',sisaObat);
-
-    		}
-    	}
-    }
-});
+	
 	function simpanTambahRetur(){
 		$.messager.progress({
                 title:'',

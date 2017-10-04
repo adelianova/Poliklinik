@@ -110,9 +110,8 @@ function addTambah(){
 				onLoad:function(){
 					$('#form_tambah').form('clear');
 					$('#form_tambah #edit').val('1');
-					$('#form_tambah').form('load',id_detail_resep);	
-					$('#form_tambah #qty_asal').val(row.QTY);
-				}
+					$('#form_tambah').form('load',id_detail_resep);
+					}
 				});
 			}else{
 				$.messager.alert('INFO','Pilih satu record dulu','info');

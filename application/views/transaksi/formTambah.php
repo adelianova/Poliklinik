@@ -49,42 +49,6 @@
 					</div>
 
 <script type="text/javascript">
-
-/*$(document).ready(function() {
-    console.log($('#ID_DETAIL_RESEP').val());
-});*/
-
-/*$('#QTY').numberbox({
-	    min:1,
-	    precision:0,
-	    onChange:function(newVal,oldVal){
-
-	    	if(oldVal==""){
-	    		
-	    	}else{
-	    		console.log(newVal);
-		    	console.log(oldVal);
-		    	if(newVal.trim()!==""){
-		    		var dataSelected = $('#KODE_OBAT').combogrid('grid').datagrid('getSelected');
-		    		console.log(dataSelected);
-		    		var sisaObat = dataSelected.sisa;
-		    		if(newVal>sisaObat+QTY){
-						$.messager.alert({
-							title: 'INFO',
-							msg:'Sisa Obat '+ dataSelected.nama +' hanya '+ sisaObat,
-							fn: function(){
-								//...
-							}
-						});
-		    			$('#QTY').numberbox('setValue',sisaObat);
-
-		    		}
-		    	}
-	    }
-	    	}
-	});*/
-
-
 	function simpanTambah(){
 		$.messager.progress({
                 title:'',

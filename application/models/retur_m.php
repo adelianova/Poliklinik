@@ -59,6 +59,30 @@ class Retur_m extends MY_Model {
 	function getNoRetur(){
 		return $this->db->query("select dbo.getNoRetur() as no_retur")->row_array();
 	}
+	function cekStok($kodeObat=""){
+		$query = $this->db->query("
+			select c.id_dtl_stock,(z.stok-z.resep-z.retur) as sisa 
+			from(
+			    select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
+			    (select sum(b.qty) from TBL_DETAIL_STOCK b where
+			    a.id_obat=b.id_obat),0) as stok,
+			    isnull(
+			    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
+			    on x.KODE_OBAT=y.KODE_OBAT where
+			    y.id_obat=a.id_obat),0) as resep,
+			    isnull(
+			    (select sum(d.qty) from TBL_DETAIL_RETUR d join TBL_DETAIL_STOCK b on 
+			    b.ID_DTL_STOCK=d.ID_DTL_STOCK where 
+				a.id_obat=b.id_obat),0) as retur
+			    from TBL_M_OBAT a
+		    )z join TBL_DETAIL_STOCK c on z.ID_OBAT=c.ID_OBAT  where id_dtl_stock ='$kodeObat'");
+		return $query->row()->sisa;
+	}
+
+	function cekEditStok($idDetail=""){
+		$query = $this->db->query("select qty from TBL_DETAIL_RETUR where ID_DTL_RETUR = '$idDetail'");
+		return $query->row()->qty;
+	}
 	function simpanRetur(){
 		$edit=$this->input->post('edit');
 		$id_retur=$this->input->post('id_retur');
@@ -75,7 +99,7 @@ class Retur_m extends MY_Model {
 			);
 			$r=$this->db->insert('TBL_RETUR',$arr);
 		}else{
-			$arr=array(
+				$arr=array(
 				'tgl'=>date('Y-m-d',strtotime($tgl)),
 				'petugas'=>$petugas,
 			);
@@ -101,22 +125,38 @@ class Retur_m extends MY_Model {
 		$keterangan=$this->input->post('keterangan');
 		
 		if($edit==''){
-			$data=$this->getIDDtlRetur();
-			$arr=array(
-				'id_retur'=>$id_retur,
-				'id_dtl_stock'=>$id_dtl_stock,
-				'qty'=>$qty,
-				'keterangan'=>$keterangan,
-			);
-			$r=$this->db->insert('TBL_DETAIL_RETUR',$arr);
+			$stok = $this->cekStok($id_dtl_stock);
+			$result=array();
+			if($stok < $qty){
+				$result['error']=true;
+				$result['msg']="Maaf Stok Obat Tidak Cukup";
+				return $result;
+			}else{
+				$data=$this->getIDDtlRetur();
+				$arr=array(
+					'id_retur'=>$id_retur,
+					'id_dtl_stock'=>$id_dtl_stock,
+					'qty'=>$qty,
+					'keterangan'=>$keterangan,
+				);
+				$r=$this->db->insert('TBL_DETAIL_RETUR',$arr);
+			}
 		}else{
+			$stok = $this->cekStok($id_dtl_stock);
+			$stokEdit = $this->cekEditStok($id_dtl_retur);
+			if(($stok+$stokEdit) < $qty){
+				$result['error']=true;
+				$result['msg']="Maaf Stok Obat Tidak Cukup";
+				return $result;
+			}else{
 			$arr=array(
 				'id_dtl_stock'=>$id_dtl_stock,
 				'qty'=>$qty,
 				'keterangan'=>$keterangan,
-			);
-			$this->db->where("id_dtl_retur='".$id_dtl_retur."'");
-			$r=$this->db->update('TBL_DETAIL_RETUR',$arr);
+				);
+				$this->db->where("id_dtl_retur='".$id_dtl_retur."'");
+				$r=$this->db->update('TBL_DETAIL_RETUR',$arr);
+			}
 		}
 		$result=array();
 		if($this->db->affected_rows()>0){
