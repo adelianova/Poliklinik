@@ -17,24 +17,32 @@
 					<tr>
 						<td class='label_form'>Nama Obat</td>
                         <td>
-							<input name='id_obat' id='id_obat' class='easyui-combobox' required="true"  style="padding:3px;width:101%" data-options="
+							<input name='id_obat' id='id_obat'  class='easyui-combogrid' required="true"  style="padding:3px;width:101%" data-options="
+										panelWidth: 250,
                                         url:'<?php echo base_url();?>index.php/resep/getKodeObat',
                                         valueField:'id_obat',
-                                        textField:'nama'
-                                        
+                                        textField:'nama',
+                                        columns: [[
+						                        {field:'nama',title:'Nama Obat',width:150},
+						                        {field:'satuan',title:'Satuan',width:100,align:'left'},
+		                    			]],
+		                    			onSelect: function(index, row){
+						        			$('#satuan1').val(row.satuan);
+										}
                                         "/>
 						</td>
 					</tr>
 					<tr>
 						<td class='label_form'>Quantity</td>
 						<td >
-							<input name='qty' id='qty' class='easyui-validatebox textbox' required="true" onkeyup="hitung()" type="number" style="padding:3px;width:90%"/>
+							<input name='qty' id='qty' class='easyui-validatebox textbox' required="true" onkeyup="#" type="number" style="padding:3px;width:40%"/>
+							<input name='satuan1' id='satuan1' class='easyui-validatebox textbox' readonly="true" onkeyup="#" type="text" style="padding:3px;width:50%"/>
 						</td>
 					</tr>
 					<tr>
 						<td class='label_form'>Harga SATUAN</td>
 						<td >
-							<input name='harga_satuan' id='harga_satuan' class='easyui-validatebox textbox' onkeyup="hitung()" type="number" style="padding:3px;width:90%"/>
+							<input name='harga_satuan' id='harga_satuan' class='easyui-validatebox textbox' onkeyup="#" type="number" style="padding:3px;width:90%"/>
 						</td>
 					</tr>
 					<tr>

@@ -47,8 +47,8 @@ class Transaksi_m extends MY_Model {
 		$sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_dtl_stock';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
     	$id_stock=$this->input->post('id_stock');
-		 return $this->db->query("select a.id_dtl_stock,a.id_stock,a.id_obat,a.qty,a.harga_satuan,a.total,convert(varchar(10),a.tgl_expired,105) as tgl_expired,b.nama FROM TBL_DETAIL_STOCK a join TBL_M_OBAT b
-			    on a.id_obat=b.id_obat where id_stock = '".$id_stock."'")->result_array();
+		 return $this->db->query("select a.id_dtl_stock,a.id_stock,a.id_obat,a.qty,a.harga_satuan,a.total,convert(varchar(10),a.tgl_expired,105) as tgl_expired,b.nama,b.satuan FROM TBL_DETAIL_STOCK a join TBL_M_OBAT b
+			    on a.id_obat=b.id_obat and b.satuan=b.satuan where id_stock = '".$id_stock."'")->result_array();
 		 $this->db->order_by($sort,$order);
 	}
 
