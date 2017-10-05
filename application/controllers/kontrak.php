@@ -39,5 +39,4 @@ class Kontrak extends MY_Controller {
         $data=$this->kontrak_m->getKodeDokter();
 		echo json_encode($data);
     }
-    
 }

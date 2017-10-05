@@ -48,6 +48,8 @@
 					<div name='nama_dokter'>DOKTER</div>
 					<div name='nama'>NAMA PASIEN</div>
 					<div name='keluhan'>KELUHAN</div>
+					<div name='penyakit'>PENYAKIT</div>
+					
 				</div>  
 			</div>
 		</div>

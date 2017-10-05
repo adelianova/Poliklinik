@@ -104,7 +104,7 @@ function iniTambah(){
 			cache: false, 
 			modal: true, 
 			href:base_url+'index.php/transaksi/formTambahObat/'+id_stock.id_stock,
-			title:'Tambah Obat',
+			title:'Tambah Stok Obat',
 			onLoad:function(){
 				$('#form_tambah_obat').form('clear');
 				$('#form_tambah_obat #edit').val('');

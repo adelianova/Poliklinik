@@ -34,13 +34,13 @@
 					<tr>
 						<td class='label_form'>Harga SATUAN</td>
 						<td >
-							<input name='harga_satuan' id='harga_satuan' class='easyui-validatebox textbox' onkeyup="hitung()" required="true" type="number" style="padding:3px;width:90%"/>
+							<input name='harga_satuan' id='harga_satuan' class='easyui-validatebox textbox' onkeyup="hitung()" type="number" style="padding:3px;width:90%"/>
 						</td>
 					</tr>
 					<tr>
 						<td class='label_form'>Total</td>
 						<td >
-							<input name='total' id='total' class='easyui-validatebox textbox' required="true" type="number" readonly="true" style="padding:3px;width:90%"/>
+							<input name='total' id='total' class='easyui-validatebox textbox' type="number" readonly="true" style="padding:3px;width:90%"/>
 						</td>
 					</tr>
 					<tr>

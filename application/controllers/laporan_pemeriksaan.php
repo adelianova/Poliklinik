@@ -47,7 +47,7 @@ class Laporan_pemeriksaan extends MY_Controller {
 			<td width="10%" align="center"><strong>Kode Pasien</strong></td>
 			<td width="10%" align="center"><strong>Nama Pasien</strong></td>
 			<td width="10%" align="center"><strong>Tanggal Periksa</strong></td>
-			<td width="8%" align="center"><strong>Keluhan</strong></td>
+			<td width="8%" align="center"><strong>Penyakit</strong></td>
 			<td width="10%" align="center"><strong>Kode Dokter</strong></td>
 			<td width="10%" align="center"><strong>Nama Dokter</strong></td>
 		  </tr>';
@@ -60,7 +60,7 @@ class Laporan_pemeriksaan extends MY_Controller {
 			<td>'.$row->kode_pasien.'</td>
 			<td>'.$row->nama.'</td>
 			<td>'.$row->tgl_periksa.'</td>
-			<td>'.$row->keluhan.'</td>
+			<td>'.$row->penyakit.'</td>
 			<td>'.$row->kode_dokter.'</td>
 			<td>'.$row->nama_dokter.'</td>
 		</tr>';

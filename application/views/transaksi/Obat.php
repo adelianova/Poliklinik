@@ -39,8 +39,7 @@
 			<div style="display:inline;float:right;padding-top:-10px;">
 				<input id="stransaksi" class="easyui-searchbox" style="width:250px" 
 				searcher="cariTransaksi" prompt="Ketik disini" menu="#muser"></input>  
-				<div id="muser" style="width:150px"> 
-					<div name='no_faktur'>No Faktur</div>
+				<div id="muser" style="width:150px">
 					<div name='nama'>Suplier</div>
 					<div name='transaksi'>Transaksi</div>
 				</div>  

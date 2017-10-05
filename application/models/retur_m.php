@@ -79,9 +79,13 @@ class Retur_m extends MY_Model {
 		return $query->row()->sisa;
 	}
 
-	function cekEditStok($idDetail=""){
-		$query = $this->db->query("select qty from TBL_DETAIL_RETUR where ID_DTL_RETUR = '$idDetail'");
-		return $query->row()->qty;
+	function cekEditStok($idDetail="",$kodeObat=""){
+		$query = $this->db->query("select a.qty,c.id_obat from TBL_DETAIL_RETUR a join TBL_DETAIL_STOCK b on a.ID_DTL_STOCK=b.ID_DTL_STOCK join TBL_M_OBAT c on b.id_obat=c.id_obat where ID_DTL_RETUR = '$idDetail' and c.id_obat ='$kodeObat' ");
+		if($query->num_rows()>0){
+			return $query->row()->qty;
+		}else{
+			return 0;
+		}
 	}
 	function simpanRetur(){
 		$edit=$this->input->post('edit');
@@ -121,7 +125,7 @@ class Retur_m extends MY_Model {
 		$edit=$this->input->post('edit');
 		$id_dtl_retur=$this->input->post('id_dtl_retur');
 		$id_dtl_stock=$this->input->post('id_dtl_stock');
-		$qty=$this->input->post('qty');
+		$qty=abs($this->input->post('qty'));
 		$keterangan=$this->input->post('keterangan');
 		
 		if($edit==''){
@@ -143,7 +147,7 @@ class Retur_m extends MY_Model {
 			}
 		}else{
 			$stok = $this->cekStok($id_dtl_stock);
-			$stokEdit = $this->cekEditStok($id_dtl_retur);
+			$stokEdit = $this->cekEditStok($id_dtl_retur, $id_dtl_stock);
 			if(($stok+$stokEdit) < $qty){
 				$result['error']=true;
 				$result['msg']="Maaf Stok Obat Tidak Cukup";
@@ -201,7 +205,7 @@ class Retur_m extends MY_Model {
 	}
 
 	function getDtlStock(){
-         return $this->db->query("select 
+         return $this->db->query("select * from (select 
 			z.id_obat,
 			z.kode_obat,
 			z.nama,
@@ -223,7 +227,7 @@ class Retur_m extends MY_Model {
 			    b.ID_DTL_STOCK=d.ID_DTL_STOCK where 
 				a.id_obat=b.id_obat),0) as retur
 			    from TBL_M_OBAT a 
-		    )z inner join TBL_DETAIL_STOCK b on b.ID_OBAT=z.ID_OBAT")->result_array();
+		    )z inner join TBL_DETAIL_STOCK b on b.ID_OBAT=z.ID_OBAT) a where a.sisa > 0")->result_array();
     }
     function getPetugas(){
     	return $this->db->query("select b.nip, b.full_name from v_employee_all b ")->result_array();

@@ -52,8 +52,6 @@ class Masuk extends MY_Controller {
 			<td width="10%" align="center"><strong>Nama Obat</strong></td>
 			<td width="10%" align="center"><strong>Satuan</strong></td>
 			<td width="8%" align="center"><strong>Jumlah</strong></td>
-			<td width="10%" align="center"><strong>Harga</strong></td>
-			<td width="10%" align="center"><strong>Total</strong></td>
 		  </tr>';
 
 		$no=1;
@@ -66,8 +64,6 @@ class Masuk extends MY_Controller {
 			<td>'.$row->NAMA.'</td>
 			<td>'.$row->SATUAN.'</td>
 			<td>'.$row->QTY.'</td>
-			<td>'.$row->HARGA_SATUAN.'</td>
-			<td>'.$row->TOTAL.'</td>
 		</tr>';
 		$no++;
 		}

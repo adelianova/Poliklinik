@@ -20,7 +20,7 @@
 			            </select>
 						</td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td class='label_form'>Dokter</td>
 						<td>
 							<input name='kode_dokter' id='kode_dokter' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
@@ -29,7 +29,18 @@
                                         textField:'nama_dokter'
                                         "/>
 						</td>
-					</tr>
+					</tr> -->
+					<tr>
+							<td class='label_form'>Dokter</td>
+								<td>
+								<input name='kode_dokter' id='kode_dokter' class='easyui-combobox' required="true" style="padding:3px;width:270px" data-options="
+			                                        url:'<?php echo base_url();?>index.php/periksa/getDokter',
+			                                        valueField:'nip',
+			                                        textField:'full_name'
+			                                        "/>
+								</td>
+							</td>
+						</tr>
 					<tr>
 						<td class='label_form'>Diagnosa</td>
 						<td >

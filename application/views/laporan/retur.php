@@ -39,7 +39,6 @@
 				searcher="cariretur" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
 					<div name='nama'>NAMA OBAT</div>
-					<div name='tgl'>TANGGAL RETUR</div>
 				</div>  
 			</div>
 		</div>

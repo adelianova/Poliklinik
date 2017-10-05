@@ -103,16 +103,21 @@ class Resep_m extends MY_Model {
 		return $query->row()->sisa;
 	}
 
-	function cekEditStok($idDetail=""){
-		$query = $this->db->query("select qty from TBL_DETAIL_RESEP where ID_DETAIL_RESEP = '$idDetail'");
-		return $query->row()->qty;
+	function cekEditStok($idDetail="", $kodeObat=""){
+		$query = $this->db->query("select qty from TBL_DETAIL_RESEP where ID_DETAIL_RESEP = '$idDetail' and KODE_OBAT = '$kodeObat'");
+		if($query->num_rows()>0){
+			return $query->row()->qty;
+		}else{
+			return 0;
+		}
+		
 	}
 	
 	function simpanTambah($id_resep=""){
 		$edit=$this->input->post('edit');
 		$id_detail_resep=$this->input->post('ID_DETAIL_RESEP');
 		$kode_obat=$this->input->post('KODE_OBAT');
-		$qty=$this->input->post('QTY');
+		$qty=abs($this->input->post('QTY'));
 		$dosis=$this->input->post('DOSIS');
 
 		if($edit==''){
@@ -134,7 +139,7 @@ class Resep_m extends MY_Model {
 			}	
 		}else{
 			$stok = $this->cekStok($kode_obat);
-			$stokEdit = $this->cekEditStok($id_detail_resep);
+			$stokEdit = $this->cekEditStok($id_detail_resep, $kode_obat);
 			if(($stok+$stokEdit) < $qty){
 				$result['error']=true;
 				$result['msg']="Maaf Stok Obat Tidak Cukup";

@@ -19,7 +19,7 @@
 		<div id="toolbar" style='padding:5px;height:25px'>
 			<div style="display:inline;">
 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onClick="addRetur()">Add</a>&nbsp;
-			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onClick="editRetur()">Edit</a>&nbsp;
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onClick="editRetur()">Tampilkan</a>&nbsp;
         	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onClick="removeRetur()">Remove</a>&nbsp;
 				 
 			</div>

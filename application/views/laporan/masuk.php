@@ -12,9 +12,7 @@
 					<th field="KODE_OBAT" width="100" sortable="true">KODE OBAT</th>
 					<th field="NAMA" width="100" sortable="true">NAMA OBAT</th>		
 					<th field="SATUAN" width="100" sortable="true">SATUAN</th>
-					<th field="HARGA_SATUAN" width="100" sortable="true">HARGA SATUAN</th>
 					<th field="QTY" width="100" sortable="true">QUANTITY</th>
-					<th field="TOTAL" width="100" sortable="true">TOTAL</th>
 					
 				</tr>
 			</thead>

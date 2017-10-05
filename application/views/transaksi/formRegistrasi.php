@@ -26,7 +26,7 @@
 					<tr>
 						<td class='label_form'>Keluhan</td>
 						<td >
-							<input name='keluhan' id='keluhan' type="text" class='easyui-validatebox textbox' required="true"  style="padding:3px;width:89%"/>
+							<input name='keluhan' id='keluhan' type="text" class='easyui-validatebox textbox' required="true"  style="padding:3px;width:95%"/>
 						</td>
 					</tr>
                    

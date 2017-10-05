@@ -36,14 +36,14 @@
 						<td class='label_form'>Nama Dokter</td>
 						<td>
 						<input name='nama_dokter' id='nama_dokter' readonly='true' 
-							class='easyui-validatebox textbox' style="padding:3px;width:90%"/>
+							class='easyui-validatebox textbox' style="padding:3px;width:91%"/>
 						</td>
 					</tr>
 				</table>	
 		</form>
     </div>
     <div id="panelGridResep" data-options="region:'center',title:''" style="width: 418px;height: 200px;">
-    	<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px;border-color: white;" closed="true" iconCls="icon-user"></div>
+    	<div id="dialog-m_tambah" class="easyui-dialog" style="width:410px; height:250px; padding: 10px 20px;border:0" closed="true" iconCls="icon-user"></div>
 			<table id="datagrid-m_ini" toolbar="#tb" iconCls="icon-save" class="easyui-datagrid scrollbarx" style="width:100%;height:200px;" data-options="url:'<?php echo base_url().'index.php/resep/kodeResep/';?>'
 			">
 			    <thead>

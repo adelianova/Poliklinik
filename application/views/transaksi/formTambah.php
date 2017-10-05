@@ -28,7 +28,7 @@
 					<tr>
 						<td class='label_form'>Quantity</td>
 						<td >
-							<input type="text" id='QTY' name="QTY" type="number" class="easyui-validatebox textbox" style="padding:3px;width:96%" required="true" data-options="min:0,precision:2">
+							<input type="text" id='QTY' name="QTY" type="number" class="easyui-validatebox textbox" style="padding:3px;width:93%" required="true" data-options="min:0,precision:2">
 						</td>
 					</tr>
 					<tr>

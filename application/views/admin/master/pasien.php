@@ -32,7 +32,7 @@
 				searcher="caripasien" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
 					<div name='nama'>NAMA</div>
-					<div name='penanggung_jawab'>PENANGGUNG JAWAB</div>
+					<div name='full_name'>PENANGGUNG JAWAB</div>
 				</div>  
 			</div>
 		</div>

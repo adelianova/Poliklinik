@@ -39,6 +39,9 @@ class Kontrak_m extends MY_Model {
 	function getKodeKontrak(){
 		return $this->db->query("select dbo.getIDKontrak() as id_kontrak")->row_array();
 	}
+	function getNoKontrak(){
+		return $this->db->query("select dbo.getNoKontrak() as nomor")->row_array();
+	}
 	
 	function simpanKontrak(){
 		$edit=$this->input->post('edit');
