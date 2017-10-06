@@ -44,8 +44,10 @@ class Laporan_pemeriksaan extends MY_Controller {
 		$html .='
 		<table width="100%" border="1" cellspacing="0" cellpadding="2">
 		  <tr>
-			<td width="10%" align="center"><strong>Kode Pasien</strong></td>
+			<td width="10%" align="center"><strong>NIP</strong></td>
 			<td width="10%" align="center"><strong>Nama Pasien</strong></td>
+			<td width="10%" align="center"><strong>Bagian</strong></td>
+			<td width="10%" align="center"><strong>Gender</strong></td>
 			<td width="10%" align="center"><strong>Tanggal Periksa</strong></td>
 			<td width="8%" align="center"><strong>Penyakit</strong></td>
 			<td width="10%" align="center"><strong>Kode Dokter</strong></td>
@@ -57,8 +59,10 @@ class Laporan_pemeriksaan extends MY_Controller {
 		foreach($data as $row){
 		$html .='  
 		  <tr>
-			<td>'.$row->kode_pasien.'</td>
+			<td>'.$row->nip.'</td>
 			<td>'.$row->nama.'</td>
+			<td>'.$row->bagian.'</td>
+			<td>'.$row->gender.'</td>
 			<td>'.$row->tgl_periksa.'</td>
 			<td>'.$row->penyakit.'</td>
 			<td>'.$row->kode_dokter.'</td>

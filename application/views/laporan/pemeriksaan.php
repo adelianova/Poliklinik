@@ -8,9 +8,10 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="id_periksa" width="100" hidden="true" sortable="true" ">ID</th>
-					<th field="kode_pasien" width="100" hidden="true sortable="true" >KODE PASIEN</th>
+					<th field="nip" width="100" hidden="true sortable="true" >NIP</th>
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
+					<th field="bagian" width="100" sortable="true">BAGIAN</th>
+					<th field="gender" width="100" sortable="true">GENDER</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
 					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
 					<th field="kode_dokter" width="100" sortable="true">KODE DOKTER</th>
