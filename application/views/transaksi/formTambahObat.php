@@ -17,7 +17,7 @@
 					<tr>
 						<td class='label_form'>Nama Obat</td>
                         <td>
-							<input name='id_obat' id='id_obat'  class='easyui-combogrid' required="true"  style="padding:3px;width:101%" data-options="
+							<input name='id_obat' id='id_obat'  class='easyui-combogrid' required="true"  style="padding:3px;width:93%" data-options="
 										panelWidth: 250,
                                         url:'<?php echo base_url();?>index.php/resep/getKodeObat',
                                         valueField:'id_obat',
@@ -36,19 +36,7 @@
 						<td class='label_form'>Quantity</td>
 						<td >
 							<input name='qty' id='qty' class='easyui-validatebox textbox' required="true" onkeyup="#" type="number" style="padding:3px;width:40%"/>
-							<input name='satuan1' id='satuan1' class='easyui-validatebox textbox' readonly="true" onkeyup="#" type="text" style="padding:3px;width:50%"/>
-						</td>
-					</tr>
-					<tr>
-						<td class='label_form'>Harga SATUAN</td>
-						<td >
-							<input name='harga_satuan' id='harga_satuan' class='easyui-validatebox textbox' onkeyup="#" type="number" style="padding:3px;width:90%"/>
-						</td>
-					</tr>
-					<tr>
-						<td class='label_form'>Total</td>
-						<td >
-							<input name='total' id='total' class='easyui-validatebox textbox' type="number" readonly="true" style="padding:3px;width:90%"/>
+							<input name='satuan1' id='satuan1' class='easyui-validatebox textbox' readonly="true" onkeyup="#" type="text" style="padding:3px;width:46%"/>
 						</td>
 					</tr>
 					<tr>
@@ -65,12 +53,12 @@
 					</div>
 		</form>
 <script language="javascript">
-	function hitung(){
+/*	function hitung(){
 		var b=document.getElementById("qty").value;
 		var c=document.getElementById("harga_satuan").value;
 		var hasil=parseInt(b)*parseInt(c);
 		document.getElementById("total").value=hasil;
-	}	
+	}	*/
 
 	function simpanObat(){
 		$.messager.progress({

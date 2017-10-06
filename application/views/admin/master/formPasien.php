@@ -8,9 +8,22 @@
 						</td>
 					</tr>
 					<tr>
+						<td class='label_form'>NIP</td>
+						<td >
+							<input name='nip' id='nip' required="true" class='easyui-validatebox textbox'   style="padding:3px;width:90%"/>
+						</td>
+					</tr>
+					<tr>
 						<td class='label_form'>Nama</td>
 						<td >
 							<input name='nama' id='nama' class='easyui-validatebox textbox' required="true"  style="padding:3px;width:90%"/>
+						</td>
+					</tr>
+
+					<tr>
+						<td class='label_form'>Bagian</td>
+						<td >
+							<input name='bagian' id='bagian' class='easyui-validatebox textbox'   style="padding:3px;width:90%"/>
 						</td>
 					</tr>
 					<tr>
@@ -33,14 +46,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Penanggung Jawab</td>
-						<td>
-						<select name='penanggung_jawab' id='penanggung_jawab' required="true" class="easyui-combobox" style="width:94%" data-options="
-			                    url:'<?php echo base_url();?>index.php/pasien/getPenanggung',
-			                    valueField:'nip',
-                                textField:'full_name',
-			                ">
-			            </select>
+						<td class='label_form'>Gender</td>
+						<td >
+							<input name='gender' id='gender' required="true" class='easyui-validatebox textbox'   style="padding:3px;width:90%"/>
 						</td>
 					</tr>
                     <tr>

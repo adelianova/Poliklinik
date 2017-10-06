@@ -18,10 +18,9 @@ class Pasien_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select(" a.kode_pasien,a.nama,a.alamat,a.telp,a.email,a.penanggung_jawab,a.id_status_pasien, b.status_pasien,c.full_name");
+    	$this->db->select(" a.kode_pasien,a.nama,a.alamat,a.telp,a.email,a.bagian,a.id_status_pasien,a.nip,a.gender, b.status_pasien");
 		$this->db->from("TBL_M_PASIEN a");
 		$this->db->join("TBL_M_STATUS_PASIEN b","a.id_status_pasien = b.id_status_pasien");
-		$this->db->join("v_employee_all c","a.penanggung_jawab = c.nip");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}
@@ -48,7 +47,9 @@ class Pasien_m extends MY_Model {
 		$alamat=$this->input->post('alamat');
 		$telp=$this->input->post('telp');
 		$email=$this->input->post('email');
-		$penanggung_jawab=$this->input->post('penanggung_jawab');
+		$bagian=$this->input->post('bagian');
+		$gender=$this->input->post('gender');
+		$nip=$this->input->post('nip');
 		$id_status_pasien=$this->input->post('id_status_pasien');
 		
 		if($edit==''){
@@ -59,8 +60,10 @@ class Pasien_m extends MY_Model {
 				'alamat'=>$alamat,
 				'telp'=>$telp,
 				'email'=>$email,
-				'penanggung_jawab'=>$penanggung_jawab,
-				'id_status_pasien'=>$id_status_pasien
+				'id_status_pasien'=>$id_status_pasien,
+				'bagian'=>$bagian,
+				'nip'=>$nip,
+				'gender'=>$gender,
 			);
 			
 			$r=$this->db->insert('TBL_M_PASIEN',$arr);
@@ -71,8 +74,10 @@ class Pasien_m extends MY_Model {
 				'alamat'=>$alamat,
 				'telp'=>$telp,
 				'email'=>$email,
-				'penanggung_jawab'=>$penanggung_jawab,
-				'id_status_pasien'=>$id_status_pasien
+				'id_status_pasien'=>$id_status_pasien,
+				'bagian'=>$bagian,
+				'nip'=>$nip,
+				'gender'=>$gender,
 			);
 			$this->db->where("kode_pasien='".$kode_pasien."'");
 			$r=$this->db->update('TBL_M_PASIEN',$arr);
@@ -118,9 +123,4 @@ class Pasien_m extends MY_Model {
 	function getStatus(){
         return $this->db->query(" select id_status_pasien, status_pasien FROM TBL_M_STATUS_PASIEN")->result_array();
     }
-	function getPenanggung(){
-		 return $this->db->query("select full_name,nip from v_employee_all")
-		 ->result_array();
-	}
-	
 }

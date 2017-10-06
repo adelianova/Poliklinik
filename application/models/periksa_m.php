@@ -119,8 +119,8 @@ class Periksa_m extends MY_Model {
 	function getKodePasien(){
         return $this->db->query(" select kode_pasien,nama FROM TBL_M_PASIEN")->result_array();
     }
-    function getKodeDokter(){
-        return $this->db->query(" select kode_dokter,nama_dokter FROM TBL_M_DOKTER")->result_array();
+    function getDokter(){
+    	return $this->db->query("select b.nip, b.full_name from v_employee_all b ")->result_array();
     }
     function getKodePenyakit(){
         return $this->db->query(" select kode_penyakit,penyakit FROM TBL_M_PENYAKIT")->result_array();
@@ -129,7 +129,7 @@ class Periksa_m extends MY_Model {
         return $this->db->query(" select id_penyakit,penyakit FROM TBL_M_PENYAKIT")->result_array();
     }
   	function getIDPeriksa(){
-		 return $this->db->query("select a.kode_pasien,a.nama,b.id_periksa FROM TBL_M_PASIEN a JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien where kode_dokter is null (select id_periksa from TBL_PERIKSA) ")
+		 return $this->db->query("select a.kode_pasien,a.nama,b.id_periksa FROM TBL_M_PASIEN a JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien where kode_dokter is null and convert(varchar(10),b.tgl_registrasi,112)= '".date('Ymd')."'(select id_periksa from TBL_PERIKSA) ")
 		 ->result_array();
 	}
 	function getStatus(){

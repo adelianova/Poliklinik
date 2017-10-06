@@ -20,16 +20,6 @@
 			            </select>
 						</td>
 					</tr>
-					<!-- <tr>
-						<td class='label_form'>Dokter</td>
-						<td>
-							<input name='kode_dokter' id='kode_dokter' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
-                                        url:'<?php echo base_url();?>index.php/periksa/getKodeDokter',
-                                        valueField:'kode_dokter',
-                                        textField:'nama_dokter'
-                                        "/>
-						</td>
-					</tr> -->
 					<tr>
 							<td class='label_form'>Dokter</td>
 								<td>

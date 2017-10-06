@@ -12,7 +12,7 @@
 					<th field="kode_pasien" width="100" hidden="true sortable="true" >KODE PASIEN</th>
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
-					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
+					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
 					<th field="kode_dokter" width="100" sortable="true">KODE DOKTER</th>
 					<th field="nama_dokter" width="100" sortable="true">NAMA DOKTER</th>
 					

@@ -83,6 +83,7 @@
 			onLoad:function(){
 				$('#form_periksa').form('clear');
 				$('#form_periksa #edit').val('');
+				$('#form_periksa #kode_dokter').combobox('setValue','<?php echo $this->session->userdata('userid');?>');
 			}
 			});
 	}

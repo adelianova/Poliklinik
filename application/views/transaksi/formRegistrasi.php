@@ -13,7 +13,7 @@
 							<input name='tgl_registrasi' id='tgl_registrasi' readonly='true' class='easyui-validatebox textbox' type="hidden" style='padding:3px;width:90%'/>	
 						</td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td class='label_form'>Pasien</td>
                         <td>
 							<input name='kode_pasien' id='kode_pasien' class='easyui-combobox' required="true"  style="padding:3px;width:235px" data-options="
@@ -21,6 +21,25 @@
                                         valueField:'kode_pasien',
                                         textField:'nama'
                                         "/>
+						</td>
+					</tr> -->
+					<tr>
+						<td class='label_form'>Pasien</td>
+						<td>
+						<select name='kode_pasien' id='kode_pasien' required="true" class="easyui-combogrid" style="padding:3px;width:98%" data-options="
+			                    panelWidth: 220,
+			                    idField: 'kode_pasien',
+			                    url:'<?php echo base_url();?>index.php/registrasi/getIDPasien',
+			                    method: 'get',
+			                    valueField:'kode_pasien',
+                                textField:'nama',
+			                    columns: [[
+				                        {field:'id_periksa',title:'ID',width:70, hidden: 'true'},
+				                        {field:'nip',title:'NIP',width:100},
+				                        {field:'nama',title:'Nama',width:117,align:'left'},
+                    			]]
+			                ">
+			            </select>
 						</td>
 					</tr>
 					<tr>

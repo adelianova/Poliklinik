@@ -8,12 +8,13 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="kode_pasien" width="100" sortable="true">KODE PASIEN</th>
+					<th field="nip" width="100" sortable="true">NIP</th>
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
+					<th field="gender" width="100" hidden="true">JENIS KELAMIN</th>
 					<th field="alamat" width="100" sortable="true">ALAMAT</th>
 					<th field="telp" width="100" sortable="true">TELP</th>
 					<th field="email" width="100" hidden="true">EMAIL</th>		
-					<th field="full_name" width="100" sortable="true">PENANGGUNG JAWAB</th>
+					<th field="bagian" width="100" sortable="true">BAGIAN</th>
 					<th field="status_pasien" width="150" sortable="true">STATUS PASIEN</th>
 					
 				</tr>
@@ -36,7 +37,7 @@
 				</div>  
 			</div>
 		</div>
-		<div id="dialog-m_pasien" class="easyui-dialog" style="width:410px; height:300px; padding: 10px 20px" 
+		<div id="dialog-m_pasien" class="easyui-dialog" style="width:410px; height:400px; padding: 10px 20px" 
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 		</div>
 		
