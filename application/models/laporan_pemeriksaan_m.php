@@ -19,7 +19,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
 		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
-		$this->db->select("a.id_periksa,a.kode_dokter,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan, b.nama_dokter, c.nama");
+		$this->db->select("a.id_periksa,a.kode_dokter,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.penyakit, b.nama_dokter, c.nama");
 		$this->db->from("tbl_periksa a");
 		$this->db->join("tbl_m_dokter b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");

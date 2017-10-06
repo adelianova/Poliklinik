@@ -27,16 +27,16 @@
 						<td class='label_form'>Pasien</td>
 						<td>
 						<select name='kode_pasien' id='kode_pasien' required="true" class="easyui-combogrid" style="padding:3px;width:98%" data-options="
-			                    panelWidth: 220,
+			                    panelWidth: 270,
 			                    idField: 'kode_pasien',
 			                    url:'<?php echo base_url();?>index.php/registrasi/getIDPasien',
 			                    method: 'get',
 			                    valueField:'kode_pasien',
                                 textField:'nama',
 			                    columns: [[
-				                        {field:'id_periksa',title:'ID',width:70, hidden: 'true'},
-				                        {field:'nip',title:'NIP',width:100},
-				                        {field:'nama',title:'Nama',width:117,align:'left'},
+				                        {field:'kode_pasien',title:'Kode Pasien',width:70},
+				                        {field:'nip',title:'NIP',width:80},
+				                        {field:'nama',title:'Nama',width:120,align:'left'},
                     			]]
 			                ">
 			            </select>
