@@ -1,6 +1,6 @@
 	
 <table id="datagrid-m_pasien" title="" class="easyui-datagrid scrollbarx" 
-		style="width:auto; height: auto;" 
+		style="width:auto; height: auto; align-items: center;" 
 		data-options="
 		url:'<?php echo base_url().'index.php/pasien/getListPasien';?>',
 		toolbar:'#toolbar',rownumbers:true,pagination:true,border:false,
@@ -8,15 +8,15 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="nip" width="100" sortable="true">NIP</th>
-					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
-					<th field="gender" width="100" hidden="true">JENIS KELAMIN</th>
-					<th field="alamat" width="100" sortable="true">ALAMAT</th>
-					<th field="telp" width="100" sortable="true">TELP</th>
-					<th field="email" width="100" hidden="true">EMAIL</th>		
-					<th field="bagian" width="100" sortable="true">BAGIAN</th>
-					<th field="status_pasien" width="150" sortable="true">STATUS PASIEN</th>
-					
+					<th field="nip" width="80" sortable="true">NIP</th>
+					<th field="nama" width="150" sortable="true">NAMA PASIEN</th>
+					<th field="gender" align="center" width="70" sortable="true">Male/Female</th>
+					<th field="tgl_lahir" width="100" hidden="true">TANGGAL LAHIR</th>
+					<th field="alamat" width="150" sortable="true">ALAMAT</th>
+					<th field="telp" width="80" sortable="true">TELP</th>
+					<th field="email" width="100">EMAIL</th>		
+					<th field="bagian" width="50" sortable="true">BAGIAN</th>
+					<th field="status_pasien" width="80" sortable="true">STATUS PASIEN</th>
 				</tr>
 			</thead>
 		</table>

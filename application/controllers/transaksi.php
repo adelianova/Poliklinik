@@ -23,6 +23,11 @@ class Transaksi extends MY_Controller {
 		$data=$this->transaksi_m->getListDetail();
 		echo json_encode($data);
 	}
+
+	public function getIDObat(){
+		$data=$this->transaksi_m->getIDObat();
+		echo json_encode($data);
+	}
 	
 
 	public function simpanTransaksi(){

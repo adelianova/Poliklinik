@@ -17,19 +17,23 @@
 					<tr>
 						<td class='label_form'>Nama Obat</td>
                         <td>
-							<input name='id_obat' id='id_obat'  class='easyui-combogrid' required="true"  style="padding:3px;width:93%" data-options="
-										panelWidth: 250,
-                                        url:'<?php echo base_url();?>index.php/resep/getKodeObat',
+							<select name='id_obat' id='id_obat' class='easyui-combogrid' required="true"  style="padding:3px;width:93%" data-options="
+										panelWidth: 279,
+										idField:'id_obat',
+                                        url:'<?php echo base_url();?>index.php/transaksi/getIDObat',
                                         valueField:'id_obat',
                                         textField:'nama',
+                                        method: 'get',
                                         columns: [[
 						                        {field:'nama',title:'Nama Obat',width:150},
+						                        {field:'id_obat',title:'ID Obat',width:150, hidden:'true'},
 						                        {field:'satuan',title:'Satuan',width:100,align:'left'},
 		                    			]],
 		                    			onSelect: function(index, row){
 						        			$('#satuan1').val(row.satuan);
-										}
-                                        "/>
+										},
+                                        ">
+                            </select> 
 						</td>
 					</tr>
 					<tr>

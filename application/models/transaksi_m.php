@@ -52,6 +52,9 @@ class Transaksi_m extends MY_Model {
 		 $this->db->order_by($sort,$order);
 	}
 
+	function getIDObat(){
+		 return $this->db->query("select id_obat,nama,satuan FROM TBL_M_OBAT")->result_array();
+	}
 
 	function getKodeTransaksi(){
 		return $this->db->query("select dbo.getIDTransaksi() as id_transaksi")->row_array();
@@ -112,8 +115,6 @@ class Transaksi_m extends MY_Model {
 		$id_dtl_stock=$this->input->post('id_dtl_stock');
 		$id_obat=$this->input->post('id_obat');
 		$qty=$this->input->post('qty');
-		$harga_satuan=$this->input->post('harga_satuan');
-		$total=$this->input->post('total');
 		$tgl_expired=$this->input->post('tgl_expired');
 		
 		if($edit==''){
@@ -122,8 +123,6 @@ class Transaksi_m extends MY_Model {
 				'id_obat'=>$id_obat,
 				'id_stock'=>$id_stock,
 				'qty'=>$qty,
-				'harga_satuan'=>$harga_satuan,
-				'total'=>$total,
 				'tgl_expired'=>date('Y-m-d',strtotime($tgl_expired)),
 			);
 			$r=$this->db->insert('TBL_DETAIL_STOCK',$arr);
@@ -131,8 +130,6 @@ class Transaksi_m extends MY_Model {
 			$arr=array(
 				'id_obat'=>$id_obat,
 				'qty'=>$qty,
-				'harga_satuan'=>$harga_satuan,
-				'total'=>$total,
 				'tgl_expired'=>date('Y-m-d',strtotime($tgl_expired)),
 			);
 			$this->db->where("id_dtl_stock='".$id_dtl_stock."'");
