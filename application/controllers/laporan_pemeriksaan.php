@@ -17,7 +17,11 @@ class Laporan_pemeriksaan extends MY_Controller {
 		$data['total']=$this->laporan_pemeriksaan_m->getListLaporanPemeriksaan('total');
 		echo json_encode($data);
 	}	
-	public function cetakLaporan($tgl_awal="",$tgl_akhir="")
+	  public function getStatus(){
+        $data=$this->laporan_pemeriksaan_m->getStatus();
+		echo json_encode($data);
+    }
+	public function cetakLaporan($tgl_awal="",$tgl_akhir=""/*,$status_pasien=""*/)
 	{
 		$TGL_MULAI = @str_replace("~", "/", $tgl_awal);
 		$TGL_SELESAI = @str_replace("~", "/", $tgl_akhir);
@@ -36,10 +40,10 @@ class Laporan_pemeriksaan extends MY_Controller {
 		<div style="font-weight:bold;">Jl. Terusan Danau Sentani No.100 - Malang</div>';
 		if($TGL_MULAI=='' ){
 		$html.="
-		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan Pegawai<br/> Periode(".date('d-m-Y')." sampai ".date('d-m-Y').")</div>"; 			
+		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan<br/> Periode(".date('d-m-Y')." sampai ".date('d-m-Y').")</div>"; 			
 		}else{
 		$html.="
-		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan Pegawai<br/> Periode(".$tgl_awal." sampai ".$tgl_akhir.")</div>";
+		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan<br/> Periode(".$tgl_awal." sampai ".$tgl_akhir.")</div>";
  		}
 		$html .='
 		<table width="100%" border="1" cellspacing="0" cellpadding="2">

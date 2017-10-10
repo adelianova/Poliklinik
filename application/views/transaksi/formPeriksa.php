@@ -40,7 +40,7 @@
 			                                        "/>
 								</td>
 							</td>
-						</tr>
+					</tr>
 					<tr>
 						<td class='label_form'>Diagnosa</td>
 						<td >

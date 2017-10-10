@@ -17,7 +17,7 @@
 					<tr>
 						<td class='label_form'>Nama Obat</td>
 						<td>
-						<select name='id_dtl_stock' id='id_dtl_stock' required="true" class="easyui-combogrid" style="width:100%" data-options="
+						<select name='id_dtl_stock' id='id_dtl_stock' required="true" class="easyui-combogrid" style="width:93%" data-options="
 			                    panelWidth: 300,
 			                    idField: 'id_dtl_stock',
 			                    url:'<?php echo base_url();?>index.php/retur/getDtlStock',
@@ -29,8 +29,12 @@
 				                        {field:'nama',title:'Nama Obat',width:148},
 				                        {field:'tgl_expired',title:'Tanggal Expired',width:100},
 				                       	{field:'sisa',title:'Sisa',width:50},
-
-                    			]]
+				                        {field:'satuan',title:'Satuan',width:100,align:'left'},
+				                       	
+                    			]],
+                    			onSelect: function(index, row){
+						        			$('#satuan1').val(row.satuan);
+										},
 			                ">
 			            </select>
 						</td>
@@ -38,7 +42,8 @@
 					<tr>
 						<td class='label_form'>Quantity</td>
 						<td >
-							<input type="text" id='qty' name="qty" type="number" class="easyui-validatebox textbox" style="padding:3px;width:90%" required="true" data-options="min:0,precision:2">
+							<input name='qty' id='qty' class='easyui-validatebox textbox' required="true" onkeyup="#" type="number" style="padding:3px;width:40%"/>
+							<input name='satuan1' id='satuan1' class='easyui-validatebox textbox' readonly="true" onkeyup="#" type="text" style="padding:3px;width:46%"/>
 						</td>
 					</tr>
 					<tr>

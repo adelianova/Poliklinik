@@ -21,14 +21,19 @@
 			                    columns: [[
 				                        {field:'nama',title:'Nama Obat',width:150},
 				                        {field:'sisa',title:'Stok',width:100,align:'left'},
-                    			]]
+				                        {field:'satuan',title:'Satuan',width:100,align:'left'},
+                    			]],
+                    			onSelect: function(index, row){
+						        			$('#satuan1').val(row.satuan);
+										},
 			                ">
 						</td>
 					</tr>
 					<tr>
 						<td class='label_form'>Quantity</td>
 						<td >
-							<input type="text" id='QTY' name="QTY" type="number" class="easyui-validatebox textbox" style="padding:3px;width:93%" required="true" data-options="min:0,precision:2">
+						<input name='QTY' id='QTY' class='easyui-validatebox textbox' required="true" onkeyup="#" type="number" style="padding:3px;width:43%"/>
+							<input name='satuan1' id='satuan1' class='easyui-validatebox textbox' readonly="true" onkeyup="#" type="text" style="padding:3px;width:46%"/>
 						</td>
 					</tr>
 					<tr>

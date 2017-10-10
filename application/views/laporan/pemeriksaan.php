@@ -14,6 +14,7 @@
 					<th field="gender" width="100" sortable="true">GENDER</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
 					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
+					<th field="diagnosa" width="100" sortable="true">DIAGNOSA</th>
 					<th field="kode_dokter" width="100" sortable="true">KODE DOKTER</th>
 					<th field="nama_dokter" width="100" sortable="true">NAMA DOKTER</th>
 					
@@ -26,11 +27,20 @@
 				<tr>
 					<td class='label_form'>Pilih Tanggal</td>
 					<td >
-					<input name='tgl_awal' id='tgl_awal' class='easyui-datebox' prompt="Dari tanggal" style="padding:3px;width:30%"/>	
+					<input name='tgl_awal' id='tgl_awal' class='easyui-datebox' prompt="Dari tanggal" style="padding:3px;width:15%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datebox' prompt="Sampai tanggal" style="padding:3px;width:30%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datebox' prompt="Sampai tanggal" style="padding:3px;width:15%"/>	
 					</td>
+					<tr>
+						<td>
+							<input name='status_pasien' id='status_pasien' class='easyui-combobox' required="true" style="padding:3px;width:20%" data-options="
+			                      url:'<?php echo base_url();?>index.php/laporan_pemeriksaan/getStatus',
+			                      valueField:'id_status_pasien',
+			                      textField:'status_pasien'
+			                       "/>
+						</td>
+					</tr>
 					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 					<a class="easyui-linkbutton" data-options="iconCls:'icon-print'" onClick="cetakLaporan()"  style="color: #fff">CETAK PDF</a>
 				</tr>
@@ -52,12 +62,16 @@
 		
 		$('#datagrid-m_periksa').datagrid('load', { "searchKey": name, "searchValue": value });
 	}
-
 	function tampilkan() {
 		var tgl_awal = $('#tgl_awal').datebox('getValue');
-		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
-
-		$('#datagrid-m_periksa').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
+		var tgl_akhir = $('#tgl_akhir').datebox('getValue');/*
+		var status = $('#status_pasien').combobox('getValue');*/
+		$('#datagrid-m_periksa').datagrid('load',
+		{
+			"tgl_awal" : tgl_awal, 
+			"tgl_akhir" : tgl_akhir,/*
+			"status" : status_pasien*/
+		});
 	}
 
 	
