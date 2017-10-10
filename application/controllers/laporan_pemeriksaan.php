@@ -21,7 +21,7 @@ class Laporan_pemeriksaan extends MY_Controller {
         $data=$this->laporan_pemeriksaan_m->getStatus();
 		echo json_encode($data);
     }
-	public function cetakLaporan($tgl_awal="",$tgl_akhir=""/*,$status_pasien=""*/)
+	public function cetakLaporan($tgl_awal="",$tgl_akhir="")
 	{
 		$TGL_MULAI = @str_replace("~", "/", $tgl_awal);
 		$TGL_SELESAI = @str_replace("~", "/", $tgl_akhir);

@@ -10,7 +10,12 @@ class User extends MY_Controller {
     
     
 	function getDefaultMenu(){
+		$user=$this->session->userdata('userid');
+		if(substr($user,0,2)=='DR'){
+			echo $this->user_m->getDefaultDokter();
+		}else{
 		echo $this->user_m->getDefaultMenu();
+		}
 	}
 	
 	public function getListUser(){

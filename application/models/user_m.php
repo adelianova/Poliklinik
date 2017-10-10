@@ -173,8 +173,7 @@ class User_m extends MY_Model {
 		';
 	}
 	function getDefaultDokter(){
-		return '
-				[{
+		return '[{
 					"id":11,
 					"text":"Transaksi",
 					"state":"open",
@@ -190,11 +189,8 @@ class User_m extends MY_Model {
 						"url":"transaksi_resep",
 						"akses":true
 						
-					}
-				}]
-					
-
-		';
+					}]
+				}]';
 	}	
 	
     function getKontrak($jenis){

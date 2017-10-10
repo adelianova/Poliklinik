@@ -59,8 +59,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
 		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
 		
-		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?" and CONVERT(varchar(8), a.tgl_periksa, 112) ='".date('Ymd')."'":" and CONVERT(varchar(8), a.tgl_periksa, 112) between '$tglMulai' and '$tglSelesai' ";/*
-		$status = ($status_pasien== "")?"":" and a.id_status_pasien = '$STATUS_PASIEN' ";*/
+		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?" and CONVERT(varchar(8), a.tgl_periksa, 112) ='".date('Ymd')."'":" and CONVERT(varchar(8), a.tgl_periksa, 112) between '$tglMulai' and '$tglSelesai' ";
 		$data = $this->db->query("SELECT a.id_periksa,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.diagnosa, b.nama_dokter, c.nama,c.bagian,c.nip,c.gender,d.penyakit FROM tbl_periksa a
 		JOIN TBL_M_DOKTER b ON a.kode_dokter = b.kode_dokter
 		JOIN TBL_M_PASIEN C ON a.kode_pasien = c.kode_pasien
