@@ -19,7 +19,6 @@
 							<input name='nama' id='nama' class='easyui-validatebox textbox' required="true"  style="padding:3px;width:90%"/>
 						</td>
 					</tr>
-
 					<tr>
 						<td class='label_form'>Bagian</td>
 						<td >
@@ -48,9 +47,17 @@
 					<tr>
 						<td class='label_form'>Gender</td>
 						<td >
-							<input name='gender' id='gender' required="true" class='easyui-validatebox textbox'   style="padding:3px;width:90%"/>
+						    <select required="true" class="easyui-combobox" name='gender' id='gender' style="width:93%;">
+						        <option value="F">Female</option>
+						        <option value="M">Male</option>
 						</td>
 					</tr>
+					<tr>
+							<td class='label_form'>Tanggal Lahir</td>
+							<td >
+								<input name='tgl_lahir' id='tgl_lahir' class='easyui-datebox' style="padding:3px;width:93%"/>	
+							</td>
+						</tr>
                     <tr>
 						<td class='label_form'>Status Pasien</td>
                         <td>

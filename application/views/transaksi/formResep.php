@@ -13,7 +13,7 @@
 						<td class='label_form'>Pasien</td>
 						<td>
 						<input name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="padding:3px;width:96%" data-options="
-			                    panelWidth: 360,
+			                    panelWidth: 300,
 			                    idField: 'id_periksa',
 			                    url:'<?php echo base_url();?>index.php/resep/getIDPeriksa',
 			                    method: 'get',
@@ -22,7 +22,7 @@
 			                    columns: [[
 				                        {field:'id_periksa',title:'ID',width:50,hidden:'true'},
 				                        {field:'kode_pasien',title:'Kode Pasien',width:80},
-				                        {field:'nama',title:'Nama',width:130,align:'left'},
+				                        {field:'nama',title:'Nama',width:220,align:'left'},
 				                        {field:'nama_dokter',title:'Nama Dokter',width:140,align:'left'},
                     			]],
                     			onSelect: function(index, row){

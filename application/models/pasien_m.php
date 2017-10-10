@@ -18,7 +18,7 @@ class Pasien_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select(" a.kode_pasien,a.nama,a.alamat,a.telp,a.email,a.bagian,a.id_status_pasien,a.nip,a.gender, b.status_pasien");
+    	$this->db->select(" a.kode_pasien,a.nama,a.alamat,a.telp,a.email,a.bagian,a.id_status_pasien,convert(varchar(10),a.tgl_lahir,105) as tgl_lahir,a.nip,a.gender,b.status_pasien");
 		$this->db->from("TBL_M_PASIEN a");
 		$this->db->join("TBL_M_STATUS_PASIEN b","a.id_status_pasien = b.id_status_pasien");
 		if($searchKey<>''){
@@ -50,6 +50,7 @@ class Pasien_m extends MY_Model {
 		$bagian=$this->input->post('bagian');
 		$gender=$this->input->post('gender');
 		$nip=$this->input->post('nip');
+		$tgl_lahir=$this->input->post('tgl_lahir');
 		$id_status_pasien=$this->input->post('id_status_pasien');
 		
 		if($edit==''){
@@ -64,6 +65,7 @@ class Pasien_m extends MY_Model {
 				'bagian'=>$bagian,
 				'nip'=>$nip,
 				'gender'=>$gender,
+				'tgl_lahir'=>$tgl_lahir,
 			);
 			
 			$r=$this->db->insert('TBL_M_PASIEN',$arr);
@@ -78,6 +80,7 @@ class Pasien_m extends MY_Model {
 				'bagian'=>$bagian,
 				'nip'=>$nip,
 				'gender'=>$gender,
+				'tgl_lahir'=>$tgl_lahir,
 			);
 			$this->db->where("kode_pasien='".$kode_pasien."'");
 			$r=$this->db->update('TBL_M_PASIEN',$arr);

@@ -1,5 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Laporan_pemeriksaan_m extends MY_Model {
+class Laporan_nonpegawai_m extends MY_Model {
     public $limit;
 	public $offset;
 	
@@ -7,7 +7,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
         parent::__construct();
     }
 	
-	function getListLaporanPemeriksaan($jenis){
+	function getListLaporanNonpegawai($jenis){
 		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
 		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
 		$offset = ($page-1)*$rows;
@@ -24,7 +24,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$this->db->join("tbl_m_dokter b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
 		$this->db->join("TBL_M_PENYAKIT d","a.id_penyakit = d.id_penyakit");
-		$this->db->where("a.id_status_registrasi = 'Selesai' and c.id_status_pasien=2");
+		$this->db->where("a.id_status_registrasi = 'Selesai' and c.id_status_pasien != 2");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
@@ -61,7 +61,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$data = $this->db->query("SELECT a.id_periksa,a.kode_dokter,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan, b.nama_dokter, c.nama,c.bagian,c.nip,c.gender FROM tbl_periksa a
 		JOIN TBL_M_DOKTER b ON a.kode_dokter = b.kode_dokter
 		JOIN TBL_M_PASIEN C ON a.kode_pasien = c.kode_pasien
-		where id_status_registrasi = 'selesai'".$tgl." and c.id_status_pasien = 2
+		where id_status_registrasi = 'selesai'".$tgl." and c.id_status_pasien != 2
 		ORDER BY tgl_periksa DESC");
 		return $data->result();
 	}

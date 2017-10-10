@@ -23,7 +23,7 @@ class User_m extends MY_Model {
 	
 	function getDefaultMenu(){
 		return '
-					[{
+				[{
 					"id":11,
 					"text":"Master",
 					"state":"open",
@@ -104,7 +104,8 @@ class User_m extends MY_Model {
 					"id":13,
 					"text":"Laporan",
 					"state":"open",
-					"children":[{
+					"children":
+					[{
 						"id":131,
 						"text":"Stock",
 						"state":"open",
@@ -124,24 +125,31 @@ class User_m extends MY_Model {
 							"text":"Retur",
 							"url":"laporan_retur",
 							"akses":true
-							
-						}]
-					},{
+					}]
+					},
+					{
 						"id":14,
 						"text":"Pemeriksaan",
-						"url":"laporan_pemeriksaan",
-						"akses":true
-						
+						"state":"open",
+						"children":[{
+							"id":141,
+							"text":"Pegawai",
+							"url":"laporan_pemeriksaan",
+							"akses":true
+						},{
+							"id":142,
+							"text":"Non Pegawai",
+							"url":"laporan_nonpegawai",
+							"akses":true
+							
+						}]						
 					},{
 						"id":15,
-						"text":"Laporan Rekab",
+						"text":"Stok Obat Bulanan",
 						"url":"laporan_rekab",
 						"akses":true
 					}]
-					}
-					
-					
-					]
+				}]
 					
 
 		';

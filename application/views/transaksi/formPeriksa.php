@@ -14,11 +14,21 @@
 			                    columns: [[
 				                        {field:'id_periksa',title:'ID',width:70, hidden: 'true'},
 				                        {field:'kode_pasien',title:'Kode Pasien',width:100},
-				                        {field:'nama',title:'Nama',width:117,align:'left'},
-                    			]]
+				                        {field:'nama',title:'Nama',width:117,align:'left'}, 
+				                        {field:'umur',title:'Umur',width:40,align:'left'},
+                    			]],
+                    			onSelect: function(index, row){
+				        			$('#umur').val(row.umur);
+				        		}
 			                ">
 			            </select>
 						</td>
+					</tr>
+					<tr>
+						<td class='label_form'>Umur</td>
+						<td >
+						<input name='umur' id='umur' readonly='true' 
+							class='easyui-validatebox textbox' style='padding:3px;width:87%' />	
 					</tr>
 					<tr>
 							<td class='label_form'>Dokter</td>

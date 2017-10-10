@@ -11,7 +11,7 @@
 					<th field="nip" width="80" sortable="true">NIP</th>
 					<th field="nama" width="150" sortable="true">NAMA PASIEN</th>
 					<th field="gender" align="center" width="70" sortable="true">Male/Female</th>
-					<th field="tgl_lahir" width="100" hidden="true">TANGGAL LAHIR</th>
+					<th field="tgl_lahir" width="100" >TANGGAL LAHIR</th>
 					<th field="alamat" width="150" sortable="true">ALAMAT</th>
 					<th field="telp" width="80" sortable="true">TELP</th>
 					<th field="email" width="100">EMAIL</th>		
@@ -33,7 +33,7 @@
 				searcher="caripasien" prompt="Ketik disini" menu="#muser"></input>  
 				<div id="muser" style="width:150px"> 
 					<div name='nama'>NAMA</div>
-					<div name='full_name'>PENANGGUNG JAWAB</div>
+					<div name='bagian'>BAGIAN</div>
 				</div>  
 			</div>
 		</div>
