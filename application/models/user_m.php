@@ -20,7 +20,36 @@ class User_m extends MY_Model {
 		
         return $query;
     }
+	function getExpired($jenis){
+		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+		$offset = ($page-1)*$rows;
+		$this->limit = $rows;
+		$this->offset = $offset;
+		 $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_dtl_stock';
+        $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
+		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
+		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 
+    	$this->db->select("a.id_dtl_stock,a.id_stock,a.id_obat,a.qty,a.tgl_expired,DATEDIFF (MONTH,GETDATE(),a.tgl_expired) as sisa_waktu,b.nama");
+		$this->db->from("TBL_DETAIL_STOCK a");
+		$this->db->join("TBL_M_OBAT b","b.id_obat = a.id_obat");
+		$this->db->where("DATEDIFF (MONTH,GETDATE(),a.tgl_expired) <= '2'");
+
+		if($searchKey<>''){
+		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}
+		
+		$this->db->order_by($sort,$order);
+		
+		if($jenis=='total'){
+		$hasil=$this->db->get ('')->num_rows();
+		}else{
+		$hasil=$this->db->get ('',$this->limit, $this->offset)->result_array();
+		}
+		
+	    return $hasil;	
+	}
 	function getDefaultMenu(){
 		return '
 				[{

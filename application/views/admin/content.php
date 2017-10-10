@@ -62,6 +62,30 @@
 						</thead>
 				</table>
     		</div>
+
+    		<div class="easyui-draggable easyui-resizable" data-options="handle:'#title'" style="width:800px;height:200px;background:#fafafa;border:1px solid #ccc;margin-top:10px">
+        		<div id="title" style="padding:5px;background:#93bcff;color:#fff">Obat Yang Akan Expired</div>
+        		<table id="datagrid-m_expired" title="" class="easyui-datagrid scrollbarx" 
+					style="width:auto; height: auto;" 
+					data-options="
+					url:'<?php echo base_url().'index.php/user/getExpired';?>',
+					toolbar:'#toolbar',rownumbers:true,border:true,
+					striped:true,fit:true,fitColumns:true,
+					singleSelect:true,collapsible:false">
+						<thead>
+							<tr>
+								<th field="id_dtl_stock" width="100" sortable="true" hidden="true">ID DETAIL STOCK</th>
+								<th field="id_stock" width="100" sortable="true" hidden="true">ID STOCK</th>
+								<th field="id_obat" width="100" sortable="true" hidden="true">ID OBAT</th>
+								<th field="nama" width="100" sortable="true">NAMA</th>
+								<th field="qty" width="100" sortable="true">QTY</th>
+								<th field="tgl_expired" width="100" sortable="true">TANGGAL EXPIRED</th>
+								<th field="sisa_waktu" width="100" sortable="true">SISA WAKTU (Bulan)</th>								
+							</tr>
+						</thead>
+				</table>
+    		</div>
+
 		</div>
 		</div>
     </div>
