@@ -12,7 +12,7 @@ class Laporan_pemeriksaan extends MY_Controller {
 		if (!$this->autentifikasi->sudah_login()) redirect (site_url('login'));
 		redirect(site_url('main'));
     }
-	public function getListLaporanPemeriksaan(){
+	public function getListLaporanPemeriksaan(){	
 		$data['rows']=$this->laporan_pemeriksaan_m->getListLaporanPemeriksaan('rows');
 		$data['total']=$this->laporan_pemeriksaan_m->getListLaporanPemeriksaan('total');
 		echo json_encode($data);
@@ -54,7 +54,6 @@ class Laporan_pemeriksaan extends MY_Controller {
 			<td width="10%" align="center"><strong>Gender</strong></td>
 			<td width="10%" align="center"><strong>Tanggal Periksa</strong></td>
 			<td width="8%" align="center"><strong>Penyakit</strong></td>
-			<td width="10%" align="center"><strong>Kode Dokter</strong></td>
 			<td width="10%" align="center"><strong>Nama Dokter</strong></td>
 		  </tr>';
 
@@ -69,7 +68,6 @@ class Laporan_pemeriksaan extends MY_Controller {
 			<td>'.$row->gender.'</td>
 			<td>'.$row->tgl_periksa.'</td>
 			<td>'.$row->penyakit.'</td>
-			<td>'.$row->kode_dokter.'</td>
 			<td>'.$row->nama_dokter.'</td>
 		</tr>';
 		$no++;

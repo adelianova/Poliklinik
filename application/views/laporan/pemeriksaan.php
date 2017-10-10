@@ -8,7 +8,7 @@
 		singleSelect:true,collapsible:false">
 			<thead>
 				<tr>
-					<th field="nip" width="100" hidden="true sortable="true" >NIP</th>
+					<th field="nip" width="100" sortable="true" >NIP</th>
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
 					<th field="bagian" width="100" sortable="true">BAGIAN</th>
 					<th field="gender" width="100" sortable="true">GENDER</th>
