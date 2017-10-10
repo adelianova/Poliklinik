@@ -19,6 +19,13 @@ class User extends MY_Controller {
 		echo json_encode($result);
 		
 	}
+
+	public function getKontrak(){
+		$data['rows']=$this->user_m->getKontrak('rows');
+		$data['total']=$this->user_m->getKontrak('total');
+		echo json_encode($data);
+		
+	}
 	
 	function getAllKaryawan(){
 		$result=$this->user_m->getAllKaryawan();

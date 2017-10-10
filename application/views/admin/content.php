@@ -38,11 +38,36 @@
     <div id="content" region="center" title=""  class='content_footer' style='overflow:hidden'> 
 	    <div id='content_tab' class="easyui-tabs isinya" border='false' fit="true" cache='false'>
         <div id='isi_content' title="Main Content" style='overflow:hidden' iconCls='icon-paper'>
+        	<div class="easyui-draggable easyui-resizable" data-options="handle:'#title'" style="width:800px;height:200px;background:#fafafa;border:1px solid #ccc;margin-top:10px">
+        		<div id="title" style="padding:5px;background:#93bcff;color:#fff">Kontrak Dokter Yang Akan Selesai</div>
+        		<table id="datagrid-m_kontrak" title="" class="easyui-datagrid scrollbarx" 
+					style="width:auto; height: auto;" 
+					data-options="
+					url:'<?php echo base_url().'index.php/user/getKontrak';?>',
+					toolbar:'#toolbar',rownumbers:true,border:true,
+					striped:true,fit:true,fitColumns:true,
+					singleSelect:true,collapsible:false">
+						<thead>
+							<tr>
+								<th field="id_kontrak" width="100" sortable="true" hidden="true">ID KONTRAK</th>
+								<th field="kode_dokter" width="100" sortable="true" hidden="true">KODE DOKTER</th>
+								<th field="nomor" width="100" sortable="true">NOMOR KONTRAK</th>
+								<th field="mulai_kontrak" width="100" sortable="true">TANGGAL MULAI </th>
+								<th field="selesai_kontrak" width="100" sortable="true">TANGGAL SELESAI</th>
+								<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
+								<th field="nama_dokter" width="100" sortable="true">NAMA DOKTER</th>
+								<th field="sisa_kontrak" width="120" sortable="true">SISA WAKTU (Bulan)</th>
+								
+							</tr>
+						</thead>
+				</table>
+    		</div>
 		</div>
 		</div>
     </div>
 	<div data-options="region:'south',border:false" style="background:#2980b9; color:#ecf0f1; padding:10px; text-align:center;">SIM PDAM Kota Malang</div>
-	
+
+
 	</body>
 </html>
 <script>
