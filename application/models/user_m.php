@@ -20,7 +20,49 @@ class User_m extends MY_Model {
 		
         return $query;
     }
-	
+
+    function getKontrak($jenis){
+		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+		$offset = ($page-1)*$rows;
+		$this->limit = $rows;
+		$this->offset = $offset;
+		 $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_kontrak';
+        $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
+		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
+		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
+		
+    	$this->db->select("a.id_kontrak,a.kode_dokter,a.nomor,convert(varchar(10),a.mulai_kontrak,105) as mulai_kontrak,convert(varchar(10),a.selesai_kontrak,105) as selesai_kontrak,a.keterangan,b.nama_dokter,
+			DateDiff (MONTH,GETDATE(),a.SELESAI_KONTRAK) as 'sisa_kontrak'");
+		$this->db->from("tbl_kontrak_dokter a");
+		$this->db->join("TBL_M_DOKTER b","a.kode_dokter = b.kode_dokter");
+		$this->db->where("DateDiff (MONTH,GETDATE(),a.SELESAI_KONTRAK)<='2'");
+
+		if($searchKey<>''){
+		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}
+		
+		$this->db->order_by($sort,$order);
+		
+		if($jenis=='total'){
+		$hasil=$this->db->get ('')->num_rows();
+		}else{
+		$hasil=$this->db->get ('',$this->limit, $this->offset)->result_array();
+		}
+		
+	    return $hasil;	
+	}
+
+    /*function getKontrak(){
+    	return $this->db->query("
+		select a.id_kontrak,a.kode_dokter,a.nomor,convert(varchar(10),a.mulai_kontrak,105) as mulai_kontrak,convert(varchar(10),a.selesai_kontrak,105) as selesai_kontrak,a.keterangan,b.nama_dokter,
+		DateDiff (MONTH,GETDATE(),a.SELESAI_KONTRAK) as 'sisa_kontrak' 
+		from tbl_kontrak_dokter a 
+		join TBL_M_DOKTER b on a.kode_dokter = b.kode_dokter 
+		where DateDiff (MONTH,GETDATE(),a.SELESAI_KONTRAK)<='2'
+		")->row_array();
+    }
+	*/
 	function getDefaultMenu(){
 		return '
 					[{
