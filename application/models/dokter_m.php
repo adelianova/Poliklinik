@@ -72,7 +72,7 @@ class Dokter_m extends MY_Model {
 			);
 			$this->db->where("kode_dokter='".$kode_dokter."'");
 			$r=$this->db->update('tbl_m_dokter',$arr);
-		
+			}
 		}
 
 		/*function simpanDokter(){
@@ -136,8 +136,4 @@ class Dokter_m extends MY_Model {
 		
 		return $result;
 	}
-	
-	
-	
-	
 }

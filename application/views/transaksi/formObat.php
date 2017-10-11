@@ -77,6 +77,7 @@
 								<th field="id_stock" width="70" sortable="true" hidden="true">ID STOCK</th>
 								<th field="nama" width="120" sortable="true">OBAT</th>
 								<th field="qty" width="60" sortable="true">JUMLAH</th>
+								<th field="satuan" width="60" sortable="true">SATUAN</th>
 								<th field="tgl_expired" width="110" sortable="true">TGL EXPIRED</th>
 							</tr>
 						</thead>

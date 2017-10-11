@@ -50,7 +50,8 @@
 									<th field="id_retur" width="70" hidden="true" sortable="true">ID RETUR</th>
 									<th field="id_dtl_stock" width="100" hidden="true" sortable="true">ID DETAIL STOCK</th>
 									<th field="nama" width="150" sortable="true">NAMA OBAT</th>
-									<th field="qty" width="100" sortable="true">QUANTITY</th>
+									<th field="qty" width="80" sortable="true">QUANTITY</th>
+									<th field="satuan" width="60" sortable="true">SATUAN</th>
 									<th field="keterangan" width="100" sortable="true">KETERANGAN</th>
 								</tr>
 							</thead>

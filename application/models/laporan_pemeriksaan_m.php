@@ -13,8 +13,9 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$offset = ($page-1)*$rows;
 		$this->limit = $rows;
 		$this->offset = $offset;
-		 $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_periksa';
+		$sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'id_periksa';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
+        $status = isset($_POST['status_pasien']) ? strval($_POST['status_pasien']) : '';
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
@@ -27,8 +28,14 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$this->db->where("a.id_status_registrasi = 'Selesai'");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
+		}else if($tgl_awal<>''&&$tgl_akhir<>''&&$status<>''){
+			$this->db->where("convert(varchar(10),a.tgl_periksa,112) between '".date('Ymd',strtotime($tgl_awal))."' AND '".date('Ymd',strtotime($tgl_akhir))."'");
+			$this->db->where("c.id_status_pasien","$status");
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
 			$this->db->where("convert(varchar(10),a.tgl_periksa,112) between '".date('Ymd',strtotime($tgl_awal))."' AND '".date('Ymd',strtotime($tgl_akhir))."'");
+		}
+		else if($tgl_awal==''&&$tgl_akhir==''&&$status<>''){
+			$this->db->where("c.id_status_pasien","$status");
 		}else {
 			$this->db->where("convert(varchar(10),a.tgl_periksa,112)= '".date('Ymd')."'");
 		}
@@ -55,16 +62,16 @@ class Laporan_pemeriksaan_m extends MY_Model {
     function getKodeDokter(){
         return $this->db->query(" select kode_dokter,nama_dokter FROM TBL_M_DOKTER")->result_array();
     }
-    public function getLaporan($TGL_MULAI,$TGL_SELESAI){
+    public function getLaporan($TGL_MULAI,$TGL_SELESAI,$STATUS){
 		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
 		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
-		
-		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?" and CONVERT(varchar(8), a.tgl_periksa, 112) ='".date('Ymd')."'":" and CONVERT(varchar(8), a.tgl_periksa, 112) between '$tglMulai' and '$tglSelesai' ";
-		$data = $this->db->query("SELECT a.id_periksa,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.diagnosa, b.nama_dokter, c.nama,c.bagian,c.nip,c.gender,d.penyakit FROM tbl_periksa a
+		$status = ($STATUS == "")?"":" and c.id_status_pasien = '$STATUS' ";
+		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?" and CONVERT(varchar(8), a.tgl_periksa, 112) ='".date('Ymd')."'":" and CONVERT(varchar(8), a.tgl_periksa, 112) between '$tglMulai' and '$tglSelesai'";
+		$data = $this->db->query("SELECT a.id_periksa,a.kode_pasien,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.diagnosa, b.nama_dokter, c.nama,c.bagian,c.nip,c.gender,c.id_status_pasien,d.penyakit FROM tbl_periksa a
 		JOIN TBL_M_DOKTER b ON a.kode_dokter = b.kode_dokter
 		JOIN TBL_M_PASIEN C ON a.kode_pasien = c.kode_pasien
 		JOIN TBL_M_PENYAKIT d ON a.id_penyakit = d.id_penyakit
-		where id_status_registrasi = 'selesai'".$tgl."
+		where id_status_registrasi = 'selesai' ".$tgl." ".$status."
 		ORDER BY tgl_periksa DESC");
 		return $data->result();
 	}

@@ -21,10 +21,11 @@ class Laporan_pemeriksaan extends MY_Controller {
         $data=$this->laporan_pemeriksaan_m->getStatus();
 		echo json_encode($data);
     }
-	public function cetakLaporan($tgl_awal="",$tgl_akhir="")
+	public function cetakLaporan($tgl_awal="",$tgl_akhir="",$status="")
 	{
 		$TGL_MULAI = @str_replace("~", "/", $tgl_awal);
 		$TGL_SELESAI = @str_replace("~", "/", $tgl_akhir);
+		$STATUS = @str_replace("~", "/", $status);
 		$this->load->library('mpdf/mPdf');
 		$mpdf = new mPDF('c','Legal-L');
 		$html = '
@@ -38,7 +39,7 @@ class Laporan_pemeriksaan extends MY_Controller {
 		<sethtmlpagefooter name="MyFooter1" value="on" />
 		<div style="font-size:20px; font-weight:bold">PDAM KOTA MALANG</div>
 		<div style="font-weight:bold;">Jl. Terusan Danau Sentani No.100 - Malang</div>';
-		if($TGL_MULAI=='' ){
+		if($TGL_MULAI==''&&$TGL_SELESAI==''){
 		$html.="
 		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Pemeriksaan<br/> Periode(".date('d-m-Y')." sampai ".date('d-m-Y').")</div>"; 			
 		}else{
@@ -58,7 +59,7 @@ class Laporan_pemeriksaan extends MY_Controller {
 		  </tr>';
 
 		$no=1;
-		$data = $this->laporan_pemeriksaan_m->getLaporan($TGL_MULAI,$TGL_SELESAI);
+		$data = $this->laporan_pemeriksaan_m->getLaporan($TGL_MULAI,$TGL_SELESAI,$STATUS);
 		foreach($data as $row){
 		$html .='  
 		  <tr>
@@ -76,6 +77,5 @@ class Laporan_pemeriksaan extends MY_Controller {
 		
 		$mpdf->WriteHTML($html);
 		$mpdf->Output();
-		//echo $html;
 	}			
 }

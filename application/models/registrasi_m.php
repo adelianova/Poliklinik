@@ -126,7 +126,9 @@ class Registrasi_m extends MY_Model {
         return $this->db->query(" select id_status_registrasi, status FROM TBL_M_STATUS_REGISTRASI")->result_array();
     }
 	function getIDPasien(){
-         return $this->db->query("select kode_pasien,nip,nama FROM TBL_M_PASIEN")->result_array();
+	    $q = $this->input->post("q");	 
+		$query="select kode_pasien,nip,nama FROM TBL_M_PASIEN where nip like '%$q%' or nama like '%$q%'";
+		return $this->db->query($query)->result_array();
     }
 	
 }

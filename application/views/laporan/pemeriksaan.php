@@ -64,13 +64,13 @@
 	}
 	function tampilkan() {
 		var tgl_awal = $('#tgl_awal').datebox('getValue');
-		var tgl_akhir = $('#tgl_akhir').datebox('getValue');/*
-		var status = $('#status_pasien').combobox('getValue');*/
+		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
+		var status_pasien = $('#status_pasien').combobox('getValue');
 		$('#datagrid-m_periksa').datagrid('load',
 		{
 			"tgl_awal" : tgl_awal, 
-			"tgl_akhir" : tgl_akhir,/*
-			"status" : status_pasien*/
+			"tgl_akhir" : tgl_akhir,
+			"status_pasien" : status_pasien
 		});
 	}
 
@@ -78,7 +78,8 @@
 	function cetakLaporan(){
         var tgl_awal = $('#tgl_awal').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
         var tgl_akhir = $('#tgl_akhir').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
-        PopupCenter("http://localhost/poliklinik/index.php/laporan_pemeriksaan/cetakLaporan/"+tgl_awal+"/"+tgl_akhir,"LAPORAN PEMERIKSAAN","800","400");
+        var status_pasien = $('#status_pasien').combobox('getValue');
+        PopupCenter("http://localhost/poliklinik/index.php/laporan_pemeriksaan/cetakLaporan/"+tgl_awal+"/"+tgl_akhir+"/"+status_pasien,"LAPORAN PEMERIKSAAN","800","400");
     }
 
     

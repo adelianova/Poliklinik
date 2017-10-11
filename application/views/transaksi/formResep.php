@@ -50,9 +50,10 @@
 
 			    <!--<?php echo ltrim($data['id_resep']);?>-->
 			        <tr>
-			            <th field="KODE_OBAT" width="100">Kode Obat</th>
-			            <th field="NAMA" width="150">Nama Obat</th>
-			            <th field="QTY" width="80" align="right">Quantity</th>
+			            <th field="KODE_OBAT" width="80">Kode Obat</th>
+			            <th field="NAMA" width="130">Nama Obat</th>
+			            <th field="QTY" width="50" align="right">Quantity</th>
+			            <th field="SATUAN" width="60" align="right">SATUAN</th>
 			            <th field="DOSIS" width="80" align="right">Dosis</th>
 			            <th field="ID_DETAIL_RESEP" width="80" align="right" hidden="true">ID</th>
 			        </tr>
