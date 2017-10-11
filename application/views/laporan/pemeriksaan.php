@@ -30,11 +30,11 @@
 					<input name='tgl_awal' id='tgl_awal' class='easyui-datebox' prompt="Dari tanggal" style="padding:3px;width:15%"/>	
 					</td>
 					<td >
-					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datebox' prompt="Sampai tanggal" style="padding:3px;width:15%"/>	
+					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datebox' prompt="Sampai tanggal" style="padding:3px;width:17%"/>	
 					</td>
 					<tr>
 						<td>
-							<input name='status_pasien' id='status_pasien' class='easyui-combobox' required="true" style="padding:3px;width:20%" data-options="
+							<input name='status_pasien' id='status_pasien' class='easyui-combobox' prompt="Pilih status" style="padding:3px;width:20%" data-options="
 			                      url:'<?php echo base_url();?>index.php/laporan_pemeriksaan/getStatus',
 			                      valueField:'id_status_pasien',
 			                      textField:'status_pasien'

@@ -154,6 +154,11 @@ class User_m extends MY_Model {
 							"text":"Retur",
 							"url":"laporan_retur",
 							"akses":true
+					},{
+							"id":1314,
+							"text":"Bulanan",
+							"url":"laporan_bulanan",
+							"akses":true
 					}]
 					},
 					{
@@ -161,11 +166,6 @@ class User_m extends MY_Model {
 						"text":"Pemeriksaan",
 						"url":"laporan_pemeriksaan",
 						"akses":true				
-					},{
-						"id":15,
-						"text":"Stok Obat Bulanan",
-						"url":"laporan_rekab",
-						"akses":true
 					}]
 				}]
 					

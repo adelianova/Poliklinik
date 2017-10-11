@@ -74,6 +74,37 @@ class Dokter_m extends MY_Model {
 			$r=$this->db->update('tbl_m_dokter',$arr);
 		
 		}
+
+		/*function simpanDokter(){
+		$edit=$this->input->post('edit');
+		$nip=$this->input->post('kode_dokter');
+		$nama=$this->input->post('nama_dokter');
+		$alamat=$this->input->post('alamat_dokter');
+		$telp=$this->input->post('telp');
+		$email=$this->input->post('email');
+		$password=$this->input->post('password');
+		
+		if($edit==''){
+			$data=$this->getKodeDokter();
+			$arr=array(
+				'nip'=>$data['kode_dokter'],
+				'full_name'=>$nama,
+				'address'=>$alamat,
+				'telephone'=>$telp,
+				'email'=>$email,
+				'passwd'=>md5($password),
+			);
+			$r=$this->db->insert('v_employee_all',$arr);
+		}else{
+			$arr=array(
+				'full_name'=>$nama,
+				'address'=>$alamat,
+				'telephone'=>$telp,
+				'email'=>$email,
+				'passwd'=>md5($password),
+			);
+			$this->db->where("nip='".$nip."'");
+			$r=$this->db->update('v_employee_all',$arr);		
 		
 		$result=array();
 		if($this->db->affected_rows()>0){
@@ -86,7 +117,7 @@ class Dokter_m extends MY_Model {
 		}
 		
 		return $result;
-	}
+	}*/
 	
 	
 	function hapusDokter(){
