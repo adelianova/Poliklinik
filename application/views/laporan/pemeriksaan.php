@@ -11,6 +11,7 @@
 					<th field="nip" width="100" sortable="true" >NIP</th>
 					<th field="nama" width="100" sortable="true">NAMA PASIEN</th>
 					<th field="bagian" width="100" sortable="true">BAGIAN</th>
+					<th field="status_pasien" width="100" sortable="true">STATUS PASIEN</th>
 					<th field="gender" width="100" sortable="true">GENDER</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
 					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>

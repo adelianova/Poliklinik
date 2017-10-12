@@ -31,13 +31,13 @@ class User extends MY_Controller {
 		echo json_encode($data);
 		
 	}
-
+/*
 	public function getExpired(){
 		$data['rows']=$this->user_m->getExpired('rows');
 		$data['total']=$this->user_m->getExpired('total');
 		echo json_encode($data);
 		
-	}
+	}*/
 	
 	function getAllKaryawan(){
 		$result=$this->user_m->getAllKaryawan();

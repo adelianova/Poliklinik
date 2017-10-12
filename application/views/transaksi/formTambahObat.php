@@ -40,7 +40,20 @@
 						<td class='label_form'>Quantity</td>
 						<td >
 							<input name='qty' id='qty' class='easyui-validatebox textbox' required="true" onkeyup="#" type="number" style="padding:3px;width:40%"/>
-							<input name='satuan1' id='satuan1' class='easyui-validatebox textbox' readonly="true" onkeyup="#" type="text" style="padding:3px;width:46%"/>
+							<input name='satuan1' id='satuan1' class='easyui-validatebox textbox' readonly="true" type="text" style="padding:3px;width:46%"/>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class='label_form'>Harga Satuan</td>
+						<td >
+							<input name='harga_satuan' id='harga_satuan' class='easyui-validatebox textbox' onkeyup="hitung()" type="number" style="padding:3px;width:90%"/>
+						</td>
+					</tr>
+					<tr>
+						<td class='label_form'>Total</td>
+						<td >
+							<input name='total' id='total' class='easyui-validatebox textbox' type="number" readonly="true" style="padding:3px;width:90%"/>
 						</td>
 					</tr>
 					<tr>
@@ -49,20 +62,18 @@
 							<input name='tgl_expired' id='tgl_expired' class='easyui-datebox' style="padding:3px;width:93%"/>	
 						</td>
 					</tr>
-
-					
 			</table>
 			<div id="standalone" style="float: right;margin-top: 10px;">
 						<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" type="submit" name="button" value="OK" id="button" onclick="simpanObat()">Simpan</a>
 					</div>
 		</form>
 <script language="javascript">
-/*	function hitung(){
+	function hitung(){
 		var b=document.getElementById("qty").value;
 		var c=document.getElementById("harga_satuan").value;
 		var hasil=parseInt(b)*parseInt(c);
 		document.getElementById("total").value=hasil;
-	}	*/
+	}	
 
 	function simpanObat(){
 		$.messager.progress({

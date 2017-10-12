@@ -61,7 +61,7 @@
 		</form>
 	</div>
    	<div id="panelGridStok" data-options="region:'center',title:''" style="padding:0px;">
-			<div id="dialog-m_tambah" class="easyui-dialog" style="width:480px; height:200px; padding: 10px 20px" 
+			<div id="dialog-m_tambah" class="easyui-dialog" style="width:480px; height:300px; padding: 10px 20px" 
 					closed="true" iconCls="icon-user">
 					</div>
 			<table id="datagrid-m_detail" title="Stok Obat" iconCls="icon-save" class="easyui-datagrid scrollbarx" 
@@ -78,6 +78,7 @@
 								<th field="nama" width="120" sortable="true">OBAT</th>
 								<th field="qty" width="60" sortable="true">JUMLAH</th>
 								<th field="satuan" width="60" sortable="true">SATUAN</th>
+								<th field="harga_satuan" width="60" sortable="true">HARGA SATUAN</th>
 								<th field="tgl_expired" width="110" sortable="true">TGL EXPIRED</th>
 							</tr>
 						</thead>

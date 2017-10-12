@@ -69,6 +69,17 @@
                                         "/>
 						</td>
 					</tr>
+					<tr>
+						<td class='label_form'>Penanggung Jawab</td>
+						<td>
+						<select name='penanggung_jawab' id='penanggung_jawab' class="easyui-combobox" style="width:94%" data-options="
+			                    url:'<?php echo base_url();?>index.php/pasien/getPenanggung',
+			                    valueField:'nip',
+                                textField:'full_name',
+			                ">
+			            </select>
+						</td>
+					</tr>
                         
 			</table>
 		</form>

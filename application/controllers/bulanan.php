@@ -44,7 +44,7 @@ class Bulanan extends MY_Controller {
 			<td width="10%" align="center"><strong>SATUAN</strong></td>
 			<td width="10%" align="center"><strong>STOK AWAL</strong></td>
 			<td width="10%" align="center"><strong>MASUK</strong></td>
-			<td width="8%" align="center"><strong>KELUAR</strong></td>
+			<td width="8%" align="center"><strong>EXPIRED</strong></td>
 			<td width="10%" align="center"><strong>SALDO</strong></td>
 		  </tr>';
 

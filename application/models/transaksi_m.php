@@ -115,6 +115,8 @@ class Transaksi_m extends MY_Model {
 		$id_dtl_stock=$this->input->post('id_dtl_stock');
 		$id_obat=$this->input->post('id_obat');
 		$qty=$this->input->post('qty');
+		$harga_satuan=$this->input->post('harga_satuan');
+		$total=$this->input->post('total');
 		$tgl_expired=$this->input->post('tgl_expired');
 		
 		if($edit==''){
@@ -123,6 +125,8 @@ class Transaksi_m extends MY_Model {
 				'id_obat'=>$id_obat,
 				'id_stock'=>$id_stock,
 				'qty'=>$qty,
+				'harga_satuan'=>$harga_satuan,
+				'total'=>$total,
 				'tgl_expired'=>date('Y-m-d',strtotime($tgl_expired)),
 			);
 			$r=$this->db->insert('TBL_DETAIL_STOCK',$arr);

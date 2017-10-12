@@ -62,7 +62,7 @@
 						</thead>
 				</table>
     		</div>
-
+<!-- 
     		<div class="easyui-draggable easyui-resizable" data-options="handle:'#title'" style="width:800px;height:200px;background:#fafafa;border:1px solid #ccc;margin-top:10px">
         		<div id="title" style="padding:5px;background:#93bcff;color:#fff">Obat Yang Akan Expired</div>
         		<table id="datagrid-m_expired" title="" class="easyui-datagrid scrollbarx" 
@@ -84,7 +84,7 @@
 							</tr>
 						</thead>
 				</table>
-    		</div>
+    		</div> -->
 
 		</div>
 		</div>

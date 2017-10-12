@@ -16,9 +16,15 @@
 				                        {field:'kode_pasien',title:'Kode Pasien',width:100},
 				                        {field:'nama',title:'Nama',width:117,align:'left'}, 
 				                        {field:'umur',title:'Umur',width:40,align:'left'},
+				                        {field:'gender',title:'Gender',width:40,align:'left'},
+				                        {field:'bagian',title:'Bagian',width:40,align:'left'},
+				                        {field:'keluhan',title:'Keluhan',width:40,align:'left'},
                     			]],
                     			onSelect: function(index, row){
+				        			$('#gender').val(row.gender);
 				        			$('#umur').val(row.umur);
+				        			$('#bagian').val(row.bagian);
+				        			$('#keluhan').val(row.keluhan);
 				        		}
 			                ">
 			            </select>
@@ -31,9 +37,28 @@
 							class='easyui-validatebox textbox' style='padding:3px;width:87%' />	
 					</tr>
 					<tr>
+						<td class='label_form'>Gender</td>
+						<td >
+						<input name='gender' id='gender' readonly='true' 
+							class='easyui-validatebox textbox' style='padding:3px;width:87%' />	
+					</tr>
+					<tr>
+						<td class='label_form'>Bagian</td>
+						<td >
+						<input name='bagian' id='bagian' readonly='true' 
+							class='easyui-validatebox textbox' style='padding:3px;width:87%' />	
+					</tr>
+					<tr>
+						<td class='label_form'>Keluhan</td>
+						<td >
+						<input name='keluhan' id='keluhan' readonly='true' 
+						<input name='keluhan' id='keluhan' readonly='true' 
+							class='easyui-validatebox textbox' style='padding:3px;width:87%' />	
+					</tr>
+					<tr>
 							<td class='label_form'>Dokter</td>
 								<td>
-								<input name='kode_dokter' id='kode_dokter' class='easyui-combobox' required="true" style="padding:3px;width:226px" data-options="
+								<input name='kode_dokter' id='kode_dokter' class='easyui-combobox' readonly="true" required="true" style="padding:3px;width:226px" data-options="
 			                                        url:'<?php echo base_url();?>index.php/periksa/getDokter',
 			                                        valueField:'nip',
 			                                        textField:'full_name'

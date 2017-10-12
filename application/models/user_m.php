@@ -6,9 +6,6 @@ class User_m extends MY_Model {
     function __construct(){
         parent::__construct();
     }
-	
-	
-	
     function cekLogin($username,$password) {
 		$query=$this->db->query(
 		"select b.nip,
@@ -20,7 +17,7 @@ class User_m extends MY_Model {
 		
         return $query;
     }
-	function getExpired($jenis){
+	/*function getExpired($jenis){
 		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
 		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
 		$offset = ($page-1)*$rows;
@@ -34,7 +31,7 @@ class User_m extends MY_Model {
     	$this->db->select("a.id_dtl_stock,a.id_stock,a.id_obat,a.qty,a.tgl_expired,DATEDIFF (MONTH,GETDATE(),a.tgl_expired) as sisa_waktu,b.nama");
 		$this->db->from("TBL_DETAIL_STOCK a");
 		$this->db->join("TBL_M_OBAT b","b.id_obat = a.id_obat");
-		$this->db->where("DATEDIFF (MONTH,GETDATE(),a.tgl_expired) <= '2'");
+		$this->db->where("DATEDIFF (MONTH,GETDATE(),a.tgl_expired) <= '2' and DATEDIFF (MONTH,GETDATE(),a.tgl_expired) > '0'");
 
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
@@ -49,7 +46,7 @@ class User_m extends MY_Model {
 		}
 		
 	    return $hasil;	
-	}
+	}*/
 	function getDefaultMenu(){
 		return '
 				[{
@@ -208,7 +205,7 @@ class User_m extends MY_Model {
 			DateDiff (MONTH,GETDATE(),a.SELESAI_KONTRAK) as 'sisa_kontrak'");
 		$this->db->from("tbl_kontrak_dokter a");
 		$this->db->join("TBL_M_DOKTER b","a.kode_dokter = b.kode_dokter");
-		$this->db->where("DateDiff (MONTH,GETDATE(),a.SELESAI_KONTRAK)<='2'");
+		$this->db->where("DateDiff (MONTH,GETDATE(),a.SELESAI_KONTRAK)<='2' and DateDiff (MONTH,GETDATE(),a.SELESAI_KONTRAK)>0");
 
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	

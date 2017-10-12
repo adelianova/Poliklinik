@@ -19,7 +19,7 @@ class Periksa_m extends MY_Model {
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
 		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
-		$this->db->select("a.id_periksa,a.kode_registrasi,a.kode_dokter,a.kode_pasien,a.id_penyakit,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan,a.diagnosa, b.nama_dokter,c.nama,datediff (year,c.tgl_lahir,getdate()) as umur,d.penyakit");
+		$this->db->select("a.id_periksa,a.kode_registrasi,a.kode_dokter,a.kode_pasien,a.id_penyakit,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan,a.diagnosa, b.nama_dokter,c.gender,c.bagian,c.nama,datediff (year,c.tgl_lahir,getdate()) as umur,d.penyakit");
 		$this->db->from("TBL_PERIKSA a");
 		$this->db->join("TBL_M_DOKTER b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
@@ -127,7 +127,7 @@ class Periksa_m extends MY_Model {
         return $this->db->query(" select id_penyakit,penyakit FROM TBL_M_PENYAKIT")->result_array();
     }
   	function getIDPeriksa(){
-		 return $this->db->query("select a.kode_pasien,a.nama,datediff (year,a.tgl_lahir,getdate()) as umur,b.id_periksa FROM TBL_M_PASIEN a 
+		 return $this->db->query("select a.kode_pasien,a.nama,a.gender,a.bagian,datediff (year,a.tgl_lahir,getdate()) as umur,b.id_periksa,b.keluhan FROM TBL_M_PASIEN a 
 		 	JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien 
 		 	where kode_dokter is null and convert(varchar(10),
 		 	b.tgl_registrasi,112)= '".date('Ymd')."'(select id_periksa from TBL_PERIKSA) ")
