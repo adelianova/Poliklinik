@@ -50,14 +50,14 @@ class Laporan_pemeriksaan extends MY_Controller {
 		$html .='
 		<table width="100%" border="1" cellspacing="0" cellpadding="2">
 		  <tr>
-			<td width="10%" align="center"><strong>NIP</strong></td>
+			<td width="8%" align="center"><strong>NIP</strong></td>
 			<td width="10%" align="center"><strong>Nama Pasien</strong></td>
 			<td width="10%" align="center"><strong>Bagian</strong></td>
-			<td width="10%" align="center"><strong>Gender</strong></td>
-			<td width="10%" align="center"><strong>Tanggal Periksa</strong></td>
-			<td width="8%" align="center"><strong>Hasil Pemeriksaan</strong></td>
-			<td width="8%" align="center"><strong>Diagnosa</strong></td>
-			<td width="8%" align="center"><strong>Jenis Pemeriksaan</strong></td>
+			<td width="7%" align="center"><strong>Gender</strong></td>
+			<td width="9%" align="center"><strong>Tanggal Periksa</strong></td>
+			<td width="20%" align="center"><strong>Hasil Pemeriksaan</strong></td>
+			<td width="9%" align="center"><strong>Diagnosa</strong></td>
+			<td width="9%" align="center"><strong>Jenis Pemeriksaan</strong></td>
 			<td width="10%" align="center"><strong>Nama Dokter</strong></td>
 		  </tr>';
 

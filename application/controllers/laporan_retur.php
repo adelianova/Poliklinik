@@ -48,12 +48,12 @@ class Laporan_retur extends MY_Controller {
 		$html .='
 		<table width="100%" border="1" cellspacing="0" cellpadding="2">
 		  <tr>
-			<td width="10%" align="center"><strong>ID Retur</strong></td>
-			<td width="10%" align="center"><strong>No Retur</strong></td>
-			<td width="10%" align="center"><strong>ID Detail Stock</strong></td>
-			<td width="10%" align="center"><strong>Petugas</strong></td>
-			<td width="10%" align="center"><strong>Kode Obat</strong></td>
-			<td width="10%" align="center"><strong>Nama</strong></td>
+			<td width="8%" align="center"><strong>ID Retur</strong></td>
+			<td width="8%" align="center"><strong>No Retur</strong></td>
+			<td width="8%" align="center"><strong>ID Detail Stock</strong></td>
+			<td width="15%" align="center"><strong>Petugas</strong></td>
+			<td width="8%" align="center"><strong>Kode Obat</strong></td>
+			<td width="15%" align="center"><strong>Nama</strong></td>
 			<td width="8%" align="center"><strong>Jumlah</strong></td>
 			<td width="10%" align="center"><strong>Tanggal Retur</strong></td>
 			<td width="10%" align="center"><strong>Keterangan</strong></td>

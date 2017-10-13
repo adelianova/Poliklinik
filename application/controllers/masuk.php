@@ -49,8 +49,8 @@ class Masuk extends MY_Controller {
 		<table width="100%" border="1" cellspacing="0" cellpadding="2">
 		  <tr>
 			<td width="10%" align="center"><strong>Tgl Obat Masuk</strong></td>
-			<td width="10%" align="center"><strong>Kode Obat</strong></td>
-			<td width="10%" align="center"><strong>Nama Obat</strong></td>
+			<td width="8%" align="center"><strong>Kode Obat</strong></td>
+			<td width="15%" align="center"><strong>Nama Obat</strong></td>
 			<td width="10%" align="center"><strong>Satuan</strong></td>
 			<td width="8%" align="center"><strong>Jumlah</strong></td>
 		  </tr>';

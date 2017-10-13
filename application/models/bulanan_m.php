@@ -105,4 +105,8 @@ class Bulanan_m extends MY_Model {
 						    from TBL_M_OBAT a) yy on xx.ID_OBAT = yy.ID_OBAT");
 		return $data->result();
 	}
+	function getDataPejabat(){
+		$query = $this->db->query("SELECT  full_name from v_employee_all where position_code = '2.04.00.00.00'");
+		return $query->row();
+	}
 }
