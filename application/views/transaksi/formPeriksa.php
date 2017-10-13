@@ -58,7 +58,7 @@
 					<tr>
 							<td class='label_form'>Dokter</td>
 								<td>
-								<input name='kode_dokter' id='kode_dokter' class='easyui-combobox' readonly="true" required="true" style="padding:3px;width:226px" data-options="
+								<input name='kode_dokter' id='kode_dokter' class='easyui-combobox' readonly="true" required="true" style="padding:3px;width:218px" data-options="
 			                                        url:'<?php echo base_url();?>index.php/periksa/getDokter',
 			                                        valueField:'nip',
 			                                        textField:'full_name'
@@ -67,7 +67,7 @@
 							</td>
 					</tr>
 					<tr>
-						<td class='label_form'>Diagnosa</td>
+						<td class='label_form'>Hasil Pemeriksaan</td>
 						<td >
 						<textarea cols='40' rows='3' name='diagnosa' id='diagnosa' 
 							style='padding:3px;width:87%' class='easyui-validatebox textarea'  
@@ -75,9 +75,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='label_form'>ID Penyakit</td>
+						<td class='label_form'>Diagnosa</td>
 						<td >
-							<input name='id_penyakit' id='id_penyakit' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
+							<input name='id_penyakit' id='id_penyakit' class='easyui-combobox' style="padding:3px;width:90%" data-options="
                                         url:'<?php echo base_url();?>index.php/periksa/getIDPenyakit',
                                         valueField:'id_penyakit',
                                         textField:'penyakit'
@@ -85,6 +85,7 @@
                                         "/>
 						</td>
 					</tr>
+					<tr>
 						<td class='label_form'>Status Registrasi</td>
                         <td>
 							<input name='id_status_registrasi' id='id_status_registrasi' class='easyui-combobox' required="true"  style="padding:3px;width:90%" data-options="
@@ -97,7 +98,17 @@
                                         "/>
 						</td>
 					</tr>
-			</table>
+					<tr>
+							<td class='label_form'>Jenis Periksa</td>
+								<td>
+								<input name='id_jenis_periksa' id='id_jenis_periksa' class='easyui-combobox' required="true" style="padding:3px;width:218px" data-options="
+			                                        url:'<?php echo base_url();?>index.php/periksa/getJenis',
+			                                        valueField:'id_jenis_periksa',
+			                                        textField:'jenis_periksa'
+			                                        "/>
+								</td>
+							</td>
+					</tr>
 		</form>
 	
 	

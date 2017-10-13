@@ -14,10 +14,11 @@
 					<th field="nama" width="100" sortable="true">PASIEN</th>
 					<th field="nama_dokter" width="100" sortable="true">DOKTER</th>
 					<th field="id_penyakit" width="100" sortable="true" hidden="true">ID PENYAKIT</th>
-					<th field="diagnosa" width="100" sortable="true">DIAGNOSA</th>
-					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
+					<th field="diagnosa" width="100" sortable="true">HASIL PEMERIKSAAN</th>
+					<th field="penyakit" width="100" sortable="true">DIAGNOSA</th>
 					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
 					<th field="keluhan" width="100" sortable="true">KELUHAN</th>
+					<th field="jenis_periksa" width="100" sortable="true">JENIS PERIKSA</th>
 				</tr>
 			</thead>
 		</table>
@@ -53,7 +54,7 @@
 				</div>  
 			</div>
 		</div>
-		<div id="dialog-m_periksa" class="easyui-dialog" style="width:410px; height:350px; padding: 10px 20px" 
+		<div id="dialog-m_periksa" class="easyui-dialog" style="width:410px; height:380px; padding: 10px 20px" 
 		closed="true" buttons="#dialog-buttons" iconCls="icon-user">
 		</div>
 		

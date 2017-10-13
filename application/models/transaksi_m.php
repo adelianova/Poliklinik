@@ -134,6 +134,7 @@ class Transaksi_m extends MY_Model {
 			$arr=array(
 				'id_obat'=>$id_obat,
 				'qty'=>$qty,
+				'harga_satuan'=>$harga_satuan,
 				'tgl_expired'=>date('Y-m-d',strtotime($tgl_expired)),
 			);
 			$this->db->where("id_dtl_stock='".$id_dtl_stock."'");

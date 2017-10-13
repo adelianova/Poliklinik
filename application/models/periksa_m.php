@@ -19,11 +19,12 @@ class Periksa_m extends MY_Model {
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		$tgl_awal=isset($_POST['tgl_awal']) ? strval($_POST['tgl_awal']) : '';
 		$tgl_akhir=isset($_POST['tgl_akhir']) ? strval($_POST['tgl_akhir']) : '';
-		$this->db->select("a.id_periksa,a.kode_registrasi,a.kode_dokter,a.kode_pasien,a.id_penyakit,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan,a.diagnosa, b.nama_dokter,c.gender,c.bagian,c.nama,datediff (year,c.tgl_lahir,getdate()) as umur,d.penyakit");
+		$this->db->select("a.id_periksa,a.kode_registrasi,a.kode_dokter,a.kode_pasien,a.id_penyakit,convert(varchar(10),a.tgl_periksa,105) as tgl_periksa,a.keluhan,a.diagnosa, b.nama_dokter,c.gender,c.bagian,c.nama,datediff (year,c.tgl_lahir,getdate()) as umur,d.penyakit,e.jenis_periksa");
 		$this->db->from("TBL_PERIKSA a");
 		$this->db->join("TBL_M_DOKTER b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
 		$this->db->join("TBL_M_PENYAKIT d","a.id_penyakit = d.id_penyakit");
+		$this->db->join("TBL_M_JENIS_PERIKSA e","a.id_jenis_periksa = e.id_jenis_periksa");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
@@ -53,13 +54,14 @@ class Periksa_m extends MY_Model {
 		$keluhan=$this->input->post('keluhan');
 		$diagnosa=$this->input->post('diagnosa');
 		$id_status_registrasi=$this->input->post('id_status_registrasi');
+		$id_jenis_periksa=$this->input->post('id_jenis_periksa');
 		if($edit==''){
 			$arr=array(
 				'kode_dokter'=>$kode_dokter,
 				'id_penyakit'=>$id_penyakit,
 				'tgl_periksa'=>date('Y-m-d H:i:s'), 
 				'diagnosa'=>$diagnosa,
-				'id_status_registrasi'=>$id_status_registrasi
+				'id_status_registrasi'=>$id_status_registrasi,
 			);
 			$this->db->where("id_periksa='".$id_periksa."'");
 			$r=$this->db->update('TBL_PERIKSA',$arr);
@@ -69,7 +71,8 @@ class Periksa_m extends MY_Model {
 				'kode_dokter'=>$kode_dokter,
 				'id_penyakit'=>$id_penyakit,
 				'diagnosa'=>$diagnosa,
-				'id_status_registrasi'=>$id_status_registrasi
+				'id_status_registrasi'=>$id_status_registrasi,
+				'id_jenis_periksa'=>$id_jenis_periksa
 			);
 			$this->db->where("id_periksa='".$id_periksa."'");
 			$r=$this->db->update('TBL_PERIKSA',$arr);
@@ -135,5 +138,8 @@ class Periksa_m extends MY_Model {
 	}
 	function getStatus(){
         return $this->db->query(" select id_status_registrasi, status FROM TBL_M_STATUS_REGISTRASI")->result_array();
+    }
+    function getJenis(){
+        return $this->db->query(" select id_jenis_periksa,jenis_periksa FROM TBL_M_JENIS_PERIKSA")->result_array();
     }
 }

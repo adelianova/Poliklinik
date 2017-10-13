@@ -54,7 +54,9 @@ class Laporan_pemeriksaan extends MY_Controller {
 			<td width="10%" align="center"><strong>Bagian</strong></td>
 			<td width="10%" align="center"><strong>Gender</strong></td>
 			<td width="10%" align="center"><strong>Tanggal Periksa</strong></td>
-			<td width="8%" align="center"><strong>Penyakit</strong></td>
+			<td width="8%" align="center"><strong>Hasil Pemeriksaan</strong></td>
+			<td width="8%" align="center"><strong>Diagnosa</strong></td>
+			<td width="8%" align="center"><strong>Jenis Pemeriksaan</strong></td>
 			<td width="10%" align="center"><strong>Nama Dokter</strong></td>
 		  </tr>';
 
@@ -68,7 +70,9 @@ class Laporan_pemeriksaan extends MY_Controller {
 			<td>'.$row->bagian.'</td>
 			<td>'.$row->gender.'</td>
 			<td>'.$row->tgl_periksa.'</td>
+			<td>'.$row->diagnosa.'</td>
 			<td>'.$row->penyakit.'</td>
+			<td>'.$row->jenis_periksa.'</td>
 			<td>'.$row->nama_dokter.'</td>
 		</tr>';
 		$no++;

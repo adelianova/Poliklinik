@@ -13,11 +13,12 @@
 					<th field="bagian" width="100" sortable="true">BAGIAN</th>
 					<th field="status_pasien" width="100" sortable="true">STATUS PASIEN</th>
 					<th field="gender" width="100" sortable="true">GENDER</th>
-					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>		
-					<th field="penyakit" width="100" sortable="true">PENYAKIT</th>
-					<th field="diagnosa" width="100" sortable="true">DIAGNOSA</th>
+					<th field="tgl_periksa" width="100" sortable="true">TANGGAL PERIKSA</th>
+					<th field="diagnosa" width="100" sortable="true">HASIL PEMERIKSAAN</th>		
+					<th field="penyakit" width="100" sortable="true">DIAGNOSA</th>
 					<th field="kode_dokter" width="100" sortable="true">KODE DOKTER</th>
 					<th field="nama_dokter" width="100" sortable="true">NAMA DOKTER</th>
+					<th field="jenis_periksa" width="100" sortable="true">JENIS PEMERIKSAAN</th>
 					
 				</tr>
 			</thead>
