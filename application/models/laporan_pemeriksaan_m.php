@@ -26,7 +26,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
 		$this->db->join("TBL_M_PENYAKIT d","a.id_penyakit = d.id_penyakit");
 		$this->db->join("TBL_M_STATUS_PASIEN e","c.id_status_pasien= e.id_status_pasien");
-		$this->db->join("TBL_M_JENIS_PERIKSA f","a.id_jenis_periksa= f.id_jenis_periksa");
+		$this->db->join("TBL_M_JENIS_PERIKSA f","a.id_jenis_periksa= f.id_jenis_periksa","left");
 		$this->db->where("a.id_status_registrasi = 'Selesai'");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
@@ -65,6 +65,7 @@ class Laporan_pemeriksaan_m extends MY_Model {
         return $this->db->query(" select kode_dokter,nama_dokter FROM TBL_M_DOKTER")->result_array();
     }
     public function getLaporan($TGL_MULAI,$TGL_SELESAI,$STATUS){
+
 		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
 		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
 		$status = ($STATUS == "")?"":" and c.id_status_pasien = '$STATUS' ";
@@ -74,9 +75,14 @@ class Laporan_pemeriksaan_m extends MY_Model {
 		JOIN TBL_M_DOKTER b ON a.kode_dokter = b.kode_dokter
 		JOIN TBL_M_PASIEN C ON a.kode_pasien = c.kode_pasien
 		JOIN TBL_M_PENYAKIT d ON a.id_penyakit = d.id_penyakit
-		JOIN TBL_M_JENIS_PERIKSA e ON a.id_jenis_periksa =e.id_jenis_periksa
+		LEFT JOIN TBL_M_JENIS_PERIKSA e ON a.id_jenis_periksa =e.id_jenis_periksa
 		where id_status_registrasi = 'selesai' ".$tgl." ".$status."
 		ORDER BY tgl_periksa DESC");
 		return $data->result();
+	}
+
+	function getDataPejabat(){
+		$query = $this->db->query("SELECT  full_name from v_employee_all where position_code = '2.04.00.00.00'");
+		return $query->row();
 	}
 }

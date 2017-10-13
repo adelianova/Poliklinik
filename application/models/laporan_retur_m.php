@@ -60,4 +60,8 @@ class Laporan_retur_m extends MY_Model {
 		ORDER BY tgl DESC");
 		return $data->result();
 	}
+	function getDataPejabat(){
+		$query = $this->db->query("SELECT  full_name from v_employee_all where position_code = '2.04.00.00.00'");
+		return $query->row();
+	}
 }

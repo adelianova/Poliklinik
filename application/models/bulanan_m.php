@@ -22,15 +22,15 @@ class Bulanan_m extends MY_Model {
 		$subQuery="select xx.ID_OBAT, xx.KODE_OBAT, yy.NAMA, yy.SATUAN, xx.stok-xx.resep-xx.retur as STOK_AWAL, yy.stok as MASUK, yy.resep+yy.retur as KELUAR, (xx.stok-xx.resep-xx.retur)+(yy.stok-yy.resep-yy.retur) SALDO from (
 				select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
 			    (select sum(b.qty) from TBL_DETAIL_STOCK b join TBL_STOCK c on b.ID_STOCK = c.ID_STOCK where
-			    a.id_obat=b.id_obat and convert(varchar(6), c.tgl, 112) < convert(varchar(6), getdate(), 112)),0) as stok,
+			    a.id_obat=b.id_obat and convert(varchar(6), c.tgl, 112) <= convert(varchar(6), getdate(), 112)),0) as stok,
 			    isnull(
 			    (select sum(x.qty) from TBL_DETAIL_RESEP x join TBL_M_OBAT y
 			    on x.KODE_OBAT=y.KODE_OBAT join TBL_RESEP i on x.ID_DETAIL_RESEP = i.ID_RESEP join TBL_PERIKSA j ON i.ID_PERIKSA = j.ID_PERIKSA where
-			    y.id_obat=a.id_obat and convert(varchar(6), j.TGL_PERIKSA, 112) < convert(varchar(6), getdate(), 112)),0) as resep,
+			    y.id_obat=a.id_obat and convert(varchar(6), j.TGL_PERIKSA, 112) <= convert(varchar(6), getdate(), 112)),0) as resep,
 			    isnull(
 			    (select sum(d.qty) from TBL_DETAIL_RETUR d join TBL_DETAIL_STOCK b on 
 			    b.ID_DTL_STOCK=d.ID_DTL_STOCK join TBL_RETUR k on d.ID_RETUR = k.ID_RETUR where 
-				a.id_obat=b.id_obat and convert(varchar(6), k.TGL, 112) < convert(varchar(6), getdate(), 112)),0) as retur
+				a.id_obat=b.id_obat and convert(varchar(6), k.TGL, 112) <= convert(varchar(6), getdate(), 112)),0) as retur
 			    from TBL_M_OBAT a) xx
 				join (select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
 			    (select sum(b.qty) from TBL_DETAIL_STOCK b join TBL_STOCK c on b.ID_STOCK = c.ID_STOCK where

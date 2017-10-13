@@ -23,6 +23,7 @@ class Laporan_pemeriksaan extends MY_Controller {
     }
 	public function cetakLaporan($tgl_awal="",$tgl_akhir="",$status="")
 	{
+		$dataPejabat = $this->laporan_pemeriksaan_m->getDataPejabat();
 		$TGL_MULAI = @str_replace("~", "/", $tgl_awal);
 		$TGL_SELESAI = @str_replace("~", "/", $tgl_akhir);
 		$STATUS = @str_replace("~", "/", $status);
@@ -78,7 +79,9 @@ class Laporan_pemeriksaan extends MY_Controller {
 		$no++;
 		}
 		$html .= '</table>';
-		
+		$html .= '<div style="padding-top: 40px; left:0px; position:absolute; font-weight:bold; width:300px; text-align:center">Mengetahui</div>';
+		$html .= '<div style="padding-top: 100px; left:0px; position:absolute; font-weight:bold; width:300px; text-align:center">'.$dataPejabat->full_name.'</div>';
+		$html .= '<div style="margin-top: 20px; left:0px; position:absolute; font-weight:bold; width:300px; text-align:center">Malang, '.date('d M Y').'</div>';
 		$mpdf->WriteHTML($html);
 		$mpdf->Output();
 	}			

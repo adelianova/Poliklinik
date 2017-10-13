@@ -13,7 +13,9 @@
 					<th field="satuan" width="100" sortable="true">SATUAN</th>
 					<th field="stok_awal" width="100" sortable="true">STOK AWAL</th>
 					<th field="masuk" width="100" sortable="true">OBAT MASUK</th>
-					<th field="keluar" width="100" sortable="true">OBAT EXPIRED</th>		
+					<th field="keluar" width="100" sortable="true">KELUAR</th>
+					<!-- <th field="resep" width="100" sortable="true">KELUAR RESEP</th>		
+					<th field="retur" width="100" sortable="true">OBAT EXPIRED</th>		 -->
 					<th field="saldo" width="100" sortable="true">SALDO</th>
 				</tr>
 			</thead>
