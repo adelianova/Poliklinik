@@ -198,7 +198,8 @@ class Resep_m extends MY_Model {
 	}
 
 	function getIDPeriksa(){
-		 return $this->db->query("select a.kode_pasien,a.nama,b.id_periksa,b.kode_dokter, c.nama_dokter FROM TBL_M_PASIEN a JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien join TBL_M_DOKTER c on c.kode_dokter = b.kode_dokter where b.kode_dokter is not null and id_periksa not in (select id_periksa from TBL_RESEP)")
+		 return $this->db->query("select a.kode_pasien,a.nama,b.id_periksa,b.kode_dokter, c.nama_dokter FROM TBL_M_PASIEN a JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien join TBL_M_DOKTER c on c.kode_dokter = b.kode_dokter where convert(varchar(10),
+		 		b.tgl_periksa,112)= '".date('Ymd')."' and b.kode_dokter is not null and id_periksa not in (select id_periksa from TBL_RESEP)")
 		 ->result_array();
 	}
     function getIDObat(){

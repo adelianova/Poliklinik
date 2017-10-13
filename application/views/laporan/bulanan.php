@@ -23,7 +23,7 @@
 		
 		<div id="toolbar" style='padding:5px;height:25px'>
 			<div style="display:inline;float:left;padding-top:-10px;">
-				<tr><!-- 
+				<tr>
 					<td class='label_form'>Pilih Tanggal</td>
 					<td >
 					<input name='tgl_awal' id='tgl_awal' class='easyui-datebox' prompt="Dari tanggal" style="padding:3px;width:30%"/>	
@@ -31,7 +31,7 @@
 					<td >
 					<input name='tgl_akhir' id='tgl_akhir' class='easyui-datebox' prompt="Sampai tanggal" style="padding:3px;width:30%"/>	
 					</td>
-					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a> -->
+					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="tampilkan();">Tampilkan Data</a>
 					<a class="easyui-linkbutton" data-options="iconCls:'icon-print'" onClick="cetakLaporan()"  style="color: #fff">CETAK PDF</a>
 				</tr>
 				</tr>
@@ -52,17 +52,17 @@
 		$('#datagrid-m_rekab').datagrid('load', { "searchKey": name, "searchValue": value });
 	}
 
-	// function tampilkan() {
-	// 	var tgl_awal = $('#tgl_awal').datebox('getValue');
-	// 	var tgl_akhir = $('#tgl_akhir').datebox('getValue');
+	function tampilkan() {
+		var tgl_awal = $('#tgl_awal').datebox('getValue');
+		var tgl_akhir = $('#tgl_akhir').datebox('getValue');
 
-	// 	$('#datagrid-m_rekab').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
-	// }
+		$('#datagrid-m_rekab').datagrid('load',{"tgl_awal" : tgl_awal, "tgl_akhir" : tgl_akhir});
+	}
 
 	
 	function cetakLaporan(){
-       /* var tgl_awal = $('#tgl_awal').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
-        var tgl_akhir = $('#tgl_akhir').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");*/
+        var tgl_awal = $('#tgl_awal').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
+        var tgl_akhir = $('#tgl_akhir').datebox('getValue').replace("/","~").replace("/","~").replace("/","~").replace("/","~");
         PopupCenter("http://localhost/poliklinik/index.php/bulanan/cetakLaporan/","LAPORAN BULANAN","800","400");
     }
 

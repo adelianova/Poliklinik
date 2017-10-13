@@ -50,7 +50,7 @@ class Bulanan extends MY_Controller {
 		  </tr>';
 
 		$no=1;
-		$data = $this->bulanan_m->getLaporan(/*$TGL_MULAI,$TGL_SELESAI*/);
+		$data = $this->bulanan_m->getLaporan($TGL_MULAI,$TGL_SELESAI);
 		foreach($data as $row){
 		$html .='  
 		  <tr>
