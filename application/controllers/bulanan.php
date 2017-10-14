@@ -20,8 +20,9 @@ class Bulanan extends MY_Controller {
 	public function cetakLaporan($tgl_awal="",$tgl_akhir="")
 	{
 		$dataPejabat = $this->bulanan_m->getDataPejabat();
-		$TGL_MULAI = @str_replace("~", "/", $tgl_awal);
-		$TGL_SELESAI = @str_replace("~", "/", $tgl_akhir);
+		$tgl_awal = @str_replace("~", "/", $tgl_awal);
+		$tgl_akhir = @str_replace("~", "/", $tgl_akhir);
+
 		$this->load->library('mpdf/mPdf');
 		$mpdf = new mPDF('c','Legal-L');
 		$html = '
@@ -35,8 +36,14 @@ class Bulanan extends MY_Controller {
 		<sethtmlpagefooter name="MyFooter1" value="on" />
 		<div style="font-size:20px; font-weight:bold">PDAM KOTA MALANG</div>
 		<div style="font-weight:bold;">Jl. Terusan Danau Sentani No.100 - Malang</div>';
+
+		if($tgl_awal==''&&$tgl_akhir==''){
 		$html.="
-		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Obat Bulanan <br/> Periode Bulan ".date('F')."</div>"; 			
+		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Obat Bulanan<br/> Periode Bulan(".date('F').")</div>"; 			
+		}else{
+		$html.="
+		<div style='font-size:20px; font-weight:bold; text-align:center'>Laporan Obat Bulanan<br/> Periode(".$tgl_awal." sampai ".$tgl_akhir.")</div>";
+ 		}
 		$html .='
 		<table width="100%" border="1" cellspacing="0" cellpadding="2">
 		  <tr>
@@ -45,12 +52,13 @@ class Bulanan extends MY_Controller {
 			<td width="10%" align="center"><strong>SATUAN</strong></td>
 			<td width="8%" align="center"><strong>STOK AWAL</strong></td>
 			<td width="8%" align="center"><strong>MASUK</strong></td>
+			<td width="8%" align="center"><strong>RESEP</strong></td>
 			<td width="8%" align="center"><strong>EXPIRED</strong></td>
 			<td width="8%" align="center"><strong>SALDO</strong></td>
 		  </tr>';
 
 		$no=1;
-		$data = $this->bulanan_m->getLaporan($TGL_MULAI,$TGL_SELESAI);
+		$data = $this->bulanan_m->getLaporan($tgl_awal,$tgl_akhir);
 		foreach($data as $row){
 		$html .='  
 		  <tr>
@@ -59,7 +67,8 @@ class Bulanan extends MY_Controller {
 			<td>'.$row->SATUAN.'</td>
 			<td>'.$row->STOK_AWAL.'</td>
 			<td>'.$row->MASUK.'</td>
-			<td>'.$row->KELUAR.'</td>
+			<td>'.$row->RESEP.'</td>
+			<td>'.$row->RETUR.'</td>
 			<td>'.$row->SALDO.'</td>
 		</tr>';
 		$no++;

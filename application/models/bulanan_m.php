@@ -33,7 +33,7 @@ class Bulanan_m extends MY_Model {
 		$tgl_akhir = date("Ymd", strtotime($tgl_akhir));
 
 
-		$subQuery="select xx.ID_OBAT, xx.KODE_OBAT, yy.NAMA, yy.SATUAN, xx.stok-xx.resep-xx.retur as STOK_AWAL, yy.stok as MASUK, yy.resep+yy.retur as KELUAR, (xx.stok-xx.resep-xx.retur)+(yy.stok-yy.resep-yy.retur) SALDO from (
+		$subQuery="select xx.ID_OBAT, xx.KODE_OBAT, yy.NAMA, yy.SATUAN, xx.stok-xx.resep-xx.retur as STOK_AWAL, yy.stok as MASUK, yy.RESEP,yy.RETUR, (xx.stok-xx.resep-xx.retur)+(yy.stok-yy.resep-yy.retur) SALDO from (
 				select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
 			    (select sum(b.qty) from TBL_DETAIL_STOCK b join TBL_STOCK c on b.ID_STOCK = c.ID_STOCK where
 			    a.id_obat=b.id_obat and convert(varchar(8), c.tgl, 112) < convert(varchar(8), '$tgl_awal', 112)),0) as stok,
@@ -65,7 +65,7 @@ class Bulanan_m extends MY_Model {
 			a.satuan,
 			a.stok_awal,
 			a.masuk,
-			a.keluar,
+			a.resep,a.retur,
 			a.saldo ");
 		$this->db->from("($subQuery) a");
 		if($searchKey<>''){
@@ -85,8 +85,8 @@ class Bulanan_m extends MY_Model {
 		
 	    return $hasil;	
 	}
-    public function getLaporan($TGL_MULAI,$TGL_SELESAI){
-		/*$tglMulai = date("Ymd", strtotime($TGL_MULAI));
+    public function getLaporan($tgl_awal,$tgl_akhir){
+	/*	$tglMulai = date("Ymd", strtotime($TGL_MULAI));
 		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));
 		
 		$tgl = ($TGL_MULAI == '' || $TGL_SELESAI == '')?" and CONVERT(varchar(8), a.tgl_periksa, 112) ='".date('Ymd')."'":" and CONVERT(varchar(8), a.tgl_periksa, 112) between '$tglMulai' and '$tglSelesai' ";
@@ -119,18 +119,19 @@ class Bulanan_m extends MY_Model {
 						    from TBL_M_OBAT a) yy on xx.ID_OBAT = yy.ID_OBAT");
 		return $data->result();
 */
-		if($TGL_MULAI=="" || $TGL_SELESAI==""){
-			$tglMulai='1-'.date("m-Y");
-			$tglSelesai=date("Y-m-d");
+		if($tgl_awal=="" || $tgl_akhir==""){
+			$tgl_awal='1-'.date("m-Y");
+			$tgl_akhir=date("Y-m-d");
 		}else{
-			$TGL_MULAI=$tglMulai;
-			$TGL_SELESAI=$tglSelesai;
+			$tgl_awal=$tgl_awal;
+			$tgl_akhir=$tgl_akhir;
 		}
 
-		$tglMulai = date("Ymd", strtotime($TGL_MULAI));
-		$tglSelesai = date("Ymd", strtotime($TGL_SELESAI));	
 
-		$subQuery="select xx.ID_OBAT, xx.KODE_OBAT, yy.NAMA, yy.SATUAN, xx.stok-xx.resep-xx.retur as STOK_AWAL, yy.stok as MASUK, yy.resep+yy.retur as KELUAR, (xx.stok-xx.resep-xx.retur)+(yy.stok-yy.resep-yy.retur) SALDO from (
+		$tgl_awal = date("Ymd", strtotime($tgl_awal));
+		$tgl_akhir = date("Ymd", strtotime($tgl_akhir));
+
+		$data = $this->db->query("select xx.ID_OBAT, xx.KODE_OBAT, yy.NAMA, yy.SATUAN, xx.stok-xx.resep-xx.retur as STOK_AWAL, yy.stok as MASUK, yy.RESEP,yy.RETUR, (xx.stok-xx.resep-xx.retur)+(yy.stok-yy.resep-yy.retur) SALDO from (
 				select a.id_obat,a.kode_obat,a.nama,a.satuan,isnull(
 			    (select sum(b.qty) from TBL_DETAIL_STOCK b join TBL_STOCK c on b.ID_STOCK = c.ID_STOCK where
 			    a.id_obat=b.id_obat and convert(varchar(8), c.tgl, 112) < convert(varchar(8), '$tgl_awal', 112)),0) as stok,
@@ -154,17 +155,8 @@ class Bulanan_m extends MY_Model {
 			    (select sum(d.qty) from TBL_DETAIL_RETUR d join TBL_DETAIL_STOCK b on 
 			    b.ID_DTL_STOCK=d.ID_DTL_STOCK join TBL_RETUR k on d.ID_RETUR = k.ID_RETUR where 
 				a.id_obat=b.id_obat and convert(varchar(8), k.TGL, 112) >= '$tgl_awal' and convert(varchar(8), k.tgl, 112) <= '$tgl_akhir'),0) as retur
-			    from TBL_M_OBAT a) yy on xx.ID_OBAT = yy.ID_OBAT";
-		$this->db->select("
-			a.id_obat,
-			a.kode_obat,
-			a.nama,
-			a.satuan,
-			a.stok_awal,
-			a.masuk,
-			a.keluar,
-			a.saldo ");
-		$this->db->from("($subQuery) a");
+			    from TBL_M_OBAT a) yy on xx.ID_OBAT = yy.ID_OBAT");
+		return $data->result();
 	}
 	function getDataPejabat(){
 		$query = $this->db->query("SELECT  full_name from v_employee_all where position_code = '2.04.00.00.00'");
