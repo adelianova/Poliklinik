@@ -2,6 +2,17 @@
 				<input type='hidden' name='edit' id='edit' value=''/>
 				<table width='350px' class='dialog-form' >
 					<tr>
+							<td class='label_form'>Jenis Periksa</td>
+								<td>
+								<input name='id_jenis_periksa' id='id_jenis_periksa' class='easyui-combobox' required="true" style="padding:3px;width:218px" data-options="
+			                                        url:'<?php echo base_url();?>index.php/periksa/getJenis',
+			                                        valueField:'id_jenis_periksa',
+			                                        textField:'jenis_periksa'
+			                                        "/>
+								</td>
+							</td>
+					</tr>
+					<tr>
 						<td class='label_form'>ID Periksa</td>
 						<td>
 						<select name='id_periksa' id='id_periksa' required="true" class="easyui-combogrid" style="padding:3px;width:90%" data-options="
@@ -15,11 +26,11 @@
 				                        {field:'id_periksa',title:'ID',width:70, hidden: 'true'},
 				                        {field:'kode_pasien',title:'Kode Pasien',width:100},
 				                        {field:'nama',title:'Nama',width:117,align:'left'}, 
-				                        {field:'umur',title:'Umur',width:40,align:'left'},
-				                        {field:'gender',title:'Gender',width:40,align:'left'},
-				                        {field:'bagian',title:'Bagian',width:40,align:'left'},
-				                        {field:'keluhan',title:'Keluhan',width:40,align:'left'},
-				                        {field:'alergi',title:'Alergi',width:40,align:'left'},
+				                        {field:'umur',title:'Umur',width:40,align:'left',hidden: 'true'},
+				                        {field:'gender',title:'Gender',width:40,align:'left',hidden: 'true'},
+				                        {field:'bagian',title:'Bagian',width:40,align:'left',hidden: 'true'},
+				                        {field:'keluhan',title:'Keluhan',width:40,align:'left',hidden: 'true'},
+				                        {field:'alergi',title:'Alergi',width:40,align:'left',hidden: 'true'},
                     			]],
                     			onSelect: function(index, row){
 				        			$('#gender').val(row.gender);
@@ -58,9 +69,7 @@
 					<tr>
 						<td class='label_form'>Keluhan</td>
 						<td >
-						<input name='keluhan' id='keluhan' readonly='true' 
-						<input name='keluhan' id='keluhan' readonly='true' 
-							class='easyui-validatebox textbox' style='padding:3px;width:87%' />	
+						<input name='keluhan' id='keluhan' readonly='true' class='easyui-validatebox textbox' style='padding:3px;width:87%' />	
 					</tr>
 					<tr>
 							<td class='label_form'>Dokter</td>
@@ -105,17 +114,7 @@
                                         "/>
 						</td>
 					</tr>
-					<tr>
-							<td class='label_form'>Jenis Periksa</td>
-								<td>
-								<input name='id_jenis_periksa' id='id_jenis_periksa' class='easyui-combobox' required="true" style="padding:3px;width:218px" data-options="
-			                                        url:'<?php echo base_url();?>index.php/periksa/getJenis',
-			                                        valueField:'id_jenis_periksa',
-			                                        textField:'jenis_periksa'
-			                                        "/>
-								</td>
-							</td>
-					</tr>
+
 		</form>
 	
 	

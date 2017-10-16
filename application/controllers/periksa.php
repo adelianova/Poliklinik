@@ -48,10 +48,6 @@ class Periksa extends MY_Controller {
         $data=$this->periksa_m->getDokter();
 		echo json_encode($data);
     }
-    public function getKodePenyakit(){
-        $data=$this->periksa_m->getKodePenyakit();
-		echo json_encode($data);
-    }
     public function getIDPenyakit(){
         $data=$this->periksa_m->getIDPenyakit();
 		echo json_encode($data);

@@ -126,9 +126,6 @@ class Periksa_m extends MY_Model {
     function getDokter(){
     	return $this->db->query("select b.nip, b.full_name from v_employee_all b ")->result_array();
     }
-    function getKodePenyakit(){
-        return $this->db->query(" select kode_penyakit,penyakit FROM TBL_M_PENYAKIT")->result_array();
-    }
     function getIDPenyakit(){
         return $this->db->query(" select id_penyakit,penyakit FROM TBL_M_PENYAKIT")->result_array();
     }
