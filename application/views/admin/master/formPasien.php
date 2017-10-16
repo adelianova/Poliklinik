@@ -38,7 +38,8 @@
 						<td >
 							<input name='telp' id='telp' type="number" class='easyui-validatebox textbox' required="true"  style="padding:3px;width:90%"/>
 						</td>
-					</tr><tr>
+					</tr>
+					<tr>
 						<td class='label_form'>Email</td>
 						<td >
 							<input name='email' id='email' class='easyui-validatebox textbox'   style="padding:3px;width:90%"/>
@@ -52,6 +53,13 @@
 						        <option value="M">Male</option>
 						</td>
 					</tr>
+					<tr>
+						<td class='label_form'>Alergi</td>
+						<td >
+							<input name='alergi' id='alergi' class='easyui-validatebox textbox'   style="padding:3px;width:90%"/>
+						</td>
+					</tr>
+					
 					<tr>
 							<td class='label_form'>Tanggal Lahir</td>
 							<td >

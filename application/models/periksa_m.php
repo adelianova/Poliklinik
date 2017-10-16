@@ -24,7 +24,7 @@ class Periksa_m extends MY_Model {
 		$this->db->join("TBL_M_DOKTER b","a.kode_dokter = b.kode_dokter");
 		$this->db->join("TBL_M_PASIEN c","a.kode_pasien = c.kode_pasien");
 		$this->db->join("TBL_M_PENYAKIT d","a.id_penyakit = d.id_penyakit");
-		$this->db->join("TBL_M_JENIS_PERIKSA e","a.id_jenis_periksa = e.id_jenis_periksa");
+		$this->db->join("TBL_M_JENIS_PERIKSA e","a.id_jenis_periksa = e.id_jenis_periksa","left");
 		if($searchKey<>''){
 		$this->db->where($searchKey." like '%".$searchValue."%'");	
 		}else if($tgl_awal<>''&&$tgl_akhir<>''){
@@ -45,6 +45,7 @@ class Periksa_m extends MY_Model {
 		
 	    return $hasil;	
 	}
+
 	function simpanPeriksa(){
 		$edit=$this->input->post('edit');
 		$id_periksa=$this->input->post('id_periksa');
@@ -62,6 +63,8 @@ class Periksa_m extends MY_Model {
 				'tgl_periksa'=>date('Y-m-d H:i:s'), 
 				'diagnosa'=>$diagnosa,
 				'id_status_registrasi'=>$id_status_registrasi,
+				'id_jenis_periksa'=>$id_jenis_periksa
+
 			);
 			$this->db->where("id_periksa='".$id_periksa."'");
 			$r=$this->db->update('TBL_PERIKSA',$arr);
@@ -130,7 +133,7 @@ class Periksa_m extends MY_Model {
         return $this->db->query(" select id_penyakit,penyakit FROM TBL_M_PENYAKIT")->result_array();
     }
   	function getIDPeriksa(){
-		 return $this->db->query("select a.kode_pasien,a.nama,a.gender,a.bagian,datediff (year,a.tgl_lahir,getdate()) as umur,b.id_periksa,b.keluhan FROM TBL_M_PASIEN a 
+		 return $this->db->query("select a.kode_pasien,a.nama,a.gender,a.alergi,a.bagian,datediff (year,a.tgl_lahir,getdate()) as umur,b.id_periksa,b.keluhan FROM TBL_M_PASIEN a 
 		 	JOIN TBL_PERIKSA b ON a.kode_pasien=b.kode_pasien 
 		 	where kode_dokter is null and convert(varchar(10),
 		 	b.tgl_registrasi,112)= '".date('Ymd')."'(select id_periksa from TBL_PERIKSA) ")

@@ -19,12 +19,14 @@
 				                        {field:'gender',title:'Gender',width:40,align:'left'},
 				                        {field:'bagian',title:'Bagian',width:40,align:'left'},
 				                        {field:'keluhan',title:'Keluhan',width:40,align:'left'},
+				                        {field:'alergi',title:'Alergi',width:40,align:'left'},
                     			]],
                     			onSelect: function(index, row){
 				        			$('#gender').val(row.gender);
 				        			$('#umur').val(row.umur);
 				        			$('#bagian').val(row.bagian);
 				        			$('#keluhan').val(row.keluhan);
+				        			$('#alergi').val(row.alergi);
 				        		}
 			                ">
 			            </select>
@@ -40,6 +42,11 @@
 						<td class='label_form'>Gender</td>
 						<td >
 						<input name='gender' id='gender' readonly='true' 
+							class='easyui-validatebox textbox' style='padding:3px;width:87%' />	
+					</tr><tr>
+						<td class='label_form'>Alergi</td>
+						<td >
+						<input name='alergi' id='alergi' readonly='true' 
 							class='easyui-validatebox textbox' style='padding:3px;width:87%' />	
 					</tr>
 					<tr>

@@ -16,6 +16,7 @@
 					<th field="telp" width="80" sortable="true">TELP</th>
 					<th field="email" width="100">EMAIL</th>		
 					<th field="bagian" width="50" sortable="true">BAGIAN</th>
+					<th field="alergi" width="50" sortable="true">ALERGI</th>
 					<th field="full_name" width="100" sortable="true">PENANGGUNG JAWAB</th>
 					<th field="status_pasien" width="80" sortable="true">STATUS PASIEN</th>
 				</tr>

@@ -18,7 +18,7 @@ class Pasien_m extends MY_Model {
 		$searchKey=isset($_POST['searchKey']) ? strval($_POST['searchKey']) : '';
 		$searchValue=isset($_POST['searchValue']) ? strval($_POST['searchValue']) : '';
 		
-    	$this->db->select(" a.kode_pasien,a.nama,a.penanggung_jawab,a.alamat,a.telp,a.email,a.bagian,a.id_status_pasien,convert(varchar(10),a.tgl_lahir,105) as tgl_lahir,a.nip,a.gender,b.status_pasien,c.full_name");
+    	$this->db->select(" a.kode_pasien,a.nama,a.penanggung_jawab,a.alamat,a.telp,a.email,a.bagian,a.id_status_pasien,convert(varchar(10),a.tgl_lahir,105) as tgl_lahir,a.alergi,a.nip,a.gender,b.status_pasien,c.full_name");
 		$this->db->from("TBL_M_PASIEN a");
 		$this->db->join("TBL_M_STATUS_PASIEN b","a.id_status_pasien = b.id_status_pasien");
 		$this->db->join("v_employee_all c","a.penanggung_jawab = c.nip","left");
@@ -51,6 +51,7 @@ class Pasien_m extends MY_Model {
 		$bagian=$this->input->post('bagian');
 		$gender=$this->input->post('gender');
 		$nip=$this->input->post('nip');
+		$alergi=$this->input->post('alergi');
 		$tgl_lahir=$this->input->post('tgl_lahir');
 		$id_status_pasien=$this->input->post('id_status_pasien');
 		$penanggung_jawab=$this->input->post('penanggung_jawab');
@@ -67,9 +68,11 @@ class Pasien_m extends MY_Model {
 				'id_status_pasien'=>$id_status_pasien,
 				'bagian'=>$bagian,
 				'nip'=>$nip,
+				'alergi'=>$alergi,
 				'gender'=>$gender,
 				'tgl_lahir'=>$tgl_lahir,
 				'penanggung_jawab'=>$penanggung_jawab,
+
 			);
 			
 			$r=$this->db->insert('TBL_M_PASIEN',$arr);
@@ -83,6 +86,7 @@ class Pasien_m extends MY_Model {
 				'id_status_pasien'=>$id_status_pasien,
 				'bagian'=>$bagian,
 				'nip'=>$nip,
+				'alergi'=>$alergi,
 				'gender'=>$gender,
 				'tgl_lahir'=>$tgl_lahir,
 				'penanggung_jawab'=>$penanggung_jawab,

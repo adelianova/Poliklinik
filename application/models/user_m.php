@@ -172,16 +172,27 @@ class User_m extends MY_Model {
 	function getDefaultDokter(){
 		return '[{
 					"id":11,
-					"text":"Transaksi",
+					"text":"Master",
 					"state":"open",
 					"children":[{
 						"id":111,
+						"text":"Pasien",
+						"url":"admin_master_pasien",
+						"akses":true
+						
+					}]
+				},{
+					"id":12,
+					"text":"Transaksi",
+					"state":"open",
+					"children":[{
+						"id":121,
 						"text":"Pemeriksaan",
 						"url":"transaksi_periksa",
 						"akses":true
 						
 					},{
-						"id":112,
+						"id":122,
 						"text":"Resep",
 						"url":"transaksi_resep",
 						"akses":true
