@@ -54,7 +54,7 @@
 						<tr>
 							<td class='label_form'>Keterangan</td>
 							<td >
-								<input name='keterangan' id='keterangan' class='easyui-validatebox textbox' required="true" type="text" style="padding:3px;width:86.7%"/>
+								<input name='keterangan' id='keterangan' class='easyui-validatebox textbox' type="text" style="padding:3px;width:86.7%"/>
 							</td>
 						</tr>
 				</table>
