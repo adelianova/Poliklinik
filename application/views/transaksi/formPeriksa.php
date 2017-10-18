@@ -92,15 +92,25 @@
 					</tr>
 					<tr>
 						<td class='label_form'>Diagnosa</td>
-						<td >
-							<input name='id_penyakit' id='id_penyakit' class='easyui-combobox' style="padding:3px;width:90%" data-options="
-                                        url:'<?php echo base_url();?>index.php/periksa/getIDPenyakit',
-                                        valueField:'id_penyakit',
-                                        textField:'penyakit'
-                                        
-                                        "/>
+						<td>
+						<select name='id_penyakit' id='id_penyakit' required="true" class="easyui-combogrid" style="padding:3px;width:90%" data-options="
+			                    panelWidth: 220,
+			                    idField: 'id_penyakit',
+			                    url:'<?php echo base_url();?>index.php/periksa/getIDPenyakit',
+			                    method: 'post',
+			                    valueField:'id_penyakit',
+                                textField:'penyakit',
+                                mode:'remote',
+                                fitColumns:'true',
+			                    columns: [[
+				                        {field:'kode_penyakit',title:'Kode Penyakit',width:70},
+				                        {field:'penyakit',title:'Nama Penyakit',width:120},
+                    			]]
+			                ">
+			            </select>
 						</td>
 					</tr>
+
 					<tr>
 						<td class='label_form'>Status Registrasi</td>
                         <td>

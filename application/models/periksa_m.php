@@ -127,7 +127,9 @@ class Periksa_m extends MY_Model {
     	return $this->db->query("select b.nip, b.full_name from v_employee_all b ")->result_array();
     }
     function getIDPenyakit(){
-        return $this->db->query(" select id_penyakit,penyakit FROM TBL_M_PENYAKIT")->result_array();
+	    $q = $this->input->post("q");	 
+		$query="select kode_penyakit,penyakit FROM TBL_M_PENYAKIT where kode_penyakit like '%$q%' or kode_penyakit like '%$q%'";
+		return $this->db->query($query)->result_array();
     }
   	function getIDPeriksa(){
 		 return $this->db->query("select a.kode_pasien,a.nama,a.gender,a.alergi,a.bagian,datediff (year,a.tgl_lahir,getdate()) as umur,b.id_periksa,b.keluhan FROM TBL_M_PASIEN a 
